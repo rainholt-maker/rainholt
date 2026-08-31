@@ -24,8 +24,8 @@
     .meta { font-size: 0.8rem; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.4rem; }
     .tag { background: #e0e7ff; color: #3730a3; padding: 0.15rem 0.5rem; border-radius: 3px; font-size: 0.75rem; margin-left: 0.5rem; }
     .sources { font-size: 0.8rem; color: #64748b; margin-top: 0.5rem; }
-    .card { background: var(--bg-subtle); border: 1px solid var(--border); border-radius: 6px; padding: 1.5rem; margin-bottom: 1.5rem; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; text-decoration: none; display: block; color: inherit;}
-    .card:hover { transform: translateY(-3px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); border-color: var(--accent); }
+    .card { background: var(--bg-subtle); border: 1px solid var(--border); border-radius: 6px; padding: 1.5rem; margin-bottom: 1.5rem; transition: transform 0.2s, box-shadow 0.2s; text-decoration: none; display: block; color: inherit;}
+    a.card:hover { transform: translateY(-3px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); border-color: var(--accent); }
     
     .table-container { overflow-x: auto; margin-bottom: 1.2rem; }
     .data-table { width: 100%; border-collapse: collapse; font-size: 0.875rem; background: #ffffff; border: 1px solid var(--border); border-radius: 6px; overflow: hidden; }
@@ -35,6 +35,8 @@
     
     ul, ol { margin: 0.5rem 0 1rem 1.4rem; color: #334155; }
     li { margin-bottom: 0.35rem; }
+    .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 6px; border: 1px solid var(--border); margin: 1rem 0; background: #000; }
+    .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
     .btn { display: inline-block; background: var(--accent); color: #ffffff; padding: 0.5rem 1rem; border-radius: 4px; text-decoration: none; font-size: 0.875rem; font-weight: 500; margin-top: 0.5rem; }
     .btn:hover { background: #1d4ed8; }
     footer { border-top: 1px solid var(--border); padding: 2.5rem 1rem; text-align: center; font-size: 0.85rem; color: #64748b; }
@@ -63,7 +65,7 @@
       <article class="post">
         <div class="meta">
           <time datetime="2026-08-28T20:31:00+02:00">28. august 2026 kl. 20:31</time>
-          <span class="tag">Sidelæns marked</span>
+          <span class="tag">Makro Evaluering</span>
         </div>
         <h3>Afventende rentemarked</h3>
         <div>
@@ -103,13 +105,18 @@
         </tbody>
       </table>
     </div>
-    <p><strong>Ugens observation:</strong> Rentemarkedet konsoliderer sig i denne uge, og vi ser en uge stort set uden retning i et afventende marked. Ændringen er kun marginal. Den faste 30-årige danske realkreditrente afregnes aktuelt omkring kurs 99.20.</p></div>
+    
+        <div style="background-color: #f8fafc; border-left: 4px solid #ef4444; padding: 1.2rem; margin: 1.5rem 0; border-radius: 0 6px 6px 0;">
+            <h4 style="color: #b91c1c; margin-top: 0; margin-bottom: 0.5rem; font-size: 1.05rem;">Indikator: Den Amerikanske Gældsservicering</h4>
+            <p style="font-size: 0.9rem; margin-bottom: 0; color: #334155; line-height: 1.5;">Med en statsgæld på <strong>$40.3 billioner</strong> og det nuværende rentemiljø koster gælden nu anslået <strong>$1.49 billioner årligt</strong> at vedligeholde i renteudgifter. Den epoke, hvor globale markeder blev subsidieret af overskudslikviditet og negative renter fra bl.a. Bank of Japan, er forbi. USA står over for en ny virkelighed, hvor markedsprisen på gæld slår fuldt igennem.</p>
+        </div>
+    <p><strong>Markedsbevægelser:</strong> Rentemarkedet konsoliderer sig i en afventende uge. Den 30-årige amerikanske rente står næsten stille i 4.60 %. Den danske obligationsstruktur absorberer bevægelsen, og vi ser 3.0 %-lånet lukke fredagen i en stabil kurs 95.75.</p></div>
         <p class="sources"><small>Kilder: Federal Reserve, ECB, Danmarks Nationalbank.</small></p>
       </article>
       <article class="post">
         <div class="meta">
           <time datetime="2026-08-21T19:27:00+02:00">21. august 2026 kl. 19:27</time>
-          <span class="tag">Sidelæns marked</span>
+          <span class="tag">Makro Evaluering</span>
         </div>
         <h3>Afventende rentemarked</h3>
         <div>
@@ -149,7 +156,12 @@
         </tbody>
       </table>
     </div>
-    <p><strong>Ugens observation:</strong> Rentemarkedet konsoliderer sig i denne uge, hvor det dansk-amerikanske spænd forbliver strukturelt fastlåst. Ændringen er kun marginal. Den faste 30-årige danske realkreditrente afregnes aktuelt omkring kurs 99.14.</p></div>
+    
+        <div style="background-color: #f8fafc; border-left: 4px solid #ef4444; padding: 1.2rem; margin: 1.5rem 0; border-radius: 0 6px 6px 0;">
+            <h4 style="color: #b91c1c; margin-top: 0; margin-bottom: 0.5rem; font-size: 1.05rem;">Indikator: Den Amerikanske Gældsservicering</h4>
+            <p style="font-size: 0.9rem; margin-bottom: 0; color: #334155; line-height: 1.5;">Med en statsgæld på <strong>$40.3 billioner</strong> og det nuværende rentemiljø koster gælden nu anslået <strong>$1.49 billioner årligt</strong> at vedligeholde i renteudgifter. Den epoke, hvor globale markeder blev subsidieret af overskudslikviditet og negative renter fra bl.a. Bank of Japan, er forbi. USA står over for en ny virkelighed, hvor markedsprisen på gæld slår fuldt igennem.</p>
+        </div>
+    <p><strong>Markedsbevægelser:</strong> Med det nuværende spænd mellem FED (4.00 %) og ECB (2.00 %) ser vi kapitalen afvente. US 30Y rammer 4.60 %. I det danske realkreditmarked befinder optagelsen af nye lån sig i den faste 3.0 %-serie, som lukker ugen i kurs 95.70.</p></div>
         <p class="sources"><small>Kilder: Federal Reserve, ECB, Danmarks Nationalbank.</small></p>
       </article>
       <div style="text-align: center; margin-top: 1.5rem;">
