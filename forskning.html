@@ -3,9 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Forskning | Lasse Holt</title>
+  <meta name="description" content="Lasse Holt - Erhvervsjurist, ekstern lektor (CBS) og sektionschef. Dybdegående makroøkonomiske analyser, strategisk kontrahering og datadrevet indsigt i gældsmarkederne.">
+  <meta property="og:title" content="Lasse Holt | Makroøkonomi & Strategisk Kontrahering">
+  <meta property="og:description" content="Uafhængig analyse af det globale gældsmarked, transatlantiske rentespænd og strategisk ledelse.">
+  <meta property="og:type" content="website">
+  <!-- Google Analytics 4 (Fjern kommentar-tegn og indsæt dit G-ID for at aktivere) -->
+  <!--
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+  -->
+  <title>Forskning & Undervisning | Lasse Holt</title>
   <style>
-    :root { --primary: #0f172a; --accent: #2563eb; --text: #334155; --heading: #0f172a; --bg: #ffffff; --bg-subtle: #f8fafc; --border: #e2e8f0; }
+    :root { --primary: #0f172a; --accent: #2563eb; --text: #334155; --heading: #0f172a; --bg: #ffffff; --bg-subtle: #f8fafc; --border: #e2e8f0; --danger: #ef4444; --success: #22c55e; }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; color: var(--text); background-color: var(--bg); line-height: 1.65; }
     header { border-bottom: 1px solid var(--border); padding: 3rem 1.5rem 2rem; text-align: center; position: relative; }
@@ -17,62 +31,15 @@
     main { max-width: 840px; margin: 0 auto; padding: 3rem 1.5rem 5rem; }
     section { margin-bottom: 4rem; }
     h2 { font-size: 1.5rem; color: var(--heading); margin-bottom: 1.5rem; border-bottom: 2px solid var(--accent); padding-bottom: 0.4rem; }
-    h3 { font-size: 1.2rem; color: var(--heading); margin: 1.25rem 0 0.4rem; }
+    h3 { font-size: 1.25rem; color: var(--heading); margin: 1.5rem 0 0.5rem; }
     p { margin-bottom: 1rem; color: #334155; }
     .card { background: var(--bg-subtle); border: 1px solid var(--border); border-radius: 6px; padding: 1.5rem; margin-bottom: 1.5rem; transition: transform 0.2s, box-shadow 0.2s; text-decoration: none; display: block; color: inherit;}
-    a.card:hover { transform: translateY(-3px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); border-color: var(--accent); }
-    ul, ol { margin: 0.5rem 0 1rem 1.4rem; color: #334155; }
-    li { margin-bottom: 0.35rem; }
-    .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 6px; border: 1px solid var(--border); margin: 1rem 0; background: #000; }
-    .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+    ul { margin: 0.5rem 0 1rem 1.4rem; color: #334155; }
+    li { margin-bottom: 0.8rem; }
     .btn { display: inline-block; background: var(--accent); color: #ffffff; padding: 0.5rem 1rem; border-radius: 4px; text-decoration: none; font-size: 0.875rem; font-weight: 500; margin-top: 0.5rem; }
     .btn:hover { background: #1d4ed8; }
     footer { border-top: 1px solid var(--border); padding: 2.5rem 1rem; text-align: center; font-size: 0.85rem; color: #64748b; }
-</style>
-
-  <!-- Cookiebot (Skal ligge øverst for at blokere cookies indtil samtykke er givet) -->
-  <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="7809ffeb-a0f3-4d32-b5b1-2339a4797b45" data-blockingmode="auto" type="text/javascript"></script>
-
-  <!-- Google Analytics 4 (Kører kun hvis brugeren accepterer 'Statistik' cookies i Cookiebot) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HJJ2ZVFCY0" type="text/plain" data-cookieconsent="statistics"></script>
-  <script type="text/plain" data-cookieconsent="statistics">
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-HJJ2ZVFCY0');
-  </script>
-
-  <!-- SEO & Delings-tags (Gør at siden ser flot ud når den deles på LinkedIn mv.) -->
-  <meta name="description" content="Lasse Holt - Sektionschef i Banedanmark, Ekstern Lektor på CBS og forfatter. Læs ugentlige makroøkonomiske analyser og indsigter i strategisk kontrahering.">
-  <meta property="og:title" content="Lasse Holt | Erhvervsjurist, Lektor & Analytiker">
-  <meta property="og:description" content="Følg mine makroøkonomiske analyser af det globale gældsmarked, og læs om strategisk kontrahering og ledelse.">
-  <meta property="og:url" content="https://www.lasseholt.dk/">
-  <meta property="og:type" content="website">
-
-  <!-- GEO Optimering (Struktureret data til Google og AI-modeller som ChatGPT) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Lasse Holt",
-    "jobTitle": ["Sektionschef, Jura & Bæredygtighed", "Ekstern Lektor"],
-    "worksFor": [
-      {
-        "@type": "Organization",
-        "name": "Banedanmark"
-      },
-      {
-        "@type": "CollegeOrUniversity",
-        "name": "Copenhagen Business School"
-      }
-    ],
-    "alumniOf": {
-      "@type": "CollegeOrUniversity",
-      "name": "Copenhagen Business School (CBS)"
-    },
-    "url": "https://www.lasseholt.dk"
-  }
-  </script>
+  </style>
 </head>
 <body>
   <header>
@@ -82,33 +49,43 @@
   <nav>
     <a href="index.html">Forside</a>
     <a href="makro.html">Makroøkonomi</a>
-    <a href="forskning.html" style="color:var(--accent)">Forskning</a>
+    <a href="forskning.html" style="color:var(--accent)">Forskning & Undervisning</a>
     <a href="ledelse.html">Ledelse</a>
     <a href="kontakt.html">Kontakt</a>
   </nav>
   <main>
-
     <section>
-      <h2>Forskning & Undervisning på CBS</h2>
+      <h2>Forskning & Publikationer</h2>
       <div class="card" style="cursor: default;">
         <h3>Bæredygtig Kapitalisme – Strategisk Kontrahering i komplekse værdikæder</h3>
-        <p><strong>Forfattere:</strong> Kim Østergaard & Lasse Holt | <strong>Forlag:</strong> Djøf Forlag | <strong>Status:</strong> Udkast &bull; Forventet ultimo 2026</p>
-        <p>I vores kommende bog gør vi op med traditionelle standardkontrakter og etablerer en multilateral værdikædemodel baseret på klubgoder og spilteori.</p>
-        <p>Gennem 15 demonstrationsforløb i forsvarsindustrien (i samarbejde med bl.a. DTU) har vi påvist, at klassisk bilateral transaktionsomkostnings-logik skaber "deadweight loss" i komplekse netværk. Vi viser i stedet, hvordan implementeringen af kollektive klubgoder i kontraktarkitekturen drastisk reducerer compliance-friktion og forbedrer 'time-to-market' under ny regulering som CSDDD og CSRD.</p>
-      </div>
-
-      <div class="card" style="cursor: default;">
-        <h3>Undervisning & Akademisk Vejledning</h3>
-        <p>Som ekstern lektor ved Copenhagen Business School (CBS) underviser og vejleder jeg i krydsfeltet mellem jura, strategi og økonomi. For at understrege min kernefaglighed varetager jeg primært undervisningen i følgende tre fag:</p>
-        <ul style="margin-top:1rem; margin-bottom: 1.5rem;">
-          <li><strong>Bæredygtighed mod et værdikædeperspektiv</strong></li>
-          <li><strong>Juridisk og Strategisk Spilteori</strong></li>
-          <li><strong>Strategisk kontrahering i et internationalt virksomhedsperspektiv</strong></li>
-        </ul>
-        <p style="margin-top: 1.5rem;"><a href="afhandlinger.html" class="btn">Se komplet oversigt over 156 vejledte kandidatafhandlinger &rarr;</a></p>
+        <p><strong>Forfattere:</strong> Kim Østergaard & Lasse Holt | <strong>Forlag:</strong> Djøf Forlag | <strong>Status:</strong> Udkast &bull; Forventet november 2026</p>
+        <p>I vores kommende bog gør vi op med traditionelle standardkontrakter og etablerer en multilateral værdikædemodel baseret på klubgoder og spilteori. Gennem demonstrationsforløb i forsvarsindustrien har vi påvist, at klassisk bilateral transaktionsomkostnings-logik skaber "deadweight loss" i komplekse netværk. Vi viser i stedet, hvordan implementeringen af kollektive klubgoder i kontraktarkitekturen drastisk reducerer compliance-friktion og forbedrer 'time-to-market' under ny EU-regulering som CSDDD og CSRD.</p>
       </div>
     </section>
 
+    <section>
+      <h2>Undervisningsportefølje på CBS</h2>
+      <p>Min undervisning på cand.merc.jur.-kandidatuddannelsen er bygget op omkring en stærk, progressiv rød tråd. Hvor jura traditionelt anskues som et defensivt compliance-værktøj, anvender vi det som et dynamisk instrument til at forme adfærd. Virksomhedsteori og spilteori udgør fundamentet for dette syn, mens fagene i strategisk og bæredygtig kontrahering bygger direkte ovenpå ved at udfordre den konventionelle erhvervsjuridiske tænkning.</p>
+
+      <div class="card" style="cursor: default;">
+        <ul>
+          <li><strong>The Theory of the Firm</strong> <em>(Kandidatniveau)</em><br>
+          Dette fag udgør selve startskuddet og det absolutte fundament for den retsøkonomiske tænkning. Med afsæt i artiklen af samme navn, undersøger vi her de fundamentale spørgsmål om, hvorfor virksomheder overhovedet eksisterer frem for det frie marked. Gennem et benhårdt fokus på transaktionsomkostninger, incitamenter og asymmetrisk information kortlægger vi grænserne for virksomhedens størrelse og sætter det teoretiske rammeværk for "make-or-buy"-beslutninger.</li>
+
+          <li><strong>Juridisk og Strategisk Spilteori</strong> <em>(Kandidatniveau, Valgfag, 7,5 ECTS)</em><br>
+          Hvor <em>Theory of the Firm</em> definerer grænserne, leverer spilteorien selve metodikken. Dette fag danner grundlaget for al økonomisk og juridisk tænkning omkring aktørers interaktion. Vi analyserer juraen som spillets overordnede regler, og de studerende lærer matematisk og logisk at forudse modpartens rationelle træk i forhandlinger, konflikter og markedsdynamikker for at sikre Pareto-optimale løsninger.</li>
+
+          <li><strong>Strategisk Kontrahering i et internationalt virksomhedsperspektiv</strong> <em>(Kandidatniveau, Valgfag, 7,5 ECTS)</em><br>
+          Med teorien solidt forankret udfordrer dette fag den konventionelle måde at tænke kontrakter på i praksis. Vi gør op med idéen om "nulsums-kontrahering" og juridisk skyttegravskrig. I stedet fokuserer vi på at designe asymmetriske samarbejder og relationelle kontrakter, der aktivt minimerer de transaktionsomkostninger, vi identificerede i <em>Theory of the Firm</em>, og skaber en beskyttet relationsrente for begge parter.</li>
+
+          <li><strong>Bæredygtighed i et værdikædeperspektiv – Valg af kontraheringsform</strong> <em>(Kandidatniveau, Valgfag)</em><br>
+          Faget tager den strategiske kontrahering et skridt videre ind i en virkelighed domineret af ESG. Her udfordrer vi den konventionelle og administrative "back-to-back" overvæltning af compliance-krav i forsyningskæderne (f.eks. CSDDD). Vi introducerer i stedet implementeringen af kollektive "klubgoder", som skaber strukturel incitamentsforenelighed på tværs af multilaterale leverandørnetværk.</li>
+
+          <li><strong>Maritime Law & Risk Management</strong> <em>(Kandidatniveau, supplerende)</em><br>
+          Den globale shippingindustri fungerer som et lavpraktisk anvendelsesområde for teorierne. Her underkastes de retsøkonomiske principper om optimal risikoallokering og incitamentsstyring en ekstrem stresstest i et volatilt og globalt marked præget af høj kapitalbinding og uforudsigelighed.</li>
+        </ul>
+      </div>
+    </section>
   </main>
   <footer><p>&copy; 2026 Lasse Holt</p></footer>
 </body>
