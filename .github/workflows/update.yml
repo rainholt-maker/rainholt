@@ -42,17 +42,19 @@ def generate_weekly_narrative(us_30y, dk_30y, fed_rate, ecb_rate, us_vol):
     
     intro_options = [
         f"Markedet fordøjer de seneste makrotal. De lange amerikanske renter lander på {us_30y:.2f} %.",
-        f"Med det nuværende spænd mellem FED ({fed_rate:.2f} %) og ECB ({ecb_rate:.2f} %) ser vi kapitalen reagere. US 30Y rammer {us_30y:.2f} %.",
-        f"Den strukturelle makro-divergens fortsætter ufortrødent. US 30Y-renten handles nu i {us_30y:.2f} %."
+        f"Med det nuværende spænd mellem FED og ECB ser vi kapitalen reagere. US 30Y rammer {us_30y:.2f} %.",
+        f"Den strukturelle makro-divergens fortsætter ufortrødent. US 30Y-renten handles nu i {us_30y:.2f} %.",
+        f"En overvejende stilstand præger det globale gældsmarked. US 30Y bevæger sig marginalt og ender på {us_30y:.2f} %.",
+        f"Investorerne fintuner forventningerne til de lange udsigter. US 30Y noteres til {us_30y:.2f} %."
     ]
     
     dk_options = [
         f"For de danske boligejere betyder dette, at den toneangivende {active_coupon:.1f} % realkreditobligation aktuelt afregnes omkring kurs {kurs:.2f}.",
-        f"Herhjemme slår makrodynamikken igennem, hvilket placerer den faste {active_coupon:.1f} % obligationsserie omkring kurs {kurs:.2f}.",
-        f"I det danske realkreditmarked befinder optagelsen af nye lån sig i den faste {active_coupon:.1f} %-serie, som lukker ugen i kurs {kurs:.2f}."
+        f"Herhjemme slår asymmetrien igennem, hvilket placerer den faste {active_coupon:.1f} % obligationsserie omkring kurs {kurs:.2f}.",
+        f"I det danske marked befinder optagelsen af nye lån sig fortsat i {active_coupon:.1f} %-serien, som lukker fredagen i kurs {kurs:.2f}.",
+        f"Den danske obligationsstruktur absorberer bevægelsen, og vi ser {active_coupon:.1f} %-lånet stabilisere sig ved kurs {kurs:.2f}."
     ]
     
-    # Beregn USA's renteudgifter og indbyg din analyse
     effective_rate = (fed_rate * 0.4 + us_30y * 0.6) * 0.85
     if effective_rate < 1.0: effective_rate = 1.0
     interest_cost = us_vol * (effective_rate / 100)
@@ -60,7 +62,7 @@ def generate_weekly_narrative(us_30y, dk_30y, fed_rate, ecb_rate, us_vol):
     indicator_html = f"""
         <div style="background-color: #f8fafc; border-left: 4px solid #ef4444; padding: 1.2rem; margin: 1.5rem 0; border-radius: 0 6px 6px 0;">
             <h4 style="color: #b91c1c; margin-top: 0; margin-bottom: 0.5rem; font-size: 1.05rem;">Indikator: Den Amerikanske Gældsservicering</h4>
-            <p style="font-size: 0.9rem; margin-bottom: 0; color: #334155; line-height: 1.5;">Med en statsgæld på <strong>${us_vol:.1f} billioner</strong> og det nuværende rentemiljø koster gælden nu anslået <strong>${interest_cost:.2f} billioner årligt</strong> at vedligeholde i renteudgifter. Den epoke, hvor globale markeder blev subsidieret af overskudslikviditet og negative renter fra bl.a. Bank of Japan, er forbi. USA står over for en ny virkelighed, hvor markedsprisen på gæld slår fuldt igennem.</p>
+            <p style="font-size: 0.9rem; margin-bottom: 0; color: #334155; line-height: 1.5;">Med en statsgæld på <strong>${us_vol:.1f} billioner</strong> koster gælden nu anslået <strong>${interest_cost:.2f} billioner årligt</strong> at vedligeholde i renteudgifter. Epoken, hvor markedet blev subsidieret af overskudslikviditet og negative renter, er forbi. Markedsprisen på gæld slår nu fuldt igennem.</p>
         </div>
     """
     
@@ -129,7 +131,6 @@ def update_html_files():
     with open("arkiv.html", "w", encoding="utf-8") as f:
         f.write(arkiv_html)
         
-    # Samme fremgangsmåde for makro.html
     with open("makro.html", "r", encoding="utf-8") as f:
         makro_html = f.read()
     makro_html = makro_html.replace('<h2>Seneste Økonomiske Observationer</h2>', f'<h2>Seneste Økonomiske Observationer</h2>\n{new_article}')
