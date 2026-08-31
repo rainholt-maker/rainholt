@@ -3,19 +3,15 @@ import random
 import yfinance as yf
 
 def get_live_macro_data():
-    # Hent US 30-Year Treasury Yield live
     try:
         us_30y_ticker = yf.Ticker("^TYX")
         us_30y = float(us_30y_ticker.history(period="1d")['Close'].iloc[-1])
     except:
-        us_30y = 4.15 # Fallback hvis Yahoo Finance-API svigter kortvarigt
+        us_30y = 4.15 
 
-    # Approksimerede styringsrenter pt.
     fed_rate = 4.00
     ecb_rate = 2.00
     dk_short = 1.90
-    
-    # Den danske lange rente korrelerer tæt med US 30Y
     dk_30y = us_30y - 1.10
     eu_30y = us_30y - 2.20
     
@@ -27,58 +23,54 @@ def get_live_macro_data():
     return fed_rate, ecb_rate, dk_short, us_30y, eu_30y, dk_30y, us_debt_vol, us_debt_gdp, eu_debt_vol, dk_debt_vol
 
 def get_dk_bond_details(dk_30y_yield):
-    # Finder automatisk den åbne danske realkredit-serie under kurs 100
-    possible_coupons = [1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 6.0]
-    
+    possible_coupons = [0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 6.0]
     active_coupon = 1.0
     kurs = 100.0
-    
-    # Går fra toppen og ned, indtil en kurs rammer under 99.80
     for coupon in sorted(possible_coupons, reverse=True):
-        calculated_kurs = 100 - ((dk_30y_yield - coupon) * 8.5) # Varighed approx 8.5
-        
+        calculated_kurs = 100.0 - ((dk_30y_yield - coupon) * 8.5)
         if calculated_kurs <= 99.80:
             active_coupon = coupon
             kurs = calculated_kurs
             break
-            
-    # Hvis den fanger en for lav kurs (< 92), rykker den op i næste serie
-    if kurs < 92.0:
-        active_coupon += 0.5
-        kurs = 100 - ((dk_30y_yield - active_coupon) * 8.5)
-        
+    if kurs < 91.0:
+        active_coupon += 1.0
+        kurs = 100.0 - ((dk_30y_yield - active_coupon) * 8.5)
     return active_coupon, kurs
 
-def generate_narrative(us_30y, dk_30y, fed_rate, ecb_rate):
+def generate_weekly_narrative(us_30y, dk_30y, fed_rate, ecb_rate, us_vol):
     active_coupon, kurs = get_dk_bond_details(dk_30y)
     
-    # Forskellige indledninger afhængig af markedsspænding
     intro_options = [
-        f"Rentemarkedet fortsætter sin søgen efter retning. Den 30-årige amerikanske rente lander på {us_30y:.2f} %.",
-        f"Ugen har budt på ny markedsdynamik. Med et spænd mellem FED ({fed_rate:.2f} %) og ECB ({ecb_rate:.2f} %) ser vi fortsat et historisk pres på den interkontinentale kapitalallokering.",
-        f"Den strukturelle makro-divergens fortsætter ufortrødent. Obligationsmarkedet lytter spændt, og US 30Y-renten handles nu i {us_30y:.2f} %.",
-        f"En afventende uge for de globale statsobligationer. Fokus forbliver benhårdt på asymmetrien i gældsmarkederne, hvor amerikansk renteniveau trækker vejret i {us_30y:.2f} %.",
-        f"Markedet indpricer de seneste nøgletal. Det holder det lange transatlantiske spænd i ro, mens USA's gældscyklus presser de lange renter fast omkring {us_30y:.2f} %."
+        f"Markedet fordøjer de seneste makrotal. De lange amerikanske renter lander på {us_30y:.2f} %.",
+        f"Med det nuværende spænd mellem FED ({fed_rate:.2f} %) og ECB ({ecb_rate:.2f} %) ser vi kapitalen reagere. US 30Y rammer {us_30y:.2f} %.",
+        f"Den strukturelle makro-divergens fortsætter ufortrødent. US 30Y-renten handles nu i {us_30y:.2f} %."
     ]
     
-    # Forskellige forklaringer på dansk realkredit (under kurs 100)
     dk_options = [
-        f"For de danske boligejere betyder dette, at den toneangivende {active_coupon:.1f} % realkreditobligation aktuelt afregnes i en stabil kurs {kurs:.2f}.",
-        f"Herhjemme slår asymmetrien igennem på realkreditten, hvilket placerer den faste {active_coupon:.1f} % obligationsserie omkring kurs {kurs:.2f}.",
-        f"I det danske realkreditmarked befinder de nye lån sig derfor trygt i den faste {active_coupon:.1f} %-serie, som ved lukketid handles til kurs {kurs:.2f}.",
-        f"Konsekvensen for den danske realkredit er mærkbar; vi kigger lige nu ind i en {active_coupon:.1f} % obligation til kurs {kurs:.2f}.",
-        f"Den faste danske realkredit fastholder sit solide leje langt under de amerikanske renter, og {active_coupon:.1f} %-serien lukker ugen i kurs {kurs:.2f}."
+        f"For de danske boligejere betyder dette, at den toneangivende {active_coupon:.1f} % realkreditobligation aktuelt afregnes omkring kurs {kurs:.2f}.",
+        f"Herhjemme slår makrodynamikken igennem, hvilket placerer den faste {active_coupon:.1f} % obligationsserie omkring kurs {kurs:.2f}.",
+        f"I det danske realkreditmarked befinder optagelsen af nye lån sig i den faste {active_coupon:.1f} %-serie, som lukker ugen i kurs {kurs:.2f}."
     ]
     
-    tag_options = ["Makro Evaluering", "Renteudvikling", "Kapitalstrømme", "Obligationsmarkedet"]
+    # Beregn USA's renteudgifter og indbyg din analyse
+    effective_rate = (fed_rate * 0.4 + us_30y * 0.6) * 0.85
+    if effective_rate < 1.0: effective_rate = 1.0
+    interest_cost = us_vol * (effective_rate / 100)
     
-    body_text = f"{random.choice(intro_options)} {random.choice(dk_options)}"
-    return "Status på rentespændet", body_text, random.choice(tag_options)
+    indicator_html = f"""
+        <div style="background-color: #f8fafc; border-left: 4px solid #ef4444; padding: 1.2rem; margin: 1.5rem 0; border-radius: 0 6px 6px 0;">
+            <h4 style="color: #b91c1c; margin-top: 0; margin-bottom: 0.5rem; font-size: 1.05rem;">Indikator: Den Amerikanske Gældsservicering</h4>
+            <p style="font-size: 0.9rem; margin-bottom: 0; color: #334155; line-height: 1.5;">Med en statsgæld på <strong>${us_vol:.1f} billioner</strong> og det nuværende rentemiljø koster gælden nu anslået <strong>${interest_cost:.2f} billioner årligt</strong> at vedligeholde i renteudgifter. Den epoke, hvor globale markeder blev subsidieret af overskudslikviditet og negative renter fra bl.a. Bank of Japan, er forbi. USA står over for en ny virkelighed, hvor markedsprisen på gæld slår fuldt igennem.</p>
+        </div>
+    """
+    
+    body = f"{indicator_html}<p><strong>Markedsbevægelser:</strong> {random.choice(intro_options)} {random.choice(dk_options)}</p>"
+    return "Status på rentespændet", body, "Makro Evaluering"
 
 def update_html_files():
     today = datetime.datetime.now()
     fed, ecb, dk_short, us_30y, eu_30y, dk_30y, us_vol, us_gdp, eu_vol, dk_vol = get_live_macro_data()
-    title, body_text, tag = generate_narrative(us_30y, dk_30y, fed, ecb)
+    title, body_text, tag = generate_weekly_narrative(us_30y, dk_30y, fed, ecb, us_vol)
     
     date_str = today.strftime("%d. %B %Y").lower().capitalize()
     time_str = today.strftime("%H:%M")
@@ -127,7 +119,7 @@ def update_html_files():
         </tbody>
       </table>
     </div>
-    <p><strong>Ugens observation:</strong> {body_text}</p></div>
+    {body_text}</div>
         <p class="sources"><small>Kilder: Federal Reserve, ECB, Danmarks Nationalbank (Live Update).</small></p>
       </article>\n"""
 
@@ -136,6 +128,13 @@ def update_html_files():
     arkiv_html = arkiv_html.replace('<h2>Årgang 2026</h2>', f'<h2>Årgang 2026</h2>\n{new_article}')
     with open("arkiv.html", "w", encoding="utf-8") as f:
         f.write(arkiv_html)
+        
+    # Samme fremgangsmåde for makro.html
+    with open("makro.html", "r", encoding="utf-8") as f:
+        makro_html = f.read()
+    makro_html = makro_html.replace('<h2>Seneste Økonomiske Observationer</h2>', f'<h2>Seneste Økonomiske Observationer</h2>\n{new_article}')
+    with open("makro.html", "w", encoding="utf-8") as f:
+        f.write(makro_html)
 
 if __name__ == "__main__":
     update_html_files()
