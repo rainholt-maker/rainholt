@@ -42,17 +42,19 @@ def generate_weekly_narrative(us_30y, dk_30y, fed_rate, ecb_rate, us_vol):
     
     intro_options = [
         f"Markedet fordøjer de seneste makrotal. De lange amerikanske renter lander på {us_30y:.2f} %.",
-        f"Med det nuværende spænd mellem FED og ECB ser vi kapitalen reagere. US 30Y rammer {us_30y:.2f} %.",
+        f"Med det nuværende spænd mellem FED ({fed_rate:.2f} %) og ECB ({ecb_rate:.2f} %) ser vi kapitalen reagere. US 30Y rammer {us_30y:.2f} %.",
         f"Den strukturelle makro-divergens fortsætter ufortrødent. US 30Y-renten handles nu i {us_30y:.2f} %.",
         f"En overvejende stilstand præger det globale gældsmarked. US 30Y bevæger sig marginalt og ender på {us_30y:.2f} %.",
-        f"Investorerne fintuner forventningerne til de lange udsigter. US 30Y noteres til {us_30y:.2f} %."
+        f"Investorerne fintuner forventningerne til de lange udsigter. US 30Y noteres til {us_30y:.2f} %.",
+        f"Rentemarkedet fortsætter sin søgen efter langsigtet retning, og US 30Y svæver omkring {us_30y:.2f} %."
     ]
     
     dk_options = [
         f"For de danske boligejere betyder dette, at den toneangivende {active_coupon:.1f} % realkreditobligation aktuelt afregnes omkring kurs {kurs:.2f}.",
         f"Herhjemme slår asymmetrien igennem, hvilket placerer den faste {active_coupon:.1f} % obligationsserie omkring kurs {kurs:.2f}.",
         f"I det danske marked befinder optagelsen af nye lån sig fortsat i {active_coupon:.1f} %-serien, som lukker fredagen i kurs {kurs:.2f}.",
-        f"Den danske obligationsstruktur absorberer bevægelsen, og vi ser {active_coupon:.1f} %-lånet stabilisere sig ved kurs {kurs:.2f}."
+        f"Den danske obligationsstruktur absorberer bevægelsen, og vi ser {active_coupon:.1f} %-lånet stabilisere sig ved kurs {kurs:.2f}.",
+        f"Konsekvensen for den danske model er mærkbar, da den ledende {active_coupon:.1f} % obligation nu prises i kurs {kurs:.2f}."
     ]
     
     effective_rate = (fed_rate * 0.4 + us_30y * 0.6) * 0.85
@@ -67,7 +69,7 @@ def generate_weekly_narrative(us_30y, dk_30y, fed_rate, ecb_rate, us_vol):
     """
     
     body = f"{indicator_html}<p><strong>Markedsbevægelser:</strong> {random.choice(intro_options)} {random.choice(dk_options)}</p>"
-    return "Status på rentespændet", body, "Makro Evaluering"
+    return "Sidelæns bevægelser", body, "Makro Evaluering"
 
 def update_html_files():
     today = datetime.datetime.now()
