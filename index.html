@@ -3,9 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Lasse Holt - Erhvervsjurist, ekstern lektor (CBS) og sektionschef. Dybdegående makroøkonomiske analyser, strategisk kontrahering og datadrevet indsigt i gældsmarkederne.">
+  <meta property="og:title" content="Lasse Holt | Makroøkonomi & Strategisk Kontrahering">
+  <meta property="og:description" content="Uafhængig analyse af det globale gældsmarked, transatlantiske rentespænd og strategisk ledelse.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.lasseholt.dk">
+
+  <!-- Cookiebot CMP -->
+  <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="7809ffeb-a0f3-4d32-b5b1-2339a4797b45" data-blockingmode="auto" type="text/javascript"></script>
+
+  <!-- Google Analytics 4 (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HJJ2ZVFCY0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-HJJ2ZVFCY0');
+  </script>
   <title>Lasse Holt | Erhvervsjurist, Forfatter & Ekstern Lektor</title>
   <style>
-    :root { --primary: #0f172a; --accent: #2563eb; --text: #334155; --heading: #0f172a; --bg: #ffffff; --bg-subtle: #f8fafc; --border: #e2e8f0; }
+    :root { --primary: #0f172a; --accent: #2563eb; --text: #334155; --heading: #0f172a; --bg: #ffffff; --bg-subtle: #f8fafc; --border: #e2e8f0; --danger: #ef4444; --success: #22c55e; }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; color: var(--text); background-color: var(--bg); line-height: 1.65; }
     header { border-bottom: 1px solid var(--border); padding: 3rem 1.5rem 2rem; text-align: center; position: relative; }
@@ -17,62 +35,47 @@
     main { max-width: 840px; margin: 0 auto; padding: 3rem 1.5rem 5rem; }
     section { margin-bottom: 4rem; }
     h2 { font-size: 1.5rem; color: var(--heading); margin-bottom: 1.5rem; border-bottom: 2px solid var(--accent); padding-bottom: 0.4rem; }
-    h3 { font-size: 1.2rem; color: var(--heading); margin: 1.25rem 0 0.4rem; }
+    h3 { font-size: 1.25rem; color: var(--heading); margin: 1.5rem 0 0.5rem; }
     p { margin-bottom: 1rem; color: #334155; }
+    
+    .timeline-card { background: var(--bg-subtle); border-left: 4px solid var(--accent); border-radius: 0 6px 6px 0; padding: 1.5rem; margin-bottom: 2rem; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+    .timeline-card.danger { border-left-color: #b91c1c; background: #fef2f2; }
+    .timeline-year { font-weight: 700; color: var(--accent); font-size: 1.1rem; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 0.5rem; display: block; }
+    .timeline-card.danger .timeline-year { color: #b91c1c; }
+    .data-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(0,0,0,0.05); }
+    .data-point { display: flex; direction: column; }
+    .data-label { font-size: 0.75rem; text-transform: uppercase; color: #64748b; font-weight: 600; }
+    .data-value { font-size: 1.25rem; font-weight: 700; color: var(--heading); }
+
+    .post { border-bottom: 1px solid var(--border); padding-bottom: 1.75rem; margin-bottom: 2.5rem; }
+    .post:last-child { border-bottom: none; }
+    .meta { font-size: 0.8rem; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.4rem; }
+    .tag { background: #e0e7ff; color: #3730a3; padding: 0.15rem 0.5rem; border-radius: 3px; font-size: 0.75rem; margin-left: 0.5rem; }
+    .sources { font-size: 0.8rem; color: #64748b; margin-top: 0.5rem; }
     .card { background: var(--bg-subtle); border: 1px solid var(--border); border-radius: 6px; padding: 1.5rem; margin-bottom: 1.5rem; transition: transform 0.2s, box-shadow 0.2s; text-decoration: none; display: block; color: inherit;}
     a.card:hover { transform: translateY(-3px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); border-color: var(--accent); }
+    
+    .table-container { overflow-x: auto; margin-bottom: 1.2rem; }
+    .data-table { width: 100%; border-collapse: collapse; font-size: 0.875rem; background: #ffffff; border: 1px solid var(--border); border-radius: 6px; overflow: hidden; }
+    .data-table th, .data-table td { padding: 0.75rem 1rem; border-bottom: 1px solid var(--border); text-align: left; vertical-align: middle; }
+    .data-table th { background: #f8fafc; color: var(--heading); font-weight: 600; white-space: nowrap; }
+    .data-table tbody tr:hover { background: #f1f5f9; }
+    
+    .bar-wrapper { width: 100px; background: #e2e8f0; border-radius: 3px; height: 6px; margin-top: 4px; overflow: hidden; }
+    .bar-fill { height: 100%; border-radius: 3px; background: var(--accent); }
+    .bar-fill.danger { background: var(--danger); }
+    .bar-fill.success { background: var(--success); }
+    .trend { font-weight: bold; margin-left: 6px; font-size: 0.85rem; }
+    .trend.up { color: var(--danger); } 
+    .trend.down { color: var(--success); } 
+    .trend.flat { color: #94a3b8; }
+    
     ul, ol { margin: 0.5rem 0 1rem 1.4rem; color: #334155; }
     li { margin-bottom: 0.35rem; }
-    .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 6px; border: 1px solid var(--border); margin: 1rem 0; background: #000; }
-    .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
     .btn { display: inline-block; background: var(--accent); color: #ffffff; padding: 0.5rem 1rem; border-radius: 4px; text-decoration: none; font-size: 0.875rem; font-weight: 500; margin-top: 0.5rem; }
     .btn:hover { background: #1d4ed8; }
     footer { border-top: 1px solid var(--border); padding: 2.5rem 1rem; text-align: center; font-size: 0.85rem; color: #64748b; }
-</style>
-
-  <!-- Cookiebot (Skal ligge øverst for at blokere cookies indtil samtykke er givet) -->
-  <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="7809ffeb-a0f3-4d32-b5b1-2339a4797b45" data-blockingmode="auto" type="text/javascript"></script>
-
-  <!-- Google Analytics 4 (Kører kun hvis brugeren accepterer 'Statistik' cookies i Cookiebot) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HJJ2ZVFCY0" type="text/plain" data-cookieconsent="statistics"></script>
-  <script type="text/plain" data-cookieconsent="statistics">
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-HJJ2ZVFCY0');
-  </script>
-
-  <!-- SEO & Delings-tags (Gør at siden ser flot ud når den deles på LinkedIn mv.) -->
-  <meta name="description" content="Lasse Holt - Sektionschef i Banedanmark, Ekstern Lektor på CBS og forfatter. Læs ugentlige makroøkonomiske analyser og indsigter i strategisk kontrahering.">
-  <meta property="og:title" content="Lasse Holt | Erhvervsjurist, Lektor & Analytiker">
-  <meta property="og:description" content="Følg mine makroøkonomiske analyser af det globale gældsmarked, og læs om strategisk kontrahering og ledelse.">
-  <meta property="og:url" content="https://www.lasseholt.dk/">
-  <meta property="og:type" content="website">
-
-  <!-- GEO Optimering (Struktureret data til Google og AI-modeller som ChatGPT) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Lasse Holt",
-    "jobTitle": ["Sektionschef, Jura & Bæredygtighed", "Ekstern Lektor"],
-    "worksFor": [
-      {
-        "@type": "Organization",
-        "name": "Banedanmark"
-      },
-      {
-        "@type": "CollegeOrUniversity",
-        "name": "Copenhagen Business School"
-      }
-    ],
-    "alumniOf": {
-      "@type": "CollegeOrUniversity",
-      "name": "Copenhagen Business School (CBS)"
-    },
-    "url": "https://www.lasseholt.dk"
-  }
-  </script>
+  </style>
 </head>
 <body>
   <header>
@@ -87,31 +90,25 @@
     <a href="kontakt.html">Kontakt</a>
   </nav>
   <main>
-
     <section>
       <p style="text-align:center; font-size: 1.1rem; color: #475569; margin-bottom:3rem;">Velkommen. Her finder du et overblik over mit professionelle og akademiske virke.</p>
-      
       <a href="makro.html" class="card">
         <h3>1. Makroøkonomi & Finansiel Repression</h3>
         <p>Læs min løbende datadrevne analyse af divergensen mellem USA's voksende gæld og den europæiske stagnation. Inkluderer et komplet overblik over udviklingen i de lange danske realkreditrenter vs. obligationsmarkedet.</p>
       </a>
-
       <a href="forskning.html" class="card">
         <h3>2. Forskning & Undervisning på CBS</h3>
-        <p>Information om min kommende bog "Bæredygtig Kapitalisme" (Djøf Forlag, nov 2026) og mine koncepter for strategisk kontrahering via klubgoder. Tilgang til de 156 kandidatafhandlinger, jeg har vejledt.</p>
+        <p>Information om min kommende bog "Bæredygtig Kapitalisme" (Djøf Forlag, nov 2026) og mine koncepter for strategisk kontrahering via klubgoder.</p>
       </a>
-
       <a href="ledelse.html" class="card">
         <h3>3. Ledelse & Politik</h3>
-        <p>Min praktiske tilgang til at bygge high-performing teams ved bevidst friktionsfjernelse, resultater fra Banedanmark samt mine synspunkter og indlæg som politisk kandidat for Liberal Alliance.</p>
+        <p>Min praktiske tilgang til at bygge high-performing teams ved bevidst friktionsfjernelse, samt mine synspunkter og indlæg som politisk kandidat for Liberal Alliance.</p>
       </a>
-      
       <a href="kontakt.html" class="card">
         <h3>4. Konsulentydelser & Kontakt</h3>
         <p>Information om mulighederne for at hyre mig til rådgivning af direktioner og bestyrelser inden for strategisk kontrahering, makroanalyse og ledelsessparring.</p>
       </a>
     </section>
-
   </main>
   <footer><p>&copy; 2026 Lasse Holt</p></footer>
 </body>

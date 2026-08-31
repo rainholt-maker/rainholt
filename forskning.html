@@ -7,16 +7,20 @@
   <meta property="og:title" content="Lasse Holt | Makroøkonomi & Strategisk Kontrahering">
   <meta property="og:description" content="Uafhængig analyse af det globale gældsmarked, transatlantiske rentespænd og strategisk ledelse.">
   <meta property="og:type" content="website">
-  <!-- Google Analytics 4 (Fjern kommentar-tegn og indsæt dit G-ID for at aktivere) -->
-  <!--
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <meta property="og:url" content="https://www.lasseholt.dk">
+
+  <!-- Cookiebot CMP -->
+  <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="7809ffeb-a0f3-4d32-b5b1-2339a4797b45" data-blockingmode="auto" type="text/javascript"></script>
+
+  <!-- Google Analytics 4 (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HJJ2ZVFCY0"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'G-XXXXXXXXXX');
+
+    gtag('config', 'G-HJJ2ZVFCY0');
   </script>
-  -->
   <title>Forskning & Undervisning | Lasse Holt</title>
   <style>
     :root { --primary: #0f172a; --accent: #2563eb; --text: #334155; --heading: #0f172a; --bg: #ffffff; --bg-subtle: #f8fafc; --border: #e2e8f0; --danger: #ef4444; --success: #22c55e; }
@@ -33,9 +37,41 @@
     h2 { font-size: 1.5rem; color: var(--heading); margin-bottom: 1.5rem; border-bottom: 2px solid var(--accent); padding-bottom: 0.4rem; }
     h3 { font-size: 1.25rem; color: var(--heading); margin: 1.5rem 0 0.5rem; }
     p { margin-bottom: 1rem; color: #334155; }
+    
+    .timeline-card { background: var(--bg-subtle); border-left: 4px solid var(--accent); border-radius: 0 6px 6px 0; padding: 1.5rem; margin-bottom: 2rem; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+    .timeline-card.danger { border-left-color: #b91c1c; background: #fef2f2; }
+    .timeline-year { font-weight: 700; color: var(--accent); font-size: 1.1rem; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 0.5rem; display: block; }
+    .timeline-card.danger .timeline-year { color: #b91c1c; }
+    .data-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(0,0,0,0.05); }
+    .data-point { display: flex; direction: column; }
+    .data-label { font-size: 0.75rem; text-transform: uppercase; color: #64748b; font-weight: 600; }
+    .data-value { font-size: 1.25rem; font-weight: 700; color: var(--heading); }
+
+    .post { border-bottom: 1px solid var(--border); padding-bottom: 1.75rem; margin-bottom: 2.5rem; }
+    .post:last-child { border-bottom: none; }
+    .meta { font-size: 0.8rem; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.4rem; }
+    .tag { background: #e0e7ff; color: #3730a3; padding: 0.15rem 0.5rem; border-radius: 3px; font-size: 0.75rem; margin-left: 0.5rem; }
+    .sources { font-size: 0.8rem; color: #64748b; margin-top: 0.5rem; }
     .card { background: var(--bg-subtle); border: 1px solid var(--border); border-radius: 6px; padding: 1.5rem; margin-bottom: 1.5rem; transition: transform 0.2s, box-shadow 0.2s; text-decoration: none; display: block; color: inherit;}
-    ul { margin: 0.5rem 0 1rem 1.4rem; color: #334155; }
-    li { margin-bottom: 0.8rem; }
+    a.card:hover { transform: translateY(-3px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); border-color: var(--accent); }
+    
+    .table-container { overflow-x: auto; margin-bottom: 1.2rem; }
+    .data-table { width: 100%; border-collapse: collapse; font-size: 0.875rem; background: #ffffff; border: 1px solid var(--border); border-radius: 6px; overflow: hidden; }
+    .data-table th, .data-table td { padding: 0.75rem 1rem; border-bottom: 1px solid var(--border); text-align: left; vertical-align: middle; }
+    .data-table th { background: #f8fafc; color: var(--heading); font-weight: 600; white-space: nowrap; }
+    .data-table tbody tr:hover { background: #f1f5f9; }
+    
+    .bar-wrapper { width: 100px; background: #e2e8f0; border-radius: 3px; height: 6px; margin-top: 4px; overflow: hidden; }
+    .bar-fill { height: 100%; border-radius: 3px; background: var(--accent); }
+    .bar-fill.danger { background: var(--danger); }
+    .bar-fill.success { background: var(--success); }
+    .trend { font-weight: bold; margin-left: 6px; font-size: 0.85rem; }
+    .trend.up { color: var(--danger); } 
+    .trend.down { color: var(--success); } 
+    .trend.flat { color: #94a3b8; }
+    
+    ul, ol { margin: 0.5rem 0 1rem 1.4rem; color: #334155; }
+    li { margin-bottom: 0.35rem; }
     .btn { display: inline-block; background: var(--accent); color: #ffffff; padding: 0.5rem 1rem; border-radius: 4px; text-decoration: none; font-size: 0.875rem; font-weight: 500; margin-top: 0.5rem; }
     .btn:hover { background: #1d4ed8; }
     footer { border-top: 1px solid var(--border); padding: 2.5rem 1rem; text-align: center; font-size: 0.85rem; color: #64748b; }
@@ -65,25 +101,24 @@
 
     <section>
       <h2>Undervisningsportefølje på CBS</h2>
-      <p>Min undervisning på cand.merc.jur.-kandidatuddannelsen er bygget op omkring en stærk, progressiv rød tråd. Hvor jura traditionelt anskues som et defensivt compliance-værktøj, anvender vi det som et dynamisk instrument til at forme adfærd. Virksomhedsteori og spilteori udgør fundamentet for dette syn, mens fagene i strategisk og bæredygtig kontrahering bygger direkte ovenpå ved at udfordre den konventionelle erhvervsjuridiske tænkning.</p>
+      <p>Min undervisning på cand.merc.jur.-kandidatuddannelsen er bygget op omkring en stærk, progressiv rød tråd. Hvor jura traditionelt anskues som et defensivt compliance-værktøj, anvender vi det som et dynamisk instrument til at forme adfærd. Fundamentet udgøres af klassisk virksomhedsteori og spilteori, hvorefter vi bygger direkte ovenpå med strategisk og bæredygtig kontrahering for at udfordre den konventionelle erhvervsjuridiske tænkning.</p>
 
       <div class="card" style="cursor: default;">
+        <p>Jeg underviser aktuelt i følgende 3 fag på kandidatuddannelsen:</p>
         <ul>
-          <li><strong>The Theory of the Firm</strong> <em>(Kandidatniveau)</em><br>
-          Dette fag udgør selve startskuddet og det absolutte fundament for den retsøkonomiske tænkning. Med afsæt i artiklen af samme navn, undersøger vi her de fundamentale spørgsmål om, hvorfor virksomheder overhovedet eksisterer frem for det frie marked. Gennem et benhårdt fokus på transaktionsomkostninger, incitamenter og asymmetrisk information kortlægger vi grænserne for virksomhedens størrelse og sætter det teoretiske rammeværk for "make-or-buy"-beslutninger.</li>
-
           <li><strong>Juridisk og Strategisk Spilteori</strong> <em>(Kandidatniveau, Valgfag, 7,5 ECTS)</em><br>
-          Hvor <em>Theory of the Firm</em> definerer grænserne, leverer spilteorien selve metodikken. Dette fag danner grundlaget for al økonomisk og juridisk tænkning omkring aktørers interaktion. Vi analyserer juraen som spillets overordnede regler, og de studerende lærer matematisk og logisk at forudse modpartens rationelle træk i forhandlinger, konflikter og markedsdynamikker for at sikre Pareto-optimale løsninger.</li>
+          Dette fag udgør selve startskuddet og det absolutte fundament for den retsøkonomiske tænkning. Med afsæt i artiklen <em>The Theory of the Firm</em> undersøger vi de fundamentale spørgsmål om, hvorfor virksomheder overhovedet eksisterer frem for det frie marked. Med styr på grænserne for virksomhedens størrelse anvender vi spilteori som metodikken til at forstå aktørers interaktion. Vi analyserer juraen som spillets overordnede regler, og de studerende lærer matematisk og logisk at forudse modpartens rationelle træk i forhandlinger og markedsdynamikker.</li>
 
-          <li><strong>Strategisk Kontrahering i et internationalt virksomhedsperspektiv</strong> <em>(Kandidatniveau, Valgfag, 7,5 ECTS)</em><br>
-          Med teorien solidt forankret udfordrer dette fag den konventionelle måde at tænke kontrakter på i praksis. Vi gør op med idéen om "nulsums-kontrahering" og juridisk skyttegravskrig. I stedet fokuserer vi på at designe asymmetriske samarbejder og relationelle kontrakter, der aktivt minimerer de transaktionsomkostninger, vi identificerede i <em>Theory of the Firm</em>, og skaber en beskyttet relationsrente for begge parter.</li>
+          <li><strong>Strategisk kontrahering i et internationalt virksomhedsperspektiv</strong> <em>(Kandidatniveau, Valgfag, 7,5 ECTS)</em><br>
+          Med teorien solidt forankret udfordrer dette fag den konventionelle måde at tænke kontrakter på i praksis. Vi gør op med idéen om "nulsums-kontrahering" og juridisk skyttegravskrig. I stedet fokuserer vi på at designe asymmetriske samarbejder og relationelle kontrakter, der aktivt minimerer transaktionsomkostningerne (identificeret via The Theory of the Firm) og skaber en beskyttet relationsrente for begge parter.</li>
 
-          <li><strong>Bæredygtighed i et værdikædeperspektiv – Valg af kontraheringsform</strong> <em>(Kandidatniveau, Valgfag)</em><br>
+          <li><strong>Bæredygtighed mod et værdikædeperspektiv</strong> <em>(Kandidatniveau, Valgfag)</em><br>
           Faget tager den strategiske kontrahering et skridt videre ind i en virkelighed domineret af ESG. Her udfordrer vi den konventionelle og administrative "back-to-back" overvæltning af compliance-krav i forsyningskæderne (f.eks. CSDDD). Vi introducerer i stedet implementeringen af kollektive "klubgoder", som skaber strukturel incitamentsforenelighed på tværs af multilaterale leverandørnetværk.</li>
-
-          <li><strong>Maritime Law & Risk Management</strong> <em>(Kandidatniveau, supplerende)</em><br>
-          Den globale shippingindustri fungerer som et lavpraktisk anvendelsesområde for teorierne. Her underkastes de retsøkonomiske principper om optimal risikoallokering og incitamentsstyring en ekstrem stresstest i et volatilt og globalt marked præget af høj kapitalbinding og uforudsigelighed.</li>
         </ul>
+        <div style="margin-top: 2rem; border-top: 1px solid var(--border); padding-top: 1.5rem; text-align: center;">
+          <p>Som ekstern lektor og vejleder har jeg ført et stort antal studerende frem til forsvaret af deres kandidatafhandlinger inden for disse forskningsområder.</p>
+          <a href="afhandlinger.html" class="btn">Se oversigt over 156 vejledte kandidatafhandlinger &rarr;</a>
+        </div>
       </div>
     </section>
   </main>
