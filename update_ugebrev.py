@@ -42,7 +42,7 @@ def generate_weekly_narrative(us_30y, dk_30y, fed_rate, ecb_rate, us_vol):
     
     intro_options = [
         f"Markedet fordøjer de seneste makrotal. De lange amerikanske renter lander på {us_30y:.2f} %.",
-        f"Med det nuværende spænd mellem FED ({fed_rate:.2f} %) og ECB ({ecb_rate:.2f} %) ser vi kapitalen reagere. US 30Y rammer {us_30y:.2f} %.",
+        f"Med det nuværende spænd mellem FED og ECB ser vi kapitalen reagere. US 30Y rammer {us_30y:.2f} %.",
         f"Den strukturelle makro-divergens fortsætter ufortrødent. US 30Y-renten handles nu i {us_30y:.2f} %.",
         f"En overvejende stilstand præger det globale gældsmarked. US 30Y bevæger sig marginalt og ender på {us_30y:.2f} %.",
         f"Investorerne fintuner forventningerne til de lange udsigter. US 30Y noteres til {us_30y:.2f} %.",
