@@ -52,7 +52,10 @@ def generate_weekly_narrative(us_30y, dk_30y, fed_rate, ecb_rate, jp_short, jp_1
     if eff < 1.0: eff = 1.0
     interest_cost = us_vol * (eff / 100)
     jp_context = f"Japanske 10Y-renter fastholdes på et ekstremt højt niveau nær <strong>{jp_10y:.2f} %</strong>. Likviditetsdrænet fra opløsningen af yen carry trade mærkes for alvor."
-    indicator_html = f'<div style="background-color: #f8fafc; border-left: 4px solid #ef4444; padding: 1.2rem; margin: 1.5rem 0; border-radius: 0 6px 6px 0;"><h4 style="color: #b91c1c; margin-top: 0; margin-bottom: 0.5rem; font-size: 1.05rem;">Indikator: Den Amerikanske Gældsservicering</h4><p style="font-size: 0.9rem; margin-bottom: 0.5rem; color: #334155; line-height: 1.5;">Med en statsgæld på <strong>${us_vol:.1f} billioner</strong> koster gælden nu anslået <strong>${interest_cost:.2f} billioner årligt</strong> at vedligeholde i renteudgifter.</p><p style="font-size: 0.85rem; margin-bottom: 0; color: #475569; border-top: 1px solid #e2e8f0; padding-top: 0.5rem; font-style: italic;">{jp_context}</p></div>'
+    indicator_html = '<div style="background-color: #f8fafc; border-left: 4px solid #ef4444; padding: 1.2rem; margin: 1.5rem 0; border-radius: 0 6px 6px 0;"><h4 style="color: #b91c1c; margin-top: 0; margin-bottom: 0.5rem; font-size: 1.05rem;">Indikator: Den Amerikanske Gældsservicering</h4>'
+    indicator_html += f'<p style="font-size: 0.9rem; margin-bottom: 0.5rem; color: #334155; line-height: 1.5;">Med en statsgæld på <strong>${us_vol:.1f} billioner</strong> koster gælden nu anslået <strong>${interest_cost:.2f} billioner årligt</strong> at vedligeholde i renteudgifter.</p>'
+    indicator_html += f'<p style="font-size: 0.85rem; margin-bottom: 0; color: #475569; border-top: 1px solid #e2e8f0; padding-top: 0.5rem; font-style: italic;">{jp_context}</p></div>'
+    
     body = indicator_html + f"<p><strong>Markedsbevægelser:</strong> {random.choice(intro_options)} {random.choice(dk_options)}</p>"
     return "Status på rentespændet", body, "Makro Evaluering"
 
