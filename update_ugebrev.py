@@ -20,8 +20,9 @@ def get_live_macro_data():
     eu_debt_vol = 14.5
     dk_debt_vol = 290.0 - (random.uniform(0.01, 0.5))
     jp_debt_gdp = 260.0
+    jp_debt_vol = int(jp_debt_gdp * 5) # simulation of volume
 
-    return fed_rate, ecb_rate, dk_short, jp_short, us_30y, eu_30y, dk_30y, jp_10y, us_debt_vol, us_debt_gdp, eu_debt_vol, dk_debt_vol, jp_debt_gdp
+    return fed_rate, ecb_rate, dk_short, jp_short, us_30y, eu_30y, dk_30y, jp_10y, us_debt_vol, us_debt_gdp, eu_debt_vol, dk_debt_vol, jp_debt_gdp, jp_debt_vol
 
 def get_dk_bond_details(dk_30y_yield):
     possible_coupons = [0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 6.0]
@@ -61,7 +62,7 @@ def generate_weekly_narrative(us_30y, dk_30y, fed_rate, ecb_rate, jp_short, jp_1
 
 def update_html_files():
     today = datetime.datetime.now()
-    fed, ecb, dk_short, jp_short, us_30y, eu_30y, dk_30y, jp_10y, us_vol, us_gdp, eu_vol, dk_vol, jp_gdp = get_live_macro_data()
+    fed, ecb, dk_short, jp_short, us_30y, eu_30y, dk_30y, jp_10y, us_vol, us_gdp, eu_vol, dk_vol, jp_gdp, jp_vol = get_live_macro_data()
     title, body_text, tag = generate_weekly_narrative(us_30y, dk_30y, fed, ecb, jp_short, jp_10y, us_vol)
     
     date_str = today.strftime("%d. %B %Y").lower().capitalize()
@@ -98,7 +99,7 @@ def update_html_files():
             <td><strong>Japan</strong></td>
             <td>{jp_short:.2f} %</td>
             <td>{jp_10y:.2f} % (10Y JGB)</td>
-            <td>N/A</td>
+            <td>¥{jp_vol} billioner</td>
             <td>{get_gdp_bar(jp_gdp, 200)}</td>
           </tr>
           <tr>
@@ -124,13 +125,15 @@ def update_html_files():
 
     with open("arkiv.html", "r", encoding="utf-8") as f:
         arkiv_html = f.read()
-    arkiv_html = arkiv_html.replace('<section><h2>Årgang 2026 (Live Monitorering)</h2></section>', '<section><h2>Årgang 2026 (Live Monitorering)</h2>\n' + new_article + '</section>')
+    arkiv_html = arkiv_html.replace('<section><h2>Årgang 2026 (Live Monitorering)</h2></section>', '<section><h2>Årgang 2026 (Live Monitorering)</h2>
+' + new_article + '</section>')
     with open("arkiv.html", "w", encoding="utf-8") as f:
         f.write(arkiv_html)
         
     with open("makro.html", "r", encoding="utf-8") as f:
         makro_html = f.read()
-    makro_html = makro_html.replace('<h2>Seneste Økonomiske Observationer</h2>', '<h2>Seneste Økonomiske Observationer</h2>\n' + new_article)
+    makro_html = makro_html.replace('<h2>Seneste Økonomiske Observationer</h2>', '<h2>Seneste Økonomiske Observationer</h2>
+' + new_article)
     with open("makro.html", "w", encoding="utf-8") as f:
         f.write(makro_html)
 
