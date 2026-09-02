@@ -1,12 +1,12 @@
 name: Update Newsletter
 
 on:
-  workflow_dispatch: # Giver dig en knap til at køre den manuelt
+  workflow_dispatch:
   schedule:
-    - cron: '0 17 * * 5' # Kører automatisk hver fredag kl. 17:00 UTC
+    - cron: '0 17 * * 5'
 
 permissions:
-  contents: write # Giver robotten lov til at gemme (commit) de nye filer
+  contents: write
 
 jobs:
   update-macro:
