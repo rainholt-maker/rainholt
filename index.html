@@ -1,103 +1,115 @@
 <!DOCTYPE html>
 <html lang="da">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lasse Holt – Makroøkonomi, Strategisk Kontrahering & Finansielle Ugebreve</title>
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            line-height: 1.6;
-            color: #222;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 40px 20px;
-            background-color: #fcfcfc;
-        }
-        header {
-            border-bottom: 2px solid #eaeaea;
-            padding-bottom: 20px;
-            margin-bottom: 40px;
-        }
-        h1 {
-            font-size: 2.2rem;
-            margin-bottom: 10px;
-            color: #111;
-        }
-        .subtitle {
-            font-size: 1.1rem;
-            color: #666;
-        }
-        .nav-links {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-            flex-wrap: wrap;
-        }
-        .nav-links a {
-            text-decoration: none;
-            background: #2563eb;
-            color: white;
-            padding: 8px 16px;
-            border-radius: 4px;
-            font-weight: 500;
-            transition: background 0.2s;
-        }
-        .nav-links a:hover {
-            background: #1d4ed8;
-        }
-        .section {
-            background: white;
-            border: 1px solid #e5e7eb;
-            border-radius: 8px;
-            padding: 24px;
-            margin-bottom: 24px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-        }
-        h2 {
-            font-size: 1.4rem;
-            margin-top: 0;
-            color: #1f2937;
-        }
-        footer {
-            text-align: center;
-            margin-top: 60px;
-            font-size: 0.9rem;
-            color: #888;
-            border-top: 1px solid #eaeaea;
-            padding-top: 20px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Lasse Holt - Erhvervsjurist, ekstern lektor (CBS) og sektionschef. Dybdegående makroøkonomiske analyser, strategisk kontrahering og datadrevet indsigt i gældsmarkederne.">
+  <meta property="og:title" content="Lasse Holt | Makroøkonomi & Strategisk Kontrahering">
+  <meta property="og:description" content="Uafhængig analyse af det globale gældsmarked, transatlantiske rentespænd og strategisk ledelse.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.lasseholt.dk">
+
+  <!-- Cookiebot CMP -->
+  <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="7809ffeb-a0f3-4d32-b5b1-2339a4797b45" data-blockingmode="auto" type="text/javascript"></script>
+
+  <!-- Google Analytics 4 (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HJJ2ZVFCY0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-HJJ2ZVFCY0');
+  </script>
+  <title>Lasse Holt | Erhvervsjurist, Forfatter & Ekstern Lektor</title>
+  <style>
+    :root { --primary: #0f172a; --accent: #2563eb; --text: #334155; --heading: #0f172a; --bg: #ffffff; --bg-subtle: #f8fafc; --border: #e2e8f0; --danger: #ef4444; --success: #22c55e; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; color: var(--text); background-color: var(--bg); line-height: 1.65; }
+    header { border-bottom: 1px solid var(--border); padding: 3rem 1.5rem 2rem; text-align: center; position: relative; }
+    header h1 { font-size: 2.2rem; color: var(--heading); margin-bottom: 0.3rem; font-weight: 700; }
+    header p { color: #64748b; font-size: 1.05rem; max-width: 750px; margin: 0 auto; }
+    nav { border-bottom: 1px solid var(--border); background: var(--bg-subtle); padding: 0.75rem 1rem; display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; }
+    nav a { color: var(--heading); text-decoration: none; font-size: 0.875rem; font-weight: 500; }
+    nav a:hover { color: var(--accent); }
+    main { max-width: 840px; margin: 0 auto; padding: 3rem 1.5rem 5rem; }
+    section { margin-bottom: 4rem; }
+    h2 { font-size: 1.5rem; color: var(--heading); margin-bottom: 1.5rem; border-bottom: 2px solid var(--accent); padding-bottom: 0.4rem; }
+    h3 { font-size: 1.25rem; color: var(--heading); margin: 1.5rem 0 0.5rem; }
+    p { margin-bottom: 1rem; color: #334155; }
+    
+    .timeline-card { background: var(--bg-subtle); border-left: 4px solid var(--accent); border-radius: 0 6px 6px 0; padding: 1.5rem; margin-bottom: 2rem; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+    .timeline-card.danger { border-left-color: #b91c1c; background: #fef2f2; }
+    .timeline-year { font-weight: 700; color: var(--accent); font-size: 1.1rem; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 0.5rem; display: block; }
+    .timeline-card.danger .timeline-year { color: #b91c1c; }
+    .data-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(0,0,0,0.05); }
+    .data-point { display: flex; direction: column; }
+    .data-label { font-size: 0.75rem; text-transform: uppercase; color: #64748b; font-weight: 600; }
+    .data-value { font-size: 1.25rem; font-weight: 700; color: var(--heading); }
+
+    .post { border-bottom: 1px solid var(--border); padding-bottom: 1.75rem; margin-bottom: 2.5rem; }
+    .post:last-child { border-bottom: none; }
+    .meta { font-size: 0.8rem; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.4rem; }
+    .tag { background: #e0e7ff; color: #3730a3; padding: 0.15rem 0.5rem; border-radius: 3px; font-size: 0.75rem; margin-left: 0.5rem; }
+    .sources { font-size: 0.8rem; color: #64748b; margin-top: 0.5rem; }
+    .card { background: var(--bg-subtle); border: 1px solid var(--border); border-radius: 6px; padding: 1.5rem; margin-bottom: 1.5rem; transition: transform 0.2s, box-shadow 0.2s; text-decoration: none; display: block; color: inherit;}
+    a.card:hover { transform: translateY(-3px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); border-color: var(--accent); }
+    
+    .table-container { overflow-x: auto; margin-bottom: 1.2rem; }
+    .data-table { width: 100%; border-collapse: collapse; font-size: 0.875rem; background: #ffffff; border: 1px solid var(--border); border-radius: 6px; overflow: hidden; }
+    .data-table th, .data-table td { padding: 0.75rem 1rem; border-bottom: 1px solid var(--border); text-align: left; vertical-align: middle; }
+    .data-table th { background: #f8fafc; color: var(--heading); font-weight: 600; white-space: nowrap; }
+    .data-table tbody tr:hover { background: #f1f5f9; }
+    
+    .bar-wrapper { width: 100px; background: #e2e8f0; border-radius: 3px; height: 6px; margin-top: 4px; overflow: hidden; }
+    .bar-fill { height: 100%; border-radius: 3px; background: var(--accent); }
+    .bar-fill.danger { background: var(--danger); }
+    .bar-fill.success { background: var(--success); }
+    .trend { font-weight: bold; margin-left: 6px; font-size: 0.85rem; }
+    .trend.up { color: var(--danger); } 
+    .trend.down { color: var(--success); } 
+    .trend.flat { color: #94a3b8; }
+    
+    ul, ol { margin: 0.5rem 0 1rem 1.4rem; color: #334155; }
+    li { margin-bottom: 0.35rem; }
+    .btn { display: inline-block; background: var(--accent); color: #ffffff; padding: 0.5rem 1rem; border-radius: 4px; text-decoration: none; font-size: 0.875rem; font-weight: 500; margin-top: 0.5rem; }
+    .btn:hover { background: #1d4ed8; }
+    footer { border-top: 1px solid var(--border); padding: 2.5rem 1rem; text-align: center; font-size: 0.85rem; color: #64748b; }
+  </style>
 </head>
 <body>
-
-    <header>
-        <h1>Lasse Holt</h1>
-        <div class="subtitle">Makroøkonomi, strategisk kontrahering og finansielle analyser</div>
-        <div class="nav-links">
-            <a href="makro.html">Makro-rapporter</a>
-            <a href="arkiv.html">Ugebrev Arkiv</a>
-            <a href="forskning.html">Forskning & Publikationer</a>
-            <a href="kontakt.html">Kontakt</a>
-        </div>
-    </header>
-
-    <main>
-        <div class="section">
-            <h2>Velkommen</h2>
-            <p>Dette site samler løbende opdateringer, makroøkonomiske analyser, ugebreve og faglige publikationer inden for strategisk kontrahering og spilteori.</p>
-            <p>Systemet opdateres automatisk via GitHub Actions, hvilket sikrer et fuldstændigt strømlinet og selvkørende dataflow.</p>
-        </div>
-
-        <div class="section">
-            <h2>Seneste indhold</h2>
-            <p>Du kan finde de nyeste udgivelser direkte i <a href="arkiv.html" style="color: #2563eb; text-decoration: underline;">arkivet</a> eller dykke ned i de seneste <a href="makro.html" style="color: #2563eb; text-decoration: underline;">makro-data</a>.</p>
-        </div>
-    </main>
-
-    <footer>
-        &copy; 2026 Lasse Holt. Alle rettigheder forbeholdes.
-    </footer>
-
+  <header>
+    <h1>Lasse Holt</h1>
+    <p>Erhvervsjurist (cand.merc.jur.) &bull; Ekstern Lektor (CBS) &bull; Sektionschef (Banedanmark)</p>
+  </header>
+  <nav>
+    <a href="index.html" style="color:var(--accent)">Forside</a>
+    <a href="makro.html">Makroøkonomi</a>
+    <a href="forskning.html">Forskning</a>
+    <a href="ledelse.html">Ledelse</a>
+    <a href="kontakt.html">Kontakt</a>
+  </nav>
+  <main>
+    <section>
+      <p style="text-align:center; font-size: 1.1rem; color: #475569; margin-bottom:3rem;">Velkommen. Her finder du et overblik over mit professionelle og akademiske virke.</p>
+      <a href="makro.html" class="card">
+        <h3>1. Makroøkonomi & Finansiel Repression</h3>
+        <p>Læs min løbende datadrevne analyse af divergensen mellem USA's voksende gæld og den europæiske stagnation. Inkluderer et komplet overblik over udviklingen i de lange danske realkreditrenter vs. obligationsmarkedet.</p>
+      </a>
+      <a href="forskning.html" class="card">
+        <h3>2. Forskning & Undervisning på CBS</h3>
+        <p>Information om min kommende bog "Bæredygtig Kapitalisme" (Djøf Forlag, nov 2026) og mine koncepter for strategisk kontrahering via klubgoder.</p>
+      </a>
+      <a href="ledelse.html" class="card">
+        <h3>3. Ledelse & Politik</h3>
+        <p>Min praktiske tilgang til at bygge high-performing teams ved bevidst friktionsfjernelse, samt mine synspunkter og indlæg som politisk kandidat for Liberal Alliance.</p>
+      </a>
+      <a href="kontakt.html" class="card">
+        <h3>4. Konsulentydelser & Kontakt</h3>
+        <p>Information om mulighederne for at hyre mig til rådgivning af direktioner og bestyrelser inden for strategisk kontrahering, makroanalyse og ledelsessparring.</p>
+      </a>
+    </section>
+  </main>
+  <footer><p>&copy; 2026 Lasse Holt</p></footer>
 </body>
 </html>
