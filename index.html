@@ -9,7 +9,7 @@
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             line-height: 1.6;
             color: #222;
-            max-width: 850px;
+            max-width: 900px;
             margin: 0 auto;
             padding: 50px 20px;
             background-color: #fafafa;
@@ -68,6 +68,7 @@
             grid-template-columns: 1fr 1fr;
             gap: 30px;
             margin-top: 30px;
+            margin-bottom: 40px;
         }
         @media (max-width: 768px) {
             .focus-grid {
@@ -81,6 +82,54 @@
             border-radius: 6px;
             padding: 24px;
         }
+        /* Grafisk illustration styling */
+        .chart-box {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 6px;
+            padding: 30px;
+            margin-top: 40px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+        }
+        .chart-title {
+            font-size: 1.15rem;
+            font-weight: bold;
+            color: #111;
+            margin-bottom: 8px;
+        }
+        .chart-subtitle {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 25px;
+        }
+        .bar-container {
+            margin-bottom: 18px;
+        }
+        .bar-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 6px;
+            color: #333;
+        }
+        .bar-track {
+            background: #f3f4f6;
+            border-radius: 4px;
+            height: 24px;
+            width: 100%;
+            overflow: hidden;
+        }
+        .bar-fill {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 0.5s ease;
+        }
+        .bar-1 { background: #93c5fd; width: 33%; } /* 2.4% */
+        .bar-2 { background: #3b82f6; width: 67%; } /* 4.9% - Nuværende */
+        .bar-3 { background: #f59e0b; width: 83%; } /* 6.1% */
+        .bar-4 { background: #ef4444; width: 100%; } /* 7.3% - Kritisk */
+        
         footer {
             text-align: center;
             margin-top: 70px;
@@ -122,6 +171,48 @@
                 <p>Samling af tidligere udsendte ugebreve og finansielle opdateringer.</p>
                 <p><a href="arkiv.html" style="color: #1e3a8a; text-decoration: none; font-weight: 500;">Gå til arkivet &rarr;</a></p>
             </div>
+        </div>
+
+        <!-- Visuel grafisk illustration på forsiden -->
+        <div class="chart-box">
+            <div class="chart-title">USA's Gældsudvikling: Renteudgifter som % af BNP</div>
+            <div class="chart-subtitle">Forecast baseret på en gælds-til-BNP kvote på ~122% ved forskellige effektive renteniveauer.</div>
+
+            <div class="bar-container">
+                <div class="bar-label">
+                    <span>Historisk lavrente-æra (2.0% rente)</span>
+                    <span>2.4% af BNP</span>
+                </div>
+                <div class="bar-track"><div class="bar-fill bar-1"></div></div>
+            </div>
+
+            <div class="bar-container">
+                <div class="bar-label">
+                    <span><strong>Nuværende niveau (4.0% rente)</strong></span>
+                    <span><strong>4.9% af BNP</strong></span>
+                </div>
+                <div class="bar-track"><div class="bar-fill bar-2"></div></div>
+            </div>
+
+            <div class="bar-container">
+                <div class="bar-label">
+                    <span>Moderat stigning (+100 bps / 5.0% rente)</span>
+                    <span>6.1% af BNP</span>
+                </div>
+                <div class="bar-track"><div class="bar-fill bar-3"></div></div>
+            </div>
+
+            <div class="bar-container">
+                <div class="bar-label">
+                    <span>Højt rentescenarie (+200 bps / 6.0% rente)</span>
+                    <span>7.3% af BNP (Uholdbart)</span>
+                </div>
+                <div class="bar-track"><div class="bar-fill bar-4"></div></div>
+            </div>
+            
+            <p style="font-size: 0.85rem; color: #666; margin-top: 20px; margin-bottom: 0;">
+                <em>Konklusion:</em> Med en gælds-til-BNP over 120% udløser selv mindre rentestigninger en markant "debt-snowball"-effekt, hvor renteudgifterne uhindret vokser ud over det budgetmæssige råderum.
+            </p>
         </div>
     </main>
 
