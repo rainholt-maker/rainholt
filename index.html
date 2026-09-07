@@ -82,6 +82,7 @@
             border-radius: 6px;
             padding: 24px;
         }
+        
         /* Grafisk illustration styling */
         .chart-box {
             background: white;
@@ -98,12 +99,21 @@
             margin-bottom: 8px;
         }
         .chart-subtitle {
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             color: #666;
             margin-bottom: 25px;
         }
         .bar-container {
-            margin-bottom: 18px;
+            margin-bottom: 20px;
+        }
+        .current-state {
+            background: #eff6ff;
+            border-left: 4px solid #2563eb;
+            padding: 15px;
+            margin-left: -19px;
+            margin-right: -15px;
+            margin-bottom: 20px;
+            border-radius: 0 4px 4px 0;
         }
         .bar-label {
             display: flex;
@@ -125,10 +135,12 @@
             border-radius: 4px;
             transition: width 0.5s ease;
         }
-        .bar-1 { background: #93c5fd; width: 33%; } /* 2.4% */
-        .bar-2 { background: #3b82f6; width: 67%; } /* 4.9% - Nuværende */
-        .bar-3 { background: #f59e0b; width: 83%; } /* 6.1% */
-        .bar-4 { background: #ef4444; width: 100%; } /* 7.3% - Kritisk */
+        
+        /* Farver og procenter */
+        .bar-1 { background: #cbd5e1; width: 33%; } 
+        .bar-2 { background: #2563eb; width: 66%; } 
+        .bar-3 { background: #f59e0b; width: 83%; } 
+        .bar-4 { background: #ef4444; width: 100%; } 
         
         footer {
             text-align: center;
@@ -173,45 +185,47 @@
             </div>
         </div>
 
-        <!-- Visuel grafisk illustration på forsiden -->
         <div class="chart-box">
             <div class="chart-title">USA's Gældsudvikling: Renteudgifter som % af BNP</div>
-            <div class="chart-subtitle">Forecast baseret på en gælds-til-BNP kvote på ~122% ved forskellige effektive renteniveauer.</div>
+            <div class="chart-subtitle">Faktisk makro-data (Sept 2026): Samlet statsgæld > $35 billioner (~122% af BNP).</div>
 
             <div class="bar-container">
-                <div class="bar-label">
-                    <span>Historisk lavrente-æra (2.0% rente)</span>
+                <div class="bar-label" style="color: #6b7280;">
+                    <span>Historisk lavrente-æra (2010-2021 gen. 2.0%)</span>
                     <span>2.4% af BNP</span>
                 </div>
                 <div class="bar-track"><div class="bar-fill bar-1"></div></div>
             </div>
 
-            <div class="bar-container">
-                <div class="bar-label">
-                    <span><strong>Nuværende niveau (4.0% rente)</strong></span>
-                    <span><strong>4.9% af BNP</strong></span>
+            <div class="current-state">
+                <div class="bar-label" style="color: #1e3a8a;">
+                    <span><strong>📍 HER ER VI NU (Sept 2026: Effektiv rente ~4.0%)</strong></span>
+                    <span><strong>~4.9% af BNP</strong></span>
                 </div>
                 <div class="bar-track"><div class="bar-fill bar-2"></div></div>
+                <div style="font-size: 0.85rem; color: #475569; margin-top: 8px;">
+                    <em>Status: Årlige amerikanske rentebetalinger overstiger nu $1.100 milliarder USD.</em>
+                </div>
             </div>
 
             <div class="bar-container">
                 <div class="bar-label">
-                    <span>Moderat stigning (+100 bps / 5.0% rente)</span>
+                    <span>Moderat rentestigning / Term Premium chok (+100 bps)</span>
                     <span>6.1% af BNP</span>
                 </div>
                 <div class="bar-track"><div class="bar-fill bar-3"></div></div>
             </div>
 
             <div class="bar-container">
-                <div class="bar-label">
-                    <span>Højt rentescenarie (+200 bps / 6.0% rente)</span>
-                    <span>7.3% af BNP (Uholdbart)</span>
+                <div class="bar-label" style="color: #b91c1c;">
+                    <span>Højt rentescenarie (+200 bps)</span>
+                    <span><strong>7.3% af BNP (Uholdbart)</strong></span>
                 </div>
                 <div class="bar-track"><div class="bar-fill bar-4"></div></div>
             </div>
             
-            <p style="font-size: 0.85rem; color: #666; margin-top: 20px; margin-bottom: 0;">
-                <em>Konklusion:</em> Med en gælds-til-BNP over 120% udløser selv mindre rentestigninger en markant "debt-snowball"-effekt, hvor renteudgifterne uhindret vokser ud over det budgetmæssige råderum.
+            <p style="font-size: 0.9rem; color: #475569; margin-top: 25px; margin-bottom: 0;">
+                <strong>Konklusion:</strong> Vi befinder os aktuelt i et historisk skift. Med en gælds-til-BNP over 120% udløser selv mindre rentestigninger en nådesløs "debt-snowball"-effekt, hvor renteudgifterne fortrænger det reelle offentlige budget.
             </p>
         </div>
     </main>
