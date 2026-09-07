@@ -2,7 +2,20 @@ import datetime
 
 def update_html_files(title, tag, body, source="Deutsche Bank"):
     today = datetime.datetime.now()
-    date_str = today.strftime("%B %d, %Y at %H:%M")
+    
+    # Danske måneder til tidsstempling
+    danske_maaneder = {
+        "January": "januar", "February": "februar", "March": "marts", 
+        "April": "april", "May": "maj", "June": "juni", 
+        "July": "juli", "August": "august", "September": "september", 
+        "October": "oktober", "November": "november", "December": "december"
+    }
+    
+    eng_date_str = today.strftime("%B %d, %Y at %H:%M")
+    for eng, da in danske_maaneder.items():
+        eng_date_str = eng_date_str.replace(eng, da)
+        
+    date_str = eng_date_str
     iso_str = today.strftime("%Y-%m-%dT%H:%M:00+02:00")
 
     new_article = f'''      <article class="post">
@@ -14,10 +27,11 @@ def update_html_files(title, tag, body, source="Deutsche Bank"):
         <div>
           {body}
         </div>
-        <p class="sources"><small>Sources: {source}.</small></p>
+        <p class="sources"><small>Kilder: {source}.</small></p>
       </article>\n'''
 
-    for filename in ["macro.html", "archive.html"]:
+    # Opdaterer nu de danske filer i stedet for de engelske
+    for filename in ["makro.html", "arkiv.html"]:
         try:
             with open(filename, "r", encoding="utf-8") as f:
                 html_content = f.read()
@@ -32,9 +46,9 @@ def update_html_files(title, tag, body, source="Deutsche Bank"):
             print(f"Could not find {filename}.")
 
 if __name__ == "__main__":
-    # Example usage:
+    # Eksempel på kørsel med dansk indhold
     update_html_files(
-        title="The Monetary Illusion",
-        tag="Currency & Real Assets",
-        body="<p>This week, the 10-year US Treasury yield is hovering around 4.50%...</p>"
+        title="Den Monetære Illusion",
+        tag="Valuta & Realkapital",
+        body="<p>I denne uge bevæger den 10-årige amerikanske statsobligationsrente sig omkring...</p>"
     )
