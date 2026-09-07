@@ -1,6 +1,26 @@
 import datetime
+import json
+import os
 
-def update_ugebrev_files(title, tag, body, source="Deutsche Bank"):
+def load_latest_content():
+    # Henter data fra en separat fil, hvis den findes, ellers bruges standarddata
+    if os.path.exists("content.json"):
+        with open("content.json", "r", encoding="utf-8") as f:
+            return json.load(f)
+    return {
+        "title": "Standard Titel",
+        "tag": "Makroøkonomi",
+        "body": "<p>Skriv indholdet her...</p>",
+        "source": "Deutsche Bank"
+    }
+
+def update_ugebrev_files():
+    data = load_latest_content()
+    title = data.get("title")
+    tag = data.get("tag")
+    body = data.get("body")
+    source = data.get("source", "Deutsche Bank")
+
     today = datetime.datetime.now()
     
     # Danske måneder
@@ -46,8 +66,4 @@ def update_ugebrev_files(title, tag, body, source="Deutsche Bank"):
             print(f"Could not find {filename}.")
 
 if __name__ == "__main__":
-    update_ugebrev_files(
-        title="Den Monetære Illusion",
-        tag="Valuta & Realkapital",
-        body="<p>I denne uge bevæger den 10-årige amerikanske statsobligationsrente sig...</p>"
-    )
+    update_ugebrev_files()
