@@ -23,11 +23,13 @@ jobs:
       - name: Run newsletter script
         run: python update_newsletter.py
 
-      - name: Commit and Push changes
+      - name: Configure Git User
         run: |
-          set -x
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+
+      - name: Commit and Push changes
+        run: |
           git add .
           git diff --staged --quiet || git commit -m "Auto-update newsletter via GitHub Actions"
           git pull origin main --rebase || echo "Pull skipped"
