@@ -1,0 +1,31 @@
+name: Treasury Distress Monitor (<60 min)
+
+on:
+  schedule:
+    # Kører hvert 30. minut døgnet rundt
+    - cron: '*/30 * * * *'
+  workflow_dispatch:
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Execute Treasury Signal Monitor
+        run: |
+          python scripts/monitor_treasury.py
+
+      - name: Commit and Push Alert Data
+        run: |
+          git config user.name "Sovereign-Monitor-Bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add treasury_events.json
+          git commit -m "auto: treasury distress signal captured [<60m]" || echo "No change"
+          git push
