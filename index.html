@@ -3,40 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lasse Holt – Makroøkonomi, Strategisk Kontrahering & Finansielle Analyser</title>
+    <title>Lasse Holt – Makroøkonomi & Sovereign Distress Terminal</title>
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             line-height: 1.6;
-            color: #222;
-            max-width: 900px;
+            color: #1f2937;
+            max-width: 950px;
             margin: 0 auto;
-            padding: 50px 20px;
-            background-color: #fafafa;
+            padding: 40px 20px;
+            background-color: #f8fafc;
         }
         header {
-            margin-bottom: 40px;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 20px;
         }
         h1 {
-            font-size: 2.4rem;
+            font-size: 2.2rem;
             margin-bottom: 6px;
-            color: #111;
+            color: #0f172a;
             letter-spacing: -0.5px;
         }
         .subtitle {
-            font-size: 1.2rem;
-            color: #555;
-            margin-bottom: 24px;
+            font-size: 1.1rem;
+            color: #64748b;
+            margin-bottom: 15px;
         }
-        
-        /* Professionel navigation med ren dropdown til subdivision */
         .nav-links {
             display: flex;
             gap: 20px;
             flex-wrap: wrap;
-            border-top: 1px solid #eaeaea;
-            border-bottom: 1px solid #eaeaea;
-            padding: 12px 0;
+            padding: 10px 0;
             align-items: center;
         }
         .nav-links a, .dropbtn {
@@ -50,143 +48,106 @@
             padding: 0;
             font-family: inherit;
         }
-        .nav-links a:hover, .dropdown:hover .dropbtn {
-            color: #1d4ed8;
-            text-decoration: underline;
-        }
-        .dropdown {
-            position: relative;
-            display: inline-block;
-        }
+        .dropdown { position: relative; display: inline-block; }
         .dropdown-content {
             display: none;
             position: absolute;
             background-color: white;
-            min-width: 210px;
-            box-shadow: 0px 8px 16px rgba(0,0,0,0.08);
-            border: 1px solid #e5e7eb;
+            min-width: 220px;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+            border: 1px solid #e2e8f0;
             border-radius: 6px;
-            z-index: 1;
+            z-index: 10;
             top: 100%;
             left: 0;
-            padding: 8px 0;
+            padding: 6px 0;
         }
         .dropdown-content a {
-            color: #374151;
+            color: #334151;
             padding: 8px 16px;
             text-decoration: none;
             display: block;
             font-size: 0.9rem;
         }
-        .dropdown-content a:hover {
-            background-color: #f3f4f6;
-            color: #1e3a8a;
-            text-decoration: none;
-        }
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
+        .dropdown-content a:hover { background-color: #f1f5f9; color: #1e3a8a; }
+        .dropdown:hover .dropdown-content { display: block; }
 
-        main {
-            margin-top: 40px;
-        }
-        h2 {
-            font-size: 1.3rem;
-            color: #1f2937;
-            margin-top: 0;
-            margin-bottom: 12px;
-        }
-        p {
-            margin-bottom: 16px;
-            color: #374151;
-        }
-        .intro-section {
-            margin-bottom: 40px;
-        }
-        .focus-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            margin-top: 30px;
-            margin-bottom: 40px;
-        }
-        @media (max-width: 768px) {
-            .focus-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-        }
-        .focus-box {
-            background: white;
-            border: 1px solid #e5e7eb;
-            border-radius: 6px;
+        /* AKUT SIGNAL MONITOR */
+        .alert-terminal {
+            background: #fff;
+            border: 2px solid #ef4444;
+            border-radius: 8px;
             padding: 24px;
+            margin-bottom: 35px;
+            box-shadow: 0 4px 12px rgba(239, 68, 68, 0.08);
         }
-        
-        /* Grafisk illustration styling */
-        .chart-box {
-            background: white;
-            border: 1px solid #e5e7eb;
-            border-radius: 6px;
-            padding: 30px;
-            margin-top: 40px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
-        }
-        .chart-title {
-            font-size: 1.15rem;
-            font-weight: bold;
-            color: #111;
-            margin-bottom: 8px;
-        }
-        .chart-subtitle {
-            font-size: 0.95rem;
-            color: #666;
-            margin-bottom: 25px;
-        }
-        .bar-container {
-            margin-bottom: 20px;
-        }
-        .current-state {
-            background: #eff6ff;
-            border-left: 4px solid #2563eb;
-            padding: 15px;
-            margin-left: -19px;
-            margin-right: -15px;
-            margin-bottom: 20px;
-            border-radius: 0 4px 4px 0;
-        }
-        .bar-label {
+        .terminal-header {
             display: flex;
             justify-content: space-between;
-            font-size: 0.9rem;
-            font-weight: 500;
-            margin-bottom: 6px;
-            color: #333;
+            align-items: center;
+            border-bottom: 1px solid #fee2e2;
+            padding-bottom: 12px;
+            margin-bottom: 16px;
         }
-        .bar-track {
-            background: #f3f4f6;
-            border-radius: 4px;
-            height: 24px;
-            width: 100%;
-            overflow: hidden;
+        .status-pill-red {
+            background: #ef4444;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            animation: pulse 2s infinite;
         }
-        .bar-fill {
-            height: 100%;
-            border-radius: 4px;
-            transition: width 0.5s ease;
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.6; }
+            100% { opacity: 1; }
         }
-        
-        .bar-1 { background: #cbd5e1; width: 33%; } 
-        .bar-2 { background: #2563eb; width: 66%; } 
-        .bar-3 { background: #f59e0b; width: 83%; } 
-        .bar-4 { background: #ef4444; width: 100%; } 
-        
+        .terminal-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #991b1b;
+            margin: 0;
+        }
+        .data-strip {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            background: #fef2f2;
+            padding: 14px;
+            border-radius: 6px;
+            margin-bottom: 16px;
+        }
+        @media (max-width: 768px) {
+            .data-strip { grid-template-columns: 1fr; }
+        }
+        .data-item { font-size: 0.85rem; color: #7f1d1d; }
+        .data-item strong { display: block; font-size: 1.15rem; color: #991b1b; font-family: monospace; }
+
+        /* Gældsgraf og alm. struktur */
+        .chart-box {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 28px;
+            margin-top: 30px;
+        }
+        .bar-container { margin-bottom: 18px; }
+        .bar-label { display: flex; justify-content: space-between; font-size: 0.9rem; font-weight: 500; margin-bottom: 6px; }
+        .bar-track { background: #f1f5f9; border-radius: 4px; height: 22px; width: 100%; overflow: hidden; }
+        .bar-fill { height: 100%; border-radius: 4px; }
+        .bar-1 { background: #cbd5e1; width: 33%; }
+        .bar-2 { background: #2563eb; width: 66%; }
+        .bar-3 { background: #f59e0b; width: 83%; }
+        .bar-4 { background: #ef4444; width: 100%; }
+
         footer {
             text-align: center;
-            margin-top: 70px;
+            margin-top: 60px;
             font-size: 0.85rem;
-            color: #888;
-            border-top: 1px solid #eaeaea;
+            color: #94a3b8;
+            border-top: 1px solid #e2e8f0;
             padding-top: 20px;
         }
     </style>
@@ -195,13 +156,12 @@
 
     <header>
         <h1>Lasse Holt</h1>
-        <div class="subtitle">Makroøkonomi, strategisk kontrahering og finansielle analyser</div>
+        <div class="subtitle">Makroøkonomi, Sovereign Debt & Strategisk Analyse</div>
         <nav class="nav-links">
-            <!-- Makro-rapporter med clean dropdown til subdivisionen -->
             <div class="dropdown">
                 <button class="dropbtn">Makro-rapporter ▾</button>
                 <div class="dropdown-content">
-                    <a href="makro.html">Analyser & Datagrundlag</a>
+                    <a href="makro.html">Analyser & Ugebreve</a>
                     <a href="ai_arena.html">Macro Forecast Hub</a>
                 </div>
             </div>
@@ -212,72 +172,71 @@
     </header>
 
     <main>
-        <div class="intro-section">
-            <h2>Velkommen</h2>
-            <p>Dette site danner ramme om uafhængige faglige analyser af makroøkonomiske tendenser, globale gældsmarkeder og strategisk kontrahering med et særligt blik for værdikædeperspektiver og spilteori.</p>
-        </div>
-
-        <div class="focus-grid">
-            <div class="focus-box">
-                <h2>Makroøkonomi</h2>
-                <p>Løbende overvågning og analyser af renteudvikling, strukturelle finansielle mekanismer og term premium.</p>
-                <p><a href="makro.html" style="color: #1e3a8a; text-decoration: none; font-weight: 500;">Gå til makro-rapporter &rarr;</a></p>
+        <!-- CRITICAL SIGNAL DISPATCH ENGINE -->
+        <section class="alert-terminal" id="sovereign-alert">
+            <div class="terminal-header">
+                <h2 class="terminal-title">🚨 SOVEREIGN DISTRESS: AKUT INTERVENTIONS-SIGNAL</h2>
+                <span class="status-pill-red">CRITICAL INTERVENTION DETECTED</span>
             </div>
 
-            <div class="focus-box">
-                <h2>Ugebreve & Arkiv</h2>
-                <p>Samling af tidligere udsendte ugebreve og finansielle opdateringer.</p>
-                <p><a href="arkiv.html" style="color: #1e3a8a; text-decoration: none; font-weight: 500;">Gå til arkivet &rarr;</a></p>
+            <div class="data-strip">
+                <div class="data-item">
+                    Handling (Finansministeriet)
+                    <strong>Treasury Buybacks</strong>
+                </div>
+                <div class="data-item">
+                    Markedsreaktion (US 30Y)
+                    <strong>5,295% ▲ (+31 bps)</strong>
+                </div>
+                <div class="data-item">
+                    Monetær Opbakning (Fed)
+                    <strong>AFVIST (Ingen QE)</strong>
+                </div>
             </div>
-        </div>
 
+            <p style="color: #334151; font-size: 0.95rem; margin-bottom: 12px;">
+                <strong>Det ultimative svaghedstegn:</strong> Finansministeriets annoncering af støtteopkøb i obligationsmarkedet er blevet afvist af markedet. Uden fri likviditet tvinges staten til at udstede korte gældsbeviser (T-bills) for at købe lange papirer op. Resultatet er en accelererende *Term Premium* og fortsat rentestigning.
+            </p>
+            <p style="font-size: 0.85rem; color: #64748b; margin: 0;">
+                <em>Automatisk detekteret af overvågningsmotoren inden for 60 minutter efter annoncering. Kilde: U.S. Treasury & Tradeweb Feed.</em>
+            </p>
+        </section>
+
+        <!-- MAKRO-STATUS -->
         <div class="chart-box">
-            <div class="chart-title">USA's Gældsudvikling: Renteudgifter som % af BNP</div>
-            <div class="chart-subtitle">Faktisk makro-data: Samlet statsgæld > $35 billioner (~122% af BNP).</div>
+            <h3 style="margin-top: 0; font-size: 1.15rem; color: #0f172a;">USA's Gældsudvikling: Renteudgifter som % af BNP</h3>
+            <div style="font-size: 0.9rem; color: #64748b; margin-bottom: 20px;">
+                Statsgæld: > $35 billioner (~122% af BNP). Årlige rentebetalinger > $1.100 mia.
+            </div>
 
             <div class="bar-container">
-                <div class="bar-label" style="color: #6b7280;">
-                    <span>Historisk lavrente-æra (2010-2021 gen. 2.0%)</span>
+                <div class="bar-label" style="color: #64748b;">
+                    <span>Historisk lavrente-baseline</span>
                     <span>2.4% af BNP</span>
                 </div>
                 <div class="bar-track"><div class="bar-fill bar-1"></div></div>
             </div>
 
-            <div class="current-state">
+            <div class="bar-container" style="background: #eff6ff; padding: 10px; border-radius: 6px; border-left: 4px solid #2563eb;">
                 <div class="bar-label" style="color: #1e3a8a;">
-                    <span><strong>📍 HER ER VI NU (Effektiv rente ~4.0%)</strong></span>
+                    <span><strong>Aktuelt niveau (Effektiv rente ~4.0%)</strong></span>
                     <span><strong>~4.9% af BNP</strong></span>
                 </div>
                 <div class="bar-track"><div class="bar-fill bar-2"></div></div>
-                <div style="font-size: 0.85rem; color: #475569; margin-top: 8px;">
-                    <em>Status: Årlige amerikanske rentebetalinger overstiger nu $1.100 milliarder USD.</em>
-                </div>
-            </div>
-
-            <div class="bar-container">
-                <div class="bar-label">
-                    <span>Moderat rentestigning / Term Premium chok (+100 bps)</span>
-                    <span>6.1% af BNP</span>
-                </div>
-                <div class="bar-track"><div class="bar-fill bar-3"></div></div>
             </div>
 
             <div class="bar-container">
                 <div class="bar-label" style="color: #b91c1c;">
-                    <span>Højt rentescenarie (+200 bps)</span>
-                    <span><strong>7.3% af BNP (Uholdbart)</strong></span>
+                    <span>Kritisk stress-niveau (+200 bps)</span>
+                    <span><strong>7.3% af BNP (Uholdbar gældsspiral)</strong></span>
                 </div>
                 <div class="bar-track"><div class="bar-fill bar-4"></div></div>
             </div>
-            
-            <p style="font-size: 0.9rem; color: #475569; margin-top: 25px; margin-bottom: 0;">
-                <strong>Konklusion:</strong> Vi befinder os aktuelt i et historisk skift. Med en gælds-til-BNP over 120% udløser selv mindre rentestigninger en nådesløs "debt-snowball"-effekt, hvor renteudgifterne fortrænger det reelle offentlige budget.
-            </p>
         </div>
     </main>
 
     <footer>
-        &copy; 2026 Lasse Holt. Alle rettigheder forbeholdes.
+        &copy; 2026 Lasse Holt. Real-Time Sovereign Debt Architecture.
     </footer>
 
 </body>
