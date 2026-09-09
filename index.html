@@ -28,25 +28,65 @@
             color: #555;
             margin-bottom: 24px;
         }
+        
+        /* Professionel navigation med ren dropdown til subdivision */
         .nav-links {
             display: flex;
-            gap: 15px;
+            gap: 20px;
             flex-wrap: wrap;
             border-top: 1px solid #eaeaea;
             border-bottom: 1px solid #eaeaea;
             padding: 12px 0;
+            align-items: center;
         }
-        .nav-links a {
+        .nav-links a, .dropbtn {
             text-decoration: none;
             color: #1e3a8a;
             font-weight: 500;
             font-size: 0.95rem;
-            transition: color 0.2s;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            font-family: inherit;
         }
-        .nav-links a:hover {
+        .nav-links a:hover, .dropdown:hover .dropbtn {
             color: #1d4ed8;
             text-decoration: underline;
         }
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            min-width: 210px;
+            box-shadow: 0px 8px 16px rgba(0,0,0,0.08);
+            border: 1px solid #e5e7eb;
+            border-radius: 6px;
+            z-index: 1;
+            top: 100%;
+            left: 0;
+            padding: 8px 0;
+        }
+        .dropdown-content a {
+            color: #374151;
+            padding: 8px 16px;
+            text-decoration: none;
+            display: block;
+            font-size: 0.9rem;
+        }
+        .dropdown-content a:hover {
+            background-color: #f3f4f6;
+            color: #1e3a8a;
+            text-decoration: none;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
         main {
             margin-top: 40px;
         }
@@ -157,10 +197,16 @@
         <h1>Lasse Holt</h1>
         <div class="subtitle">Makroøkonomi, strategisk kontrahering og finansielle analyser</div>
         <nav class="nav-links">
-            <a href="makro.html">Makro-rapporter</a>
+            <!-- Makro-rapporter med clean dropdown til subdivisionen -->
+            <div class="dropdown">
+                <button class="dropbtn">Makro-rapporter ▾</button>
+                <div class="dropdown-content">
+                    <a href="makro.html">Analyser & Datagrundlag</a>
+                    <a href="ai_arena.html">AI Agent Arena (Økonomi)</a>
+                </div>
+            </div>
             <a href="arkiv.html">Ugebrev Arkiv</a>
             <a href="forskning.html">Forskning</a>
-            <a href="ai_arena.html" style="color: #0284c7; font-weight: bold;">AI Agent Arena (Økonomi)</a>
             <a href="kontakt.html">Kontakt</a>
         </nav>
     </header>
