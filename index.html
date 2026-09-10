@@ -9,7 +9,7 @@
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             line-height: 1.6;
             color: #1f2937;
-            max-width: 1000px;
+            max-width: 1050px;
             margin: 0 auto;
             padding: 30px 20px;
             background-color: #f8fafc;
@@ -72,12 +72,19 @@
         .dropdown-content a:hover { background-color: #f1f5f9; color: #1e3a8a; }
         .dropdown:hover .dropdown-content { display: block; }
 
-        /* BREAKING TICKER & TERMINAL */
-        .breaking-banner {
+        /* LEVENDE TERMINAL RADAR */
+        .radar-box {
+            background: #ffffff;
+            border: 2px solid #b91c1c;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(185, 28, 28, 0.08);
+            margin-bottom: 35px;
+            overflow: hidden;
+        }
+        .radar-topbar {
             background: #991b1b;
-            color: white;
-            padding: 8px 16px;
-            border-radius: 6px 6px 0 0;
+            color: #fff;
+            padding: 10px 16px;
             font-size: 0.85rem;
             font-weight: 700;
             display: flex;
@@ -85,83 +92,90 @@
             align-items: center;
             letter-spacing: 0.5px;
         }
-        .pulse-dot {
+        .live-dot {
             height: 10px;
             width: 10px;
             background-color: #f87171;
             border-radius: 50%;
             display: inline-block;
             margin-right: 8px;
-            animation: blink 1.2s infinite;
+            animation: pulse-red 1.2s infinite;
         }
-        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.2; } }
-
-        .alert-terminal {
-            background: #fff;
-            border: 2px solid #991b1b;
-            border-top: none;
-            border-radius: 0 0 8px 8px;
+        @keyframes pulse-red {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.3; transform: scale(0.85); }
+        }
+        .radar-content {
             padding: 24px;
-            margin-bottom: 35px;
-            box-shadow: 0 4px 15px rgba(153, 27, 27, 0.08);
         }
-        .terminal-header {
+        .radar-header {
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            align-items: flex-start;
+            margin-bottom: 16px;
             border-bottom: 1px solid #fee2e2;
             padding-bottom: 12px;
-            margin-bottom: 16px;
         }
-        .terminal-title {
+        .radar-title {
+            margin: 0;
+            color: #991b1b;
             font-size: 1.35rem;
             font-weight: 800;
-            color: #991b1b;
-            margin: 0;
         }
-        .badge-action {
-            background: #dc2626;
-            color: white;
+        .radar-badge {
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+            color: #991b1b;
             padding: 4px 10px;
             border-radius: 4px;
             font-size: 0.75rem;
-            font-weight: bold;
+            font-weight: 700;
         }
 
-        /* MULTI-REGION DATA GRID */
-        .market-grid {
+        /* GRID MED DE 5 BRÆNDPUNKTER */
+        .region-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 12px;
             margin-bottom: 20px;
         }
         @media (max-width: 850px) {
-            .market-grid { grid-template-columns: 1fr 1fr; }
+            .region-grid { grid-template-columns: 1fr 1fr; }
         }
-        .market-card {
-            background: #fef2f2;
+        .region-card {
+            background: #fdf2f2;
             border: 1px solid #fecaca;
             border-radius: 6px;
-            padding: 12px;
+            padding: 14px;
         }
-        .market-card h4 {
-            margin: 0 0 4px 0;
-            font-size: 0.85rem;
+        .region-card.warning {
+            background: #fffbeb;
+            border-color: #fde68a;
+        }
+        .region-tag {
+            font-size: 0.75rem;
+            font-weight: 800;
             color: #991b1b;
             text-transform: uppercase;
+            margin-bottom: 4px;
         }
-        .market-card .val {
+        .region-card.warning .region-tag {
+            color: #92400e;
+        }
+        .region-stat {
             font-size: 1.15rem;
-            font-weight: bold;
-            color: #111;
+            font-weight: 700;
+            color: #0f172a;
             font-family: monospace;
         }
-        .market-card .desc {
+        .region-desc {
             font-size: 0.75rem;
-            color: #6b7280;
-            margin-top: 4px;
+            color: #4b5563;
+            margin-top: 5px;
+            line-height: 1.4;
         }
 
+        /* GÆLDSGRAF SEKTION */
         .chart-box {
             background: white;
             border: 1px solid #e2e8f0;
@@ -208,45 +222,55 @@
     </header>
 
     <main>
-        <!-- BREAKING NEWS DISPATCH -->
-        <div class="breaking-banner">
-            <div><span class="pulse-dot"></span>BREAKING MACRO DISPATCH • REALTIME MONITORING</div>
-            <div>STATUS: ACTION REQUIRED</div>
-        </div>
-        <section class="alert-terminal" id="live-dispatch">
-            <div class="terminal-header">
-                <h2 class="terminal-title">Koordineret Systempres: Statsgæld, Renter & Valutainterventioner</h2>
-                <span class="badge-action">10. SEPTEMBER 2026</span>
+        <!-- LIVE SOVEREIGN RADAR -->
+        <section class="radar-box">
+            <div class="radar-topbar">
+                <div><span class="live-dot"></span>SOVEREIGN DISTRESS RADAR • REAL-TIME FEED</div>
+                <div id="radar-timestamp">Synkroniserer...</div>
             </div>
 
-            <div class="market-grid">
-                <div class="market-card">
-                    <h4>🇺🇸 USA (Treasury)</h4>
-                    <div class="val">30Y: 5,295%</div>
-                    <div class="desc">Bessent opkøb afvist; Fed afviser QE-lempelse.</div>
+            <div class="radar-content">
+                <div class="radar-header">
+                    <div>
+                        <h2 class="radar-title">🚨 Systemisk Svækkelsessignal: Statstilbagekøb & Valutaforsvar</h2>
+                        <div style="font-size: 0.85rem; color: #6b7280; margin-top: 4px;">
+                            Aktive nødindgreb registreret inden for seneste overvågningsinterval.
+                        </div>
+                    </div>
+                    <span class="radar-badge">ACTION REQUIRED</span>
                 </div>
-                <div class="market-card">
-                    <h4>🇯🇵 Japan (MoF / BoJ)</h4>
-                    <div class="val">Yen-Intervention</div>
-                    <div class="desc">Milliardopkøb i JPY for at dæmpe carry trade kollaps.</div>
-                </div>
-                <div class="market-card">
-                    <h4>🇩🇰 Danmark (Nationalbanken)</h4>
-                    <div class="val">5,6 mia. DKK</div>
-                    <div class="desc">Støttekøb af krone forsvaret; renteforskel i fare.</div>
-                </div>
-                <div class="market-card">
-                    <h4>🇪🇺 Eurozonen (ECB)</h4>
-                    <div class="val">Spreads +28 bps</div>
-                    <div class="desc">Perifere renter under pres forud for rentemøde.</div>
-                </div>
-            </div>
 
-            <p style="color: #1f2937; font-size: 0.95rem; margin-bottom: 10px;">
-                <strong>Global likviditetskrise under opsejling:</strong> USA's utilstrækkelige obligationsstøtte sker samtidigt med massive valutainterventioner i Japan og det svageste niveau for den danske krone i 25 år. Når stater og centralbanker tvinges til bilaterale nødopkøb i valutamarkedet uden koordineret pengepolitisk lempelse, presses risikopræmierne (Term Premium) eksplosivt opad.
-            </p>
-            <div style="font-size: 0.85rem; color: #6b7280;">
-                <em>Overvågning aktiv: Dataindeks opdateret hvert 30. minut via GitHub Actions & Telegram Push Alert.</em>
+                <div class="region-grid" id="region-grid">
+                    <div class="region-card">
+                        <div class="region-tag">🇺🇸 USA • Treasury</div>
+                        <div class="region-stat">30Y: 5,295% ▲</div>
+                        <div class="region-desc">Bessent-tilbagekøb afvist af markedet. Fed afviser QE. Term premium eksploderer.</div>
+                    </div>
+
+                    <div class="region-card">
+                        <div class="region-tag">🇯🇵 Japan • BoJ / MoF</div>
+                        <div class="region-stat">Yen-Intervention</div>
+                        <div class="region-desc">Milliardopkøb i JPY for at forhindre ukontrolleret kollaps i yen-carry trades.</div>
+                    </div>
+
+                    <div class="region-card warning">
+                        <div class="region-tag">🇩🇰 Danmark • Nat.banken</div>
+                        <div class="region-stat">5,6 mia. DKK</div>
+                        <div class="region-desc">Støttekøb for at holde kronens kurs over for EUR. Renterabat på -0,40% under afvikling.</div>
+                    </div>
+
+                    <div class="region-card warning">
+                        <div class="region-tag">🇪🇺 Eurozonen • ECB</div>
+                        <div class="region-stat">Spreads +28 bps</div>
+                        <div class="region-desc">TPI-beredskab under observation mod perifere obligationsspænd.</div>
+                    </div>
+                </div>
+
+                <div style="background: #f8fafc; border-left: 4px solid #991b1b; padding: 14px; border-radius: 0 4px 4px 0;">
+                    <p style="margin: 0; font-size: 0.95rem; color: #1f2937;">
+                        <strong>Analyse af markedsdynamikken:</strong> Når USA tvinges til obligationstilbagekøb, Japan dæmmer op for carry trade-likvidationer, og Nationalbanken må bruge milliarder på at forsvare kronen, bevidner vi et synkront pres på statslige balancer. Hvert indgreb blotlægger statens udtømte likviditet og sender de globale risikopræmier videre op.
+                    </p>
+                </div>
             </div>
         </section>
 
@@ -254,7 +278,7 @@
         <div class="chart-box">
             <h3 style="margin-top: 0; font-size: 1.15rem; color: #0f172a;">USA's Gældsudvikling: Renteudgifter som % af BNP</h3>
             <div style="font-size: 0.9rem; color: #64748b; margin-bottom: 20px;">
-                Statsgæld: > $35 billioner (~122% af BNP). Årlige rentebetalinger > $1.100 mia.
+                Statsgæld: > $35 billioner (~122% af BNP). Årlige rentebetalinger overstiger $1.100 mia.
             </div>
 
             <div class="bar-container">
@@ -286,6 +310,27 @@
     <footer>
         &copy; 2026 Lasse Holt. Real-Time Sovereign Distress Terminal.
     </footer>
+
+    <script>
+        // Henter live json-data for at holde siden dynamisk opdateret
+        async function fetchLiveDistress() {
+            try {
+                const res = await fetch('treasury_events.json?t=' + new Date().getTime());
+                if (res.ok) {
+                    const data = await res.json();
+                    const el = document.getElementById('radar-timestamp');
+                    if (el && data.last_updated) {
+                        const date = new Date(data.last_updated);
+                        el.innerText = 'STATUS: AKTIV • SENESTE TJEK: ' + date.toLocaleTimeString('da-DK', { hour: '2-digit', minute: '2-digit' }) + ' UTC';
+                    }
+                }
+            } catch (e) {
+                document.getElementById('radar-timestamp').innerText = 'STATUS: AKTIV OVERVÅGNING';
+            }
+        }
+        fetchLiveDistress();
+        setInterval(fetchLiveDistress, 60000); // Poller hvert minut i browseren
+    </script>
 
 </body>
 </html>
