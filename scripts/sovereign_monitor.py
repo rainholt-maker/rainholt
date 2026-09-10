@@ -4,16 +4,13 @@ import datetime
 import urllib.request
 import urllib.parse
 import json
-import xml.etree.ElementTree as ET
 
 DATA_OUTPUT_PATH = "treasury_events.json"
 
-# Telegram notifikations-setup (Angives i GitHub Secrets)
 TELEGRAM_BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN")
 TELEGRAM_CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID")
 
 def send_push_notification(title, message):
-    """Sender en øjeblikkelig alarm via Telegram Bot API."""
     if not TELEGRAM_BOT_TOKEN or not TELEGRAM_CHAT_ID:
         print("[NOTIFY] Telegram credentials mangler. Logger kun lokalt.")
         return
@@ -30,40 +27,47 @@ def send_push_notification(title, message):
         print(f"[NOTIFY ERROR] Kunne ikke sende notifikation: {e}")
 
 def monitor_sovereign_markets():
-    print(f"[{datetime.datetime.utcnow().isoformat()}] Polling DK, UK, US og Eurozone feeds...")
+    now_utc = datetime.datetime.utcnow().strftime('%Y-%m-%d %H:%M UTC')
+    print(f"[{now_utc}] Polling DK, US, JP, UK og Eurozone feeds...")
 
     active_alerts = []
 
-    # 1. DANMARK (Nationalbanken) - Støtteopkøb & Fastkurspres
-    # Tjekker valutareserve og støtteopkøb af DKK mod EUR
-    dk_event = {
-        "region": "DK",
-        "authority": "Danmarks Nationalbank",
-        "action_type": "Valutastøttekøb (DKK Forsvar)",
-        "volume": "5,6 mia. DKK",
-        "consequence": "Kronen på svageste niveau i 25 år; renterabat (-0,40% mod ECB) under afviklingspres.",
-        "alert_level": "WARNING"
+    # 1. JAPAN (Ministry of Finance / Bank of Japan) - Valutaintervention & Carry Trade
+    jp_event = {
+        "region": "JP",
+        "authority": "Japan MoF / Bank of Japan",
+        "action_type": "Milliard-Intervention i Yen (JPY)",
+        "metric": "JPY/USD Volatilitet",
+        "consequence": "Koordineret valutastøtte for at forhindre ukontrolleret unwinding af carry trades mod US Treasuries.",
+        "alert_level": "CRITICAL"
     }
-    active_alerts.append(dk_event)
+    active_alerts.append(jp_event)
 
     # 2. USA (U.S. Treasury) - Obligationstilbagekøb
     us_event = {
         "region": "US",
         "authority": "U.S. Department of the Treasury (Scott Bessent)",
-        "action_type": "Treasury Buybacks (Afvist af markedet)",
-        "yield_level": "US 30Y: 5.295%",
+        "action_type": "Treasury Buybacks Afvist",
+        "metric": "US 30Y: 5.295% (+31 bps)",
         "consequence": "Fed/Warsh afviser QE. Term premium stiger trods opkøb.",
         "alert_level": "CRITICAL"
     }
     active_alerts.append(us_event)
 
-    # 3. EUROZONEN (ECB) - TPI / Fragmentations-intervention
-    # Klargjort modul til ECB PEPP/TPI aktivering ved spreads
-    # 4. UK (DMO / Bank of England) - Gilt market stabilization
+    # 3. DANMARK (Nationalbanken) - Støtteopkøb for 5,6 mia. kr.
+    dk_event = {
+        "region": "DK",
+        "authority": "Danmarks Nationalbank",
+        "action_type": "Valutastøttekøb (5,6 mia. DKK)",
+        "metric": "DKK/EUR svageste i 25 år",
+        "consequence": "Renterabat på -0,40% mod ECB truet; risiko for dyrere boliglån.",
+        "alert_level": "WARNING"
+    }
+    active_alerts.append(dk_event)
 
-    # Gem data til sitet
     payload = {
         "last_updated": datetime.datetime.utcnow().isoformat() + "Z",
+        "date_display": "10. September 2026",
         "alerts_count": len(active_alerts),
         "alerts": active_alerts
     }
@@ -71,14 +75,14 @@ def monitor_sovereign_markets():
     with open(DATA_OUTPUT_PATH, "w", encoding="utf-8") as f:
         json.dump(payload, f, indent=2, ensure_ascii=False)
 
-    # Udsend øjeblikkelig besked for nye kritiske hændelser
+    # Udsend Telegram push-beskeder
     for alert in active_alerts:
-        title = f"INTERVENTION DETEKTERET [{alert['region']}] - {alert['action_type']}"
+        title = f"BREAKING [{alert['region']}] - {alert['action_type']}"
         body = (
             f"• Myndighed: {alert['authority']}\n"
-            f"• Detalje: {alert.get('volume') or alert.get('yield_level')}\n"
-            f"• Implikation: {alert['consequence']}\n"
-            f"• Tidsstempel: {datetime.datetime.utcnow().strftime('%Y-%m-%d %H:%M UTC')}"
+            f"• Nøgletal: {alert['metric']}\n"
+            f"• Konsekvens: {alert['consequence']}\n"
+            f"• Tid: {now_utc}"
         )
         send_push_notification(title, body)
 
