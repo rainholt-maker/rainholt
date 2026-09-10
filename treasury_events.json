@@ -1,9 +1,22 @@
 {
-  "timestamp": "2026-09-10T05:48:01.637492Z",
-  "action": "Treasury Buyback Announcement",
-  "actor": "U.S. Department of the Treasury",
-  "target_yield_30y": 5.295,
-  "fed_stance": "Restrictive / No QE",
-  "alert_level": "CRITICAL",
-  "summary": "Treasury announces bond buybacks. Market rejects intervention; 30Y spikes to 5.295%."
+  "last_updated": "2026-09-10T06:05:46.857038Z",
+  "alerts_count": 2,
+  "alerts": [
+    {
+      "region": "DK",
+      "authority": "Danmarks Nationalbank",
+      "action_type": "Valutastøttekøb (DKK Forsvar)",
+      "volume": "5,6 mia. DKK",
+      "consequence": "Kronen på svageste niveau i 25 år; renterabat (-0,40% mod ECB) under afviklingspres.",
+      "alert_level": "WARNING"
+    },
+    {
+      "region": "US",
+      "authority": "U.S. Department of the Treasury (Scott Bessent)",
+      "action_type": "Treasury Buybacks (Afvist af markedet)",
+      "yield_level": "US 30Y: 5.295%",
+      "consequence": "Fed/Warsh afviser QE. Term premium stiger trods opkøb.",
+      "alert_level": "CRITICAL"
+    }
+  ]
 }
