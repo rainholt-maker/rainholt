@@ -2,9 +2,13 @@ name: Treasury Distress Monitor (<60 min)
 
 on:
   schedule:
-    # Kører hvert 30. minut døgnet rundt
+    # Kører hvert 30. minut
     - cron: '*/30 * * * *'
   workflow_dispatch:
+
+# Tildeler botten eksplicit skriveadgang til dit repo
+permissions:
+  contents: write
 
 jobs:
   monitor:
@@ -24,8 +28,7 @@ jobs:
 
       - name: Commit and Push Alert Data
         run: |
-          git config user.name "Sovereign-Monitor-Bot"
-          git config user.email "bot@users.noreply.github.com"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add treasury_events.json
-          git commit -m "auto: treasury distress signal captured [<60m]" || echo "No change"
-          git push
+          git diff --staged --quiet || (git commit -m "auto: treasury distress signal captured [<60m]" && git push origin main)
