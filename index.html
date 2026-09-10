@@ -3,30 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lasse Holt – Makroøkonomi & Sovereign Distress Terminal</title>
+    <title>Lasse Holt – Global Macro & Sovereign Distress Terminal</title>
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             line-height: 1.6;
             color: #1f2937;
-            max-width: 950px;
+            max-width: 1000px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 30px 20px;
             background-color: #f8fafc;
         }
         header {
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             border-bottom: 1px solid #e2e8f0;
-            padding-bottom: 20px;
+            padding-bottom: 15px;
         }
         h1 {
             font-size: 2.2rem;
-            margin-bottom: 6px;
+            margin-bottom: 4px;
             color: #0f172a;
             letter-spacing: -0.5px;
         }
         .subtitle {
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             color: #64748b;
             margin-bottom: 15px;
         }
@@ -72,14 +72,38 @@
         .dropdown-content a:hover { background-color: #f1f5f9; color: #1e3a8a; }
         .dropdown:hover .dropdown-content { display: block; }
 
-        /* AKUT SIGNAL MONITOR */
+        /* BREAKING TICKER & TERMINAL */
+        .breaking-banner {
+            background: #991b1b;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 6px 6px 0 0;
+            font-size: 0.85rem;
+            font-weight: 700;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            letter-spacing: 0.5px;
+        }
+        .pulse-dot {
+            height: 10px;
+            width: 10px;
+            background-color: #f87171;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 8px;
+            animation: blink 1.2s infinite;
+        }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.2; } }
+
         .alert-terminal {
             background: #fff;
-            border: 2px solid #ef4444;
-            border-radius: 8px;
+            border: 2px solid #991b1b;
+            border-top: none;
+            border-radius: 0 0 8px 8px;
             padding: 24px;
             margin-bottom: 35px;
-            box-shadow: 0 4px 12px rgba(239, 68, 68, 0.08);
+            box-shadow: 0 4px 15px rgba(153, 27, 27, 0.08);
         }
         .terminal-header {
             display: flex;
@@ -89,43 +113,55 @@
             padding-bottom: 12px;
             margin-bottom: 16px;
         }
-        .status-pill-red {
-            background: #ef4444;
-            color: white;
-            padding: 4px 10px;
-            border-radius: 9999px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-            animation: pulse 2s infinite;
-        }
-        @keyframes pulse {
-            0% { opacity: 1; }
-            50% { opacity: 0.6; }
-            100% { opacity: 1; }
-        }
         .terminal-title {
-            font-size: 1.3rem;
-            font-weight: 700;
+            font-size: 1.35rem;
+            font-weight: 800;
             color: #991b1b;
             margin: 0;
         }
-        .data-strip {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-            background: #fef2f2;
-            padding: 14px;
-            border-radius: 6px;
-            margin-bottom: 16px;
+        .badge-action {
+            background: #dc2626;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: bold;
         }
-        @media (max-width: 768px) {
-            .data-strip { grid-template-columns: 1fr; }
-        }
-        .data-item { font-size: 0.85rem; color: #7f1d1d; }
-        .data-item strong { display: block; font-size: 1.15rem; color: #991b1b; font-family: monospace; }
 
-        /* Gældsgraf og alm. struktur */
+        /* MULTI-REGION DATA GRID */
+        .market-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        @media (max-width: 850px) {
+            .market-grid { grid-template-columns: 1fr 1fr; }
+        }
+        .market-card {
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+            border-radius: 6px;
+            padding: 12px;
+        }
+        .market-card h4 {
+            margin: 0 0 4px 0;
+            font-size: 0.85rem;
+            color: #991b1b;
+            text-transform: uppercase;
+        }
+        .market-card .val {
+            font-size: 1.15rem;
+            font-weight: bold;
+            color: #111;
+            font-family: monospace;
+        }
+        .market-card .desc {
+            font-size: 0.75rem;
+            color: #6b7280;
+            margin-top: 4px;
+        }
+
         .chart-box {
             background: white;
             border: 1px solid #e2e8f0;
@@ -156,7 +192,7 @@
 
     <header>
         <h1>Lasse Holt</h1>
-        <div class="subtitle">Makroøkonomi, Sovereign Debt & Strategisk Analyse</div>
+        <div class="subtitle">Makroøkonomi, Valutainterventioner & Globale Gældsmarkeder</div>
         <nav class="nav-links">
             <div class="dropdown">
                 <button class="dropbtn">Makro-rapporter ▾</button>
@@ -172,34 +208,46 @@
     </header>
 
     <main>
-        <!-- CRITICAL SIGNAL DISPATCH ENGINE -->
-        <section class="alert-terminal" id="sovereign-alert">
+        <!-- BREAKING NEWS DISPATCH -->
+        <div class="breaking-banner">
+            <div><span class="pulse-dot"></span>BREAKING MACRO DISPATCH • REALTIME MONITORING</div>
+            <div>STATUS: ACTION REQUIRED</div>
+        </div>
+        <section class="alert-terminal" id="live-dispatch">
             <div class="terminal-header">
-                <h2 class="terminal-title">🚨 SOVEREIGN DISTRESS: AKUT INTERVENTIONS-SIGNAL</h2>
-                <span class="status-pill-red">CRITICAL INTERVENTION DETECTED</span>
+                <h2 class="terminal-title">Koordineret Systempres: Statsgæld, Renter & Valutainterventioner</h2>
+                <span class="badge-action">10. SEPTEMBER 2026</span>
             </div>
 
-            <div class="data-strip">
-                <div class="data-item">
-                    Handling (Finansministeriet)
-                    <strong>Treasury Buybacks</strong>
+            <div class="market-grid">
+                <div class="market-card">
+                    <h4>🇺🇸 USA (Treasury)</h4>
+                    <div class="val">30Y: 5,295%</div>
+                    <div class="desc">Bessent opkøb afvist; Fed afviser QE-lempelse.</div>
                 </div>
-                <div class="data-item">
-                    Markedsreaktion (US 30Y)
-                    <strong>5,295% ▲ (+31 bps)</strong>
+                <div class="market-card">
+                    <h4>🇯🇵 Japan (MoF / BoJ)</h4>
+                    <div class="val">Yen-Intervention</div>
+                    <div class="desc">Milliardopkøb i JPY for at dæmpe carry trade kollaps.</div>
                 </div>
-                <div class="data-item">
-                    Monetær Opbakning (Fed)
-                    <strong>AFVIST (Ingen QE)</strong>
+                <div class="market-card">
+                    <h4>🇩🇰 Danmark (Nationalbanken)</h4>
+                    <div class="val">5,6 mia. DKK</div>
+                    <div class="desc">Støttekøb af krone forsvaret; renteforskel i fare.</div>
+                </div>
+                <div class="market-card">
+                    <h4>🇪🇺 Eurozonen (ECB)</h4>
+                    <div class="val">Spreads +28 bps</div>
+                    <div class="desc">Perifere renter under pres forud for rentemøde.</div>
                 </div>
             </div>
 
-            <p style="color: #334151; font-size: 0.95rem; margin-bottom: 12px;">
-                <strong>Det ultimative svaghedstegn:</strong> Finansministeriets annoncering af støtteopkøb i obligationsmarkedet er blevet afvist af markedet. Uden fri likviditet tvinges staten til at udstede korte gældsbeviser (T-bills) for at købe lange papirer op. Resultatet er en accelererende *Term Premium* og fortsat rentestigning.
+            <p style="color: #1f2937; font-size: 0.95rem; margin-bottom: 10px;">
+                <strong>Global likviditetskrise under opsejling:</strong> USA's utilstrækkelige obligationsstøtte sker samtidigt med massive valutainterventioner i Japan og det svageste niveau for den danske krone i 25 år. Når stater og centralbanker tvinges til bilaterale nødopkøb i valutamarkedet uden koordineret pengepolitisk lempelse, presses risikopræmierne (Term Premium) eksplosivt opad.
             </p>
-            <p style="font-size: 0.85rem; color: #64748b; margin: 0;">
-                <em>Automatisk detekteret af overvågningsmotoren inden for 60 minutter efter annoncering. Kilde: U.S. Treasury & Tradeweb Feed.</em>
-            </p>
+            <div style="font-size: 0.85rem; color: #6b7280;">
+                <em>Overvågning aktiv: Dataindeks opdateret hvert 30. minut via GitHub Actions & Telegram Push Alert.</em>
+            </div>
         </section>
 
         <!-- MAKRO-STATUS -->
@@ -236,7 +284,7 @@
     </main>
 
     <footer>
-        &copy; 2026 Lasse Holt. Real-Time Sovereign Debt Architecture.
+        &copy; 2026 Lasse Holt. Real-Time Sovereign Distress Terminal.
     </footer>
 
 </body>
