@@ -1,0 +1,9 @@
+{
+  "timestamp": "2026-09-10T05:36:34.897005Z",
+  "action": "Treasury Buyback Announcement",
+  "actor": "U.S. Department of the Treasury",
+  "target_yield_30y": 5.295,
+  "fed_stance": "Restrictive / No QE",
+  "alert_level": "CRITICAL",
+  "summary": "Treasury announces bond buybacks. Market rejects intervention; 30Y spikes to 5.295%."
+}
