@@ -3,30 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lasse Holt – Global Makroøkonomi & Systemisk Likviditet</title>
+    <title>Lasse Holt – Profil & Forskningsportal</title>
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             line-height: 1.6;
             color: #1f2937;
-            max-width: 1000px;
+            max-width: 900px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 50px 20px;
             background-color: #fafafa;
         }
         header {
-            margin-bottom: 30px;
+            margin-bottom: 40px;
             border-bottom: 1px solid #e5e7eb;
             padding-bottom: 20px;
         }
         h1 {
-            font-size: 2.2rem;
+            font-size: 2.4rem;
             margin-bottom: 6px;
             color: #111827;
             letter-spacing: -0.5px;
         }
         .subtitle {
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             color: #4b5563;
             margin-bottom: 20px;
         }
@@ -76,136 +76,54 @@
         .dropdown-content a:hover { background-color: #f3f4f6; color: #1e3a8a; }
         .dropdown:hover .dropdown-content { display: block; }
 
-        /* SEKTION: SYSTEMISK LIKVIDITETSBAROMETER */
-        .terminal-panel {
-            background: #ffffff;
-            border: 1px solid #e5e7eb;
-            border-radius: 6px;
-            padding: 24px;
-            margin-bottom: 35px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+        .intro-section {
+            margin-bottom: 45px;
         }
-        .panel-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            border-bottom: 1px solid #f3f4f6;
-            padding-bottom: 12px;
-            margin-bottom: 20px;
+        .intro-section p {
+            font-size: 1.05rem;
+            color: #374151;
         }
-        .panel-title {
-            font-size: 1.15rem;
-            font-weight: 700;
-            color: #0f172a;
-            margin: 0;
-        }
-        .panel-meta {
-            font-size: 0.8rem;
-            color: #6b7280;
-            font-family: monospace;
-        }
-
-        /* 4-KOLONNE METRIK GRID */
-        .metric-grid {
+        .portal-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 16px;
-            margin-bottom: 24px;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-top: 30px;
         }
-        @media (max-width: 800px) {
-            .metric-grid { grid-template-columns: 1fr 1fr; }
+        @media (max-width: 768px) {
+            .portal-grid { grid-template-columns: 1fr; }
         }
-        .metric-card {
-            background: #f8fafc;
-            border: 1px solid #e2e8f0;
-            border-radius: 6px;
-            padding: 16px;
-        }
-        .metric-region {
-            font-size: 0.75rem;
-            font-weight: 700;
-            color: #475569;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 4px;
-        }
-        .metric-value {
-            font-size: 1.35rem;
-            font-weight: 700;
-            font-family: monospace;
-            color: #0f172a;
-            margin-bottom: 4px;
-        }
-        .metric-note {
-            font-size: 0.8rem;
-            color: #64748b;
-            line-height: 1.3;
-        }
-        .status-pill {
-            display: inline-block;
-            font-size: 0.7rem;
-            font-weight: 600;
-            padding: 1px 6px;
-            border-radius: 3px;
-            margin-top: 6px;
-        }
-        .pill-stress { background: #fee2e2; color: #991b1b; }
-        .pill-watch { background: #fef3c7; color: #92400e; }
-
-        /* MEKANISK KAUSALITETSFLOW */
-        .flow-diagram {
-            background: #f8fafc;
-            border: 1px solid #e2e8f0;
-            border-radius: 6px;
-            padding: 16px;
-            font-size: 0.85rem;
-            color: #334151;
-            margin-bottom: 20px;
-        }
-        .flow-title {
-            font-weight: 600;
-            color: #0f172a;
-            margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-        .flow-steps {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            align-items: center;
-            font-family: monospace;
-            font-size: 0.8rem;
-        }
-        .step {
-            background: #ffffff;
-            border: 1px solid #cbd5e1;
-            padding: 4px 8px;
-            border-radius: 4px;
-        }
-        .arrow { color: #94a3b8; font-weight: bold; }
-
-        /* GÆLDSGRAF SEKTION */
-        .chart-box {
+        .portal-card {
             background: white;
             border: 1px solid #e5e7eb;
             border-radius: 6px;
-            padding: 28px;
-            margin-top: 30px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
-        .bar-container { margin-bottom: 18px; }
-        .bar-label { display: flex; justify-content: space-between; font-size: 0.9rem; font-weight: 500; margin-bottom: 6px; }
-        .bar-track { background: #f1f5f9; border-radius: 4px; height: 22px; width: 100%; overflow: hidden; }
-        .bar-fill { height: 100%; border-radius: 4px; }
-        .bar-1 { background: #cbd5e1; width: 33%; }
-        .bar-2 { background: #2563eb; width: 66%; }
-        .bar-3 { background: #f59e0b; width: 83%; }
-        .bar-4 { background: #ef4444; width: 100%; }
-
+        .portal-card h2 {
+            font-size: 1.25rem;
+            color: #0f172a;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+        .portal-card p {
+            font-size: 0.95rem;
+            color: #4b5563;
+            margin-bottom: 20px;
+        }
+        .portal-link {
+            text-decoration: none;
+            color: #1e3a8a;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        .portal-link:hover {
+            text-decoration: underline;
+        }
         footer {
             text-align: center;
-            margin-top: 60px;
+            margin-top: 70px;
             font-size: 0.85rem;
             color: #94a3b8;
             border-top: 1px solid #e5e7eb;
@@ -217,12 +135,12 @@
 
     <header>
         <h1>Lasse Holt</h1>
-        <div class="subtitle">Makroøkonomi, Gældsmekanismer & Finansiel Arkitektur</div>
+        <div class="subtitle">Strategisk Kontrahering, Spilteori & Makroøkonomisk Analyse</div>
         <nav class="nav-links">
             <div class="dropdown">
-                <button class="dropbtn">Makro-rapporter ▾</button>
+                <button class="dropbtn">Økonomi & Makro ▾</button>
                 <div class="dropdown-content">
-                    <a href="makro.html">Analyser & Ugebreve</a>
+                    <a href="makro.html">Systemisk Oversigt & Data</a>
                     <a href="ai_arena.html">Macro Forecast Hub</a>
                 </div>
             </div>
@@ -233,112 +151,49 @@
     </header>
 
     <main>
-        <!-- SYSTEMISK LIKVIDITETS- OG RØRLEDNINGSOVERSIGT -->
-        <section class="terminal-panel">
-            <div class="panel-header">
-                <div>
-                    <h2 class="panel-title">Systemisk Likviditet & Sovereign Interventioner</h2>
-                    <div style="font-size: 0.85rem; color: #64748b; margin-top: 2px;">
-                        Mekanisk overvågning af balanceforskydninger, likviditetsdræn og statsindgreb.
-                    </div>
-                </div>
-                <div class="panel-meta" id="sync-time">OPDATERET: 11. SEP 2026 • DETERMINISTISK TELEMETRI</div>
-            </div>
-
-            <!-- 4 SYSTEMISKE MÅLEPUNKTER -->
-            <div class="metric-grid">
-                <div class="metric-card">
-                    <div class="metric-region">USA • U.S. Treasury</div>
-                    <div class="metric-value">30Y: 5,295%</div>
-                    <div class="metric-note">$6 mia. opkøb afvist. Renter stiger trods intervention; Term Premium udvides.</div>
-                    <span class="status-pill pill-stress">Mekanisk Afvisning</span>
-                </div>
-
-                <div class="metric-card">
-                    <div class="metric-region">Japan • BoJ / MoF</div>
-                    <div class="metric-value">JPY Swap Stress</div>
-                    <div class="metric-note">Intervention i valutamarkedet modvirker uordnet lukning af carry trades.</div>
-                    <span class="status-pill pill-stress">Likviditets-Drain</span>
-                </div>
-
-                <div class="metric-card">
-                    <div class="metric-region">Danmark • Nat.banken</div>
-                    <div class="metric-value">-5,6 mia. DKK</div>
-                    <div class="metric-note">Intervention i valutareserven. Kronen svækket; spænd mod ECB (-0,40%) under pres.</div>
-                    <span class="status-pill pill-watch">Fastkursforsvar</span>
-                </div>
-
-                <div class="metric-card">
-                    <div class="metric-region">Eurozonen • ECB</div>
-                    <div class="metric-value">+28 bps</div>
-                    <div class="metric-note">Spænd mellem BTP/Bund under observation forud for rentebeslutning.</div>
-                    <span class="status-pill pill-watch">Spænd-overvågning</span>
-                </div>
-            </div>
-
-            <!-- KAUSALITETEN BAG TALLENE -->
-            <div class="flow-diagram">
-                <div class="flow-title">
-                    <span>Transmissionsmekanisme for det aktuelle likviditetspres:</span>
-                </div>
-                <div class="flow-steps">
-                    <span class="step">BoJ JPY Støtte</span>
-                    <span class="arrow">&rarr;</span>
-                    <span class="step">Carry Trade Unwinding</span>
-                    <span class="arrow">&rarr;</span>
-                    <span class="step">Salg af US Treasuries</span>
-                    <span class="arrow">&rarr;</span>
-                    <span class="step">Treasury $6B Nødopkøb</span>
-                    <span class="arrow">&rarr;</span>
-                    <span class="step">Term Premium Udvidelse (5,295%)</span>
-                    <span class="arrow">&rarr;</span>
-                    <span class="step">Globalt Valutapres (DKK Forsvar)</span>
-                </div>
-            </div>
-
-            <p style="margin: 0; font-size: 0.9rem; color: #4b5563;">
-                <strong>Mekanisk sammenhæng:</strong> Når centralbanker og finansministerier griber direkte ind i obligations- og valutakurser uden lempelse af den underliggende reservemængde (QE), opstår et nulsumsspil om likviditet. Forskydningen afdækkes momentant i auktions-tails og fald i pengemarkedets nettostillinger.
+        <div class="intro-section">
+            <p>
+                Velkommen. Denne portal samler faglige analyser, forskningsnotater og modelleringsværktøjer inden for strategisk kontrahering, institutionel spilteori og makroøkonomiske transmissionsmekanismer.
             </p>
-        </section>
+        </div>
 
-        <!-- MAKRO-STATUS: GÆLD & RENTEBYRDE -->
-        <div class="chart-box">
-            <h3 style="margin-top: 0; font-size: 1.15rem; color: #0f172a;">USA's Gældsudvikling: Renteudgifter som % af BNP</h3>
-            <div style="font-size: 0.9rem; color: #64748b; margin-bottom: 20px;">
-                Faktisk gæld > $35 billioner (~122% af BNP). Årlige rentebetalinger overstiger $1.100 mia. USD.
+        <div class="portal-grid">
+            <div class="portal-card" style="border-top: 3px solid #1e3a8a;">
+                <div>
+                    <h2>Økonomi & Makrotelemetri</h2>
+                    <p>Mekanisk overvågning af statsgæld, renteudvikling, centralbankstøtte og valutainterventioner på tværs af USA, Europa, Danmark og Japan.</p>
+                </div>
+                <a href="makro.html" class="portal-link">Gå til økonomioversigten &rarr;</a>
             </div>
 
-            <div class="bar-container">
-                <div class="bar-label" style="color: #64748b;">
-                    <span>Historisk lavrente-æra (2010-2021 gen. 2.0%)</span>
-                    <span>2.4% af BNP</span>
+            <div class="portal-card">
+                <div>
+                    <h2>Forskning & Publikationer</h2>
+                    <p>Akademiske arbejder og analyser med fokus på kontraktøkonomi, incitamentsstrukturer og værdikædeoptimering.</p>
                 </div>
-                <div class="bar-track"><div class="bar-fill bar-1"></div></div>
+                <a href="forskning.html" class="portal-link">Se forskningsområder &rarr;</a>
             </div>
 
-            <div class="bar-container" style="background: #eff6ff; padding: 12px; border-radius: 6px; border-left: 4px solid #2563eb;">
-                <div class="bar-label" style="color: #1e3a8a;">
-                    <span><strong>Aktuelt niveau (Effektiv rente ~4.0%)</strong></span>
-                    <span><strong>~4.9% af BNP</strong></span>
+            <div class="portal-card">
+                <div>
+                    <h2>Ugebreve & Arkiv</h2>
+                    <p>Kronologisk oversigt over udsendte analyser, kommentarer til pengepolitiske stramninger og markedsobservationer.</p>
                 </div>
-                <div class="bar-track"><div class="bar-fill bar-2"></div></div>
-                <div style="font-size: 0.8rem; color: #475569; margin-top: 6px;">
-                    Renteudgiften fortrænger nu diskretionære poster i statsbudgettet.
-                </div>
+                <a href="arkiv.html" class="portal-link">Åbn ugebrevsarkiv &rarr;</a>
             </div>
 
-            <div class="bar-container">
-                <div class="bar-label" style="color: #b91c1c;">
-                    <span>Kritisk stress-scenarie (+200 bps)</span>
-                    <span><strong>7.3% af BNP (Uholdbar gældsspiral)</strong></span>
+            <div class="portal-card">
+                <div>
+                    <h2>Macro Forecast Hub</h2>
+                    <p>Struktureret data-nexus for økonomiske modeller og maskinelle fremskrivninger af likviditet og risikopræmier.</p>
                 </div>
-                <div class="bar-track"><div class="bar-fill bar-4"></div></div>
+                <a href="ai_arena.html" class="portal-link">Gå til Forecast Hub &rarr;</a>
             </div>
         </div>
     </main>
 
     <footer>
-        &copy; 2026 Lasse Holt. Makroøkonomisk Forsknings- & Dataplatform.
+        &copy; 2026 Lasse Holt.
     </footer>
 
 </body>
