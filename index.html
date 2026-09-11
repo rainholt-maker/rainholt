@@ -3,32 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lasse Holt – Global Macro & Sovereign Distress Terminal</title>
+    <title>Lasse Holt – Global Makroøkonomi & Systemisk Likviditet</title>
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             line-height: 1.6;
             color: #1f2937;
-            max-width: 1050px;
+            max-width: 1000px;
             margin: 0 auto;
-            padding: 30px 20px;
-            background-color: #f8fafc;
+            padding: 40px 20px;
+            background-color: #fafafa;
         }
         header {
-            margin-bottom: 25px;
-            border-bottom: 1px solid #e2e8f0;
-            padding-bottom: 15px;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #e5e7eb;
+            padding-bottom: 20px;
         }
         h1 {
             font-size: 2.2rem;
-            margin-bottom: 4px;
-            color: #0f172a;
+            margin-bottom: 6px;
+            color: #111827;
             letter-spacing: -0.5px;
         }
         .subtitle {
-            font-size: 1.05rem;
-            color: #64748b;
-            margin-bottom: 15px;
+            font-size: 1.1rem;
+            color: #4b5563;
+            margin-bottom: 20px;
         }
         .nav-links {
             display: flex;
@@ -48,14 +48,18 @@
             padding: 0;
             font-family: inherit;
         }
+        .nav-links a:hover, .dropdown:hover .dropbtn {
+            color: #1d4ed8;
+            text-decoration: underline;
+        }
         .dropdown { position: relative; display: inline-block; }
         .dropdown-content {
             display: none;
             position: absolute;
             background-color: white;
             min-width: 220px;
-            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
-            border: 1px solid #e2e8f0;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.06);
+            border: 1px solid #e5e7eb;
             border-radius: 6px;
             z-index: 10;
             top: 100%;
@@ -63,123 +67,130 @@
             padding: 6px 0;
         }
         .dropdown-content a {
-            color: #334151;
+            color: #374151;
             padding: 8px 16px;
             text-decoration: none;
             display: block;
             font-size: 0.9rem;
         }
-        .dropdown-content a:hover { background-color: #f1f5f9; color: #1e3a8a; }
+        .dropdown-content a:hover { background-color: #f3f4f6; color: #1e3a8a; }
         .dropdown:hover .dropdown-content { display: block; }
 
-        /* LEVENDE TERMINAL RADAR */
-        .radar-box {
+        /* SEKTION: SYSTEMISK LIKVIDITETSBAROMETER */
+        .terminal-panel {
             background: #ffffff;
-            border: 2px solid #b91c1c;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(185, 28, 28, 0.08);
-            margin-bottom: 35px;
-            overflow: hidden;
-        }
-        .radar-topbar {
-            background: #991b1b;
-            color: #fff;
-            padding: 10px 16px;
-            font-size: 0.85rem;
-            font-weight: 700;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            letter-spacing: 0.5px;
-        }
-        .live-dot {
-            height: 10px;
-            width: 10px;
-            background-color: #f87171;
-            border-radius: 50%;
-            display: inline-block;
-            margin-right: 8px;
-            animation: pulse-red 1.2s infinite;
-        }
-        @keyframes pulse-red {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.3; transform: scale(0.85); }
-        }
-        .radar-content {
+            border: 1px solid #e5e7eb;
+            border-radius: 6px;
             padding: 24px;
+            margin-bottom: 35px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
         }
-        .radar-header {
+        .panel-header {
             display: flex;
             justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 16px;
-            border-bottom: 1px solid #fee2e2;
+            align-items: baseline;
+            border-bottom: 1px solid #f3f4f6;
             padding-bottom: 12px;
-        }
-        .radar-title {
-            margin: 0;
-            color: #991b1b;
-            font-size: 1.35rem;
-            font-weight: 800;
-        }
-        .radar-badge {
-            background: #fef2f2;
-            border: 1px solid #fecaca;
-            color: #991b1b;
-            padding: 4px 10px;
-            border-radius: 4px;
-            font-size: 0.75rem;
-            font-weight: 700;
-        }
-
-        /* GRID MED DE 5 BRÆNDPUNKTER */
-        .region-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 12px;
             margin-bottom: 20px;
         }
-        @media (max-width: 850px) {
-            .region-grid { grid-template-columns: 1fr 1fr; }
-        }
-        .region-card {
-            background: #fdf2f2;
-            border: 1px solid #fecaca;
-            border-radius: 6px;
-            padding: 14px;
-        }
-        .region-card.warning {
-            background: #fffbeb;
-            border-color: #fde68a;
-        }
-        .region-tag {
-            font-size: 0.75rem;
-            font-weight: 800;
-            color: #991b1b;
-            text-transform: uppercase;
-            margin-bottom: 4px;
-        }
-        .region-card.warning .region-tag {
-            color: #92400e;
-        }
-        .region-stat {
+        .panel-title {
             font-size: 1.15rem;
             font-weight: 700;
             color: #0f172a;
+            margin: 0;
+        }
+        .panel-meta {
+            font-size: 0.8rem;
+            color: #6b7280;
             font-family: monospace;
         }
-        .region-desc {
-            font-size: 0.75rem;
-            color: #4b5563;
-            margin-top: 5px;
-            line-height: 1.4;
+
+        /* 4-KOLONNE METRIK GRID */
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-bottom: 24px;
         }
+        @media (max-width: 800px) {
+            .metric-grid { grid-template-columns: 1fr 1fr; }
+        }
+        .metric-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            padding: 16px;
+        }
+        .metric-region {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #475569;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+        .metric-value {
+            font-size: 1.35rem;
+            font-weight: 700;
+            font-family: monospace;
+            color: #0f172a;
+            margin-bottom: 4px;
+        }
+        .metric-note {
+            font-size: 0.8rem;
+            color: #64748b;
+            line-height: 1.3;
+        }
+        .status-pill {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 1px 6px;
+            border-radius: 3px;
+            margin-top: 6px;
+        }
+        .pill-stress { background: #fee2e2; color: #991b1b; }
+        .pill-watch { background: #fef3c7; color: #92400e; }
+
+        /* MEKANISK KAUSALITETSFLOW */
+        .flow-diagram {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            padding: 16px;
+            font-size: 0.85rem;
+            color: #334151;
+            margin-bottom: 20px;
+        }
+        .flow-title {
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .flow-steps {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            align-items: center;
+            font-family: monospace;
+            font-size: 0.8rem;
+        }
+        .step {
+            background: #ffffff;
+            border: 1px solid #cbd5e1;
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
+        .arrow { color: #94a3b8; font-weight: bold; }
 
         /* GÆLDSGRAF SEKTION */
         .chart-box {
             background: white;
-            border: 1px solid #e2e8f0;
-            border-radius: 8px;
+            border: 1px solid #e5e7eb;
+            border-radius: 6px;
             padding: 28px;
             margin-top: 30px;
         }
@@ -197,7 +208,7 @@
             margin-top: 60px;
             font-size: 0.85rem;
             color: #94a3b8;
-            border-top: 1px solid #e2e8f0;
+            border-top: 1px solid #e5e7eb;
             padding-top: 20px;
         }
     </style>
@@ -206,7 +217,7 @@
 
     <header>
         <h1>Lasse Holt</h1>
-        <div class="subtitle">Makroøkonomi, Valutainterventioner & Globale Gældsmarkeder</div>
+        <div class="subtitle">Makroøkonomi, Gældsmekanismer & Finansiel Arkitektur</div>
         <nav class="nav-links">
             <div class="dropdown">
                 <button class="dropbtn">Makro-rapporter ▾</button>
@@ -222,84 +233,103 @@
     </header>
 
     <main>
-        <!-- LIVE SOVEREIGN RADAR -->
-        <section class="radar-box">
-            <div class="radar-topbar">
-                <div><span class="live-dot"></span>SOVEREIGN DISTRESS RADAR • REAL-TIME FEED</div>
-                <div id="radar-timestamp">Synkroniserer...</div>
+        <!-- SYSTEMISK LIKVIDITETS- OG RØRLEDNINGSOVERSIGT -->
+        <section class="terminal-panel">
+            <div class="panel-header">
+                <div>
+                    <h2 class="panel-title">Systemisk Likviditet & Sovereign Interventioner</h2>
+                    <div style="font-size: 0.85rem; color: #64748b; margin-top: 2px;">
+                        Mekanisk overvågning af balanceforskydninger, likviditetsdræn og statsindgreb.
+                    </div>
+                </div>
+                <div class="panel-meta" id="sync-time">OPDATERET: 11. SEP 2026 • DETERMINISTISK TELEMETRI</div>
             </div>
 
-            <div class="radar-content">
-                <div class="radar-header">
-                    <div>
-                        <h2 class="radar-title">🚨 Systemisk Svækkelsessignal: Statstilbagekøb & Valutaforsvar</h2>
-                        <div style="font-size: 0.85rem; color: #6b7280; margin-top: 4px;">
-                            Aktive nødindgreb registreret inden for seneste overvågningsinterval.
-                        </div>
-                    </div>
-                    <span class="radar-badge">ACTION REQUIRED</span>
+            <!-- 4 SYSTEMISKE MÅLEPUNKTER -->
+            <div class="metric-grid">
+                <div class="metric-card">
+                    <div class="metric-region">USA • U.S. Treasury</div>
+                    <div class="metric-value">30Y: 5,295%</div>
+                    <div class="metric-note">$6 mia. opkøb afvist. Renter stiger trods intervention; Term Premium udvides.</div>
+                    <span class="status-pill pill-stress">Mekanisk Afvisning</span>
                 </div>
 
-                <div class="region-grid" id="region-grid">
-                    <div class="region-card">
-                        <div class="region-tag">🇺🇸 USA • Treasury</div>
-                        <div class="region-stat">30Y: 5,295% ▲</div>
-                        <div class="region-desc">Bessent-tilbagekøb afvist af markedet. Fed afviser QE. Term premium eksploderer.</div>
-                    </div>
-
-                    <div class="region-card">
-                        <div class="region-tag">🇯🇵 Japan • BoJ / MoF</div>
-                        <div class="region-stat">Yen-Intervention</div>
-                        <div class="region-desc">Milliardopkøb i JPY for at forhindre ukontrolleret kollaps i yen-carry trades.</div>
-                    </div>
-
-                    <div class="region-card warning">
-                        <div class="region-tag">🇩🇰 Danmark • Nat.banken</div>
-                        <div class="region-stat">5,6 mia. DKK</div>
-                        <div class="region-desc">Støttekøb for at holde kronens kurs over for EUR. Renterabat på -0,40% under afvikling.</div>
-                    </div>
-
-                    <div class="region-card warning">
-                        <div class="region-tag">🇪🇺 Eurozonen • ECB</div>
-                        <div class="region-stat">Spreads +28 bps</div>
-                        <div class="region-desc">TPI-beredskab under observation mod perifere obligationsspænd.</div>
-                    </div>
+                <div class="metric-card">
+                    <div class="metric-region">Japan • BoJ / MoF</div>
+                    <div class="metric-value">JPY Swap Stress</div>
+                    <div class="metric-note">Intervention i valutamarkedet modvirker uordnet lukning af carry trades.</div>
+                    <span class="status-pill pill-stress">Likviditets-Drain</span>
                 </div>
 
-                <div style="background: #f8fafc; border-left: 4px solid #991b1b; padding: 14px; border-radius: 0 4px 4px 0;">
-                    <p style="margin: 0; font-size: 0.95rem; color: #1f2937;">
-                        <strong>Analyse af markedsdynamikken:</strong> Når USA tvinges til obligationstilbagekøb, Japan dæmmer op for carry trade-likvidationer, og Nationalbanken må bruge milliarder på at forsvare kronen, bevidner vi et synkront pres på statslige balancer. Hvert indgreb blotlægger statens udtømte likviditet og sender de globale risikopræmier videre op.
-                    </p>
+                <div class="metric-card">
+                    <div class="metric-region">Danmark • Nat.banken</div>
+                    <div class="metric-value">-5,6 mia. DKK</div>
+                    <div class="metric-note">Intervention i valutareserven. Kronen svækket; spænd mod ECB (-0,40%) under pres.</div>
+                    <span class="status-pill pill-watch">Fastkursforsvar</span>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-region">Eurozonen • ECB</div>
+                    <div class="metric-value">+28 bps</div>
+                    <div class="metric-note">Spænd mellem BTP/Bund under observation forud for rentebeslutning.</div>
+                    <span class="status-pill pill-watch">Spænd-overvågning</span>
                 </div>
             </div>
+
+            <!-- KAUSALITETEN BAG TALLENE -->
+            <div class="flow-diagram">
+                <div class="flow-title">
+                    <span>Transmissionsmekanisme for det aktuelle likviditetspres:</span>
+                </div>
+                <div class="flow-steps">
+                    <span class="step">BoJ JPY Støtte</span>
+                    <span class="arrow">&rarr;</span>
+                    <span class="step">Carry Trade Unwinding</span>
+                    <span class="arrow">&rarr;</span>
+                    <span class="step">Salg af US Treasuries</span>
+                    <span class="arrow">&rarr;</span>
+                    <span class="step">Treasury $6B Nødopkøb</span>
+                    <span class="arrow">&rarr;</span>
+                    <span class="step">Term Premium Udvidelse (5,295%)</span>
+                    <span class="arrow">&rarr;</span>
+                    <span class="step">Globalt Valutapres (DKK Forsvar)</span>
+                </div>
+            </div>
+
+            <p style="margin: 0; font-size: 0.9rem; color: #4b5563;">
+                <strong>Mekanisk sammenhæng:</strong> Når centralbanker og finansministerier griber direkte ind i obligations- og valutakurser uden lempelse af den underliggende reservemængde (QE), opstår et nulsumsspil om likviditet. Forskydningen afdækkes momentant i auktions-tails og fald i pengemarkedets nettostillinger.
+            </p>
         </section>
 
-        <!-- MAKRO-STATUS -->
+        <!-- MAKRO-STATUS: GÆLD & RENTEBYRDE -->
         <div class="chart-box">
             <h3 style="margin-top: 0; font-size: 1.15rem; color: #0f172a;">USA's Gældsudvikling: Renteudgifter som % af BNP</h3>
             <div style="font-size: 0.9rem; color: #64748b; margin-bottom: 20px;">
-                Statsgæld: > $35 billioner (~122% af BNP). Årlige rentebetalinger overstiger $1.100 mia.
+                Faktisk gæld > $35 billioner (~122% af BNP). Årlige rentebetalinger overstiger $1.100 mia. USD.
             </div>
 
             <div class="bar-container">
                 <div class="bar-label" style="color: #64748b;">
-                    <span>Historisk lavrente-baseline</span>
+                    <span>Historisk lavrente-æra (2010-2021 gen. 2.0%)</span>
                     <span>2.4% af BNP</span>
                 </div>
                 <div class="bar-track"><div class="bar-fill bar-1"></div></div>
             </div>
 
-            <div class="bar-container" style="background: #eff6ff; padding: 10px; border-radius: 6px; border-left: 4px solid #2563eb;">
+            <div class="bar-container" style="background: #eff6ff; padding: 12px; border-radius: 6px; border-left: 4px solid #2563eb;">
                 <div class="bar-label" style="color: #1e3a8a;">
                     <span><strong>Aktuelt niveau (Effektiv rente ~4.0%)</strong></span>
                     <span><strong>~4.9% af BNP</strong></span>
                 </div>
                 <div class="bar-track"><div class="bar-fill bar-2"></div></div>
+                <div style="font-size: 0.8rem; color: #475569; margin-top: 6px;">
+                    Renteudgiften fortrænger nu diskretionære poster i statsbudgettet.
+                </div>
             </div>
 
             <div class="bar-container">
                 <div class="bar-label" style="color: #b91c1c;">
-                    <span>Kritisk stress-niveau (+200 bps)</span>
+                    <span>Kritisk stress-scenarie (+200 bps)</span>
                     <span><strong>7.3% af BNP (Uholdbar gældsspiral)</strong></span>
                 </div>
                 <div class="bar-track"><div class="bar-fill bar-4"></div></div>
@@ -308,29 +338,8 @@
     </main>
 
     <footer>
-        &copy; 2026 Lasse Holt. Real-Time Sovereign Distress Terminal.
+        &copy; 2026 Lasse Holt. Makroøkonomisk Forsknings- & Dataplatform.
     </footer>
-
-    <script>
-        // Henter live json-data for at holde siden dynamisk opdateret
-        async function fetchLiveDistress() {
-            try {
-                const res = await fetch('treasury_events.json?t=' + new Date().getTime());
-                if (res.ok) {
-                    const data = await res.json();
-                    const el = document.getElementById('radar-timestamp');
-                    if (el && data.last_updated) {
-                        const date = new Date(data.last_updated);
-                        el.innerText = 'STATUS: AKTIV • SENESTE TJEK: ' + date.toLocaleTimeString('da-DK', { hour: '2-digit', minute: '2-digit' }) + ' UTC';
-                    }
-                }
-            } catch (e) {
-                document.getElementById('radar-timestamp').innerText = 'STATUS: AKTIV OVERVÅGNING';
-            }
-        }
-        fetchLiveDistress();
-        setInterval(fetchLiveDistress, 60000); // Poller hvert minut i browseren
-    </script>
 
 </body>
 </html>
