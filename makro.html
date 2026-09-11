@@ -3,114 +3,144 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Makroøkonomiske Analyser & Strategisk Horisont – Lasse Holt</title>
-    <meta name="description" content="Løbende makroøkonomiske analyser af det globale gældsmarked, strukturel divergens og kontraktarkitekturens udvikling af Lasse Holt.">
-    <link rel="canonical" href="https://www.lasseholt.dk/makro.html">
-    
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "Makroøkonomiske Analyser & Strategisk Horisont",
-      "author": {
-        "@type": "Person",
-        "name": "Lasse Holt"
-      },
-      "url": "https://www.lasseholt.dk/makro.html"
-    }
-    </script>
-
+    <title>Økonomi & Systemisk Telemetri – Lasse Holt</title>
     <style>
-        :root {
-            --bg-color: #faf9f6;
-            --text-color: #1a1a1a;
-            --accent-color: #0f172a;
-            --link-color: #2563eb;
-            --border-color: #e2e8f0;
-            --card-bg: #ffffff;
-        }
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            line-height: 1.7;
-            color: var(--text-color);
-            max-width: 850px;
+            line-height: 1.6;
+            color: #1f2937;
+            max-width: 1000px;
             margin: 0 auto;
-            padding: 60px 20px;
-            background-color: var(--bg-color);
+            padding: 40px 20px;
+            background-color: #fafafa;
         }
         header {
-            border-bottom: 2px solid var(--border-color);
-            padding-bottom: 30px;
-            margin-bottom: 50px;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #e5e7eb;
+            padding-bottom: 20px;
         }
         h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            color: var(--accent-color);
-            letter-spacing: -0.02em;
-        }
-        .subtitle {
-            font-size: 1.2rem;
-            color: #475569;
-            font-weight: 400;
+            font-size: 2.2rem;
+            margin-bottom: 6px;
+            color: #111827;
+            letter-spacing: -0.5px;
         }
         .nav-links {
             display: flex;
-            gap: 15px;
-            margin-top: 25px;
+            gap: 20px;
             flex-wrap: wrap;
+            padding: 10px 0;
+            align-items: center;
         }
-        .nav-links a {
+        .nav-links a, .dropbtn {
             text-decoration: none;
-            background: var(--accent-color);
-            color: white;
-            padding: 10px 18px;
-            border-radius: 6px;
+            color: #1e3a8a;
             font-weight: 500;
             font-size: 0.95rem;
-            transition: opacity 0.2s;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            font-family: inherit;
         }
-        .nav-links a:hover {
-            opacity: 0.85;
+        .terminal-panel {
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 35px;
         }
-        .section {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 10px;
-            padding: 30px;
-            margin-bottom: 30px;
-            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02);
-        }
-        h2 {
-            font-size: 1.5rem;
-            margin-top: 0;
-            color: var(--accent-color);
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 10px;
+        .panel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            border-bottom: 1px solid #f3f4f6;
+            padding-bottom: 12px;
             margin-bottom: 20px;
         }
-        h3 {
-            font-size: 1.2rem;
-            color: var(--accent-color);
-            margin-top: 25px;
-            margin-bottom: 10px;
+        .panel-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin: 0;
         }
-        p {
-            margin-bottom: 15px;
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-bottom: 24px;
         }
-        ul {
-            padding-left: 20px;
-            margin-bottom: 15px;
+        @media (max-width: 800px) {
+            .metric-grid { grid-template-columns: 1fr 1fr; }
         }
-        li {
-            margin-bottom: 8px;
+        .metric-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            padding: 16px;
         }
+        .metric-region {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #475569;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+        .metric-value {
+            font-size: 1.25rem;
+            font-weight: 700;
+            font-family: monospace;
+            color: #0f172a;
+            margin-bottom: 4px;
+        }
+        .metric-note {
+            font-size: 0.8rem;
+            color: #64748b;
+        }
+        .flow-diagram {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            padding: 16px;
+            font-size: 0.85rem;
+            margin-bottom: 20px;
+        }
+        .flow-steps {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            align-items: center;
+            font-family: monospace;
+            font-size: 0.8rem;
+            margin-top: 8px;
+        }
+        .step {
+            background: #ffffff;
+            border: 1px solid #cbd5e1;
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
+        .chart-box {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 6px;
+            padding: 28px;
+            margin-top: 30px;
+        }
+        .bar-container { margin-bottom: 18px; }
+        .bar-label { display: flex; justify-content: space-between; font-size: 0.9rem; font-weight: 500; margin-bottom: 6px; }
+        .bar-track { background: #f1f5f9; border-radius: 4px; height: 22px; width: 100%; overflow: hidden; }
+        .bar-fill { height: 100%; border-radius: 4px; }
+        .bar-1 { background: #cbd5e1; width: 33%; }
+        .bar-2 { background: #2563eb; width: 66%; }
+        .bar-3 { background: #f59e0b; width: 83%; }
+        .bar-4 { background: #ef4444; width: 100%; }
         footer {
             text-align: center;
             margin-top: 60px;
-            font-size: 0.9rem;
-            color: #64748b;
-            border-top: 1px solid var(--border-color);
+            font-size: 0.85rem;
+            color: #94a3b8;
+            border-top: 1px solid #e5e7eb;
             padding-top: 20px;
         }
     </style>
@@ -118,69 +148,101 @@
 <body>
 
     <header>
-        <h1>Makroøkonomiske Analyser</h1>
-        <div class="subtitle">Strategisk horisont, finansiel overvågning og kontraktøkonomi.</div>
-        
-        <div class="nav-links">
-            <a href="index.html">Forside</a>
+        <h1>Systemisk Økonomioversigt</h1>
+        <div style="color: #64748b; font-size: 1.05rem;">Mekanisk overvågning af balanceforskydninger og sovereign interventioner</div>
+        <nav class="nav-links">
+            <a href="index.html">&larr; Tilbage til Hovedsiden</a>
+            <a href="makro.html" style="font-weight: bold;">Systemisk Oversigt</a>
+            <a href="ai_arena.html">Macro Forecast Hub</a>
             <a href="arkiv.html">Ugebrev Arkiv</a>
-            <a href="forskning.html">Forskning & Undervisning</a>
-            <a href="kontakt.html">Kontakt</a>
-        </div>
+        </nav>
     </header>
 
     <main>
-        <div class="section">
-            <h2>Den Store Strukturelle Divergens: Hvorfor det globale finanssystem har ramt muren</h2>
-            <p><em>Af Lasse Holt</em></p>
+        <section class="terminal-panel">
+            <div class="panel-header">
+                <h2 class="panel-title">Systemisk Likviditet & Sovereign Interventioner</h2>
+                <span style="font-size: 0.8rem; color: #6b7280; font-family: monospace;">TELEMETRI: AKTIV</span>
+            </div>
 
-            <p>De seneste måneders makroøkonomiske udvikling markerer et fundamentalt faseskift i det globale finanssystem. Det, der i årevis blev udlagt som en kontrolleret blød landing efter halvandet årtis monetære eksperimenter, er accelereret til en synkroniseret likviditetsklemme.</p>
+            <div class="metric-grid">
+                <div class="metric-card">
+                    <div class="metric-region">USA • U.S. Treasury</div>
+                    <div class="metric-value">30Y: 5,295%</div>
+                    <div class="metric-note">$6 mia. opkøb afvist. Renter stiger trods intervention; Term Premium udvides.</div>
+                </div>
 
-            <p>Tiden med gratis penge – en historisk parentes fra finanskrisen i 2008 til pandemiens efterdønninger (ZIRP/QE-perioden) – er definitivt forbi. Tilbage står en ny, hård æra præget af strukturelt høje kapitalomkostninger, kronisk finanspolitisk pres og geopolitisk fragmentering, som vil forme de næste årtier. Vi oplever i dag en klar parallel til overgangene i 1970'erne: Efter Bretton Woods-systemets sammenbrud troede man, at statslig gældsætning og udbudschok kunne absorberes gnidningsfrit, indtil realiteterne tvang en voldsom monetær opstramning igennem.</p>
+                <div class="metric-card">
+                    <div class="metric-region">Japan • BoJ / MoF</div>
+                    <div class="metric-value">JPY Swap Stress</div>
+                    <div class="metric-note">Intervention i valutamarkedet modvirker uordnet lukning af carry trades.</div>
+                </div>
 
-            <p>Vores nuværende økonomiske modeller og kontraktuelle strukturer er bygget til en nulrenteverden, der ikke længere eksisterer.</p>
+                <div class="metric-card">
+                    <div class="metric-region">Danmark • Nat.banken</div>
+                    <div class="metric-value">-5,6 mia. DKK</div>
+                    <div class="metric-note">Intervention i valutareserven. Kronen svækket; spænd mod ECB (-0,40%) under pres.</div>
+                </div>
 
-            <h3>1. USA's gældsbjerg og mekanismen bag "Reverse Crowding-Out"</h3>
-            <p>Det finansielle fundament udfordres i dag af USA’s statsgæld, som har passeret $40 billioner USD med årlige rentebetalinger på over $1 billion USD. Det udgør en systemisk belastning af obligationsmarkedets transmissionsmekanisme.</p>
+                <div class="metric-card">
+                    <div class="metric-region">USA • CPI & Fed</div>
+                    <div class="metric-value">CPI: 3,4% YoY</div>
+                    <div class="metric-note">Kerne-CPI stædig (+0,2% MoM). Fed udelukker lempelser; Kevin Warsh fastholder stram linje.</div>
+                </div>
+            </div>
 
-            <p>Det institutionelle udbudschok: Det amerikanske finansministerium udsteder hundredvis af milliarder i nye statspapirer med få dages mellemrum for at finansiere det løbende underskud. Dette sker i et marked, hvor de traditionelle opkøbere – udenlandske centralbanker og store pensionskasser – reducerer deres eksponering, fordi den historiske sikkerhedspræmie (safety premium) på statsgæld er eroderet.</p>
+            <div class="flow-diagram">
+                <strong>Transmissionsmekanisme for aktuelt likviditetspres:</strong>
+                <div class="flow-steps">
+                    <span class="step">Stædig CPI (3,4%)</span>
+                    <span>&rarr;</span>
+                    <span class="step">Fed afviser lempelse</span>
+                    <span>&rarr;</span>
+                    <span class="step">BoJ JPY Støtte</span>
+                    <span>&rarr;</span>
+                    <span class="step">Carry Trade Unwinding</span>
+                    <span>&rarr;</span>
+                    <span class="step">Treasury $6B Opkøb Fejler</span>
+                    <span>&rarr;</span>
+                    <span class="step">30Y Stiger (5,295%)</span>
+                </div>
+            </div>
+        </section>
 
-            <p>AI-sektorens Reverse Crowding-Out: Hvor den klassiske økonomiske lærebog beskriver, hvordan staten fortrænger det private erhvervsliv (crowding-out), ser vi nu det modsatte fænomen: Store tech-hyperscalere suger likviditet til sig i hidtil uset omfang for at finansiere AI-infrastruktur, datacentre og energinetværk. Da disse selskaber opererer med en aggressiv ekspansionslogik og er relativt rente-agnostiske i kapløbet om computerkraft, udkonkurrerer de statspapirerne om den frie kapital.</p>
+        <div class="chart-box">
+            <h3 style="margin-top: 0; font-size: 1.15rem; color: #0f172a;">USA's Gældsudvikling: Renteudgifter som % af BNP</h3>
+            <div style="font-size: 0.9rem; color: #64748b; margin-bottom: 20px;">
+                Faktisk gæld > $35 billioner (~122% af BNP). Årlige rentebetalinger overstiger $1.100 mia. USD.
+            </div>
 
-            <p>Den finanspolitiske feedback-loop: Den amerikanske stat tvinges til at tilbyde højere renter for at afsætte sine obligationsserier. Det skaber en selvforstærkende dynamik: Højere renter fordyrer refinansieringen af den eksisterende gæld, udvider det strukturelle budgetunderskud og nødvendiggør endnu større udstedelser til markedet.</p>
+            <div class="bar-container">
+                <div class="bar-label" style="color: #64748b;">
+                    <span>Historisk lavrente-æra (2010-2021 gen. 2.0%)</span>
+                    <span>2.4% af BNP</span>
+                </div>
+                <div class="bar-track"><div class="bar-fill bar-1"></div></div>
+            </div>
 
-            <h3>2. Centralbankernes dilemma og markedsintelligensens metamorfose</h3>
-            <p>Det pengepolitiske regime undergår et tilsvarende brud. Ved det seneste Jackson Hole-symposium tegnede der sig et opgør med årtiers tradition for eksplicit forward guidance.</p>
+            <div class="bar-container" style="background: #eff6ff; padding: 12px; border-radius: 6px; border-left: 4px solid #2563eb;">
+                <div class="bar-label" style="color: #1e3a8a;">
+                    <span><strong>Aktuelt niveau (Effektiv rente ~4.0%)</strong></span>
+                    <span><strong>~4.9% af BNP</strong></span>
+                </div>
+                <div class="bar-track"><div class="bar-fill bar-2"></div></div>
+            </div>
 
-            <p>Grunden er strukturel: Den moderne markedsarkitektur domineres af automatiserede algoritmer og AI-modeller, der lynhurtigt afkoder, kalkulerer og modvirker centralbankernes forudsigelige træk. Som teoretikere som Markus Brunnermeier har argumenteret for, skaber denne asymmetriske forståelse en risiko for, at forudsigelighed fanger de monetære myndigheder i en likviditetsfælde (financial dominance). For at genvinde det strategiske overtag tvinges centralbankerne mod en bevidst uigennemskuelighed (opacity).</p>
-
-            <p>Samtidig viser de underliggende inflationsdata – hvor over halvdelen af komponenterne i den amerikanske PCE-kerneinflation fortsat stiger med over 3 % p.a. – at det inflatoriske pres har bidt sig fast. Præcis som i slutningen af 1970'erne må centralbankerne sande, at en for tidlig lempelse blot genantænder inflationsforventningerne.</p>
-
-            <h3>3. Kontraktarkitekturens kollaps i komplekse værdikæder</h3>
-            <p>Dette makroøkonomiske pres forplanter sig direkte til den mikroøkonomiske virkelighed. Når diskonteringsrenten stiger, ændres aktørernes adfærd fundamentalt: Den økonomiske tidshorisont forkortes drastisk, og incitamentet til opportunistisk adfærd (hold-up-problematikken) stiger i takt med kontraktens ufuldstændighed (incomplete contracts).</p>
-
-            <p>Kombinationen af dyr kapital, geopolitisk ustabilitet og skærpede compliance-krav (herunder EU's CSRD og CSDDD) blotlægger svaghederne i den traditionelle transaktionsomkostnings-logik:</p>
-
-            <p>Den defensive faldgrube: Virksomheder reagerer ofte ved at gribe til rigide standardkontrakter og forsøger at skubbe hele finansierings- og compliance-byrden ned gennem værdikæden via asymmetriske back-to-back-klausuler.</p>
-
-            <p>Det samfundsøkonomiske dødvægtstab: Når underleverandører pålægges uforudsigelig risiko uden kompenserende likviditet eller risikodeling, indregner de massive risikopræmier. Resultatet er tabt innovation, forsinkede forhandlinger og skrøbelige forsyningslinjer, der knækker ved det mindste eksterne chok. Den klassiske, nulsums-orienterede kontraktmodel kan ikke håndtere systemisk usikkerhed.</p>
-
-            <h3>4. Forbehold, forudsigelser og strategiske anbefalinger</h3>
-            <p>Følgende analyse og heraf afledte anbefalinger udgør mine personlige forudsigelser for den kommende tid og de strukturelle skift, organisationer bør navigere efter:</p>
-
-            <ul>
-                <li><strong>Forudsigelse – Vedvarende høje renter:</strong> Centralbankerne vil forblive fastlåste i et "higher-for-longer"-regime, fordi det strukturelle gældstryk og vedvarende energi- og geopolitiske chok umuliggør en genforening med nulrente-æraen.</li>
-                <li><strong>Gardering mod det finansielle pres:</strong> Virksomheder og investorer må undgå at basere langsigtede investeringer på antagelsen om snarlige, lempende rentenedsættelser. Likviditetsberedskabet skal styrkes, og balancen skal sikres mod kortfristede refinansieringschok.</li>
-                <li><strong>Implementering af multilaterale klubgoder:</strong> I stedet for at lade hver enkelt leverandør løfte tunge compliance- og dokumentationsomkostninger isoleret, bør der etableres fælles standarder, datadeling og governance-strukturer inden for leverandørnetværket. Dette omdanner en regulatorisk byrde til et internt klubgode, som reducerer transaktionsomkostningerne for hele netværket.</li>
-                <li><strong>Incitamentskompatibel kontraktarkitektur:</strong> Kontrakten skal transformeres fra et statisk sanktionskatalog til et dynamisk relationelt styringsværktøj. Ved at indbygge mekanismer for fleksibel tilpasning, fælles risikohåndtering og deling af relationsrenter sikres det, at parternes interesser forbliver parallelle – selv når eksterne makrostød rammer projektet.</li>
-            </ul>
-
-            <p>Vi befinder os i et regimeskifte. Tiden med kunstigt undertrykte renter og overskuelige forsyningskæder er afløst af en æra, hvor kapital koster, og systemisk modstandsdygtighed er afgørende. Virksomheder, der forsøger at løse en strukturel krise med forældede kontraktuelle paradigmer, vil erfare, at transaktionsomkostningerne æder deres marginer op. Fremtiden tilhører de aktører, der forstår at integrere stram makroøkonomisk realisme med relationel og spilteoretisk funderet kontraktarkitektur.</p>
+            <div class="bar-container">
+                <div class="bar-label" style="color: #b91c1c;">
+                    <span>Kritisk stress-scenarie (+200 bps)</span>
+                    <span><strong>7.3% af BNP (Uholdbar gældsspiral)</strong></span>
+                </div>
+                <div class="bar-track"><div class="bar-fill bar-4"></div></div>
+            </div>
         </div>
     </main>
 
     <footer>
-        &copy; 2026 Lasse Holt. Makroøkonomisk overvågning og strategisk analyse.
+        &copy; 2026 Lasse Holt. Makroøkonomisk Forsknings- & Dataplatform.
     </footer>
 
 </body>
