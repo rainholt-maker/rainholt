@@ -1,40 +1,46 @@
 {
-  "last_updated": "2026-09-11T12:00:00Z",
-  "status": "CRITICAL INTERVENTION FAILURE",
-  "source": "Euronews Business / Markets (10. sep 2026)",
-  "alerts_count": 4,
-  "headline": "US Treasury Yields Surge as $6 Billion Bond Buyback Disappoints Markets",
+  "last_updated": "2026-09-11T14:43:17.929470Z",
+  "status": "ACTION REQUIRED",
+  "alerts_count": 5,
   "alerts": [
     {
       "region": "US",
-      "authority": "U.S. Department of the Treasury",
-      "action": "$6 Billion Bond Buyback (Fejlet Indgreb)",
-      "stat": "30Y Yield Surge: 5.295%",
-      "desc": "Finansministeriet købte obligationer for $6 mia. for at presse kurserne op. Markedet afviste indgrebet og sendte renterne til nye højder.",
+      "name": "USA • Treasury",
+      "action": "Obligationstilbagekøb afvist",
+      "stat": "30Y: 5,295%",
+      "desc": "Bessents $6 mia. støtteopkøb afvises af markedet. Fed afviser QE. Term premium stiger.",
       "level": "CRITICAL"
     },
     {
       "region": "JP",
-      "authority": "Ministry of Finance / BoJ",
-      "action": "Massiv Yen-Intervention",
+      "name": "Japan • BoJ / MoF",
+      "action": "Valutaintervention",
       "stat": "Milliardopkøb i JPY",
-      "desc": "Støtteopkøb for at dæmpe likvidationer i yen-carry trades mod amerikanske statspapirer.",
+      "desc": "Massiv intervention for at dæmme op for afviklingen af carry trades mod US Treasuries.",
       "level": "CRITICAL"
     },
     {
       "region": "DK",
-      "authority": "Danmarks Nationalbank",
+      "name": "Danmark • Nationalbanken",
       "action": "Valutaforsvar",
       "stat": "5,6 mia. DKK opkøbt",
-      "desc": "Kronen på svageste niveau i 25 år; renterabat på -0,40% mod ECB truet.",
+      "desc": "Kronen på svageste niveau i 25 år; renterabatten mod ECB på -0,40% er truet.",
       "level": "WARNING"
     },
     {
       "region": "EU",
-      "authority": "ECB",
+      "name": "Eurozonen • ECB",
       "action": "Spreads & TPI",
       "stat": "Spreads +28 bps",
-      "desc": "Rentespænd udvides forud for rentemøde.",
+      "desc": "Perifere renter under pres forud for næste ECB-rentemøde.",
+      "level": "WARNING"
+    },
+    {
+      "region": "US_CPI",
+      "name": "USA • Pengepolitik & CPI",
+      "action": "Restriktiv Fed Fastholdes",
+      "stat": "CPI: 3.4% (Kerne: 0.2%)",
+      "desc": "Kerneinflation stædig. Fed udelukker lempelser; Kevin Warsh fastholder stram linje, hvilket fastholder likviditetspres på Treasury-markedet.",
       "level": "WARNING"
     }
   ]
