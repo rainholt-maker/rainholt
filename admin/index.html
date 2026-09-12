@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redaktørpanel – Lasse Holt</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        .admin-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.04);
+        }
+        h1 {
+            font-size: 1.6rem;
+            margin-top: 0;
+            color: #0f172a;
+            border-bottom: 1px solid #f1f5f9;
+            padding-bottom: 12px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 6px;
+            color: #334155;
+        }
+        input[type="text"], input[type="password"], textarea, select {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            box-sizing: border-box;
+        }
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #2563eb;
+            box-shadow: 0 0 0 2px rgba(37,99,235,0.1);
+        }
+        textarea {
+            resize: vertical;
+            height: 220px;
+            line-height: 1.5;
+        }
+        .btn-publish {
+            background: #1e3a8a;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .btn-publish:hover {
+            background: #1d4ed8;
+        }
+        .status-msg {
+            margin-top: 15px;
+            padding: 12px;
+            border-radius: 6px;
+            display: none;
+            font-size: 0.9rem;
+        }
+        .status-success { background: #dcfce7; color: #166534; border: 1px solid #bbf7d0; }
+        .status-error { background: #fee2e2; color: #991b1b; border: 1px solid #fecaca; }
+        .settings-toggle {
+            font-size: 0.8rem;
+            color: #64748b;
+            text-decoration: underline;
+            cursor: pointer;
+            margin-top: 25px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="admin-card">
+        <h1>Udgiv nyt opslag til hjemmesiden</h1>
+
+        <div id="status" class="status-msg"></div>
+
+        <form id="post-form">
+            <div class="form-group">
+                <label for="title">Overskrift / Emne</label>
+                <input type="text" id="title" placeholder="F.eks. Højere renter stopper ikke raketter" required>
+            </div>
+
+            <div class="form-group">
+                <label for="category">Kategori / Målside</label>
+                <select id="category">
+                    <option value="arkiv.html">Ugebrev Arkiv (arkiv.html)</option>
+                    <option value="makro.html">Systemisk Makro (makro.html)</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="content">Indhold / Analyse (Alm. tekst eller afsnit)</label>
+                <textarea id="content" placeholder="Skriv eller indsæt dit opslag her..." required></textarea>
+            </div>
+
+            <button type="submit" class="btn-publish" id="submit-btn">Publicér til hjemmesiden</button>
+        </form>
+
+        <span class="settings-toggle" onclick="toggleConfig()">⚙️ Indstillinger for API-adgang</span>
+
+        <div id="config-panel" style="display: none; margin-top: 15px; background: #f8fafc; padding: 15px; border-radius: 6px; border: 1px dashed #cbd5e1;">
+            <div class="form-group" style="margin-bottom: 10px;">
+                <label for="repo">GitHub Repository (bruger/repo)</label>
+                <input type="text" id="repo" value="rainholt-maker/rainholt">
+            </div>
+            <div class="form-group" style="margin-bottom: 0;">
+                <label for="pat">GitHub Fine-Grained Token (Gemmes kun i din browser)</label>
+                <input type="password" id="pat" placeholder="github_pat_...">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Hent gemte nøgler fra browserens LocalStorage
+        document.getElementById('repo').value = localStorage.getItem('gh_repo') || 'rainholt-maker/rainholt';
+        document.getElementById('pat').value = localStorage.getItem('gh_pat') || '';
+
+        function toggleConfig() {
+            const panel = document.getElementById('config-panel');
+            panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
+        }
+
+        document.getElementById('post-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const repo = document.getElementById('repo').value.trim();
+            const token = document.getElementById('pat').value.trim();
+            const title = document.getElementById('title').value.trim();
+            const targetFile = document.getElementById('category').value;
+            const content = document.getElementById('content').value.trim();
+            const statusDiv = document.getElementById('status');
+            const submitBtn = document.getElementById('submit-btn');
+
+            if (!token) {
+                alert('Klik på ⚙️ Indstillinger og indsæt dit GitHub Token først.');
+                toggleConfig();
+                return;
+            }
+
+            // Gem værdier lokalt
+            localStorage.setItem('gh_repo', repo);
+            localStorage.setItem('gh_pat', token);
+
+            submitBtn.disabled = true;
+            submitBtn.innerText = 'Udgiver...';
+            statusDiv.style.display = 'none';
+
+            try {
+                // 1. Hent den eksisterende fil via GitHub API
+                const getUrl = `https://api.github.com/repos/${repo}/contents/${targetFile}`;
+                const getRes = await fetch(getUrl, {
+                    headers: { 'Authorization': `Bearer ${token}`, 'Accept': 'application/vnd.github.v3+json' }
+                });
+
+                if (!getRes.ok) throw new Error('Kunne ikke hente målsiden fra GitHub: ' + getRes.statusText);
+                const fileData = await getRes.json();
+                
+                // Dekod eksisterende HTML
+                const existingHtml = decodeURIComponent(escape(atob(fileData.content)));
+
+                // 2. Formater nyt opslag
+                const today = new Date().toLocaleDateString('da-DK', { day: 'numeric', month: 'long', year: 'numeric' });
+                const formattedParagraphs = content.split('\n\n').map(p => `<p>${p.replace(/\n/g, '<br>')}</p>`).join('\n');
+                
+                const newArticleHtml = `
+<!-- NEWSLETTER_ITEM -->
+<article class="post" style="border-left: 3px solid #1e3a8a; padding-left: 18px; margin-bottom: 35px;">
+  <div style="font-size: 0.85rem; color: #64748b; margin-bottom: 4px;">${today}</div>
+  <h3 style="margin-top: 0; color: #0f172a; font-size: 1.3rem;">${title}</h3>
+  <div style="color: #334151;">
+    ${formattedParagraphs}
+  </div>
+</article>
+`;
+
+                // 3. Indsæt det nye opslag i toppen af artiklerne
+                let updatedHtml;
+                if (existingHtml.includes('<!-- NEWSLETTER_HOOK -->')) {
+                    updatedHtml = existingHtml.replace('<!-- NEWSLETTER_HOOK -->', '<!-- NEWSLETTER_HOOK -->\n' + newArticleHtml);
+                } else if (existingHtml.includes('<main>')) {
+                    updatedHtml = existingHtml.replace('<main>', '<main>\n' + newArticleHtml);
+                } else {
+                    throw new Error('Kunne ikke finde et indsættelsespunkt (<main> eller <!-- NEWSLETTER_HOOK -->) i filen.');
+                }
+
+                // 4. Commit ændringen tilbage til GitHub
+                const updatePayload = {
+                    message: `Udgivet: ${title}`,
+                    content: btoa(unescape(encodeURIComponent(updatedHtml))),
+                    sha: fileData.sha
+                };
+
+                const putRes = await fetch(getUrl, {
+                    method: 'PUT',
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/vnd.github.v3+json'
+                    },
+                    body: JSON.stringify(updatePayload)
+                });
+
+                if (!putRes.ok) throw new Error('Fejl ved opdatering af fil: ' + putRes.statusText);
+
+                // Succes!
+                statusDiv.className = 'status-msg status-success';
+                statusDiv.innerHTML = `✅ <strong>Udgivet med succes!</strong> Opslaget er nu committet til <code>${targetFile}</code> og opdateres på sitet inden for ~30 sekunder.`;
+                statusDiv.style.display = 'block';
+
+                document.getElementById('title').value = '';
+                document.getElementById('content').value = '';
+
+            } catch (err) {
+                statusDiv.className = 'status-msg status-error';
+                statusDiv.innerHTML = `❌ <strong>Fejl:</strong> ${err.message}`;
+                statusDiv.style.display = 'block';
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerText = 'Publicér til hjemmesiden';
+            }
+        });
+    </script>
+
+</body>
+</html>
