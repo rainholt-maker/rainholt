@@ -32,16 +32,11 @@
             padding: 10px 0;
             align-items: center;
         }
-        .nav-links a, .dropbtn {
+        .nav-links a {
             text-decoration: none;
             color: #1e3a8a;
             font-weight: 500;
             font-size: 0.95rem;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 0;
-            font-family: inherit;
         }
         .terminal-panel {
             background: #ffffff;
@@ -66,12 +61,9 @@
         }
         .metric-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
             gap: 16px;
             margin-bottom: 24px;
-        }
-        @media (max-width: 800px) {
-            .metric-grid { grid-template-columns: 1fr 1fr; }
         }
         .metric-card {
             background: #f8fafc;
@@ -133,7 +125,6 @@
         .bar-fill { height: 100%; border-radius: 4px; }
         .bar-1 { background: #cbd5e1; width: 33%; }
         .bar-2 { background: #2563eb; width: 66%; }
-        .bar-3 { background: #f59e0b; width: 83%; }
         .bar-4 { background: #ef4444; width: 100%; }
         footer {
             text-align: center;
@@ -153,8 +144,8 @@
         <nav class="nav-links">
             <a href="index.html">&larr; Tilbage til Hovedsiden</a>
             <a href="makro.html" style="font-weight: bold;">Systemisk Oversigt</a>
-            <a href="ai_arena.html">Macro Forecast Hub</a>
             <a href="arkiv.html">Ugebrev Arkiv</a>
+            <a href="ai_arena.html">Macro Forecast Hub</a>
         </nav>
     </header>
 
@@ -167,9 +158,15 @@
 
             <div class="metric-grid">
                 <div class="metric-card">
+                    <div class="metric-region">Norge • NBIM ($2,3T)</div>
+                    <div class="metric-value">-$80 mia. USD</div>
+                    <div class="metric-note">Benchmark sænkes 70% &rarr; 50%. Strukturel tilbagetrækning fra US Treasuries.</div>
+                </div>
+
+                <div class="metric-card">
                     <div class="metric-region">USA • U.S. Treasury</div>
-                    <div class="metric-value">30Y: 5,295%</div>
-                    <div class="metric-note">$6 mia. opkøb afvist. Renter stiger trods intervention; Term Premium udvides.</div>
+                    <div class="metric-value">10Y: 4,97% / 30Y: 5,29%</div>
+                    <div class="metric-note">$6 mia. opkøb afvist. Rekordunderskud på $1,97 billioner presser markedet.</div>
                 </div>
 
                 <div class="metric-card">
@@ -181,30 +178,28 @@
                 <div class="metric-card">
                     <div class="metric-region">Danmark • Nat.banken</div>
                     <div class="metric-value">-5,6 mia. DKK</div>
-                    <div class="metric-note">Intervention i valutareserven. Kronen svækket; spænd mod ECB (-0,40%) under pres.</div>
+                    <div class="metric-note">Intervention i valutareserven; fastkursforsvaret presser renterabatten mod ECB.</div>
                 </div>
 
                 <div class="metric-card">
-                    <div class="metric-region">USA • CPI & Fed</div>
-                    <div class="metric-value">CPI: 3,4% YoY</div>
-                    <div class="metric-note">Kerne-CPI stædig (+0,2% MoM). Fed udelukker lempelser; Kevin Warsh fastholder stram linje.</div>
+                    <div class="metric-region">Eurozonen • ECB</div>
+                    <div class="metric-value">Indlån: 2,75%</div>
+                    <div class="metric-note">Fastholder stram linje trods udbudschok; modvirker importeret inflation.</div>
                 </div>
             </div>
 
             <div class="flow-diagram">
                 <strong>Transmissionsmekanisme for aktuelt likviditetspres:</strong>
                 <div class="flow-steps">
-                    <span class="step">Stædig CPI (3,4%)</span>
+                    <span class="step">Norge NBIM Exit (-$80B)</span>
                     <span>&rarr;</span>
-                    <span class="step">Fed afviser lempelse</span>
-                    <span>&rarr;</span>
-                    <span class="step">BoJ JPY Støtte</span>
-                    <span>&rarr;</span>
-                    <span class="step">Carry Trade Unwinding</span>
+                    <span class="step">Udbudsmætning</span>
                     <span>&rarr;</span>
                     <span class="step">Treasury $6B Opkøb Fejler</span>
                     <span>&rarr;</span>
-                    <span class="step">30Y Stiger (5,295%)</span>
+                    <span class="step">10Y Rente mod 5,0%</span>
+                    <span>&rarr;</span>
+                    <span class="step">Globalt Likviditetsdræn (DKK Forsvar)</span>
                 </div>
             </div>
         </section>
