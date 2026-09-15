@@ -3,13 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lasse Holt – Profil & Forskningsportal</title>
+    <title>Lasse Holt – Strategisk Kontrahering, Innovationspartnerskaber & Bæredygtig Kapitalisme</title>
+    <meta name="description" content="Lasse Holt. Specialiseret rådgivning og forskning inden for strategisk kontrahering, relationsbaserede kontrakter, innovationspartnerskaber og bæredygtig kapitalisme i værdikæder.">
+
+    <!-- AEO & SEARCH ENGINE ENTITY GRAPH -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Lasse Holt",
+      "jobTitle": "Ekspert i Strategisk Kontrahering & Ekstern Lektor",
+      "url": "https://www.lasseholt.dk",
+      "knowsAbout": [
+        "Strategisk kontrahering",
+        "Innovationspartnerskaber",
+        "Relationsbaserede kontrakter",
+        "Gensidigt værdiskabende samarbejder",
+        "Bæredygtig kapitalisme",
+        "Kontraktuel incitamentsstruktur og spilteori",
+        "Systemisk makroøkonomi"
+      ],
+      "description": "Specialist i strategisk kontrahering, partnerskabsmodeller og bæredygtige værdikædesamarbejder."
+    }
+    </script>
+
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             line-height: 1.6;
             color: #1f2937;
-            max-width: 900px;
+            max-width: 920px;
             margin: 0 auto;
             padding: 50px 20px;
             background-color: #fafafa;
@@ -17,110 +40,122 @@
         header {
             margin-bottom: 40px;
             border-bottom: 1px solid #e5e7eb;
-            padding-bottom: 20px;
+            padding-bottom: 25px;
         }
         h1 {
-            font-size: 2.4rem;
+            font-size: 2.3rem;
             margin-bottom: 6px;
             color: #111827;
             letter-spacing: -0.5px;
         }
         .subtitle {
             font-size: 1.15rem;
+            color: #1e3a8a;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        .tagline {
+            font-size: 1.0rem;
             color: #4b5563;
-            margin-bottom: 20px;
+            max-width: 760px;
+            line-height: 1.5;
         }
         .nav-links {
             display: flex;
             gap: 20px;
             flex-wrap: wrap;
-            padding: 10px 0;
+            padding: 16px 0 0 0;
             align-items: center;
         }
-        .nav-links a, .dropbtn {
+        .nav-links a {
             text-decoration: none;
             color: #1e3a8a;
             font-weight: 500;
             font-size: 0.95rem;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 0;
-            font-family: inherit;
         }
-        .nav-links a:hover, .dropdown:hover .dropbtn {
+        .nav-links a:hover {
             color: #1d4ed8;
             text-decoration: underline;
         }
-        .dropdown { position: relative; display: inline-block; }
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: white;
-            min-width: 220px;
-            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.06);
-            border: 1px solid #e5e7eb;
-            border-radius: 6px;
-            z-index: 10;
-            top: 100%;
-            left: 0;
-            padding: 6px 0;
-        }
-        .dropdown-content a {
-            color: #374151;
-            padding: 8px 16px;
-            text-decoration: none;
-            display: block;
-            font-size: 0.9rem;
-        }
-        .dropdown-content a:hover { background-color: #f3f4f6; color: #1e3a8a; }
-        .dropdown:hover .dropdown-content { display: block; }
 
-        .intro-section { margin-bottom: 45px; }
-        .intro-section p { font-size: 1.05rem; color: #374151; }
-        .portal-grid {
+        /* KERNEOMRÅDER GRID */
+        .pillar-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 25px;
-            margin-top: 30px;
+            gap: 24px;
+            margin: 40px 0;
         }
         @media (max-width: 768px) {
-            .portal-grid { grid-template-columns: 1fr; }
+            .pillar-grid { grid-template-columns: 1fr; }
         }
-        .portal-card {
-            background: white;
+        .pillar-card {
+            background: #ffffff;
             border: 1px solid #e5e7eb;
-            border-radius: 6px;
-            padding: 24px;
+            border-radius: 8px;
+            padding: 26px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.03);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
         }
-        .portal-card h2 {
+        .pillar-card.primary {
+            border-top: 4px solid #1e3a8a;
+        }
+        .pillar-card.secondary {
+            border-top: 4px solid #047857;
+        }
+        .pillar-card h2 {
             font-size: 1.25rem;
             color: #0f172a;
             margin-top: 0;
             margin-bottom: 10px;
+            letter-spacing: -0.2px;
         }
-        .portal-card p {
+        .pillar-card p {
             font-size: 0.95rem;
             color: #4b5563;
-            margin-bottom: 20px;
+            margin-bottom: 18px;
+            line-height: 1.55;
         }
-        .portal-link {
+        .pillar-link {
             text-decoration: none;
             color: #1e3a8a;
             font-weight: 600;
             font-size: 0.9rem;
         }
-        .portal-link:hover { text-decoration: underline; }
+        .pillar-link:hover {
+            text-decoration: underline;
+        }
+
+        /* DISKRET MAKRO-KONTEKST SEKTION */
+        .context-box {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 22px;
+            margin-top: 20px;
+        }
+        .context-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        .context-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #334151;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
         footer {
             text-align: center;
             margin-top: 70px;
             font-size: 0.85rem;
             color: #94a3b8;
             border-top: 1px solid #e5e7eb;
-            padding-top: 20px;
+            padding-top: 25px;
         }
     </style>
 </head>
@@ -128,65 +163,58 @@
 
     <header>
         <h1>Lasse Holt</h1>
-        <div class="subtitle">Strategisk Kontrahering, Spilteori & Makroøkonomisk Analyse</div>
+        <div class="subtitle">Strategisk Kontrahering • Innovationspartnerskaber • Bæredygtig Kapitalisme</div>
+        <div class="tagline">
+            Udvikling af gensidigt værdiskabende kontrakter og langsigtede partnerskabsmodeller, der balancerer risikodeling, incitamentsstrukturer og bæredygtighed i komplekse værdikæder.
+        </div>
         <nav class="nav-links">
-            <div class="dropdown">
-                <button class="dropbtn">Økonomi & Makro ▾</button>
-                <div class="dropdown-content">
-                    <a href="makro.html">Systemisk Oversigt & Data</a>
-                    <a href="ai_arena.html">Macro Forecast Hub</a>
-                </div>
-            </div>
-            <a href="arkiv.html">Ugebrev Arkiv</a>
-            <a href="forskning.html">Forskning</a>
+            <a href="forskning.html">Strategisk Kontrahering</a>
+            <a href="arkiv.html">Artikler & Ugebreve</a>
+            <a href="makro.html">Makroøkonomisk Kontekst</a>
+            <a href="ai_arena.html">Forecast Hub</a>
             <a href="kontakt.html">Kontakt</a>
         </nav>
     </header>
 
     <main>
-        <div class="intro-section">
-            <p>
-                Velkommen. Denne portal samler faglige analyser, forskningsnotater og modelleringsværktøjer inden for strategisk kontrahering, institutionel spilteori og makroøkonomiske transmissionsmekanismer.
+        <!-- FAGLIGE KERNEOMRÅDER -->
+        <section class="pillar-grid">
+            <div class="pillar-card primary">
+                <div>
+                    <h2>Strategisk Kontrahering & Partnerskaber</h2>
+                    <p>
+                        Traditionel kontrahering fokuserer ofte snævert på risikominimering og ansvarsfraskrivelse. Strategisk kontrahering flytter fokus mod <strong>innovationspartnerskaber og relationsbaserede modeller</strong>, hvor aftalegrundlaget skaber fælles incitamenter, transparens og kontinuerlig værdiskabelse.
+                    </p>
+                </div>
+                <a href="forskning.html" class="pillar-link">Læs om kontraktuelle modeller &rarr;</a>
+            </div>
+
+            <div class="pillar-card secondary">
+                <div>
+                    <h2>Bæredygtig Kapitalisme i Værdikæder</h2>
+                    <p>
+                        Hvordan omsættes ESG-krav og bæredygtighedsmål til bindende, gensidigt værdiskabende relationer? Forskning og metodik i at forankre langsigtede incitamenter mellem ordregivere, leverandører og samfundsansvar uden unødigt bureaukrati.
+                    </p>
+                </div>
+                <a href="forskning.html" class="pillar-link">Se rammeværk for værdikæder &rarr;</a>
+            </div>
+        </section>
+
+        <!-- DEN MAKROØKONOMISKE KONTEKST -->
+        <section class="context-box">
+            <div class="context-header">
+                <span class="context-title">Ydre Vilkår: Systemisk Makrotelemetri</span>
+                <span style="font-size: 0.8rem; color: #64748b; font-family: monospace;">KONTEKSTUELT MONITOR</span>
+            </div>
+            <p style="margin: 0 0 12px 0; font-size: 0.95rem; color: #4b5563;">
+                Velfungerende kontrakter eksisterer ikke i et vakuum. De skal modstå voldsomme skift i kapitalkomkostninger, udbudschok og likviditetsstramninger. Vores telemetri overvåger de globale vilkår, som moderne partnerskaber skal navigere i.
             </p>
-        </div>
-
-        <div class="portal-grid">
-            <div class="portal-card" style="border-top: 3px solid #1e3a8a;">
-                <div>
-                    <h2>Økonomi & Makrotelemetri</h2>
-                    <p>Mekanisk overvågning af statsgæld, renteudvikling, centralbankstøtte og valutainterventioner på tværs af USA, Europa, Danmark og Japan.</p>
-                </div>
-                <a href="makro.html" class="portal-link">Gå til økonomioversigten &rarr;</a>
-            </div>
-
-            <div class="portal-card">
-                <div>
-                    <h2>Forskning & Publikationer</h2>
-                    <p>Akademiske arbejder og analyser med fokus på kontraktøkonomi, incitamentsstrukturer og værdikædeoptimering.</p>
-                </div>
-                <a href="forskning.html" class="portal-link">Se forskningsområder &rarr;</a>
-            </div>
-
-            <div class="portal-card">
-                <div>
-                    <h2>Ugebreve & Arkiv</h2>
-                    <p>Kronologisk oversigt over udsendte analyser, kommentarer til pengepolitiske stramninger og markedsobservationer.</p>
-                </div>
-                <a href="arkiv.html" class="portal-link">Åbn ugebrevsarkiv &rarr;</a>
-            </div>
-
-            <div class="portal-card">
-                <div>
-                    <h2>Macro Forecast Hub</h2>
-                    <p>Struktureret data-nexus for økonomiske modeller og maskinelle fremskrivninger af likviditet og risikopræmier.</p>
-                </div>
-                <a href="ai_arena.html" class="portal-link">Gå til Forecast Hub &rarr;</a>
-            </div>
-        </div>
+            <a href="makro.html" class="pillar-link">Åbn systemisk makro-telemetri (US, EU, DK, JP) &rarr;</a>
+        </section>
     </main>
 
     <footer>
-        &copy; 2026 Lasse Holt.
+        &copy; 2026 Lasse Holt. Strategisk Kontrahering, Værdikæder & Bæredygtig Kapitalisme.
     </footer>
 
 </body>
