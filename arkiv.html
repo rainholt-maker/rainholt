@@ -3,84 +3,228 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ugebrev Arkiv – Lasse Holt</title>
+    <title>Ugebreve & Arkiv – Lasse Holt</title>
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             line-height: 1.6;
             color: #1f2937;
-            max-width: 900px;
+            max-width: 860px;
             margin: 0 auto;
             padding: 40px 20px;
             background-color: #fafafa;
         }
         header {
-            margin-bottom: 30px;
+            margin-bottom: 35px;
             border-bottom: 1px solid #e5e7eb;
             padding-bottom: 20px;
         }
-        h1 { font-size: 2.2rem; color: #111827; margin-bottom: 6px; }
-        .nav-links { display: flex; gap: 20px; padding: 10px 0; }
-        .nav-links a { text-decoration: none; color: #1e3a8a; font-weight: 500; font-size: 0.95rem; }
-        .post {
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+        h1 { font-size: 2.1rem; color: #111827; margin: 0 0 6px 0; }
+        nav { display: flex; gap: 20px; padding-top: 14px; }
+        nav a { text-decoration: none; color: #1e3a8a; font-weight: 500; font-size: 0.95rem; }
+
+        .section-header {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin: 35px 0 15px 0;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 6px;
+        }
+
+        /* BRIEF-SKABELON */
+        .brief-card {
             background: #ffffff;
             border: 1px solid #e5e7eb;
             border-left: 4px solid #1e3a8a;
-            border-radius: 6px;
-            padding: 24px;
-            margin-bottom: 30px;
+            border-radius: 0 6px 6px 0;
+            padding: 22px;
+            margin-bottom: 20px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
         }
+        .brief-meta {
+            font-size: 0.8rem;
+            color: #64748b;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+        .brief-title {
+            margin: 0 0 12px 0;
+            font-size: 1.25rem;
+            color: #0f172a;
+        }
+        .brief-point {
+            margin-bottom: 10px;
+            font-size: 0.92rem;
+            color: #334151;
+        }
+        .brief-point strong { color: #0f172a; }
+
+        /* TIDSLINJE / HISTORISK ARKIV */
+        .archive-tree {
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 6px;
+            padding: 15px 25px;
+        }
+        details {
+            padding: 10px 0;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        details:last-child { border-bottom: none; }
+        summary {
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            color: #1e3a8a;
+        }
+        .archive-list {
+            list-style: none;
+            padding-left: 15px;
+            margin: 10px 0 5px 0;
+        }
+        .archive-list li {
+            padding: 5px 0;
+            font-size: 0.9rem;
+            display: flex;
+            justify-content: space-between;
+        }
+        .archive-list a { text-decoration: none; color: #334151; }
+        .archive-list a:hover { color: #1e3a8a; text-decoration: underline; }
+        .archive-date { color: #94a3b8; font-size: 0.8rem; font-family: monospace; }
+
         footer { text-align: center; margin-top: 60px; font-size: 0.85rem; color: #94a3b8; }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>Ugebrev Arkiv</h1>
-        <div style="color: #64748b;">Kronologiske analyser af makroøkonomi, gæld og renteudvikling</div>
-        <nav class="nav-links">
+        <div class="header-top">
+            <h1>Ugebreve & Analyser</h1>
+            <div style="font-size: 0.85rem;"><strong>DA</strong> | <a href="en/archive.html" style="color: #1e3a8a; text-decoration: none;">EN</a></div>
+        </div>
+        <div style="color: #64748b;">Mekaniske observationer, systemiske chok og strukturelle skift</div>
+        <nav>
             <a href="index.html">&larr; Hovedside</a>
-            <a href="makro.html">Systemisk Oversigt</a>
-            <a href="arkiv.html" style="font-weight: bold;">Ugebrev Arkiv</a>
+            <a href="makro.html">Makroøkonomisk Radar</a>
+            <a href="forskning.html">Strategisk Kontrahering</a>
         </nav>
     </header>
 
     <main>
         <!-- NEWSLETTER_HOOK -->
 
-        <!-- ARTICLE: SLOWMOTION-KRAK -->
-        <article class="post">
-            <div style="font-size: 0.85rem; color: #64748b; font-weight: 600; margin-bottom: 6px;">12. SEPTEMBER 2026</div>
-            <h2 style="margin-top: 0; color: #0f172a; font-size: 1.45rem;">Slowmotion-krak</h2>
+        <div class="section-header">Seneste 4 Fredagsbriefs</div>
 
-            <div style="margin-bottom: 20px;">
-                <h4 style="margin: 0 0 8px 0; color: #1e3a8a;">1. Nøgletal og status (September 2026)</h4>
-                <ul style="margin: 0; padding-left: 20px; color: #334151;">
-                    <li><strong>US Statsgæld & Underskud:</strong> Gælden har rundet $40 billioner; det årlige underskud ligger stabilt på $1,97 billioner (5–7 % af BNP) med over $1 billion i årlige renteudgifter.</li>
-                    <li><strong>Rentepres mod 5 %:</strong> Den 10-årige amerikanske statsrente er steget til 4,97 % – faretruende tæt på "kill-switchet" ved 5,0 %.</li>
-                    <li><strong>Energichok:</strong> Brent-olien over $97 og gaspriser (TTF) over €75/MWh fastholder inflationspres og tvinger ECB til en indlånsrente på 2,75 %.</li>
-                </ul>
+        <!-- BRIEF 1 -->
+        <article class="brief-card">
+            <div class="brief-meta">FREDAGSBRIEF • 18. SEPTEMBER 2026</div>
+            <h2 class="brief-title">Fed strammer mod Det Hvide Hus: Gældsboble møder kapitalabsorption</h2>
+            <div class="brief-point">
+                <strong>Ugens bevægelse:</strong> Fed og Kevin Warsh løfter styringsrenten med 25 bps til 3,75–4,00 % mod Trumps eksplicitte krav om lempelser mod 1,0 %. Første renteforhøjelse siden 2023.
             </div>
-
-            <div style="margin-bottom: 20px;">
-                <h4 style="margin: 0 0 8px 0; color: #1e3a8a;">2. De store systemtrusler: Norges Oliefond & EU-bazookaen</h4>
-                <ul style="margin: 0; padding-left: 20px; color: #334151;">
-                    <li><strong>Norges Oliefond (NBIM):</strong> Har formelt anbefalet at skære sin andel af statsobligationer ned fra 70 % til 50 %, hvilket udløser et strukturelt nedsalg på ca. $75–80 milliarder væk fra amerikanske statspapirer.</li>
-                    <li><strong>EU-bazookaen / Valutareserver:</strong> Centralbanker flytter kapital fra passiv dollar-akkumulering mod guld (global guldandel på 27 %, Holland har hjemtaget 86 tons guld).</li>
-                </ul>
+            <div class="brief-point">
+                <strong>Underliggende transmissionsmekanisme:</strong> Mellemøst-energichok fastholder olie over $97, mens gældsfinansieret AI-kapløb (hyperscalers) støvsuger kapitalmarkedet. Likviditetsbassin tømmes, hvilket løfter den langsigtede ligevægtsrente.
             </div>
-
-            <div>
-                <h4 style="margin: 0 0 8px 0; color: #1e3a8a;">3. De næste 4 uger</h4>
-                <ul style="margin: 0; padding-left: 20px; color: #334151;">
-                    <li><strong>FOMC-møde:</strong> Markedet indpriser 85 % sandsynlighed for rentefastholdelse, men likviditetsbæredygtigheden udfordres hvis den lange ende bider sig fast over 5 %.</li>
-                </ul>
+            <div class="brief-point">
+                <strong>Perspektiv:</strong> Med amerikansk statsgæld over $40 billioner og et underskud på $1,97 billioner underminerer den fastholdte risikofrie rente fundamentet for gældsbaserede modeller.
             </div>
         </article>
+
+        <!-- BRIEF 2 -->
+        <article class="brief-card">
+            <div class="brief-meta">FREDAGSBRIEF • 11. SEPTEMBER 2026</div>
+            <h2 class="brief-title">Norges Oliefond barberer statsobligationer: Ankeret letter</h2>
+            <div class="brief-point">
+                <strong>Ugens bevægelse:</strong> NBIM ($2,3 billioner) anbefaler at sænke benchmark-andelen af statsobligationer fra 70 % til 50 %. Svarer til en reduktion på ~$75–80 mia. USD i statspapirer.
+            </div>
+            <div class="brief-point">
+                <strong>Underliggende transmissionsmekanisme:</strong> Strukturel tilbagetrækning rammer midt i et amerikansk auktions-overskud. Finansministeriets $6 mia. støtteopkøb preller af, og 10-årige renter presses mod 4,97 %.
+            </div>
+            <div class="brief-point">
+                <strong>Perspektiv:</strong> Suveræne allokatorer søger væk fra risikofri statsgæld mod realaktiver og realkredit. Udbudschokket efterlader Washington uden eksterne ankerkøbere.
+            </div>
+        </article>
+
+        <!-- BRIEF 3 -->
+        <article class="brief-card">
+            <div class="brief-meta">FREDAGSBRIEF • 4. SEPTEMBER 2026</div>
+            <h2 class="brief-title">Fastkurs under pres: Nationalbankens valutareserve aktiveret</h2>
+            <div class="brief-point">
+                <strong>Ugens bevægelse:</strong> Danmarks Nationalbank intervenerer med -5,6 mia. DKK for at forsvare kronen. Rentespændet mod ECB (-0,40 %) testes.
+            </div>
+            <div class="brief-point">
+                <strong>Underliggende transmissionsmekanisme:</strong> Dollar-likviditetsstramning og globale porteføljeskift tvinger mindre valutaer i defensiven.
+            </div>
+            <div class="brief-point">
+                <strong>Perspektiv:</strong> Den danske renterabat over for Europa er under strukturel afvikling, såfremt valutapresset fastholdes.
+            </div>
+        </article>
+
+        <!-- BRIEF 4 -->
+        <article class="brief-card">
+            <div class="brief-meta">FREDAGSBRIEF • 28. AUGUST 2026</div>
+            <h2 class="brief-title">Europæisk rentestædighed: ECB fastholder stram linje</h2>
+            <div class="brief-point">
+                <strong>Ugens bevægelse:</strong> ECB fastholder indlånsrenten på 2,75 % trods vigende vækstindikatorer.
+            </div>
+            <div class="brief-point">
+                <strong>Underliggende transmissionsmekanisme:</strong> Frankfurt afviser at agere passiv finansieringskilde for amerikansk finanspolitisk ekspansion og beskytter opsparing mod importeret inflation.
+            </div>
+            <div class="brief-point">
+                <strong>Perspektiv:</strong> Højere kapitalomkostninger bider sig fast i europæiske industrikontrakter, hvilket fordrer mere fleksible partnerskabsmodeller.
+            </div>
+        </article>
+
+        <!-- HISTORISK ARKIV (TIDSLINJE) -->
+        <div class="section-header">Historisk Arkiv (Ældre analyser)</div>
+        <div class="archive-tree">
+            <details open>
+                <summary>2026</summary>
+                <ul class="archive-list">
+                    <li>
+                        <a href="#">August: Ubalance i de 2-årige europæiske swaprenter</a>
+                        <span class="archive-date">21.08.2026</span>
+                    </li>
+                    <li>
+                        <a href="#">August: Carry Trade Unwinding – BoJ og JPY Swap Stress</a>
+                        <span class="archive-date">14.08.2026</span>
+                    </li>
+                    <li>
+                        <a href="#">Juli: Den globale guldreserveandel når 27 %</a>
+                        <span class="archive-date">31.07.2026</span>
+                    </li>
+                    <li>
+                        <a href="#">Juli: Holland hjemsender 86 tons fysisk guld</a>
+                        <span class="archive-date">17.07.2026</span>
+                    </li>
+                </ul>
+            </details>
+            <details>
+                <summary>2025</summary>
+                <ul class="archive-list">
+                    <li>
+                        <a href="#">December: Renteudgifter som % af BNP runder 4,5 %</a>
+                        <span class="archive-date">19.12.2025</span>
+                    </li>
+                    <li>
+                        <a href="#">Oktober: Term Premium vender tilbage til det amerikanske obligationsmarked</a>
+                        <span class="archive-date">24.10.2025</span>
+                    </li>
+                </ul>
+            </details>
+        </div>
     </main>
 
     <footer>
-        &copy; 2026 Lasse Holt.
+        &copy; 2026 Lasse Holt. Ugebreve & Systemisk Analyse.
     </footer>
 
 </body>
