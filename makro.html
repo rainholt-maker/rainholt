@@ -1,31 +1,222 @@
-<div class="metric-grid">
-    <div class="metric-card">
-        <div class="metric-region">USA • Fed (Warsh)</div>
-        <div class="metric-value">3,75 – 4,00 %</div>
-        <div class="metric-note">Styringsrente hævet 25 bps. Uafhængighed håndhævet mod Det Hvide Hus.</div>
-    </div>
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Makroøkonomisk Radar & Telemetri – Lasse Holt</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            line-height: 1.6;
+            color: #1f2937;
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background-color: #fafafa;
+        }
+        header {
+            margin-bottom: 30px;
+            border-bottom: 1px solid #e5e7eb;
+            padding-bottom: 20px;
+        }
+        .header-top { display: flex; justify-content: space-between; align-items: baseline; }
+        h1 { font-size: 2.1rem; color: #111827; margin: 0 0 6px 0; }
+        nav { display: flex; gap: 20px; padding-top: 12px; }
+        nav a { text-decoration: none; color: #1e3a8a; font-weight: 500; font-size: 0.95rem; }
 
-    <div class="metric-card">
-        <div class="metric-region">USA • U.S. Treasury</div>
-        <div class="metric-value">10Y: 4,97% / 30Y: 5,29%</div>
-        <div class="metric-note">Term Premium udvides. $1,97 billioner i årligt underskud presser auktioner.</div>
-    </div>
+        .terminal-panel {
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 30px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+        }
+        .panel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            border-bottom: 1px solid #f1f5f9;
+            padding-bottom: 12px;
+            margin-bottom: 20px;
+        }
+        .panel-title { font-size: 1.15rem; font-weight: 700; color: #0f172a; margin: 0; }
+        
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+            gap: 14px;
+            margin-bottom: 24px;
+        }
+        .metric-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            padding: 14px;
+        }
+        .metric-region {
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: #475569;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+        .metric-value {
+            font-size: 1.2rem;
+            font-weight: 700;
+            font-family: monospace;
+            color: #0f172a;
+            margin-bottom: 4px;
+        }
+        .metric-note { font-size: 0.78rem; color: #64748b; line-height: 1.4; }
 
-    <div class="metric-card">
-        <div class="metric-region">Norge • NBIM ($2,3T)</div>
-        <div class="metric-value">-$80 mia. USD</div>
-        <div class="metric-note">Benchmark-andel for statsobligationer sænkes fra 70 % til 50 %.</div>
-    </div>
+        .flow-diagram {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            padding: 16px;
+            font-size: 0.85rem;
+        }
+        .flow-steps {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            align-items: center;
+            font-family: monospace;
+            font-size: 0.8rem;
+            margin-top: 8px;
+        }
+        .step {
+            background: #ffffff;
+            border: 1px solid #cbd5e1;
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
 
-    <div class="metric-card">
-        <div class="metric-region">Danmark • Nat.banken</div>
-        <div class="metric-value">-5,6 mia. DKK</div>
-        <div class="metric-note">Intervention i valutareserven for at dæmme op for kronepres mod ECB.</div>
-    </div>
+        .chart-box {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 6px;
+            padding: 24px;
+            margin-top: 25px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+        }
+        .bar-container { margin-bottom: 16px; }
+        .bar-label { display: flex; justify-content: space-between; font-size: 0.88rem; font-weight: 500; margin-bottom: 5px; }
+        .bar-track { background: #f1f5f9; border-radius: 4px; height: 20px; width: 100%; overflow: hidden; }
+        .bar-fill { height: 100%; border-radius: 4px; }
+        .bar-1 { background: #cbd5e1; width: 33%; }
+        .bar-2 { background: #1e3a8a; width: 66%; }
+        .bar-4 { background: #ef4444; width: 100%; }
 
-    <div class="metric-card">
-        <div class="metric-region">Eurozonen • ECB</div>
-        <div class="metric-value">Indlån: 2,75 %</div>
-        <div class="metric-note">Fastholder restriktiv linje for at modvirke importeret råvareinflation.</div>
-    </div>
-</div>
+        footer { text-align: center; margin-top: 60px; font-size: 0.85rem; color: #94a3b8; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-top">
+            <h1>Makroøkonomisk Radar</h1>
+            <div style="font-size: 0.85rem;"><strong>DA</strong> | <a href="en/macro.html" style="color: #1e3a8a; text-decoration: none;">EN</a></div>
+        </div>
+        <div style="color: #64748b;">Mekanisk overvågning af sovereign likviditet, balanceforskydninger og risikopræmier</div>
+        <nav>
+            <a href="index.html">&larr; Hovedside</a>
+            <a href="arkiv.html">Ugebrev Arkiv</a>
+            <a href="forskning.html">Strategisk Kontrahering</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="terminal-panel">
+            <div class="panel-header">
+                <h2 class="panel-title">Systemisk Likviditet & Sovereign Interventioner</h2>
+                <span style="font-size: 0.75rem; color: #6b7280; font-family: monospace;">TELEMETRI: AKTIV</span>
+            </div>
+
+            <div class="metric-grid">
+                <div class="metric-card">
+                    <div class="metric-region">USA • Fed (Warsh)</div>
+                    <div class="metric-value">3,75 – 4,00 %</div>
+                    <div class="metric-note">Styringsrente hævet 25 bps. Uafhængighed håndhævet mod Det Hvide Hus.</div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-region">USA • U.S. Treasury</div>
+                    <div class="metric-value">10Y: 4,97% / 30Y: 5,29%</div>
+                    <div class="metric-note">Term Premium udvides. $1,97 billioner i årligt underskud presser auktioner.</div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-region">Norge • NBIM ($2,3T)</div>
+                    <div class="metric-value">-$80 mia. USD</div>
+                    <div class="metric-note">Benchmark-andel for statsobligationer sænkes fra 70 % til 50 %.</div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-region">Danmark • Nat.banken</div>
+                    <div class="metric-value">-5,6 mia. DKK</div>
+                    <div class="metric-note">Intervention i valutareserven for at dæmme op for kronepres mod ECB.</div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-region">Eurozonen • ECB</div>
+                    <div class="metric-value">Indlån: 2,75 %</div>
+                    <div class="metric-note">Fastholder restriktiv linje for at modvirke importeret råvareinflation.</div>
+                </div>
+            </div>
+
+            <div class="flow-diagram">
+                <strong>Transmissionskæde for aktuelt likviditetspres:</strong>
+                <div class="flow-steps">
+                    <span class="step">Energichok + AI-kapitaldræn</span>
+                    <span>&rarr;</span>
+                    <span class="step">Fed løfter rente (3,75-4,00%)</span>
+                    <span>&rarr;</span>
+                    <span class="step">Norge NBIM Exit (-$80B)</span>
+                    <span>&rarr;</span>
+                    <span class="step">Treasury $6B Opkøb Fejler</span>
+                    <span>&rarr;</span>
+                    <span class="step">10Y mod 5,0%</span>
+                </div>
+            </div>
+        </section>
+
+        <div class="chart-box">
+            <h3 style="margin-top: 0; font-size: 1.15rem; color: #0f172a;">USA's Gældsudvikling: Renteudgifter som % af BNP</h3>
+            <div style="font-size: 0.88rem; color: #64748b; margin-bottom: 20px;">
+                Statsgæld over $40 billioner. Årlige rentebetalinger overstiger $1.100 mia. USD.
+            </div>
+
+            <div class="bar-container">
+                <div class="bar-label" style="color: #64748b;">
+                    <span>Historisk lavrente (2010-2021 gen. 2.0%)</span>
+                    <span>2.4% af BNP</span>
+                </div>
+                <div class="bar-track"><div class="bar-fill bar-1"></div></div>
+            </div>
+
+            <div class="bar-container" style="background: #eff6ff; padding: 10px; border-radius: 4px; border-left: 3px solid #1e3a8a;">
+                <div class="bar-label" style="color: #1e3a8a;">
+                    <span><strong>Aktuelt niveau (Effektiv rente ~4.0%)</strong></span>
+                    <span><strong>~4.9% af BNP</strong></span>
+                </div>
+                <div class="bar-track"><div class="bar-fill bar-2"></div></div>
+            </div>
+
+            <div class="bar-container">
+                <div class="bar-label" style="color: #b91c1c;">
+                    <span>Kritisk stress-scenarie (+200 bps)</span>
+                    <span><strong>7.3% af BNP (Uholdbar gældsspiral)</strong></span>
+                </div>
+                <div class="bar-track"><div class="bar-fill bar-4"></div></div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        &copy; 2026 Lasse Holt.
+    </footer>
+
+</body>
+</html>
