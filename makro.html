@@ -3,403 +3,243 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Makroøkonomisk Radar: Slutningen på Gratis Kapital – Lasse Holt</title>
-    <meta name="description" content="Mekanisk analyse af global likviditet, ophøret af gratis kapital, T-bill refinansieringsmuren og rentepresset i USA, EU og Japan.">
+    <title>Ugebreve & Analyser – Lasse Holt</title>
+    <meta name="description" content="Kronologiske analyser af makroøkonomiske chok, statsgæld, renteudvikling og den økonomiske kolde krig.">
     <style>
-        :root {
-            --primary: #1e3a8a;
-            --dark: #0f172a;
-            --text-main: #1f2937;
-            --text-muted: #4b5563;
-            --border: #e2e8f0;
-            --bg-card: #ffffff;
-            --bg-page: #fafafa;
-        }
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             line-height: 1.6;
-            color: var(--text-main);
-            max-width: 980px;
+            color: #1f2937;
+            max-width: 860px;
             margin: 0 auto;
             padding: 40px 20px;
-            background-color: var(--bg-page);
+            background-color: #fafafa;
         }
         header {
             margin-bottom: 35px;
-            border-bottom: 1px solid var(--border);
+            border-bottom: 1px solid #e5e7eb;
             padding-bottom: 20px;
         }
-        .header-top { display: flex; justify-content: space-between; align-items: baseline; }
-        h1 { font-size: 2.2rem; color: var(--dark); margin: 0 0 6px 0; letter-spacing: -0.5px; }
-        .subtitle { color: #64748b; font-size: 1.05rem; }
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+        h1 { font-size: 2.1rem; color: #111827; margin: 0 0 6px 0; }
         nav { display: flex; gap: 20px; padding-top: 14px; }
-        nav a { text-decoration: none; color: var(--primary); font-weight: 500; font-size: 0.95rem; }
+        nav a { text-decoration: none; color: #1e3a8a; font-weight: 500; font-size: 0.95rem; }
         nav a:hover { text-decoration: underline; }
 
-        /* INTRO TEMA BOKS */
-        .thesis-banner {
-            background: #ffffff;
-            border: 1px solid #cbd5e1;
-            border-left: 5px solid #b91c1c;
-            border-radius: 6px;
-            padding: 24px;
-            margin-bottom: 30px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
-        }
-        .thesis-banner h2 {
-            margin: 0 0 10px 0;
-            font-size: 1.35rem;
-            color: var(--dark);
-        }
-        .thesis-banner p {
-            margin: 0 0 12px 0;
-            font-size: 0.96rem;
-            color: #334151;
-            line-height: 1.6;
-        }
-
-        /* HISTORISK KOMPARATIV MODEL (2010 vs 2020 vs NU) */
-        .epoch-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 16px;
-            margin-bottom: 30px;
-        }
-        @media (max-width: 768px) {
-            .epoch-grid { grid-template-columns: 1fr; }
-        }
-        .epoch-card {
-            background: #ffffff;
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            padding: 18px;
-            box-shadow: 0 1px 2px rgba(0,0,0,0.02);
-        }
-        .epoch-card.highlight {
-            border-top: 4px solid #b91c1c;
-            background: #fffafa;
-        }
-        .epoch-year {
+        .section-header {
             font-size: 0.8rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            color: #64748b;
-            margin-bottom: 6px;
-        }
-        .epoch-title {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--dark);
-            margin-bottom: 8px;
-        }
-        .epoch-desc {
-            font-size: 0.88rem;
-            color: var(--text-muted);
-            line-height: 1.5;
-        }
-
-        /* DE TRE STORE POLER: USA, EU, JAPAN */
-        .regions-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 18px;
-            margin-bottom: 30px;
-        }
-        @media (max-width: 820px) {
-            .regions-grid { grid-template-columns: 1fr; }
-        }
-        .region-card {
-            background: #ffffff;
-            border: 1px solid var(--border);
-            border-top: 4px solid var(--primary);
-            border-radius: 6px;
-            padding: 20px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-        .region-header {
-            border-bottom: 1px solid #f1f5f9;
-            padding-bottom: 10px;
-            margin-bottom: 12px;
-        }
-        .region-tag {
-            font-size: 0.75rem;
             font-weight: 700;
             color: #64748b;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            margin: 35px 0 15px 0;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 6px;
         }
-        .region-name {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--dark);
-            margin: 2px 0 0 0;
+
+        /* BRIEF-SKABELON */
+        .brief-card {
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-left: 4px solid #1e3a8a;
+            border-radius: 0 6px 6px 0;
+            padding: 22px;
+            margin-bottom: 20px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
         }
-        .rate-stat {
-            font-family: monospace;
-            font-size: 1.15rem;
-            font-weight: 700;
-            color: #0f172a;
-            margin: 10px 0;
-            line-height: 1.4;
-        }
-        .region-body {
-            font-size: 0.9rem;
-            color: #334151;
-            line-height: 1.55;
-            margin-bottom: 12px;
-        }
-        .region-footer {
+        .brief-meta {
             font-size: 0.8rem;
             color: #64748b;
-            background: #f8fafc;
-            padding: 8px 10px;
-            border-radius: 4px;
+            font-weight: 600;
+            margin-bottom: 6px;
         }
+        .brief-title {
+            margin: 0 0 12px 0;
+            font-size: 1.25rem;
+            color: #0f172a;
+        }
+        .brief-point {
+            margin-bottom: 10px;
+            font-size: 0.92rem;
+            color: #334151;
+        }
+        .brief-point strong { color: #0f172a; }
 
-        /* TRANSMISSIONSKÆDE */
-        .transmission-box {
+        /* TIDSLINJE / HISTORISK ARKIV */
+        .archive-tree {
             background: #ffffff;
-            border: 1px solid var(--border);
+            border: 1px solid #e5e7eb;
             border-radius: 6px;
-            padding: 24px;
-            margin-bottom: 30px;
+            padding: 15px 25px;
         }
-        .transmission-box h3 {
-            margin: 0 0 10px 0;
-            font-size: 1.15rem;
-            color: var(--dark);
+        details {
+            padding: 10px 0;
+            border-bottom: 1px solid #f1f5f9;
         }
-        .chain-flow {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin-top: 15px;
+        details:last-child { border-bottom: none; }
+        summary {
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            color: #1e3a8a;
         }
-        .chain-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            background: #f8fafc;
-            padding: 12px 16px;
-            border-radius: 6px;
-            border-left: 3px solid var(--primary);
+        .archive-list {
+            list-style: none;
+            padding-left: 15px;
+            margin: 10px 0 5px 0;
+        }
+        .archive-list li {
+            padding: 5px 0;
             font-size: 0.9rem;
+            display: flex;
+            justify-content: space-between;
         }
-        .chain-num {
-            font-family: monospace;
-            font-weight: 700;
-            color: var(--primary);
-            font-size: 1.0rem;
-        }
+        .archive-list a { text-decoration: none; color: #334151; }
+        .archive-list a:hover { color: #1e3a8a; text-decoration: underline; }
+        .archive-date { color: #94a3b8; font-size: 0.8rem; font-family: monospace; }
 
-        /* GÆLDSGRAF / SAMMENLIGNING */
-        .chart-box {
-            background: #ffffff;
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            padding: 24px;
-            margin-bottom: 30px;
-        }
-        .bar-container { margin-bottom: 16px; }
-        .bar-label { display: flex; justify-content: space-between; font-size: 0.88rem; font-weight: 500; margin-bottom: 5px; }
-        .bar-track { background: #f1f5f9; border-radius: 4px; height: 20px; width: 100%; overflow: hidden; }
-        .bar-fill { height: 100%; border-radius: 4px; }
-        .bar-2010 { background: #94a3b8; width: 35%; }
-        .bar-2020 { background: #3b82f6; width: 60%; }
-        .bar-nu { background: #b91c1c; width: 100%; }
-
-        footer {
-            text-align: center;
-            margin-top: 60px;
-            font-size: 0.85rem;
-            color: #94a3b8;
-            border-top: 1px solid var(--border);
-            padding-top: 20px;
-        }
+        footer { text-align: center; margin-top: 60px; font-size: 0.85rem; color: #94a3b8; }
     </style>
 </head>
 <body>
 
     <header>
         <div class="header-top">
-            <h1>Makroøkonomisk Radar</h1>
-            <div style="font-size: 0.85rem;"><strong>DA</strong> | <a href="en/macro.html" style="color: var(--primary); text-decoration: none;">EN</a></div>
+            <h1>Ugebreve & Analyser</h1>
+            <div style="font-size: 0.85rem;"><strong>DA</strong> | <a href="en/archive.html" style="color: #1e3a8a; text-decoration: none;">EN</a></div>
         </div>
-        <div class="subtitle">Mekanisk overvågning af den globale fødekæde for likviditet, renter og statsgæld</div>
+        <div style="color: #64748b;">Mekaniske observationer, systemiske chok og strukturelle skift</div>
         <nav>
             <a href="index.html">&larr; Hovedside</a>
-            <a href="arkiv.html">Ugebrev Arkiv</a>
+            <a href="makro.html">Makroøkonomisk Radar</a>
             <a href="forskning.html">Strategisk Kontrahering</a>
         </nav>
     </header>
 
     <main>
-        <!-- HOVEDTESE -->
-        <section class="thesis-banner">
-            <h2>Ingen gratis kapital: Slutningen på den monetære illusion</h2>
-            <p>
-                Dette er noget fundamentalt andet end i 2010 eller 2020. Tidligere kunne stater og virksomheder dække deres overforbrug og ubalancer ved, at centralbankerne trykkede ubegrænsede mængder penge og holdt renterne kunstigt på nul.
-            </p>
-            <p style="margin: 0; font-weight: 500;">
-                Denne gang er der intet nødudgangsspor. Kombinationen af råvarechok, AI-kapitalabsorption og statsgæld over $40 billioner betyder, at regningen skal betales kontant. Den gratis kapital er forsvundet ud af fødekæden.
-            </p>
-        </section>
+        <!-- NEWSLETTER_HOOK -->
 
-        <!-- HISTORISK UDVIKLING: 2010 vs 2020 vs NU -->
-        <h3 style="margin-bottom: 12px; color: var(--dark); font-size: 1.15rem;">Det historiske skifte i den globale fødekæde</h3>
-        <section class="epoch-grid">
-            <div class="epoch-card">
-                <div class="epoch-year">2010 – Efterdønning</div>
-                <div class="epoch-title">Nulrente & Finanskrise</div>
-                <div class="epoch-desc">
-                    Kvantitative lempelser (QE) opfindes. Centralbankerne overtager staternes gæld. Renterne presses mod nul, og overforbrug rulles fremad uden omkostninger.
-                </div>
-            </div>
+        <div class="section-header">Seneste Fredagsbriefs & Dybdegående Analyser</div>
 
-            <div class="epoch-card">
-                <div class="epoch-year">2020 – Pandemichok</div>
-                <div class="epoch-title">Ubegrænset Likviditet</div>
-                <div class="epoch-desc">
-                    Obligationsopkøb i historisk skala. Negative renter i Europa og gratis likviditet skaber en illusion om, at gældsloftet og risikopræmier er afskaffet.
-                </div>
+        <!-- BRIEF 1: 21. SEPTEMBER 2026 (DEN STORE MAKROANALYSE) -->
+        <article class="brief-card" style="border-left-color: #b91c1c;">
+            <div class="brief-meta" style="display: flex; justify-content: space-between;">
+                <span>DYBDEGÅENDE ANALYSE • 21. SEPTEMBER 2026</span>
+                <a href="en/archive.html#brief-2026-09-21" style="color: #1e3a8a; text-decoration: none; font-size: 0.8rem; font-weight: 700;">EN 🇬🇧</a>
             </div>
+            <h2 class="brief-title">Den Store Globale Analyse: Slowmotion-krakket, den økonomiske kolde krig og AI-afskrivningsmuren</h2>
+            <div class="brief-point">
+                <strong>1. Den Økonomiske Kolde Krig:</strong> Vestens finansielle arkitektur slår revner. Når Norges Oliefond planlægger at frasælge op mod $80 mia. i statspapirer, og globale centralbanker hamstrer guld (reserver over 27 %), er det en mistillidserklæring mod Washington. Samtidig mødes EU's tilnærmelse til Canada af trusler om protektionistiske toldmure fra Trump.
+            </div>
+            <div class="brief-point">
+                <strong>2. T-Bill-afhængighed & Refinansieringsmuren:</strong> Med en statsgæld over $40 billioner og et underskud på $1,97 billioner udsteder Treasury op mod $1.000 mia. i kortfristet gæld (T-bills). Andelen runder 25 % – et kriseniveau fra 2008. Hver stramning fra Fed forplanter sig prompte til statskassens renteudgifter (> $1.100 mia./år).
+            </div>
+            <div class="brief-point">
+                <strong>3. Centralbankernes Opgør:</strong> Kevin Warsh og en enstemmig komité hævede renten til 3,75–4,00 % og signalerede uændrede renter gennem hele 2027 mod Det Hvide Huses krav om 1,0 %. ECB holder indlånsrenten restriktiv på 2,75 %, mens BoJ hæver til 1,25 % (højeste i over 30 år), men presses mod 157 USD/JPY.
+            </div>
+            <div class="brief-point">
+                <strong>4. Den Private AI-Afskrivningsbombe (2027–2029):</strong> Ved siden af statsgælden advarer BIS om tech-giganternes gældsfinansierede investeringer på over $800 mia. i datacentre og hardware. Massive afskrivninger rammer resultatopgørelserne de kommende år og truer frie pengestrømme.
+            </div>
+            <div class="brief-point" style="margin-top: 8px; font-style: italic; color: #475569;">
+                <strong>Perspektiv:</strong> Slutningen på gratis likviditet rammer systemet frontalt: Staterne kvæles i refinansiering ved 4–5 % i rente, mens erhvervslivet skal absorbere historiske afskrivningsbjerge uden centralbankstøtte.
+            </div>
+        </article>
 
-            <div class="epoch-card highlight">
-                <div class="epoch-year" style="color: #b91c1c;">2026 – Nuværende Virkelighed</div>
-                <div class="epoch-title">Fødekæden Knækker</div>
-                <div class="epoch-desc">
-                    Centralbankerne er låst af inflation. Renter bider sig fast over 4-5 %. Ankerkøbere trækker sig, og gæld kan ikke længere finansieres gratis.
-                </div>
+        <!-- BRIEF 2: 18. SEPTEMBER 2026 -->
+        <article class="brief-card">
+            <div class="brief-meta">FREDAGSBRIEF • 18. SEPTEMBER 2026</div>
+            <h2 class="brief-title">Fed trodser Det Hvide Hus: Rentehop, AI-kapitalkapløb og Term Premium-pres</h2>
+            <div class="brief-point">
+                <strong>Ugens bevægelse:</strong> Fed og nytiltrådte Kevin Warsh hæver renten med 25 bps til 3,75–4,00 % trods åbent pres fra Trump om lempelser mod 1,0 %. Den 10-årige amerikanske rente bider sig fast nær 5,0 % (4,97 %), mens 30-årige papirer rammer 5,29 %.
             </div>
-        </section>
+            <div class="brief-point">
+                <strong>Underliggende transmissionsmekanisme:</strong> Vedvarende energipres (olie > $97) forstærkes af hyperscalernes aggressive gældsoptag til AI-infrastruktur, hvilket støvsuger det globale likviditetsbassin. Samtidig fjerner Norges Oliefonds benchmark-reduktion (-$80 mia.) en kritisk ankerkøber fra markedet.
+            </div>
+            <div class="brief-point">
+                <strong>Perspektiv:</strong> Med en amerikansk statsgæld over $40 billioner og over $1.100 mia. i årlige rentebetalinger kollapser illusionen om gratis kapital.
+            </div>
+        </article>
 
-        <!-- DE TRE MAGTCENTRE: USA, EU, JAPAN -->
-        <h3 style="margin-bottom: 12px; color: var(--dark); font-size: 1.15rem;">De tre poler: Hvor likviditeten forsvinder</h3>
-        <section class="regions-grid">
-            <!-- USA -->
-            <div class="region-card">
-                <div>
-                    <div class="region-header">
-                        <div class="region-tag">USA • Federal Reserve & Treasury</div>
-                        <div class="region-name">USA</div>
-                    </div>
-                    <div class="rate-stat">Fed: 3,75 – 4,00 %<br><span style="font-size: 0.92rem; color: #64748b;">10Y: 4,97% | Frosset gennem 2027</span></div>
-                    <div class="region-body">
-                        Fed under Kevin Warsh signalerer endnu et renteløft i 2026 og uændrede renter i hele 2027. Samtidig må Treasury udstede ~$1.000 mia. i kortfristet gæld (T-bills andel ~24,9 %). Fraværet af fremtidige rentenedsættelser gør den konstante refinansiering til en akut trussel mod statskassen.
-                    </div>
-                </div>
-                <div class="region-footer">
-                    <strong>Status:</strong> Rollover-mur; ingen rentelettelser i sigte.
-                </div>
+        <!-- BRIEF 3: 11. SEPTEMBER 2026 -->
+        <article class="brief-card">
+            <div class="brief-meta">FREDAGSBRIEF • 11. SEPTEMBER 2026</div>
+            <h2 class="brief-title">Norges Oliefond barberer statsobligationer: Ankeret letter</h2>
+            <div class="brief-point">
+                <strong>Ugens bevægelse:</strong> NBIM ($2,3 billioner) anbefaler at sænke benchmark-andelen af statsobligationer fra 70 % til 50 %. Svarer til en reduktion på ~$75–80 mia. USD i statspapirer.
             </div>
+            <div class="brief-point">
+                <strong>Underliggende transmissionsmekanisme:</strong> Strukturel tilbagetrækning rammer midt i et amerikansk auktions-overskud. Finansministeriets støtteopkøb preller af, og 10-årige renter presses opad.
+            </div>
+            <div class="brief-point">
+                <strong>Perspektiv:</strong> Suveræne allokatorer søger væk fra risikofri statsgæld mod realaktiver. Udbudschokket efterlader Washington uden eksterne ankerkøbere.
+            </div>
+        </article>
 
-            <!-- EU -->
-            <div class="region-card" style="border-top-color: #047857;">
-                <div>
-                    <div class="region-header">
-                        <div class="region-tag">Europa • ECB & Nationalbanken</div>
-                        <div class="region-name">EU & Danmark</div>
-                    </div>
-                    <div class="rate-stat">ECB: 2,75 %<br><span style="font-size: 0.92rem; color: #64748b;">DK Nat.bank: -5,6 mia. DKK</span></div>
-                    <div class="region-body">
-                        ECB afviser at agere redningsplanke for regeringernes overforbrug og beskytter opsparingen mod importeret råvareinflation fra olie (> $97). I Danmark har Nationalbanken måttet intervenere for at forsvare kronen, hvilket afslutter årtiers behagelige renterabat over for Frankfurt.
-                    </div>
-                </div>
-                <div class="region-footer">
-                    <strong>Status:</strong> Stram monetær disciplin; ingen gratis refinansiering.
-                </div>
+        <!-- BRIEF 4: 4. SEPTEMBER 2026 -->
+        <article class="brief-card">
+            <div class="brief-meta">FREDAGSBRIEF • 4. SEPTEMBER 2026</div>
+            <h2 class="brief-title">Fastkurs under pres: Nationalbankens valutareserve aktiveret</h2>
+            <div class="brief-point">
+                <strong>Ugens bevægelse:</strong> Danmarks Nationalbank intervenerer med -5,6 mia. DKK for at forsvare kronen. Rentespændet mod ECB (-0,40 %) testes.
             </div>
+            <div class="brief-point">
+                <strong>Underliggende transmissionsmekanisme:</strong> Dollar-likviditetsstramning og globale porteføljeskift tvinger mindre valutaer i defensiven.
+            </div>
+            <div class="brief-point">
+                <strong>Perspektiv:</strong> Den danske renterabat over for Europa er under strukturel afvikling, såfremt valutapresset fastholdes.
+            </div>
+        </article>
 
-            <!-- JAPAN -->
-            <div class="region-card" style="border-top-color: #d97706;">
-                <div>
-                    <div class="region-header">
-                        <div class="region-tag">Asien • Bank of Japan & MoF</div>
-                        <div class="region-name">Japan</div>
-                    </div>
-                    <div class="rate-stat">BoJ: 1,25 % (30Y Høj)<br><span style="font-size: 0.92rem; color: #64748b;">USD/JPY: ~157 | Interventionsalarm</span></div>
-                    <div class="region-body">
-                        BoJ har hævet renten til 1,25 % – det højeste niveau i over 30 år. Trods stramningen faldt yenen mod 157 pr. dollar pga. intern uenighed i komitéen og Feds aggressive rentebane. Markedet afventer akut støtteopkøb fra Finansministeriet (MoF) for at dæmme op for valutakollaps.
-                    </div>
-                </div>
-                <div class="region-footer">
-                    <strong>Status:</strong> Rente på 30-års top; akut interventionsberedskab.
-                </div>
-            </div>
-        </section>
-
-        <!-- TRANSMISSIONSKÆDE -->
-        <section class="transmission-box">
-            <h3>Hvordan ubalancen forplanter sig i hele systemet</h3>
-            <p style="margin: 0; font-size: 0.92rem; color: #64748b;">
-                Når centralbankerne ikke længere monetariserer gælden, vandrer presset mekanisk fra toppen af den finansielle fødekæde ned til realøkonomien:
-            </p>
-            <div class="chain-flow">
-                <div class="chain-item">
-                    <span class="chain-num">1</span>
-                    <div><strong>Råvarechok & AI-kapitaldræn:</strong> Oliepriser over $97 og tech-giganternes massive låneoptag til datacentre suger den ledige markedslikviditet op.</div>
-                </div>
-                <div class="chain-item">
-                    <span class="chain-num">2</span>
-                    <div><strong>Fed & ECB fastholder høje renter:</strong> Centralbankerne vælger institutionel uafhængighed. Fed fjerner forventningerne om rentesænkninger helt frem til 2028.</div>
-                </div>
-                <div class="chain-item">
-                    <span class="chain-num">3</span>
-                    <div><strong>Japan hæver til 1,25 %, men yenen presses:</strong> BoJ hæver renten til højeste niveau i tre årtier. Men fordi Fed låser renterne højt, handles yen svagt mod 157 USD/JPY, hvilket tvinger Tokyo tættere på valutainterventioner og likviditetshjemsendelse.</div>
-                </div>
-                <div class="chain-item">
-                    <span class="chain-num">4</span>
-                    <div><strong>T-Bill refinansieringsmur ($1.000 mia.):</strong> Washington flygter over i kort gæld (24,9 % af totalen) for at holde 10Y under 5 %. Feds renteforhøjelser rammer nu statskassens rentebyrde prompte ved hver ugentlig auktion.</div>
-                </div>
-                <div class="chain-item">
-                    <span class="chain-num">5</span>
-                    <div><strong>Sovereign Ankerkøbere trækker sig:</strong> Norges Oliefond barberer statsobligationer med ~$80 mia. Staterne kan ikke sælge deres rekordstore gæld uden at betale 5 % i rente.</div>
-                </div>
-                <div class="chain-item">
-                    <span class="chain-num">6</span>
-                    <div><strong>Konsekvens for virkeligheden:</strong> Virksomheder og langsigtede værdikæder kan ikke længere skjule ineffektivitet under gratis gæld. Kontrakter og partnerskaber skal genforhandles ud fra rå realværdiskabelse.</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- GÆLDSBELASTNING OVER TID -->
-        <section class="chart-box">
-            <h3 style="margin-top: 0; font-size: 1.15rem; color: var(--dark);">Udvikling i USA's rentebyrde (% af BNP)</h3>
-            <div style="font-size: 0.88rem; color: #64748b; margin-bottom: 20px;">
-                Historisk sammenligning: Hvorfor nutidens gældsniveau kvæler budgetterne uden centralbankopkøb.
-            </div>
-
-            <div class="bar-container">
-                <div class="bar-label" style="color: #64748b;">
-                    <span>2010–2020: Æraen med gratis penge (Effektiv rente ~1,5-2,0%)</span>
-                    <span>~2,1% af BNP</span>
-                </div>
-                <div class="bar-track"><div class="bar-fill bar-2010"></div></div>
-            </div>
-
-            <div class="bar-container">
-                <div class="bar-label" style="color: #64748b;">
-                    <span>2021–2024: Post-pandemi og begyndende inflation</span>
-                    <span>~3,6% af BNP</span>
-                </div>
-                <div class="bar-track"><div class="bar-fill bar-2020"></div></div>
-            </div>
-
-            <div class="bar-container" style="background: #fff5f5; padding: 10px; border-radius: 4px; border-left: 3px solid #b91c1c;">
-                <div class="bar-label" style="color: #b91c1c;">
-                    <span><strong>2026: Nuværende niveau (Statsgæld > $40T, renter 4,0–5,0%)</strong></span>
-                    <span><strong>~4,9% af BNP (Højeste nogensinde i fredstid)</strong></span>
-                </div>
-                <div class="bar-track"><div class="bar-fill bar-nu"></div></div>
-            </div>
-        </section>
+        <!-- HISTORISK ARKIV (TIDSLINJE) -->
+        <div class="section-header">Historisk Arkiv (Ældre analyser)</div>
+        <div class="archive-tree">
+            <details open>
+                <summary>2026</summary>
+                <ul class="archive-list">
+                    <li>
+                        <a href="#">28. august: Europæisk rentestædighed – ECB fastholder 2,75 %</a>
+                        <span class="archive-date">28.08.2026</span>
+                    </li>
+                    <li>
+                        <a href="#">21. august: Ubalance i de 2-årige europæiske swaprenter</a>
+                        <span class="archive-date">21.08.2026</span>
+                    </li>
+                    <li>
+                        <a href="#">14. august: Carry Trade Unwinding – BoJ og JPY Swap Stress</a>
+                        <span class="archive-date">14.08.2026</span>
+                    </li>
+                    <li>
+                        <a href="#">31. juli: Den globale guldreserveandel når 27 %</a>
+                        <span class="archive-date">31.07.2026</span>
+                    </li>
+                    <li>
+                        <a href="#">17. juli: Holland hjemsender 86 tons fysisk guld</a>
+                        <span class="archive-date">17.07.2026</span>
+                    </li>
+                </ul>
+            </details>
+            <details>
+                <summary>2025</summary>
+                <ul class="archive-list">
+                    <li>
+                        <a href="#">19. december: Renteudgifter som % af BNP runder 4,5 %</a>
+                        <span class="archive-date">19.12.2025</span>
+                    </li>
+                    <li>
+                        <a href="#">24. oktober: Term Premium vender tilbage til amerikanske statsobligationer</a>
+                        <span class="archive-date">24.10.2025</span>
+                    </li>
+                </ul>
+            </details>
+        </div>
     </main>
 
     <footer>
-        &copy; 2026 Lasse Holt. Makroøkonomisk Radar & Systemisk Telemetri.
+        &copy; 2026 Lasse Holt. Ugebreve & Systemisk Analyse.
     </footer>
 
 </body>
