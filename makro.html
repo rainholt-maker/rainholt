@@ -3,113 +3,222 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Makroøkonomisk Radar & Telemetri – Lasse Holt</title>
+    <title>Makroøkonomisk Radar: Slutningen på Gratis Kapital – Lasse Holt</title>
+    <meta name="description" content="Mekanisk analyse af global likviditet, ophøret af gratis kapital, T-bill refinansieringsmuren og rentepresset i USA, EU og Japan.">
     <style>
+        :root {
+            --primary: #1e3a8a;
+            --dark: #0f172a;
+            --text-main: #1f2937;
+            --text-muted: #4b5563;
+            --border: #e2e8f0;
+            --bg-card: #ffffff;
+            --bg-page: #fafafa;
+        }
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             line-height: 1.6;
-            color: #1f2937;
-            max-width: 960px;
+            color: var(--text-main);
+            max-width: 980px;
             margin: 0 auto;
             padding: 40px 20px;
-            background-color: #fafafa;
+            background-color: var(--bg-page);
         }
         header {
-            margin-bottom: 30px;
-            border-bottom: 1px solid #e5e7eb;
+            margin-bottom: 35px;
+            border-bottom: 1px solid var(--border);
             padding-bottom: 20px;
         }
         .header-top { display: flex; justify-content: space-between; align-items: baseline; }
-        h1 { font-size: 2.1rem; color: #111827; margin: 0 0 6px 0; }
-        nav { display: flex; gap: 20px; padding-top: 12px; }
-        nav a { text-decoration: none; color: #1e3a8a; font-weight: 500; font-size: 0.95rem; }
+        h1 { font-size: 2.2rem; color: var(--dark); margin: 0 0 6px 0; letter-spacing: -0.5px; }
+        .subtitle { color: #64748b; font-size: 1.05rem; }
+        nav { display: flex; gap: 20px; padding-top: 14px; }
+        nav a { text-decoration: none; color: var(--primary); font-weight: 500; font-size: 0.95rem; }
+        nav a:hover { text-decoration: underline; }
 
-        .terminal-panel {
+        /* INTRO TEMA BOKS */
+        .thesis-banner {
             background: #ffffff;
-            border: 1px solid #e5e7eb;
+            border: 1px solid #cbd5e1;
+            border-left: 5px solid #b91c1c;
             border-radius: 6px;
             padding: 24px;
             margin-bottom: 30px;
             box-shadow: 0 1px 3px rgba(0,0,0,0.02);
         }
-        .panel-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            border-bottom: 1px solid #f1f5f9;
-            padding-bottom: 12px;
-            margin-bottom: 20px;
+        .thesis-banner h2 {
+            margin: 0 0 10px 0;
+            font-size: 1.35rem;
+            color: var(--dark);
         }
-        .panel-title { font-size: 1.15rem; font-weight: 700; color: #0f172a; margin: 0; }
-        
-        .metric-grid {
+        .thesis-banner p {
+            margin: 0 0 12px 0;
+            font-size: 0.96rem;
+            color: #334151;
+            line-height: 1.6;
+        }
+
+        /* HISTORISK KOMPARATIV MODEL (2010 vs 2020 vs NU) */
+        .epoch-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-            gap: 14px;
-            margin-bottom: 24px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-bottom: 30px;
         }
-        .metric-card {
-            background: #f8fafc;
-            border: 1px solid #e2e8f0;
+        @media (max-width: 768px) {
+            .epoch-grid { grid-template-columns: 1fr; }
+        }
+        .epoch-card {
+            background: #ffffff;
+            border: 1px solid var(--border);
             border-radius: 6px;
-            padding: 14px;
+            padding: 18px;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.02);
         }
-        .metric-region {
-            font-size: 0.72rem;
+        .epoch-card.highlight {
+            border-top: 4px solid #b91c1c;
+            background: #fffafa;
+        }
+        .epoch-year {
+            font-size: 0.8rem;
             font-weight: 700;
-            color: #475569;
             text-transform: uppercase;
-            margin-bottom: 4px;
+            color: #64748b;
+            margin-bottom: 6px;
         }
-        .metric-value {
+        .epoch-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 8px;
+        }
+        .epoch-desc {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* DE TRE STORE POLER: USA, EU, JAPAN */
+        .regions-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+            margin-bottom: 30px;
+        }
+        @media (max-width: 820px) {
+            .regions-grid { grid-template-columns: 1fr; }
+        }
+        .region-card {
+            background: #ffffff;
+            border: 1px solid var(--border);
+            border-top: 4px solid var(--primary);
+            border-radius: 6px;
+            padding: 20px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .region-header {
+            border-bottom: 1px solid #f1f5f9;
+            padding-bottom: 10px;
+            margin-bottom: 12px;
+        }
+        .region-tag {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .region-name {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin: 2px 0 0 0;
+        }
+        .rate-stat {
+            font-family: monospace;
             font-size: 1.2rem;
             font-weight: 700;
-            font-family: monospace;
             color: #0f172a;
-            margin-bottom: 4px;
+            margin: 10px 0;
+            line-height: 1.4;
         }
-        .metric-note { font-size: 0.78rem; color: #64748b; line-height: 1.4; }
-
-        .flow-diagram {
-            background: #f8fafc;
-            border: 1px solid #e2e8f0;
-            border-radius: 6px;
-            padding: 16px;
-            font-size: 0.85rem;
+        .region-body {
+            font-size: 0.9rem;
+            color: #334151;
+            line-height: 1.55;
+            margin-bottom: 12px;
         }
-        .flow-steps {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            align-items: center;
-            font-family: monospace;
+        .region-footer {
             font-size: 0.8rem;
-            margin-top: 8px;
-        }
-        .step {
-            background: #ffffff;
-            border: 1px solid #cbd5e1;
-            padding: 4px 8px;
+            color: #64748b;
+            background: #f8fafc;
+            padding: 8px 10px;
             border-radius: 4px;
         }
 
-        .chart-box {
-            background: white;
-            border: 1px solid #e5e7eb;
+        /* TRANSMISSIONSKÆDE */
+        .transmission-box {
+            background: #ffffff;
+            border: 1px solid var(--border);
             border-radius: 6px;
             padding: 24px;
-            margin-top: 25px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+            margin-bottom: 30px;
+        }
+        .transmission-box h3 {
+            margin: 0 0 10px 0;
+            font-size: 1.15rem;
+            color: var(--dark);
+        }
+        .chain-flow {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        .chain-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            background: #f8fafc;
+            padding: 12px 16px;
+            border-radius: 6px;
+            border-left: 3px solid var(--primary);
+            font-size: 0.9rem;
+        }
+        .chain-num {
+            font-family: monospace;
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1.0rem;
+        }
+
+        /* GÆLDSGRAF / SAMMENLIGNING */
+        .chart-box {
+            background: #ffffff;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 30px;
         }
         .bar-container { margin-bottom: 16px; }
         .bar-label { display: flex; justify-content: space-between; font-size: 0.88rem; font-weight: 500; margin-bottom: 5px; }
         .bar-track { background: #f1f5f9; border-radius: 4px; height: 20px; width: 100%; overflow: hidden; }
         .bar-fill { height: 100%; border-radius: 4px; }
-        .bar-1 { background: #cbd5e1; width: 33%; }
-        .bar-2 { background: #1e3a8a; width: 66%; }
-        .bar-4 { background: #ef4444; width: 100%; }
+        .bar-2010 { background: #94a3b8; width: 35%; }
+        .bar-2020 { background: #3b82f6; width: 60%; }
+        .bar-nu { background: #b91c1c; width: 100%; }
 
-        footer { text-align: center; margin-top: 60px; font-size: 0.85rem; color: #94a3b8; }
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            font-size: 0.85rem;
+            color: #94a3b8;
+            border-top: 1px solid var(--border);
+            padding-top: 20px;
+        }
     </style>
 </head>
 <body>
@@ -117,9 +226,9 @@
     <header>
         <div class="header-top">
             <h1>Makroøkonomisk Radar</h1>
-            <div style="font-size: 0.85rem;"><strong>DA</strong> | <a href="en/macro.html" style="color: #1e3a8a; text-decoration: none;">EN</a></div>
+            <div style="font-size: 0.85rem;"><strong>DA</strong> | <a href="en/macro.html" style="color: var(--primary); text-decoration: none;">EN</a></div>
         </div>
-        <div style="color: #64748b;">Mekanisk overvågning af sovereign likviditet, balanceforskydninger og risikopræmier</div>
+        <div class="subtitle">Mekanisk overvågning af den globale fødekæde for likviditet, renter og statsgæld</div>
         <nav>
             <a href="index.html">&larr; Hovedside</a>
             <a href="arkiv.html">Ugebrev Arkiv</a>
@@ -128,94 +237,169 @@
     </header>
 
     <main>
-        <section class="terminal-panel">
-            <div class="panel-header">
-                <h2 class="panel-title">Systemisk Likviditet & Sovereign Interventioner</h2>
-                <span style="font-size: 0.75rem; color: #6b7280; font-family: monospace;">TELEMETRI: AKTIV</span>
-            </div>
+        <!-- HOVEDTESE -->
+        <section class="thesis-banner">
+            <h2>Ingen gratis kapital: Slutningen på den monetære illusion</h2>
+            <p>
+                Dette er noget fundamentalt andet end i 2010 eller 2020. Tidligere kunne stater og virksomheder dække deres overforbrug og ubalancer ved, at centralbankerne trykkede ubegrænsede mængder penge og holdt renterne kunstigt på nul.
+            </p>
+            <p style="margin: 0; font-weight: 500;">
+                Denne gang er der intet nødudgangsspor. Kombinationen af råvarechok, AI-kapitalabsorption og statsgæld over $40 billioner betyder, at regningen skal betales kontant. Den gratis kapital er forsvundet ud af fødekæden.
+            </p>
+        </section>
 
-            <div class="metric-grid">
-                <div class="metric-card">
-                    <div class="metric-region">USA • Fed (Warsh)</div>
-                    <div class="metric-value">3,75 – 4,00 %</div>
-                    <div class="metric-note">Styringsrente hævet 25 bps. Uafhængighed håndhævet mod Det Hvide Hus.</div>
-                </div>
-
-                <div class="metric-card">
-                    <div class="metric-region">USA • U.S. Treasury</div>
-                    <div class="metric-value">10Y: 4,97% / 30Y: 5,29%</div>
-                    <div class="metric-note">Term Premium udvides. $1,97 billioner i årligt underskud presser auktioner.</div>
-                </div>
-
-                <div class="metric-card">
-                    <div class="metric-region">Norge • NBIM ($2,3T)</div>
-                    <div class="metric-value">-$80 mia. USD</div>
-                    <div class="metric-note">Benchmark-andel for statsobligationer sænkes fra 70 % til 50 %.</div>
-                </div>
-
-                <div class="metric-card">
-                    <div class="metric-region">Danmark • Nat.banken</div>
-                    <div class="metric-value">-5,6 mia. DKK</div>
-                    <div class="metric-note">Intervention i valutareserven for at dæmme op for kronepres mod ECB.</div>
-                </div>
-
-                <div class="metric-card">
-                    <div class="metric-region">Eurozonen • ECB</div>
-                    <div class="metric-value">Indlån: 2,75 %</div>
-                    <div class="metric-note">Fastholder restriktiv linje for at modvirke importeret råvareinflation.</div>
+        <!-- HISTORISK UDVIKLING: 2010 vs 2020 vs NU -->
+        <h3 style="margin-bottom: 12px; color: var(--dark); font-size: 1.15rem;">Det historiske skifte i den globale fødekæde</h3>
+        <section class="epoch-grid">
+            <div class="epoch-card">
+                <div class="epoch-year">2010 – Efterdønning</div>
+                <div class="epoch-title">Nulrente & Finanskrise</div>
+                <div class="epoch-desc">
+                    Kvantitative lempelser (QE) opfindes. Centralbankerne overtager staternes gæld. Renterne presses mod nul, og overforbrug rulles fremad uden omkostninger.
                 </div>
             </div>
 
-            <div class="flow-diagram">
-                <strong>Transmissionskæde for aktuelt likviditetspres:</strong>
-                <div class="flow-steps">
-                    <span class="step">Energichok + AI-kapitaldræn</span>
-                    <span>&rarr;</span>
-                    <span class="step">Fed løfter rente (3,75-4,00%)</span>
-                    <span>&rarr;</span>
-                    <span class="step">Norge NBIM Exit (-$80B)</span>
-                    <span>&rarr;</span>
-                    <span class="step">Treasury $6B Opkøb Fejler</span>
-                    <span>&rarr;</span>
-                    <span class="step">10Y mod 5,0%</span>
+            <div class="epoch-card">
+                <div class="epoch-year">2020 – Pandemichok</div>
+                <div class="epoch-title">Ubegrænset Likviditet</div>
+                <div class="epoch-desc">
+                    Obligationsopkøb i historisk skala. Negative renter i Europa og gratis likviditet skaber en illusion om, at gældsloftet og risikopræmier er afskaffet.
+                </div>
+            </div>
+
+            <div class="epoch-card highlight">
+                <div class="epoch-year" style="color: #b91c1c;">2026 – Nuværende Virkelighed</div>
+                <div class="epoch-title">Fødekæden Knækker</div>
+                <div class="epoch-desc">
+                    Centralbankerne er låst af inflation. Renter bider sig fast over 4-5 %. Ankerkøbere trækker sig, og gæld kan ikke længere finansieres gratis.
                 </div>
             </div>
         </section>
 
-        <div class="chart-box">
-            <h3 style="margin-top: 0; font-size: 1.15rem; color: #0f172a;">USA's Gældsudvikling: Renteudgifter som % af BNP</h3>
+        <!-- DE TRE MAGTCENTRE: USA, EU, JAPAN -->
+        <h3 style="margin-bottom: 12px; color: var(--dark); font-size: 1.15rem;">De tre poler: Hvor likviditeten forsvinder</h3>
+        <section class="regions-grid">
+            <!-- USA -->
+            <div class="region-card">
+                <div>
+                    <div class="region-header">
+                        <div class="region-tag">USA • Federal Reserve & Treasury</div>
+                        <div class="region-name">USA</div>
+                    </div>
+                    <div class="rate-stat">Fed: 3,75 – 4,00 %<br><span style="font-size: 0.92rem; color: #64748b;">10Y: 4,97% | T-bill andel: ~24,9%</span></div>
+                    <div class="region-body">
+                        Fed under Kevin Warsh trodser krav om lempelser og holder en stram kurs. For at undgå rentechok på 10Y/30Y satser Treasury på ~$1.000 mia. i kortfristet gæld (T-bills), hvilket presser andelen op på 24,9 %. Det skaber en massiv rollover-risiko, hvor Feds stramninger rammer statskassens rentebyrde direkte ved hver auktion.
+                    </div>
+                </div>
+                <div class="region-footer">
+                    <strong>Status:</strong> Rollover-mur; kortsigtet refinansiering under pres.
+                </div>
+            </div>
+
+            <!-- EU -->
+            <div class="region-card" style="border-top-color: #047857;">
+                <div>
+                    <div class="region-header">
+                        <div class="region-tag">Europa • ECB & Nationalbanken</div>
+                        <div class="region-name">EU & Danmark</div>
+                    </div>
+                    <div class="rate-stat">ECB: 2,75 %<br><span style="font-size: 0.92rem; color: #64748b;">DK Nat.bank: -5,6 mia. DKK</span></div>
+                    <div class="region-body">
+                        ECB afviser at agere redningsplanke for regeringernes overforbrug og beskytter opsparingen mod importeret råvareinflation fra olie (> $97). I Danmark har Nationalbanken måttet intervenere for at forsvare kronen, hvilket afslutter årtiers behagelige renterabat over for Frankfurt.
+                    </div>
+                </div>
+                <div class="region-footer">
+                    <strong>Status:</strong> Stram monetær disciplin; ingen gratis refinansiering.
+                </div>
+            </div>
+
+            <!-- JAPAN -->
+            <div class="region-card" style="border-top-color: #d97706;">
+                <div>
+                    <div class="region-header">
+                        <div class="region-tag">Asien • Bank of Japan & MoF</div>
+                        <div class="region-name">Japan</div>
+                    </div>
+                    <div class="rate-stat">JPY Swap Stress<br><span style="font-size: 0.92rem; color: #64748b;">Carry Trade Unwind</span></div>
+                    <div class="region-body">
+                        Verdens største kilde til gratis penge er lukket. I årtier lånte globale fonde ultrabillige yen til 0 % for at geare udenlandske aktiver (Carry Trade). Den svækkede yen tvinger nu BoJ til at forsvare valutaen og hæve renterne, hvilket suger likviditet ud af de globale markeder og tilbage til Tokyo.
+                    </div>
+                </div>
+                <div class="region-footer">
+                    <strong>Status:</strong> Carry-trade kollaps; global likviditetsindsugning.
+                </div>
+            </div>
+        </section>
+
+        <!-- TRANSMISSIONSKÆDE -->
+        <section class="transmission-box">
+            <h3>Hvordan ubalancen forplanter sig i hele systemet</h3>
+            <p style="margin: 0; font-size: 0.92rem; color: #64748b;">
+                Når centralbankerne ikke længere monetariserer gælden, vandrer presset mekanisk fra toppen af den finansielle fødekæde ned til realøkonomien:
+            </p>
+            <div class="chain-flow">
+                <div class="chain-item">
+                    <span class="chain-num">1</span>
+                    <div><strong>Råvarechok & AI-kapitaldræn:</strong> Oliepriser over $97 og tech-giganternes massive låneoptag til datacentre suger den ledige markedslikviditet op.</div>
+                </div>
+                <div class="chain-item">
+                    <span class="chain-num">2</span>
+                    <div><strong>Fed & ECB nægter at lektie:</strong> Renterne fastholdes restriktive. Centralbankerne vælger institutionel uafhængighed over politiske vækstønsker.</div>
+                </div>
+                <div class="chain-item">
+                    <span class="chain-num">3</span>
+                    <div><strong>Japans Carry Trade dør:</strong> BoJ kan ikke længere eksportere 0-rente likviditet. Globale fonde må afvikle gearing.</div>
+                </div>
+                <div class="chain-item">
+                    <span class="chain-num">4</span>
+                    <div><strong>T-Bill refinansieringsmur ($1.000 mia.):</strong> Washington flygter over i kort gæld (24,9 % af totalen) for at holde 10Y under 5 %. Feds renteforhøjelser rammer nu statskassens rentebyrde prompte ved hver ugentlig auktion.</div>
+                </div>
+                <div class="chain-item">
+                    <span class="chain-num">5</span>
+                    <div><strong>Sovereign Ankerkøbere trækker sig:</strong> Norges Oliefond barberer statsobligationer med ~$80 mia. Staterne kan ikke sælge deres rekordstore gæld uden at betale 5 % i rente.</div>
+                </div>
+                <div class="chain-item">
+                    <span class="chain-num">6</span>
+                    <div><strong>Konsekvens for virkeligheden:</strong> Virksomheder og langsigtede værdikæder kan ikke længere skjule ineffektivitet under gratis gæld. Kontrakter og partnerskaber skal genforhandles ud fra rå realværdiskabelse.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- GÆLDSBELASTNING OVER TID -->
+        <section class="chart-box">
+            <h3 style="margin-top: 0; font-size: 1.15rem; color: var(--dark);">Udvikling i USA's rentebyrde (% af BNP)</h3>
             <div style="font-size: 0.88rem; color: #64748b; margin-bottom: 20px;">
-                Statsgæld over $40 billioner. Årlige rentebetalinger overstiger $1.100 mia. USD.
+                Historisk sammenligning: Hvorfor nutidens gældsniveau kvæler budgetterne uden centralbankopkøb.
             </div>
 
             <div class="bar-container">
                 <div class="bar-label" style="color: #64748b;">
-                    <span>Historisk lavrente (2010-2021 gen. 2.0%)</span>
-                    <span>2.4% af BNP</span>
+                    <span>2010–2020: Æraen med gratis penge (Effektiv rente ~1,5-2,0%)</span>
+                    <span>~2,1% af BNP</span>
                 </div>
-                <div class="bar-track"><div class="bar-fill bar-1"></div></div>
-            </div>
-
-            <div class="bar-container" style="background: #eff6ff; padding: 10px; border-radius: 4px; border-left: 3px solid #1e3a8a;">
-                <div class="bar-label" style="color: #1e3a8a;">
-                    <span><strong>Aktuelt niveau (Effektiv rente ~4.0%)</strong></span>
-                    <span><strong>~4.9% af BNP</strong></span>
-                </div>
-                <div class="bar-track"><div class="bar-fill bar-2"></div></div>
+                <div class="bar-track"><div class="bar-fill bar-2010"></div></div>
             </div>
 
             <div class="bar-container">
-                <div class="bar-label" style="color: #b91c1c;">
-                    <span>Kritisk stress-scenarie (+200 bps)</span>
-                    <span><strong>7.3% af BNP (Uholdbar gældsspiral)</strong></span>
+                <div class="bar-label" style="color: #64748b;">
+                    <span>2021–2024: Post-pandemi og begyndende inflation</span>
+                    <span>~3,6% af BNP</span>
                 </div>
-                <div class="bar-track"><div class="bar-fill bar-4"></div></div>
+                <div class="bar-track"><div class="bar-fill bar-2020"></div></div>
             </div>
-        </div>
+
+            <div class="bar-container" style="background: #fff5f5; padding: 10px; border-radius: 4px; border-left: 3px solid #b91c1c;">
+                <div class="bar-label" style="color: #b91c1c;">
+                    <span><strong>2026: Nuværende niveau (Statsgæld > $40T, renter 4,0–5,0%)</strong></span>
+                    <span><strong>~4,9% af BNP (Højeste nogensinde i fredstid)</strong></span>
+                </div>
+                <div class="bar-track"><div class="bar-fill bar-nu"></div></div>
+            </div>
+        </section>
     </main>
 
     <footer>
-        &copy; 2026 Lasse Holt.
+        &copy; 2026 Lasse Holt. Makroøkonomisk Radar & Systemisk Telemetri.
     </footer>
 
 </body>
