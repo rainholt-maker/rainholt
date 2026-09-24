@@ -65,6 +65,62 @@
             letter-spacing: 0.5px;
         }
 
+        /* UNDERVISNING */
+        .course-list {
+            list-style: none;
+            padding: 0;
+            margin: 10px 0 0 0;
+        }
+        .course-item {
+            padding: 14px 0;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        .course-item:last-child { border-bottom: none; }
+        .course-header {
+            display: flex;
+            align-items: baseline;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 4px;
+        }
+        .course-code {
+            font-family: monospace;
+            font-weight: 700;
+            font-size: 0.85rem;
+            color: var(--primary);
+            background: #eff6ff;
+            padding: 2px 8px;
+            border-radius: 4px;
+            border: 1px solid #bfdbfe;
+        }
+        .badge-now {
+            background: #dcfce7;
+            color: #166534;
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+        .badge-past {
+            background: #f1f5f9;
+            color: #475569;
+            font-size: 0.72rem;
+            font-weight: 600;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+        .course-title {
+            font-size: 1.02rem;
+            font-weight: 600;
+            color: var(--dark);
+        }
+        .course-desc {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            margin: 4px 0 0 0;
+            line-height: 1.5;
+        }
+
         /* VEJLEDNING */
         .guide-box {
             background: #f8fafc;
@@ -87,50 +143,27 @@
             color: var(--primary);
             font-size: 1.1rem;
         }
-        details {
-            border-bottom: 1px solid #e2e8f0;
-            padding: 8px 0;
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.86rem;
+            background: #ffffff;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            margin-top: 10px;
         }
-        details:last-child { border-bottom: none; }
-        summary {
+        th, td {
+            padding: 9px 12px;
+            border-bottom: 1px solid var(--border);
+            text-align: left;
+        }
+        th {
+            background: #f8fafc;
+            color: var(--dark);
             font-weight: 600;
-            color: var(--primary);
-            cursor: pointer;
-            font-size: 0.95rem;
         }
 
-        /* UNDERVISNING */
-        .course-list {
-            list-style: none;
-            padding: 0;
-            margin: 10px 0 0 0;
-        }
-        .course-list li {
-            padding: 10px 0;
-            border-bottom: 1px solid #f1f5f9;
-            font-size: 0.92rem;
-        }
-        .course-list li:last-child { border-bottom: none; }
-        .badge-now {
-            background: #dcfce7;
-            color: #166534;
-            font-size: 0.75rem;
-            font-weight: 700;
-            padding: 2px 6px;
-            border-radius: 4px;
-            margin-right: 8px;
-        }
-        .badge-past {
-            background: #f1f5f9;
-            color: #475569;
-            font-size: 0.75rem;
-            font-weight: 600;
-            padding: 2px 6px;
-            border-radius: 4px;
-            margin-right: 8px;
-        }
-
-        /* MAKRO & TELEMETRI I FORSKNING */
+        /* MAKRO TELEMETRI */
         .macro-preview {
             background: #fffafa;
             border: 1px solid #fecaca;
@@ -163,7 +196,7 @@
     </header>
 
     <main>
-        <!-- 1. BOG & FAGLIGT ANKER -->
+        <!-- 1. BOG -->
         <section class="section-block">
             <h2 class="section-title">Lærebog: Bæredygtig Kapitalisme</h2>
             <div class="book-card">
@@ -177,86 +210,133 @@
             </div>
         </section>
 
-        <!-- 2. KANDIDATVEJLEDNING (150+ SPECIALEPROJEKTER) -->
-        <section class="section-block">
-            <h2 class="section-title">Kandidatvejledning ved CBS (150+ Specialer)</h2>
-            <p style="font-size: 0.94rem; color: var(--text-muted); margin-bottom: 12px;">
-                Struktureret vejledningsforløb for cand.merc.jur. og cand.merc.-studerende med fokus på stringens i metode, kontraktuel arkitektur og spilteoretisk problemløsning.
-            </p>
-            
-            <div class="guide-box">
-                <div class="guide-stats">
-                    <div class="stat-item">Specialer vejledt: <strong>150+</strong></div>
-                    <div class="stat-item">Kerneområder: <strong>Kontrakter, Værdikæder, Spilteori & M&A</strong></div>
-                </div>
-
-                <h4 style="margin: 10px 0 8px 0; color: var(--dark); font-size: 0.95rem;">Vejledningsemner & Historisk Katalog:</h4>
-                <details>
-                    <summary>Strategisk Kontrahering & Relationsmodeller (Vested)</summary>
-                    <p style="font-size: 0.88rem; color: #475569; margin: 8px 0 0 10px;">
-                        Vejledning i incitamentsstrukturer, risikodeling, ufuldstændige kontrakter og tillidsbaserede aftalestrukturer i komplekse udbud og byggeprojekter.
-                    </p>
-                </details>
-                <details>
-                    <summary>Bæredygtighed, ESG & Værdikæderegulering (CSDDD/CSRD)</summary>
-                    <p style="font-size: 0.88rem; color: #475569; margin: 8px 0 0 10px;">
-                        Juridisk og strategisk integration af due diligence-forpligtelser i leverandørleddet og mekanismer til omkostningsfordeling ved grøn omstilling.
-                    </p>
-                </details>
-                <details>
-                    <summary>Spilteori, Forhandlingsstrategi & Konflikthåndtering</summary>
-                    <p style="font-size: 0.88rem; color: #475569; margin: 8px 0 0 10px;">
-                        Anvendelse af ligevægtsmodeller, asymmetrisk information og exit-klausuler i kommercielle tvister og joint ventures.
-                    </p>
-                </details>
-                <details>
-                    <summary>Selskabsret, M&A og Finansiel Regulering</summary>
-                    <p style="font-size: 0.88rem; color: #475569; margin: 8px 0 0 10px;">
-                        Tidligere vejledte emner inden for overdragelsesaftaler (SPA), earn-out klausuler og kapitalmarkedsretlige rammer.
-                    </p>
-                </details>
-            </div>
-        </section>
-
-        <!-- 3. UNDERVISNINGSOVERSIGT -->
+        <!-- 2. NUVÆRENDE OG TIDLIGERE UNDERVISNING -->
         <section class="section-block">
             <h2 class="section-title">Undervisning ved Copenhagen Business School</h2>
+            <p style="font-size: 0.94rem; color: var(--text-muted); margin-bottom: 12px;">
+                Aktuelle og tidligere fag inden for erhvervsøkonomisk jura på masterniveau:
+            </p>
+
             <ul class="course-list">
-                <li>
-                    <span class="badge-now">NUVÆRENDE</span>
-                    <strong>Strategisk Kontrahering & Kontraktarkitektur</strong> – Integreret jura og økonomi for kandidatstuderende.
+                <!-- FAG 1 -->
+                <li class="course-item">
+                    <div class="course-header">
+                        <span class="badge-now">AKTIVT FAG</span>
+                        <span class="course-code">CJURV2360E</span>
+                        <span class="course-title">Bæredygtighed mod et værdikædeperspektiv – Valg af kontraheringsform</span>
+                    </div>
+                    <p class="course-desc">
+                        Fokus på integration af bæredygtighedskrav (CSDDD/CSRD) i den strategiske leverandørstyring, allokering af grønne omstillingsomkostninger og valg af optimale samarbejdsmodeller.
+                    </p>
                 </li>
-                <li>
-                    <span class="badge-now">NUVÆRENDE</span>
-                    <strong>Bæredygtighed i Værdikæder</strong> – Relationsbaserede partnerskaber og regulatorisk efterlevelse.
+
+                <!-- FAG 2 -->
+                <li class="course-item">
+                    <div class="course-header">
+                        <span class="badge-now">AKTIVT FAG</span>
+                        <span class="course-code">CJURV2102E</span>
+                        <span class="course-title">Strategisk kontrahering i et internationalt virksomhedsperspektiv</span>
+                    </div>
+                    <p class="course-desc">
+                        Avanceret kontraktarkitektur, relationskontrakter (Vested) og styring af ufuldstændige kontrakter i komplekse internationale leverandørkæder.
+                    </p>
                 </li>
-                <li>
-                    <span class="badge-past">TIDLIGERE</span>
-                    <strong>Spilteori og Forhandling</strong> – Mikroøkonomiske modeller til kommerciel tvistløsning.
+
+                <!-- FAG 3 -->
+                <li class="course-item">
+                    <div class="course-header">
+                        <span class="badge-now">AKTIVT FAG</span>
+                        <span class="course-code">KAN-CJURO2002U</span>
+                        <span class="course-title">Juridisk og Strategisk Spilteori / Legal and Strategic Game Theory</span>
+                    </div>
+                    <p class="course-desc">
+                        Anvendelse af mikroøkonomisk spilteori, asymmetrisk information, Nash-ligevægte og forhandlingsmekanismer på juridiske konflikter og kommerciel aftaledesign.
+                    </p>
                 </li>
-                <li>
-                    <span class="badge-past">TIDLIGERE</span>
-                    <strong>Erhvervsjura & Kontraktret</strong> – Grundlæggende aftale- og obligationsret på bachelor- og masterniveau.
+
+                <!-- TIDLIGERE FAG -->
+                <li class="course-item">
+                    <div class="course-header">
+                        <span class="badge-past">TIDLIGERE FAG</span>
+                        <span class="course-code">CJURO1044E</span>
+                        <span class="course-title">Erhvervsjura & Almindelig Kontraktret</span>
+                    </div>
+                    <p class="course-desc">
+                        Grundlæggende aftaleret, erstatning og obligationsret på bachelor- og masterniveau.
+                    </p>
                 </li>
             </ul>
         </section>
 
-        <!-- 4. MAKROØKONOMISK TELEMETRI & VERDENSØKONOMI -->
+        <!-- 3. KANDIDATVEJLEDNING -->
         <section class="section-block">
-            <h2 class="section-title">Makroøkonomisk Radar: Ydre Rammebetingelser for Kontrakter</h2>
-            <p style="font-size: 0.94rem; color: var(--text-muted);">
-                Kontrakter eksisterer ikke i et vakuum. Den globale renteudvikling, gældskrisen og centralbankernes likviditetsstramninger udgør den ydre risikoramme for enhver langsigtet investering.
-            </p>
+            <h2 class="section-title">Kandidatvejledning (150+ Specialer)</h2>
+            <div class="guide-box">
+                <div class="guide-stats">
+                    <div class="stat-item">Specialer vejledt: <strong>150+</strong></div>
+                    <div class="stat-item">Hovedroller: <strong>Økonomisk & tværfaglig vejleder</strong></div>
+                    <div class="stat-item">Uddannelser: <strong>Cand.merc.(jur.) & Cand.merc.</strong></div>
+                </div>
+                <p style="font-size: 0.9rem; color: #475569; margin: 0 0 10px 0;">
+                    Vejledning med fokus på stringent integration af jura, transaktionsomkostningsøkonomi og spilteori.
+                </p>
 
+                <div style="overflow-x: auto;">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>År</th>
+                                <th>Afhandlingsemne</th>
+                                <th>Fokusområde & Teori</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="font-family: monospace; font-weight: 600;">2026</td>
+                                <td><strong>CSDDD og Værdikædeansvar:</strong> Risikoallokering i internationale leverandørkontrakter</td>
+                                <td>Transaktionsomkostningsøkonomi, incitamenter</td>
+                            </tr>
+                            <tr>
+                                <td style="font-family: monospace; font-weight: 600;">2026</td>
+                                <td><strong>Warrantprogrammer i Vækstvirksomheder:</strong> Incitamentsteori vs. minoritetsbeskyttelse</td>
+                                <td>Principal-agent teori, værnsregler</td>
+                            </tr>
+                            <tr>
+                                <td style="font-family: monospace; font-weight: 600;">2026</td>
+                                <td><strong>Generativ AI og Ophavsret:</strong> Økonomiske konsekvenser ved træningsdata</td>
+                                <td>Immaterialret, informationsøkonomi</td>
+                            </tr>
+                            <tr>
+                                <td style="font-family: monospace; font-weight: 600;">2025</td>
+                                <td><strong>Relationsbaserede Kontrakter (Vested):</strong> Komplekse infrastrukturprojekter</td>
+                                <td>Ufuldstændige kontrakter, opportunisme</td>
+                            </tr>
+                            <tr>
+                                <td style="font-family: monospace; font-weight: 600;">2025</td>
+                                <td><strong>CSRD-rapportering og Kontraktuel Risikofordeling</strong> i SMV-leverandørled</td>
+                                <td>ESG-klausuler, compliance, asymmetri</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. MAKRO & TELEMETRI -->
+        <section class="section-block">
+            <h2 class="section-title">Makroøkonomisk Radar: Rammebetingelser for Kontrakter</h2>
+            <p style="font-size: 0.94rem; color: var(--text-muted);">
+                Uafhængig observation af den globale likviditetskrise, US Treasury-auktioner og rentespænd, som sætter de ydre rammebetingelser for langsigtede erhvervskontrakter.
+            </p>
             <div class="macro-preview">
-                <h4 style="margin: 0 0 6px 0; color: #991b1b; font-size: 1.05rem;">Aktuel status: Slutningen på Gratis Kapital (September 2026)</h4>
-                <p style="margin: 0 0 10px 0; font-size: 0.9rem; color: #334151;">
-                    US Treasury udsteder op mod $1.000 mia. i kort gæld (T-bills runder ~25 %), mens Fed fastholder styringsrenten på 3,75–4,00 % uden udsigt til lempelser i hele 2027. Samtidig tvinges Japan (BoJ 1,25 %) til valutaforsvar ved at likvidere amerikanske statsobligationer.
+                <h4 style="margin: 0 0 6px 0; color: #991b1b; font-size: 1.05rem;">Status: Slutningen på Gratis Kapital & Japans Valutaforsvar</h4>
+                <p style="margin: 0 0 12px 0; font-size: 0.9rem; color: #334151;">
+                    US Treasury udsteder op mod $1.000 mia. i kort gæld (T-bills andel ~25 %), mens Fed fastholder styringsrenten på 3,75–4,00 % uden udsigt til lempelser i hele 2027. BoJ har hævet til 1,25 % (højeste i tre årtier), men svækket yen mod 157 USD/JPY tvinger Tokyo mod likvidation af US Treasuries for at skaffe dollars.
                 </p>
                 <div style="font-size: 0.88rem; font-weight: 600;">
-                    <a href="makro.html" style="color: #991b1b; text-decoration: none;">Åbn det fulde telemetri-dashboard for USA, EU & Japan &rarr;</a>
+                    <a href="makro.html" style="color: #991b1b; text-decoration: none;">Gå til Telemetri-Dashboard &rarr;</a>
                     &nbsp;|&nbsp;
-                    <a href="arkiv.html" style="color: var(--primary); text-decoration: none;">Læs det økonomiske ugebrev &rarr;</a>
+                    <a href="arkiv.html" style="color: var(--primary); text-decoration: none;">Gå til Ugebrev Arkiv &rarr;</a>
                 </div>
             </div>
         </section>
