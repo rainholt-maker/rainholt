@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Forskning & CBS – Lasse Holt</title>
-    <meta name="description" content="Lasse Holt ved Copenhagen Business School: Strategisk kontrahering, lærebog, kandidatvejledning (150+ specialer), undervisning og makroøkonomisk analyse.">
+    <meta name="description" content="Lasse Holt ved Copenhagen Business School: Strategisk kontrahering, lærebog, kandidatvejledning (150+ specialer katalogiseret), undervisning og makroøkonomisk analyse.">
     <style>
         :root {
             --primary: #1e3a8a;
@@ -19,9 +19,9 @@
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             line-height: 1.6;
             color: var(--text-main);
-            max-width: 920px;
+            max-width: 980px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 40px 20px 60px;
             background-color: var(--bg-page);
         }
         header {
@@ -51,38 +51,11 @@
             padding-bottom: 8px;
         }
 
-        /* BOG */
-        .book-card {
-            border-left: 4px solid var(--primary);
-            padding-left: 18px;
-            margin-top: 10px;
-        }
-        .book-badge {
-            font-size: 0.75rem;
-            font-weight: 700;
-            color: #64748b;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
         /* UNDERVISNING */
-        .course-list {
-            list-style: none;
-            padding: 0;
-            margin: 10px 0 0 0;
-        }
-        .course-item {
-            padding: 14px 0;
-            border-bottom: 1px solid #f1f5f9;
-        }
+        .course-list { list-style: none; padding: 0; margin: 10px 0 0 0; }
+        .course-item { padding: 12px 0; border-bottom: 1px solid #f1f5f9; }
         .course-item:last-child { border-bottom: none; }
-        .course-header {
-            display: flex;
-            align-items: baseline;
-            gap: 10px;
-            flex-wrap: wrap;
-            margin-bottom: 4px;
-        }
+        .course-header { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; margin-bottom: 4px; }
         .course-code {
             font-family: monospace;
             font-weight: 700;
@@ -109,68 +82,63 @@
             padding: 2px 6px;
             border-radius: 4px;
         }
-        .course-title {
-            font-size: 1.02rem;
-            font-weight: 600;
-            color: var(--dark);
-        }
-        .course-desc {
-            font-size: 0.88rem;
-            color: var(--text-muted);
-            margin: 4px 0 0 0;
-            line-height: 1.5;
-        }
 
-        /* VEJLEDNING */
-        .guide-box {
-            background: #f8fafc;
-            border: 1px solid #e2e8f0;
-            border-radius: 6px;
-            padding: 16px 20px;
-            margin-top: 15px;
-        }
-        .guide-stats {
-            display: flex;
-            gap: 20px;
-            margin-bottom: 15px;
-            flex-wrap: wrap;
-        }
-        .stat-item {
-            font-size: 0.9rem;
-            color: var(--dark);
-        }
-        .stat-item strong {
-            color: var(--primary);
-            font-size: 1.1rem;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 0.86rem;
+        /* AFHANDLINGER ACCORDIONS OG TABELLER */
+        details.thesis-group {
             background: #ffffff;
             border: 1px solid var(--border);
             border-radius: 6px;
-            margin-top: 10px;
+            margin-bottom: 14px;
+            overflow: hidden;
         }
-        th, td {
-            padding: 9px 12px;
-            border-bottom: 1px solid var(--border);
-            text-align: left;
+        details.thesis-group[open] {
+            border-color: #cbd5e1;
         }
-        th {
+        summary.thesis-summary {
+            padding: 14px 18px;
             background: #f8fafc;
-            color: var(--dark);
             font-weight: 600;
+            color: var(--dark);
+            cursor: pointer;
+            font-size: 1.0rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-
-        /* MAKRO TELEMETRI */
-        .macro-preview {
-            background: #fffafa;
-            border: 1px solid #fecaca;
-            border-left: 4px solid #b91c1c;
-            border-radius: 6px;
-            padding: 18px;
-            margin-top: 15px;
+        summary.thesis-summary:hover {
+            background: #f1f5f9;
+        }
+        .thesis-count {
+            background: #e2e8f0;
+            color: #475569;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 12px;
+        }
+        .table-responsive {
+            overflow-x: auto;
+            padding: 10px 15px 15px;
+        }
+        table.thesis-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+        }
+        table.thesis-table th, table.thesis-table td {
+            padding: 8px 10px;
+            border-bottom: 1px solid #f1f5f9;
+            text-align: left;
+            vertical-align: top;
+        }
+        table.thesis-table th {
+            background: #f8fafc;
+            color: #475569;
+            font-weight: 600;
+            border-bottom: 2px solid var(--border);
+        }
+        table.thesis-table tr:hover {
+            background: #fbfcfe;
         }
 
         footer {
@@ -187,7 +155,7 @@
 
     <header>
         <h1>Forskning & CBS</h1>
-        <div class="subtitle">Strategisk Kontrahering • Værdikæder • Kandidatvejledning • Makroøkonomisk Analyse</div>
+        <div class="subtitle">Strategisk Kontrahering • Værdikæder • 150+ Kandidatafhandlinger • Makroøkonomi</div>
         <nav>
             <a href="index.html">&larr; Forside</a>
             <a href="politik.html">Politik</a>
@@ -199,8 +167,8 @@
         <!-- 1. BOG -->
         <section class="section-block">
             <h2 class="section-title">Lærebog: Bæredygtig Kapitalisme</h2>
-            <div class="book-card">
-                <span class="book-badge">Udgives på DJØF Forlag</span>
+            <div style="border-left: 4px solid var(--primary); padding-left: 18px;">
+                <span style="font-size: 0.75rem; font-weight: 700; color: #64748b; text-transform: uppercase;">DJØF Forlag</span>
                 <h3 style="margin: 4px 0 8px 0; color: var(--dark); font-size: 1.25rem;">
                     Bæredygtig Kapitalisme – Strategisk kontrahering i værdikæder
                 </h3>
@@ -210,128 +178,315 @@
             </div>
         </section>
 
-        <!-- 2. NUVÆRENDE OG TIDLIGERE UNDERVISNING -->
+        <!-- 2. UNDERVISNING -->
         <section class="section-block">
-            <h2 class="section-title">Undervisning ved Copenhagen Business School</h2>
-            <p style="font-size: 0.94rem; color: var(--text-muted); margin-bottom: 12px;">
-                Aktuelle og tidligere fag inden for erhvervsøkonomisk jura på masterniveau:
-            </p>
-
+            <h2 class="section-title">Aktuelle & Tidligere Fag ved CBS</h2>
             <ul class="course-list">
-                <!-- FAG 1 -->
                 <li class="course-item">
                     <div class="course-header">
                         <span class="badge-now">AKTIVT FAG</span>
                         <span class="course-code">CJURV2360E</span>
-                        <span class="course-title">Bæredygtighed mod et værdikædeperspektiv – Valg af kontraheringsform</span>
+                        <strong>Bæredygtighed mod et værdikædeperspektiv – Valg af kontraheringsform</strong>
                     </div>
-                    <p class="course-desc">
-                        Fokus på integration af bæredygtighedskrav (CSDDD/CSRD) i den strategiske leverandørstyring, allokering af grønne omstillingsomkostninger og valg af optimale samarbejdsmodeller.
+                    <p style="font-size: 0.88rem; color: var(--text-muted); margin: 4px 0 0 0;">
+                        Integration af bæredygtighedskrav (CSDDD/CSRD) i den strategiske leverandørstyring, allokering af grønne omstillingsomkostninger og valg af optimale samarbejdsmodeller.
                     </p>
                 </li>
-
-                <!-- FAG 2 -->
                 <li class="course-item">
                     <div class="course-header">
                         <span class="badge-now">AKTIVT FAG</span>
                         <span class="course-code">CJURV2102E</span>
-                        <span class="course-title">Strategisk kontrahering i et internationalt virksomhedsperspektiv</span>
+                        <strong>Strategisk kontrahering i et internationalt virksomhedsperspektiv</strong>
                     </div>
-                    <p class="course-desc">
-                        Avanceret kontraktarkitektur, relationskontrakter (Vested) og styring af ufuldstændige kontrakter i komplekse internationale leverandørkæder.
+                    <p style="font-size: 0.88rem; color: var(--text-muted); margin: 4px 0 0 0;">
+                        Kontraktarkitektur, relationskontrakter (Vested) og styring af ufuldstændige kontrakter i komplekse internationale leverandørkæder.
                     </p>
                 </li>
-
-                <!-- FAG 3 -->
                 <li class="course-item">
                     <div class="course-header">
                         <span class="badge-now">AKTIVT FAG</span>
                         <span class="course-code">KAN-CJURO2002U</span>
-                        <span class="course-title">Juridisk og Strategisk Spilteori / Legal and Strategic Game Theory</span>
+                        <strong>Juridisk og Strategisk Spilteori / Legal and Strategic Game Theory</strong>
                     </div>
-                    <p class="course-desc">
+                    <p style="font-size: 0.88rem; color: var(--text-muted); margin: 4px 0 0 0;">
                         Anvendelse af mikroøkonomisk spilteori, asymmetrisk information, Nash-ligevægte og forhandlingsmekanismer på juridiske konflikter og kommerciel aftaledesign.
                     </p>
                 </li>
-
-                <!-- TIDLIGERE FAG -->
                 <li class="course-item">
                     <div class="course-header">
                         <span class="badge-past">TIDLIGERE FAG</span>
                         <span class="course-code">CJURO1044E</span>
-                        <span class="course-title">Erhvervsjura & Almindelig Kontraktret</span>
+                        <strong>Erhvervsjura & Almindelig Kontraktret</strong>
                     </div>
-                    <p class="course-desc">
+                    <p style="font-size: 0.88rem; color: var(--text-muted); margin: 4px 0 0 0;">
                         Grundlæggende aftaleret, erstatning og obligationsret på bachelor- og masterniveau.
                     </p>
                 </li>
             </ul>
         </section>
 
-        <!-- 3. KANDIDATVEJLEDNING -->
+        <!-- 3. KANDIDATAFHANDLINGER (150+ GRUPPERET I 4 KATEGORIER) -->
         <section class="section-block">
-            <h2 class="section-title">Kandidatvejledning (150+ Specialer)</h2>
-            <div class="guide-box">
-                <div class="guide-stats">
-                    <div class="stat-item">Specialer vejledt: <strong>150+</strong></div>
-                    <div class="stat-item">Hovedroller: <strong>Økonomisk & tværfaglig vejleder</strong></div>
-                    <div class="stat-item">Uddannelser: <strong>Cand.merc.(jur.) & Cand.merc.</strong></div>
-                </div>
-                <p style="font-size: 0.9rem; color: #475569; margin: 0 0 10px 0;">
-                    Vejledning med fokus på stringent integration af jura, transaktionsomkostningsøkonomi og spilteori.
-                </p>
+            <h2 class="section-title">Kandidatafhandlinger ved CBS (150+ Specialer)</h2>
+            <p style="font-size: 0.94rem; color: var(--text-muted); margin-bottom: 20px;">
+                Komplet katalog over vejledte kandidatafhandlinger (cand.merc.jur. og cand.merc.) fra 2016 til 2026, inddelt efter fagligt hovedfokus:
+            </p>
 
-                <div style="overflow-x: auto;">
-                    <table>
+            <!-- KATEGORI 1 -->
+            <details class="thesis-group" open>
+                <summary class="thesis-summary">
+                    <span>1. Strategisk Kontrahering, Værdikæder & Bæredygtighed (CSDDD / CSRD / Entreprise)</span>
+                    <span class="thesis-count">Kategori 1</span>
+                </summary>
+                <div class="table-responsive">
+                    <table class="thesis-table">
                         <thead>
                             <tr>
                                 <th>År</th>
-                                <th>Afhandlingsemne</th>
-                                <th>Fokusområde & Teori</th>
+                                <th>Titel</th>
+                                <th>Juridisk Medvejleder</th>
+                                <th>Forfattere</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td style="font-family: monospace; font-weight: 600;">2026</td>
-                                <td><strong>CSDDD og Værdikædeansvar:</strong> Risikoallokering i internationale leverandørkontrakter</td>
-                                <td>Transaktionsomkostningsøkonomi, incitamenter</td>
-                            </tr>
-                            <tr>
-                                <td style="font-family: monospace; font-weight: 600;">2026</td>
-                                <td><strong>Warrantprogrammer i Vækstvirksomheder:</strong> Incitamentsteori vs. minoritetsbeskyttelse</td>
-                                <td>Principal-agent teori, værnsregler</td>
-                            </tr>
-                            <tr>
-                                <td style="font-family: monospace; font-weight: 600;">2026</td>
-                                <td><strong>Generativ AI og Ophavsret:</strong> Økonomiske konsekvenser ved træningsdata</td>
-                                <td>Immaterialret, informationsøkonomi</td>
-                            </tr>
-                            <tr>
-                                <td style="font-family: monospace; font-weight: 600;">2025</td>
-                                <td><strong>Relationsbaserede Kontrakter (Vested):</strong> Komplekse infrastrukturprojekter</td>
-                                <td>Ufuldstændige kontrakter, opportunisme</td>
-                            </tr>
-                            <tr>
-                                <td style="font-family: monospace; font-weight: 600;">2025</td>
-                                <td><strong>CSRD-rapportering og Kontraktuel Risikofordeling</strong> i SMV-leverandørled</td>
-                                <td>ESG-klausuler, compliance, asymmetri</td>
-                            </tr>
+                            <tr><td>2026</td><td>Fra compliance til værdiskabelse: Corporate Sustainability Due Diligence Directive i lyset af strategisk kontrahering</td><td>Kim Østergaard</td><td>Thomas Birch Touray & Marcus Emil Juel Göstasson</td></tr>
+                            <tr><td>2026</td><td>Strategisk kontrahering og entreprisekontrakten i gentagne relationer</td><td>Kim Østergaard</td><td>Andreas Witzke & Nikolaj Krogh Spodsberg</td></tr>
+                            <tr><td>2026</td><td>Bæredygtige samarbejder gennem CSDDD, artikel 8</td><td>Frederik Skamris Holm</td><td>Emil Røhl Guldbæk Arentsen, Jakob Kruse & Frederik William Anderson</td></tr>
+                            <tr><td>2026</td><td>Due diligence i aktivitetskæden</td><td>Kim Østergaard</td><td>Amalie Patricia Sindahl Lønborg & Maria Linnéa Ljungdahl</td></tr>
+                            <tr><td>2026</td><td>Fra kontrakt til samarbejde, Strategisk kontrahering og incitamenter i IT-udviklingsprojekter</td><td>Kim Østergaard</td><td>Maya Chastine Andresen</td></tr>
+                            <tr><td>2026</td><td>Strategisk kontrahering og bæredygtighed i byggeriets værdikæde</td><td>Kim Østergaard</td><td>Saahil Abdullah Patel</td></tr>
+                            <tr><td>2026</td><td>Projektrådgivning inden for den almene boligsektor</td><td>Kim Østergaard</td><td>Camilla Nødskov Hansen</td></tr>
+                            <tr><td>2026</td><td>Det udvidede producentansvar for emballager i vinsektoren</td><td>Thomas Sørensen</td><td>Nanna Katrine Rosendahl</td></tr>
+                            <tr><td>2026</td><td>Strategisk værdiskabelse i wet leasingkontrakter</td><td>Kim Østergaard</td><td>-</td></tr>
+                            <tr><td>2025</td><td>STRATEGISK KONTRAKTKONCIPERING I DEN OFFENTLIGE SEKTOR Fra proaktiv planlægning til strategiske partnerskaber...</td><td>Anders Ulrik Kristoffersen</td><td>Nicole Kongsgaard Thomsen</td></tr>
+                            <tr><td>2025</td><td>Effekten af Corporate Sustainability Due Diligence Directive på de danske SMVer</td><td>Camilla Kampmann</td><td>Nicolaj Ellebæk Pedersen</td></tr>
+                            <tr><td>2025</td><td>Anvendelse af strategisk kontrahering i bygge- og anlægsbranchen til efterlevelse af CSDDD</td><td>Frederik Skamris Holm</td><td>Malte Jarl Johansen & Caroline Kjems</td></tr>
+                            <tr><td>2025</td><td>Bæredygtighedsrapportering: Novo Nordisk A/S under CSRD-direktivet</td><td>Camilla Kampmann</td><td>Ronja Dahl Elkjær & Caroline Juel Damborg Nielsen</td></tr>
+                            <tr><td>2024</td><td>Bæredygtige entreprisekontrakter</td><td>-</td><td>A. S. Frandsen & C. B. Samuelsen</td></tr>
+                            <tr><td>2024</td><td>Håndhævelse af CSDDD</td><td>-</td><td>W. E. Neaman & C. L. Fredslund</td></tr>
+                            <tr><td>2024</td><td>BIM i entrepriseretten</td><td>-</td><td>Paw Møller Olesen</td></tr>
+                            <tr><td>2023</td><td>DGNB i Strategiske Partnerskaber</td><td>Kim Østergaard</td><td>Klavs Georg Brammer & Jakob Barnes Dahl</td></tr>
+                            <tr><td>2023</td><td>Samarbejdsaftaler i krisetider</td><td>Henrik Andersen</td><td>Freja Pors Fischer</td></tr>
+                            <tr><td>2023</td><td>Den optimale IT-kontraktportefølje</td><td>-</td><td>Kristian B. Mørke</td></tr>
+                            <tr><td>2022</td><td>Den optimale MAC-klausul som juridisk styringsværktøj for risikoallokering</td><td>Henrik Ejsbøl</td><td>Rojen Özvan, Daniel Ottosen & Sanel Kahrimanovic</td></tr>
+                            <tr><td>2021</td><td>Anvendelse af Strategisk Kontrahering ved offentlig-private forskningssamarbejder</td><td>Kim Østergaard</td><td>Lise Andersen</td></tr>
+                            <tr><td>2021</td><td>Indsættelse og udeladelse af hardshipklausuler i længerevarende kontrakter</td><td>Søren Sandfeld Jakobsen</td><td>Miriem Naima Hansen & Ezgi Yigit</td></tr>
+                            <tr><td>2021</td><td>Offentlig-privat innovationssamarbejde og værdiskabelse</td><td>-</td><td>L. S. Svendsen & Camilla Grøn</td></tr>
+                            <tr><td>2021</td><td>Relationsrente i AB 18 og FIDIC Red Book</td><td>-</td><td>E. T. Melchiorsen & J. A. Hedstrøm</td></tr>
+                            <tr><td>2021</td><td>Innovation og kommunikationspligt i strategisk kontrahering</td><td>-</td><td>A. Wium et al.</td></tr>
+                            <tr><td>2021</td><td>Influencersamarbejde - Kontrakt, værdi og erstatning</td><td>-</td><td>Emilie M. Gleerup-Knudsen</td></tr>
+                            <tr><td>2020</td><td>Brexits påvirkning på længerevarende kontrakter</td><td>Kim Østergaard</td><td>Ulrik Kirkegaard Meibom</td></tr>
+                            <tr><td>2020</td><td>It-kontrakter i et innovationsperspektiv - risici og gevinster</td><td>Kim Østergaard</td><td>Elizabeth Ha Linh le Dang & Lise Preston Frederiksen</td></tr>
+                            <tr><td>2020</td><td>Kontrakten som proaktivt faciliteringsværktøj i IT-samarbejder</td><td>Kim Østergaard</td><td>Emilie Josephine Dhjorthi Andersen & Mette Aaskoven</td></tr>
+                            <tr><td>2020</td><td>Dokumentationsproblemstillingen i K03</td><td>Kim Østergaard</td><td>Tobias Asp & Sebastian Hedberg Olsen</td></tr>
+                            <tr><td>2020</td><td>Streamingmarkedets påvirkning på kontraktspraksis i dansk film- og tv-produktion</td><td>Søren Sandfeld Jakobsen</td><td>Caroline Sarah Christiansen</td></tr>
+                            <tr><td>2019</td><td>Udøvelse af strategisk kontrahering og realisering af relationsrente med udgangspunkt i AB18</td><td>Kim Østergaard</td><td>Sabina Parisa Elshan</td></tr>
+                            <tr><td>2019</td><td>Længerevarende rammeaftaler om komplekse ydelser</td><td>Marianne Røder Lauridsen</td><td>Emma Kyst Behrens & Christa Harboe</td></tr>
+                            <tr><td>2019</td><td>Strategisk kontrahering ved musikrettigheder (Spotify)</td><td>Kim Østergaard</td><td>Nils Manfred Samuel Sjö & Anna Rebecca Marianne Persson</td></tr>
+                            <tr><td>2019</td><td>Strategisk kontrahering i forskningssamarbejder</td><td>Kim Østergaard</td><td>Mette Schmidt Uldall & Mette Christine Stisen</td></tr>
+                            <tr><td>2019</td><td>Optimering af konsortieaftale set gennem strategisk kontrahering</td><td>Kim Østergaard</td><td>Malene Dall Sørensen & Charlotte Louise Langvad Jensen</td></tr>
+                            <tr><td>2019</td><td>Konsortiesamarbejder i bygge- og anlægsbranchen</td><td>Camilla Kampmann</td><td>Eva Justine Jauernik, Michelle Abildgaard Sørensen & Iqra Ghaffar</td></tr>
+                            <tr><td>2019</td><td>Strategisk kontrahering i danske entreprisekontrakter - analyse af det nye AB</td><td>Marie-Louise Holle</td><td>Mark Norstrøm Skou, Stephanie Alexandra Lintrup & Poul Nikolaj Dose</td></tr>
+                            <tr><td>2018</td><td>Umulighedsrisikoen - Analyse af et nyt risikobegreb til proaktiv håndtering</td><td>Kim Østergaard</td><td>Mie Rosendahl Jørgensen & Michelle Sigersted Andersen</td></tr>
+                            <tr><td>2018</td><td>Strategisk kontrahering på vidensbaserede samarbejder (præcisionsmedicin)</td><td>Kim Østergaard</td><td>Rene Michelsen Jensen & Sebastian Eamonn Denham</td></tr>
+                            <tr><td>2018</td><td>Anvendelse af strategisk kontrahering på koncessionskontrakter</td><td>Kim Østergaard</td><td>Daniel Carstens & Christopher Elting Damgaard</td></tr>
+                            <tr><td>2017</td><td>Analyse af forsikringsmarkedet post-Brexit</td><td>Andrej Savin</td><td>Andreas Dalgaard Svanholm</td></tr>
                         </tbody>
                     </table>
                 </div>
-            </div>
+            </details>
+
+            <!-- KATEGORI 2 -->
+            <details class="thesis-group">
+                <summary class="thesis-summary">
+                    <span>2. IT-ret, Kunstig Intelligens, Databeskyttelse & Immaterialret</span>
+                    <span class="thesis-count">Kategori 2</span>
+                </summary>
+                <div class="table-responsive">
+                    <table class="thesis-table">
+                        <thead>
+                            <tr>
+                                <th>År</th>
+                                <th>Titel</th>
+                                <th>Juridisk Medvejleder</th>
+                                <th>Forfattere</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>2026</td><td>Ophavsret i Maskinrummet</td><td>Andrej Savin</td><td>Kristian Andreas Svensen, Marcus Ebissa Dimma Roger Nielsen & Johannes Lund Lunøe</td></tr>
+                            <tr><td>2026</td><td>Regulering af virkelighedsnære digitalt genererede efterligninger</td><td>Vishv Priya Kohli</td><td>Louise Engelhardt Christiansen</td></tr>
+                            <tr><td>2025</td><td>Når datadeling bliver en pligt</td><td>Kathrine Søs Jacobsen Cesko</td><td>Victoria Radevic Khalib & Rubina Rezakhani</td></tr>
+                            <tr><td>2025</td><td>Implementering af Kunstig Intelligens i Forbrugerorganisationer</td><td>Camilla Kampmann</td><td>Alexander Lindboe Turpin</td></tr>
+                            <tr><td>2024</td><td>Kunstig Intelligens & Ophavsret</td><td>-</td><td>V. V. Nguyen & L. B. Pedersen</td></tr>
+                            <tr><td>2024</td><td>Onlinemarkedspladsers produktansvar</td><td>-</td><td>M. Dyrvig et al.</td></tr>
+                            <tr><td>2024</td><td>Facebooks abonnementsløsning ("Pay or Consent")</td><td>-</td><td>J. B. Skyum & D. N. Yildirim</td></tr>
+                            <tr><td>2024</td><td>EU AI Act: Innovation, vækst og regulering</td><td>-</td><td>S. Abdulla et al.</td></tr>
+                            <tr><td>2023</td><td>Om sikker tredjelandsoverførsel af persondata (EU-USA)</td><td>Søren Sandfeld Jakobsen</td><td>Christian Hahn Hauberg</td></tr>
+                            <tr><td>2023</td><td>Algoritmisk Profilering og Databeskyttelsesretten</td><td>Jan Trzaskowski</td><td>Johan Ruben Feldthaus Andrae & Wyria Bajalan</td></tr>
+                            <tr><td>2023</td><td>Samtykke som behandlingsgrundlag under databeskyttelsesforordningen</td><td>Camilla Kampmann</td><td>Mai Phuong Hoang Dinh & Emilie Flamand Dons</td></tr>
+                            <tr><td>2023</td><td>Dataforordningen: Datadeling for en bedre fremtid</td><td>-</td><td>T. M. Gaml & J. Brønnum</td></tr>
+                            <tr><td>2023</td><td>Dataminimering vs. KYC-procedurer</td><td>-</td><td>Josephine V. Olesen</td></tr>
+                            <tr><td>2022</td><td>Ordregivers udvikling af komplekse it-systemer</td><td>Sarah Maria Denta</td><td>Jonas Bjerre</td></tr>
+                            <tr><td>2022</td><td>Tredjelandsoverførsler til USA</td><td>Søren Sandfeld Jakobsen</td><td>Luna Stenberg Lind & Gustav Marius Lisner</td></tr>
+                            <tr><td>2022</td><td>BigTechs indgang på markedet for betalingstjenester</td><td>Camilla Kampmann</td><td>Oline Marie Kjærsgård Snekloth Søndergaard</td></tr>
+                            <tr><td>2021</td><td>Offentlige ordregiveres reaktionsmuligheder ved it-misligholdelse</td><td>-</td><td>K. K. Pandell & L. B. Christensen</td></tr>
+                            <tr><td>2020</td><td>It-ordregiveres udformning af kravspecifikationer</td><td>Christina D. Tvarnø</td><td>Steffen Lindholm Schøndorff & Savannah Janke</td></tr>
+                            <tr><td>2020</td><td>Evaluering af innovativ investering - Kontraktvisualisering på ansættelseskontrakter</td><td>Kim Østergaard</td><td>Niels Thorup Høegh Madsen & Mathias Maarbjerg Stengaard</td></tr>
+                            <tr><td>2020</td><td>Den arbejdsretlige klassificering af digitalt platformsarbejde</td><td>Camilla Kampmann</td><td>Viktoria Engelbreth Allerslev Kristensen</td></tr>
+                            <tr><td>2020</td><td>Opblomstringen af digitale arbejdsplatforme i rets- og kontraktøkonomisk perspektiv</td><td>Kim Østergaard</td><td>Simone Bille & William Vegenfeldt</td></tr>
+                            <tr><td>2020</td><td>Strategisk kontrahering af digitale platforme med juridiske services</td><td>Kim Østergaard</td><td>Camilla Refsgaard</td></tr>
+                            <tr><td>2018</td><td>GDPR's betydning for grundforskning</td><td>Kim Østergaard</td><td>Line Eleonora Lystrup Hansen & Celine Maktabi</td></tr>
+                            <tr><td>2018</td><td>Optimum i samarbejdsaftaler i medfør af kunstig intelligens</td><td>Kim Østergaard</td><td>Victoria Cornelia Christensen & Sofie Louise Rohde Andreasen</td></tr>
+                            <tr><td>2018</td><td>Det nationale råderum i Persondataforordningen</td><td>Mette Vestergaard Huss</td><td>Christian Gottlieb Kilsgaard & Eric Møller</td></tr>
+                            <tr><td>2018</td><td>Databeskyttelse gennem design (Art. 25 i GDPR)</td><td>Mette Vestergaard Huss</td><td>Eydun Trúgvason & Daniel Kim Rasmussen</td></tr>
+                            <tr><td>2018</td><td>Persondataforordningen</td><td>Mette Vestergaard Huss</td><td>Emil Skov & Alexander Høy</td></tr>
+                            <tr><td>2017</td><td>Patentering af genredigeringsteknologi</td><td>Susanne Borch</td><td>Olivia Varlid Bech & Laura Ambjørnsen von Voss</td></tr>
+                            <tr><td>2017</td><td>Ex ante minimering af informationsasymmetri i persondata-forbrugeraftaler</td><td>Jan Trzaskowski</td><td>Christian Stade & Mads Højgaard Pedersen de Blanck</td></tr>
+                            <tr><td>2017</td><td>Persondataforordningen</td><td>Sandro Ratkovic</td><td>Sabrina Jovanovic & Casper Bernekilde Andreasen</td></tr>
+                            <tr><td>2017</td><td>Kunstig Intelligens: Erstatningsretlige og Økonomiske problemer</td><td>Andrej Savin</td><td>Rasmus Juul Wagner</td></tr>
+                            <tr><td>2017</td><td>3D-Printning kan forandre verden</td><td>Clara Rao</td><td>Alexander Kroer Dal & Alexander Lerche</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </details>
+
+            <!-- KATEGORI 3 -->
+            <details class="thesis-group">
+                <summary class="thesis-summary">
+                    <span>3. Selskabsret, M&A, Finansiering & Ledelsesansvar (Incitamenter / Warrants)</span>
+                    <span class="thesis-count">Kategori 3</span>
+                </summary>
+                <div class="table-responsive">
+                    <table class="thesis-table">
+                        <thead>
+                            <tr>
+                                <th>År</th>
+                                <th>Titel</th>
+                                <th>Juridisk Medvejleder</th>
+                                <th>Forfattere</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>2026</td><td>Beskatning af warrants og deres potentiale som relationsrente-generende samarbejdsinstrument</td><td>Peter Koerver Schmidt</td><td>Mathias Daniel Harder Camargo, Nichlas Djørup & Mike Hammer</td></tr>
+                            <tr><td>2026</td><td>Best Practice: løndannelse af ledere - analyse af lønkriterier og økonomisk effektivitet</td><td>Camilla Kampmann</td><td>Lucas Grønnegaard & Caroline Heide</td></tr>
+                            <tr><td>2026</td><td>Retmæssig ejer af udbytte - tjener begrebet lovens formål om øget kapital til unoterede selskaber?</td><td>David Vinther</td><td>Amalie Vangsgaard</td></tr>
+                            <tr><td>2024</td><td>Bestyrelsesansvar under samfundskriser</td><td>-</td><td>Lucas T. Meyer</td></tr>
+                            <tr><td>2024</td><td>W&I-forsikringers rolle ved M&A-transaktioner</td><td>-</td><td>M. E. Nielsen & C. D. Revsbech</td></tr>
+                            <tr><td>2024</td><td>Skadesløsholdelsesklausuler i danske selskaber</td><td>-</td><td>Cathrine R. Fabrin</td></tr>
+                            <tr><td>2024</td><td>Ledelsesansvar i finansielle virksomheder</td><td>-</td><td>T. Q. Truong & S. M. Munck</td></tr>
+                            <tr><td>2023</td><td>Muligheden for anvendelse af elevatormodellen til indløsning af en minoritetsejers kapitalandele</td><td>Søren Friis Hansen</td><td>Mathias Lundsbjerg Jensen & Mathias Storgaard Freundlich</td></tr>
+                            <tr><td>2023</td><td>Langsigtede Kapitalfonde</td><td>Kim Østergaard</td><td>Malte Kjær Boss Gjerstrup, Daniel E. R. Danielsen & Casper L. Rasmussen</td></tr>
+                            <tr><td>2023</td><td>Bestyrelsens ansvar for forsvarligt kapitalberedskab</td><td>Søren Friis Hansen</td><td>Laura Rosendal Fruergaard</td></tr>
+                            <tr><td>2023</td><td>Skadesløsholdelsesklausuler med fokus på børsnoterede selskaber</td><td>-</td><td>A. L. Færø & A. M. Andersen</td></tr>
+                            <tr><td>2022</td><td>Bæredygtige fonde og SFDR-oplysningskrav</td><td>-</td><td>N. Ø. K. Buus</td></tr>
+                            <tr><td>2020</td><td>Kapitalfonde - Værdiskabelse gennem strategisk kontrahering</td><td>Kim Østergaard</td><td>Lukas Justesen & Peter Emil Risør Brøste</td></tr>
+                            <tr><td>2020</td><td>Ledelsesansvar hos direktion- og bestyrelsesmedlemmer i danske pengeinstitutter</td><td>Peer H. Schaumburg-Müller</td><td>Camilla Såbye Barfod & Maria Svoldgaard Bork</td></tr>
+                            <tr><td>2019</td><td>Den efficiente kontraktindgåelse ved M&A</td><td>Peer H. Schaumburg-Müller</td><td>Julius Tolstøj Sander & Mathias Jensen</td></tr>
+                            <tr><td>2019</td><td>Aktieløn og incitamentsbaserede ordninger</td><td>Erik Banner-Voigt</td><td>Alexander Ansbjørn Hilton & Lucas Glargaard</td></tr>
+                            <tr><td>2019</td><td>Købers valg af strategi ved virksomhedsoverdragelser</td><td>Kim Østergaard</td><td>Frederik Jensen & William Frederik Enkebølle</td></tr>
+                            <tr><td>2017</td><td>Say on pay: Implementering af aktionærrettighedsdirektivet</td><td>Erik Banner-Voigt</td><td>Darko Maric</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </details>
+
+            <!-- KATEGORI 4 -->
+            <details class="thesis-group">
+                <summary class="thesis-summary">
+                    <span>4. Skatteret, Konkurrenceret, Udbudsret & Offentlig Regulering</span>
+                    <span class="thesis-count">Kategori 4</span>
+                </summary>
+                <div class="table-responsive">
+                    <table class="thesis-table">
+                        <thead>
+                            <tr>
+                                <th>År</th>
+                                <th>Titel</th>
+                                <th>Juridisk Medvejleder</th>
+                                <th>Forfattere</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>2025</td><td>Killer acquisitions i EU-konkurrenceretten</td><td>Kathrine Søs Jacobsen Cesko</td><td>Ilhan Bicen & Nikolaj Krcadinac Mortensen</td></tr>
+                            <tr><td>2025</td><td>Når bæredygtighed møder konkurrence: Bæredygtighedsaftaler under TEUF art. 101(3)</td><td>Joachim Brøns</td><td>Nikita Marie Lavmand Müller</td></tr>
+                            <tr><td>2025</td><td>Retmæssig ejer-begrebet i Selskabsskattelovens § 13</td><td>-</td><td>P. A. Absalonsen et al.</td></tr>
+                            <tr><td>2024</td><td>Patientsikkerhed og konkurrence i apotekersektoren</td><td>-</td><td>S. H. Nielsen & I. L. Fjordside</td></tr>
+                            <tr><td>2024</td><td>UEFAs cost control-regler</td><td>-</td><td>Frederik R. Jakobsen</td></tr>
+                            <tr><td>2024</td><td>UEFA's monopol og Super League-sagen</td><td>-</td><td>Y. Kacar & L. Adili</td></tr>
+                            <tr><td>2023</td><td>GLOBE-reglernes samspil med danske skatteincitamenter til F&U</td><td>Michael Tell</td><td>Mathias Lund Milton Mortensen & Larisa Ioana Vasile</td></tr>
+                            <tr><td>2023</td><td>Konfiskation af køretøjer i forbindelse med vanvidskørsel</td><td>Marie-Louise Holle</td><td>Mikkel Wolff Andersen</td></tr>
+                            <tr><td>2023</td><td>Fast driftssted - Med fokus på det digitale økonomiske fodaftryk</td><td>Christian Emmeluth</td><td>Emma Vistisen & Dania Mohammed</td></tr>
+                            <tr><td>2023</td><td>Pillar-2 Direktivet: Global minimumsskat</td><td>-</td><td>Kristian Løngaard</td></tr>
+                            <tr><td>2023</td><td>Momsfritagelsen i ML § 13, stk. 1, nr. 3</td><td>-</td><td>T. Vijayakumar & K. Sahel</td></tr>
+                            <tr><td>2023</td><td>Gennemstrømningsselskaber og udbytteudlodning</td><td>-</td><td>Maya Bering</td></tr>
+                            <tr><td>2023</td><td>CBER til revision (Shipping & Konkurrence)</td><td>-</td><td>O. M. Meden et al.</td></tr>
+                            <tr><td>2023</td><td>Statsstøtte gennem IP box regimer</td><td>-</td><td>A. C. H. Madsen & I. G. Marcussen</td></tr>
+                            <tr><td>2023</td><td>Konkurrenceretlig regulering af priser på lægemidler</td><td>-</td><td>Amalie Løvet Young</td></tr>
+                            <tr><td>2023</td><td>Pillar 2: Aggressiv skatteplanlægning og erhvervsfonde</td><td>-</td><td>P. C. Schack & L. P. A. Vange</td></tr>
+                            <tr><td>2022</td><td>Horisontale Fusioner i Lægemiddelindustrien</td><td>-</td><td>Anna Sofie Bojen Krogh & Emilie Fuglevig Rasmussen</td></tr>
+                            <tr><td>2022</td><td>Dynamiske indkøbssystemer</td><td>-</td><td>Simone Nyhus Christiansen & Signe Lin Karlsen</td></tr>
+                            <tr><td>2021</td><td>Gun Jumping - Forbuddet mod præimplementering af fusioner</td><td>Peer H. Schaumburg-Müller</td><td>Saffa Rehman & Saneela Saleem</td></tr>
+                            <tr><td>2021</td><td>EU-fusionskontrol i lyset af killer acquisitions</td><td>Maria Jose Schmidt-Kessen</td><td>Lisa Bruun</td></tr>
+                            <tr><td>2021</td><td>OECD's GloBE-forslag i et EU-perspektiv</td><td>Peter Koerver Schmidt</td><td>Majid Hardan</td></tr>
+                            <tr><td>2021</td><td>EU's konkurrenceregler for digitale platforme</td><td>-</td><td>Katrine S. Hansen</td></tr>
+                            <tr><td>2021</td><td>Grænseoverskridende underskudsfremførsel</td><td>-</td><td>F. B. S. Jacobsen</td></tr>
+                            <tr><td>2021</td><td>Dansk Udbudsret og hovedformål med offentlige indkøb</td><td>-</td><td>Anna P. Asmussen</td></tr>
+                            <tr><td>2021</td><td>Miljøcertificeringer og SMV'er i udbud</td><td>-</td><td>Ulla Schleicher</td></tr>
+                            <tr><td>2021</td><td>Centrum for livsinteresser - dobbeltbeskatningskonflikt</td><td>-</td><td>Lau M. Thomsen & Sofie K. Larsen</td></tr>
+                            <tr><td>2021</td><td>Internationalt samarbejde mod skatteudnyttelse</td><td>-</td><td>A. H. Jørgensen & M. H. Wils</td></tr>
+                            <tr><td>2021</td><td>Urimeligt høje priser i medicinalindustrien</td><td>-</td><td>Rasmus D. Ehlers</td></tr>
+                            <tr><td>2020</td><td>Geo-blocking vertikale aftaler og EU-konkurrenceretten (Netflix)</td><td>Karima Tabuda</td><td>Jacob Haulund Trojel</td></tr>
+                            <tr><td>2020</td><td>Formelallokering ved transfer pricing</td><td>Louise Blichfeldt Fjord</td><td>Cecilie Jaque Hammer</td></tr>
+                            <tr><td>2020</td><td>Sortimentsudbud - Strategisk prissætning</td><td>Grith Skovgaard Ølykke</td><td>Arian Dzeladini & Fahad Anjum</td></tr>
+                            <tr><td>2020</td><td>Rækkevidden af ligningslovens § 3</td><td>Michael Tell</td><td>Anna Stengade Winther</td></tr>
+                            <tr><td>2020</td><td>OECD's base erosion and profit shifting (BEPS 2.0)</td><td>Michael Tell</td><td>Yasmin Cecilie Confino & Sara El Morabet</td></tr>
+                            <tr><td>2020</td><td>Er bæredygtig udvikling foreneligt med EU's statsstøtteregler?</td><td>Yvette Lind</td><td>Luca Miceli & Jeppe Rosenbeck Holmen</td></tr>
+                            <tr><td>2020</td><td>EU261: Luftfartsselskabers forsinkelsesansvar</td><td>Søren Sandfeld Jakobsen</td><td>Alexander Holst Erdmann & Maja Kongeskov Alexandersen</td></tr>
+                            <tr><td>2020</td><td>International skatteplanlægning og ATA-direktivets art. 7</td><td>Peter Koerver Schmidt</td><td>Martin René Holck & Mikkel Engman Iversen</td></tr>
+                            <tr><td>2020</td><td>Udvidelsen af CFC-indkomstbegrebet til immaterielle aktiver</td><td>Peter Koerver Schmidt</td><td>Oliver William Verner Forrester & Jens Tvilling Kjærgaard</td></tr>
+                            <tr><td>2020</td><td>Pligten til offentliggørelse af evaluering af tilbud</td><td>Camilla Kampmann</td><td>Martina Papias Nissolino & Maria Dahl Rasmussen</td></tr>
+                            <tr><td>2020</td><td>Digital Beskatning</td><td>Jesper Anker Howes</td><td>Anders Bille Grue</td></tr>
+                            <tr><td>2019</td><td>Patentretten & EU-konkurrenceretten i medicinalmarkedet</td><td>Camilla Kampmann</td><td>Abir Abdul Khalek</td></tr>
+                            <tr><td>2019</td><td>Retmæssig ejer ved udbytteudlodninger i koncernoptimering</td><td>Erik Banner-Voigt</td><td>Kristina Kruse & Stephanie Edske Henriksen</td></tr>
+                            <tr><td>2019</td><td>Algoritmisk prissamarbejde</td><td>Marianne Røder Lauridsen</td><td>Jeanett Therese Fauskanger Brurås et al.</td></tr>
+                            <tr><td>2019</td><td>Kompensation ved forsinkelse i flybranchen</td><td>-</td><td>Matthias Bødewadt Lund & Kristina Jensen</td></tr>
+                            <tr><td>2019</td><td>Dansk kildeskat på udbytter til investeringsinstitutter</td><td>Erik Banner-Voigt</td><td>Nana Khankan</td></tr>
+                            <tr><td>2019</td><td>Transnationale fusioner</td><td>Susanne Borch</td><td>Emilie Krogh Hansen & Nikoline Stokkendal Sneholt</td></tr>
+                            <tr><td>2019</td><td>EU-Konkurrenceretlig håndtering af Amazon</td><td>Rasmus Arler Bogetoft</td><td>Jonas Frydensbjerg Fischer & Sebastian Schlager</td></tr>
+                            <tr><td>2018</td><td>Fast driftssted for udenlandske investorer i danske kapitalfonde</td><td>Peter Koerver Schmidt</td><td>Christian Kjær Ramsdahl</td></tr>
+                            <tr><td>2018</td><td>Skattemæssig behandling af skibsfartsvirksomhed i international trafik</td><td>Jesper Anker Howes</td><td>Thorbjørn Sønderbo Patscheider & Jeanette Nielsen</td></tr>
+                            <tr><td>2018</td><td>CCTB direktivforslag artikel 11</td><td>Peter Koerver Schmidt</td><td>Ying Zhao Berg & Christine Franke</td></tr>
+                            <tr><td>2018</td><td>Minoritetsaktieposter i EU</td><td>Marianne Røder Lauridsen</td><td>Burkay Kart & Fatih Durmaz</td></tr>
+                            <tr><td>2018</td><td>Momsfritagelsen for selvstændige grupper (Momslovens § 13)</td><td>Casper Bjerregaard Eskildsen</td><td>Sandra Sabrina Wesselhoff & Nikolaj Ladefoged Jakobsen</td></tr>
+                            <tr><td>2018</td><td>Unormalt lave tilbud i EU-udbud</td><td>Cecilie Fanøe Petersen</td><td>Philip Stabell Monby & Mikal Jespersen</td></tr>
+                            <tr><td>2018</td><td>Beskatning af kryptovaluta i dansk perspektiv</td><td>Louise Blichfeldt Fjord</td><td>Mads-Ulrik Kirkebæk et al.</td></tr>
+                            <tr><td>2018</td><td>Beskatning af investeringsinstitutter</td><td>Mette Ohm</td><td>Jonas Rasmussen Lærke & Philip William Bigum</td></tr>
+                            <tr><td>2018</td><td>Udbudslovens § 185, stk. 2 - ophør af totalentreprise</td><td>Mette Ohm</td><td>Sandra Clemmen Christensen & Aya Oozeer Riis</td></tr>
+                            <tr><td>2018</td><td>Direktivforslag F(K)SSG</td><td>Michael Wallin</td><td>Oliver Andreas Hansen</td></tr>
+                            <tr><td>2018</td><td>Anmodning om helbredsoplysninger på arbejdsmarkedet</td><td>Peer H. Schaumburg-Müller</td><td>Ömer Faruk Benli & Casper Pedersen</td></tr>
+                            <tr><td>2018</td><td>EU konformitet</td><td>Jesper Anker Howes</td><td>Simone Løn & Martin Lambertsen</td></tr>
+                            <tr><td>2017</td><td>Autonome køretøjer - allokering af ansvar ved færdselsuheld</td><td>Marie-Louise Holle</td><td>Rawand Sabir & Stine Søgaard Melsted</td></tr>
+                            <tr><td>2017</td><td>Ændringsklausuler i udbudspligtige kontrakter</td><td>Michael Lund Nørgaard</td><td>Cindy Thorhauge & Sofie Aggerholm</td></tr>
+                            <tr><td>2017</td><td>Udbudsretlige og økonomiske aspekter ved Sankt Annæ Plads</td><td>Mette Ohm</td><td>Kathrine Kørner Kosack & Simone Elvira Ellis Bivona Dahl</td></tr>
+                            <tr><td>2017</td><td>Kontraktændringer og Udbudsdirektivet 2014/24/EU</td><td>Marianne Røder Lauridsen</td><td>Jonas Karhu Bartels & Emma Arusyak Badalyan</td></tr>
+                            <tr><td>2016</td><td>Konkurrencerettens og patentrettens påvirkning på lægemiddelindustrien</td><td>Søren Sandfeld Jakobsen</td><td>Helene Breinholm Svarrer Jakobsen</td></tr>
+                            <tr><td>2016</td><td>Forhandling i de fleksible udbudsprocedurer</td><td>Grith Skovgaard Ølykke</td><td>Jakob Riberholt Andersen & Tobias Elis Aaskov</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </details>
         </section>
 
         <!-- 4. MAKRO & TELEMETRI -->
         <section class="section-block">
             <h2 class="section-title">Makroøkonomisk Radar: Rammebetingelser for Kontrakter</h2>
             <p style="font-size: 0.94rem; color: var(--text-muted);">
-                Uafhængig observation af den globale likviditetskrise, US Treasury-auktioner og rentespænd, som sætter de ydre rammebetingelser for langsigtede erhvervskontrakter.
+                Overvågning af kapitalomkostninger, US Treasury-auktioner og rentespænd, der udgør de ydre rammer for langsigtede erhvervskontrakter.
             </p>
-            <div class="macro-preview">
-                <h4 style="margin: 0 0 6px 0; color: #991b1b; font-size: 1.05rem;">Status: Slutningen på Gratis Kapital & Japans Valutaforsvar</h4>
+            <div style="background: #fffafa; border: 1px solid #fecaca; border-left: 4px solid #b91c1c; border-radius: 6px; padding: 18px; margin-top: 15px;">
+                <h4 style="margin: 0 0 6px 0; color: #991b1b; font-size: 1.05rem;">Slutningen på Gratis Kapital & Japans Valutaforsvar</h4>
                 <p style="margin: 0 0 12px 0; font-size: 0.9rem; color: #334151;">
-                    US Treasury udsteder op mod $1.000 mia. i kort gæld (T-bills andel ~25 %), mens Fed fastholder styringsrenten på 3,75–4,00 % uden udsigt til lempelser i hele 2027. BoJ har hævet til 1,25 % (højeste i tre årtier), men svækket yen mod 157 USD/JPY tvinger Tokyo mod likvidation af US Treasuries for at skaffe dollars.
+                    US Treasury udsteder ~$1.000 mia. i T-bills (kort gæld runder ~25 %), mens Fed fastholder styringsrenten på 3,75–4,00 % uden lempelser i 2027. BoJ (1,25 %) tvinges mod likvidation af US Treasuries for at dæmme op for yenfald (157 USD/JPY).
                 </p>
                 <div style="font-size: 0.88rem; font-weight: 600;">
                     <a href="makro.html" style="color: #991b1b; text-decoration: none;">Gå til Telemetri-Dashboard &rarr;</a>
