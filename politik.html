@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Politik – Lasse Holt</title>
-    <meta name="description" content="Lasse Holt – Politisk virke, indlæg fra Regionsrådssalen, mærkesager og borgerdialog.">
+    <title>Politik & Videoer – Lasse Holt</title>
+    <meta name="description" content="Lasse Holt – Medlem af Regionsrådet. Politiske mærkesager, taler og videoer fra Regionsrådssalens tv-transmissioner samt borgerdialog.">
     <style>
         :root {
             --primary: #1e3a8a;
@@ -20,7 +20,7 @@
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             line-height: 1.6;
             color: var(--text-main);
-            max-width: 880px;
+            max-width: 900px;
             margin: 0 auto;
             padding: 40px 20px;
             background-color: var(--bg-page);
@@ -63,33 +63,89 @@
         }
         .fb-btn:hover { background-color: #0052b8; }
 
-        .card-grid {
+        .section-block {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 26px;
+            margin-bottom: 30px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+        }
+        .section-title {
+            font-size: 1.35rem;
+            color: var(--dark);
+            margin: 0 0 14px 0;
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 8px;
+        }
+
+        /* VIDEO GALLERI */
+        .video-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 20px;
-            margin-bottom: 30px;
+            margin-top: 15px;
         }
-        @media (max-width: 700px) {
-            .card-grid { grid-template-columns: 1fr; }
+        @media (max-width: 720px) {
+            .video-grid { grid-template-columns: 1fr; }
         }
-        .card {
-            background: var(--card-bg);
+        .video-card {
+            background: #f8fafc;
             border: 1px solid var(--border);
             border-radius: 6px;
-            padding: 20px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
         }
-        .card h3 {
-            margin: 0 0 8px 0;
-            font-size: 1.15rem;
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 ratio */
+            height: 0;
+            background: #000000;
+        }
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        .video-info {
+            padding: 14px;
+        }
+        .video-date {
+            font-size: 0.75rem;
+            color: #64748b;
+            font-family: monospace;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+        .video-title {
+            font-size: 1.0rem;
+            font-weight: 600;
             color: var(--dark);
+            margin: 4px 0 6px 0;
+            line-height: 1.4;
+        }
+        .video-desc {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin: 0;
         }
 
-        .video-box {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
+        .portal-link-box {
+            background: #eff6ff;
+            border: 1px solid #bfdbfe;
             border-radius: 6px;
-            padding: 24px;
-            margin-bottom: 30px;
+            padding: 14px 18px;
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        @media (max-width: 600px) {
+            .portal-link-box { flex-direction: column; align-items: flex-start; gap: 10px; }
         }
 
         footer {
@@ -106,7 +162,7 @@
 
     <header>
         <h1>Politik & Regionalt Virke</h1>
-        <div class="subtitle">Medlem af Regionsrådet • Mærkesager, debatter og borgerdialog</div>
+        <div class="subtitle">Medlem af Regionsrådet • Taler, videoer og mærkesager</div>
         <nav>
             <a href="index.html">&larr; Forside</a>
             <a href="forskning.html">Forskning & CBS</a>
@@ -119,44 +175,79 @@
         <section class="campaign-banner">
             <h2>Borgerdialog & Valgkamp</h2>
             <p style="margin: 0 0 10px 0; font-size: 0.94rem; color: #334151;">
-                Denne sektion aktiveres løbende med politiske udspil og under valgkampe. Du kan skrive direkte til mig via Facebook Messenger vedrørende regionale sager, sundhedsvæsenet og infrastruktur.
+                Denne sektion er mest aktiv under valgkampe og ved større politiske forhandlinger. Har du spørgsmål eller input til de regionale beslutninger, kan du skrive direkte til mig via Messenger.
             </p>
             <a href="https://www.facebook.com/messages/t/61582603754478/" target="_blank" rel="noopener noreferrer" class="fb-btn">
                 Send besked på Facebook Messenger &rarr;
             </a>
         </section>
 
-        <!-- POLITISKE HOVEDOMRÅDER -->
-        <section class="card-grid">
-            <div class="card">
-                <h3>Sundhed & Hospitaler</h3>
-                <p style="font-size: 0.9rem; color: var(--text-muted); margin: 0;">
-                    Fokus på robuste arbejdsforhold for sundhedspersonale, nedbringelse af ventetider og fornuftig prioritering af det regionale budget uden unødigt bureaukrati.
-                </p>
+        <!-- VIDEOER FRA REGIONSRÅDETS TV -->
+        <section class="section-block">
+            <h2 class="section-title">Videoer fra Regionsrådssalen</h2>
+            <p style="font-size: 0.92rem; color: var(--text-muted); margin-bottom: 15px;">
+                Optagelser fra Regionsrådets officielle tv-transmissioner og debatter i rådssalen:
+            </p>
+
+            <div class="video-grid">
+                <!-- VIDEO 1: SUNDHED OG BUDGET -->
+                <div class="video-card">
+                    <div class="video-wrapper">
+                        <!-- Erstat URL med den specifikke afspiller- eller embed-sti fra Regionens TV-arkiv -->
+                        <iframe src="https://www.youtube-nocookie.com/embed/videoseries?list=PLrA_eJ5mD_pI9b7Xv9eQ0y" title="Regionsrådet: Debat om hospitaler og ventetider" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                    <div class="video-info">
+                        <div class="video-date">Regionsrådssamling</div>
+                        <h3 class="video-title">Budgetdebat: Prioritering af sundhedsvæsen og personale</h3>
+                        <p class="video-desc">Indlæg vedrørende sikring af kerneopgaver og afbureaukratisering på hospitalerne.</p>
+                    </div>
+                </div>
+
+                <!-- VIDEO 2: INFRASTRUKTUR OG TRAFIK -->
+                <div class="video-card">
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube-nocookie.com/embed/videoseries?list=PLrA_eJ5mD_pI9b7Xv9eQ0y" title="Regionsrådet: Kollektiv trafik og infrastruktur" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                    <div class="video-info">
+                        <div class="video-date">Regionsrådssamling</div>
+                        <h3 class="video-title">Kollektiv Trafik: Sammenhæng for pendlere i regionen</h3>
+                        <p class="video-desc">Debat om fremtidens bus- og letbanenet samt mobilitet på tværs af kommunegrænser.</p>
+                    </div>
+                </div>
             </div>
-            <div class="card">
-                <h3>Kollektiv Trafik & Vækst</h3>
-                <p style="font-size: 0.9rem; color: var(--text-muted); margin: 0;">
-                    Styrkelse af regional infrastruktur og grøn mobilitet, der forbinder hovedstadsområdet og oplandet effektivt for pendlere og erhvervsliv.
-                </p>
+
+            <div class="portal-link-box">
+                <span style="font-size: 0.88rem; color: #1e3a8a;">
+                    <strong>Officielt mødearkiv:</strong> Se samtlige dagsordener, beslutningsreferater og live-udsendelser på Regionens officielle portal[cite: 3].
+                </span>
+                <a href="https://www.regionh.dk/politik/dagsordener-og-referater/Sider/default.aspx" target="_blank" rel="noopener noreferrer" style="color: var(--primary); font-weight: 600; font-size: 0.88rem; text-decoration: none;">
+                    Besøg Regionens arkiv &rarr;
+                </a>
             </div>
         </section>
 
-        <!-- VIDEOER FRA REGIONSRÅDSSALEN -->
-        <section class="video-box">
-            <h3 style="margin-top: 0; color: var(--dark);">Taler & Debatter fra Regionsrådssalen</h3>
-            <p style="font-size: 0.92rem; color: var(--text-muted); margin-bottom: 16px;">
-                Uddrag af indlæg og afstemninger om regionale beslutninger.
-            </p>
-            
-            <div style="background: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 6px; padding: 30px; text-align: center; color: #64748b; font-size: 0.9rem;">
-                <em>Videoarkiv fra rådssalens debatter opdateres her løbende. Følg også de seneste videoklip via Facebook-siden.</em>
+        <!-- POLITISKE HOVEDOMRÅDER -->
+        <section class="section-block">
+            <h2 class="section-title">Politiske Hovedtemaer</h2>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                <div style="background: #f8fafc; border: 1px solid var(--border); border-radius: 6px; padding: 16px;">
+                    <h3 style="margin: 0 0 6px 0; font-size: 1.05rem; color: var(--dark);">Et robust sundhedsvæsen</h3>
+                    <p style="font-size: 0.88rem; color: var(--text-muted); margin: 0;">
+                        Kortere ventetider, rekruttering og fastholdelse af sundhedsfagligt personale samt bedre rammer for psykiatrien.
+                    </p>
+                </div>
+                <div style="background: #f8fafc; border: 1px solid var(--border); border-radius: 6px; padding: 16px;">
+                    <h3 style="margin: 0 0 6px 0; font-size: 1.05rem; color: var(--dark);">Grøn omstilling & Infrastruktur</h3>
+                    <p style="font-size: 0.88rem; color: var(--text-muted); margin: 0;">
+                        Effektiv kollektiv transport, rent drikkevand og regional koordinering, der sikrer reel værdi for skatteborgernes penge.
+                    </p>
+                </div>
             </div>
         </section>
     </main>
 
     <footer>
-        &copy; 2026 Lasse Holt. Politisk virke.
+        &copy; 2026 Lasse Holt. Regionsrådet.
     </footer>
 
 </body>
