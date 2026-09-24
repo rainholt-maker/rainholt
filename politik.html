@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Politik & Videoer – Lasse Holt</title>
-    <meta name="description" content="Lasse Holt – Medlem af Regionsrådet. Politiske mærkesager, taler og videoer fra Regionsrådssalens tv-transmissioner samt borgerdialog.">
+    <title>Politik & Anlægsanalyse – Lasse Holt</title>
+    <meta name="description" content="Lasse Holt – Medlem af Regionsrådet. Datadrevet analyse af Nyt Hospital Nordsjælland, videoer fra rådssalen og regionalpolitik.">
     <style>
         :root {
             --primary: #1e3a8a;
@@ -20,9 +20,9 @@
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             line-height: 1.6;
             color: var(--text-main);
-            max-width: 900px;
+            max-width: 920px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 40px 20px 60px;
             background-color: var(--bg-page);
         }
         header {
@@ -45,11 +45,7 @@
             margin-bottom: 30px;
             box-shadow: 0 1px 3px rgba(0,0,0,0.02);
         }
-        .campaign-banner h2 {
-            margin: 0 0 8px 0;
-            font-size: 1.25rem;
-            color: var(--dark);
-        }
+        .campaign-banner h2 { margin: 0 0 8px 0; font-size: 1.25rem; color: var(--dark); }
         .fb-btn {
             display: inline-block;
             background-color: #0064e0;
@@ -67,7 +63,7 @@
             background: var(--card-bg);
             border: 1px solid var(--border);
             border-radius: 8px;
-            padding: 26px;
+            padding: 28px;
             margin-bottom: 30px;
             box-shadow: 0 1px 3px rgba(0,0,0,0.02);
         }
@@ -79,6 +75,41 @@
             padding-bottom: 8px;
         }
 
+        /* TABEL OG DATA */
+        .table-container { overflow-x: auto; margin: 18px 0; }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.88rem;
+            background: #ffffff;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+        }
+        th, td {
+            padding: 10px 14px;
+            border-bottom: 1px solid var(--border);
+            text-align: left;
+            vertical-align: top;
+        }
+        th { background: #f8fafc; font-weight: 600; color: var(--dark); }
+        tr:hover { background: #fbfcfe; }
+
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .stat-card {
+            background: #f8fafc;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 16px;
+            border-left: 4px solid var(--danger);
+        }
+        .stat-num { font-size: 1.4rem; font-weight: 700; color: var(--dark); font-family: monospace; }
+        .stat-label { font-size: 0.8rem; font-weight: 600; color: #64748b; text-transform: uppercase; margin-bottom: 4px; }
+
         /* VIDEO GALLERI */
         .video-grid {
             display: grid;
@@ -86,9 +117,7 @@
             gap: 20px;
             margin-top: 15px;
         }
-        @media (max-width: 720px) {
-            .video-grid { grid-template-columns: 1fr; }
-        }
+        @media (max-width: 720px) { .video-grid { grid-template-columns: 1fr; } }
         .video-card {
             background: #f8fafc;
             border: 1px solid var(--border);
@@ -99,7 +128,7 @@
         }
         .video-wrapper {
             position: relative;
-            padding-bottom: 56.25%; /* 16:9 ratio */
+            padding-bottom: 56.25%;
             height: 0;
             background: #000000;
         }
@@ -111,41 +140,17 @@
             height: 100%;
             border: 0;
         }
-        .video-info {
-            padding: 14px;
-        }
-        .video-date {
-            font-size: 0.75rem;
-            color: #64748b;
-            font-family: monospace;
-            text-transform: uppercase;
-            font-weight: 600;
-        }
-        .video-title {
-            font-size: 1.0rem;
-            font-weight: 600;
-            color: var(--dark);
-            margin: 4px 0 6px 0;
-            line-height: 1.4;
-        }
-        .video-desc {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin: 0;
-        }
+        .video-info { padding: 14px; }
 
-        .portal-link-box {
-            background: #eff6ff;
-            border: 1px solid #bfdbfe;
+        .callout-box {
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+            border-left: 4px solid var(--danger);
             border-radius: 6px;
-            padding: 14px 18px;
+            padding: 16px 20px;
             margin-top: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        @media (max-width: 600px) {
-            .portal-link-box { flex-direction: column; align-items: flex-start; gap: 10px; }
+            font-size: 0.92rem;
+            color: #7f1d1d;
         }
 
         footer {
@@ -161,8 +166,8 @@
 <body>
 
     <header>
-        <h1>Politik & Regionalt Virke</h1>
-        <div class="subtitle">Medlem af Regionsrådet • Taler, videoer og mærkesager</div>
+        <h1>Politik & Anlægsstyring</h1>
+        <div class="subtitle">Medlem af Regionsrådet • Taler, analyser og borgerdialog</div>
         <nav>
             <a href="index.html">&larr; Forside</a>
             <a href="forskning.html">Forskning & CBS</a>
@@ -175,79 +180,152 @@
         <section class="campaign-banner">
             <h2>Borgerdialog & Valgkamp</h2>
             <p style="margin: 0 0 10px 0; font-size: 0.94rem; color: #334151;">
-                Denne sektion er mest aktiv under valgkampe og ved større politiske forhandlinger. Har du spørgsmål eller input til de regionale beslutninger, kan du skrive direkte til mig via Messenger.
+                Denne sektion aktiveres løbende med politiske udspil og under valgkampe. Har du spørgsmål eller input til de regionale beslutninger, kan du skrive direkte til mig via Messenger.
             </p>
             <a href="https://www.facebook.com/messages/t/61582603754478/" target="_blank" rel="noopener noreferrer" class="fb-btn">
                 Send besked på Facebook Messenger &rarr;
             </a>
         </section>
 
-        <!-- VIDEOER FRA REGIONSRÅDETS TV -->
+        <!-- DYBDEGÅENDE ANLÆGSANALYSE: NYT HOSPITAL NORDSJÆLLAND -->
         <section class="section-block">
-            <h2 class="section-title">Videoer fra Regionsrådssalen</h2>
-            <p style="font-size: 0.92rem; color: var(--text-muted); margin-bottom: 15px;">
-                Optagelser fra Regionsrådets officielle tv-transmissioner og debatter i rådssalen:
+            <h2 class="section-title">Case: Nyt Hospital Nordsjælland (Favrholm)</h2>
+            <p style="font-size: 0.95rem; color: #334151;">
+                Når man analyserer offentlige anlægsprojekter, er det afgørende at lade data og tidslinjer tale for sig selv. Byggeriet af Nyt Hospital Nordsjælland ved Favrholm syd for Hillerød er et af Danmarkshistoriens mest komplekse sygehusbyggerier.
+            </p>
+            <p style="font-size: 0.95rem; color: #334151;">
+                Nedenfor følger en faktuel gennemgang af projektets økonomiske udvikling og tidsmæssige forskydninger fra de tidlige beslutningsfaser frem til 2026:
             </p>
 
-            <div class="video-grid">
-                <!-- VIDEO 1: SUNDHED OG BUDGET -->
-                <div class="video-card">
-                    <div class="video-wrapper">
-                        <!-- Erstat URL med den specifikke afspiller- eller embed-sti fra Regionens TV-arkiv -->
-                        <iframe src="https://www.youtube-nocookie.com/embed/videoseries?list=PLrA_eJ5mD_pI9b7Xv9eQ0y" title="Regionsrådet: Debat om hospitaler og ventetider" allowfullscreen loading="lazy"></iframe>
-                    </div>
-                    <div class="video-info">
-                        <div class="video-date">Regionsrådssamling</div>
-                        <h3 class="video-title">Budgetdebat: Prioritering af sundhedsvæsen og personale</h3>
-                        <p class="video-desc">Indlæg vedrørende sikring af kerneopgaver og afbureaukratisering på hospitalerne.</p>
-                    </div>
+            <div class="stat-grid">
+                <div class="stat-card">
+                    <div class="stat-label">Oprindelig styringsramme (2013)</div>
+                    <div class="stat-num">5,3 mia. kr.</div>
                 </div>
-
-                <!-- VIDEO 2: INFRASTRUKTUR OG TRAFIK -->
-                <div class="video-card">
-                    <div class="video-wrapper">
-                        <iframe src="https://www.youtube-nocookie.com/embed/videoseries?list=PLrA_eJ5mD_pI9b7Xv9eQ0y" title="Regionsrådet: Kollektiv trafik og infrastruktur" allowfullscreen loading="lazy"></iframe>
-                    </div>
-                    <div class="video-info">
-                        <div class="video-date">Regionsrådssamling</div>
-                        <h3 class="video-title">Kollektiv Trafik: Sammenhæng for pendlere i regionen</h3>
-                        <p class="video-desc">Debat om fremtidens bus- og letbanenet samt mobilitet på tværs af kommunegrænser.</p>
-                    </div>
+                <div class="stat-card">
+                    <div class="stat-label">Styrende budget (Juni 2026)</div>
+                    <div class="stat-num">11,3 mia. kr.</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Budgetvækst (Løbende priser)</div>
+                    <div class="stat-num">+113 %</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Samlet Tidsforskydning</div>
+                    <div class="stat-num">7 år (2020 &rarr; 2027)</div>
                 </div>
             </div>
 
-            <div class="portal-link-box">
-                <span style="font-size: 0.88rem; color: #1e3a8a;">
-                    <strong>Officielt mødearkiv:</strong> Se samtlige dagsordener, beslutningsreferater og live-udsendelser på Regionens officielle portal[cite: 3].
-                </span>
-                <a href="https://www.regionh.dk/politik/dagsordener-og-referater/Sider/default.aspx" target="_blank" rel="noopener noreferrer" style="color: var(--primary); font-weight: 600; font-size: 0.88rem; text-decoration: none;">
-                    Besøg Regionens arkiv &rarr;
-                </a>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="min-width: 90px;">Tidspunkt</th>
+                            <th>Begivenhed / Milepæl</th>
+                            <th style="min-width: 110px;">Budgetramme</th>
+                            <th style="min-width: 120px;">Tidsplan / Åbning</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>2010</strong></td>
+                            <td>Regionsrådet vedtager planen om et samlet hospital i Nordsjælland.</td>
+                            <td>3,8 mia. kr.</td>
+                            <td>Forventet 2020</td>
+                        </tr>
+                        <tr>
+                            <td><strong>2013</strong></td>
+                            <td>Statens Kvalitetsfond meddeler endeligt tilsagn. Den officielle styringsramme låses.</td>
+                            <td>5,3 mia. kr.</td>
+                            <td>Forventet 2020</td>
+                        </tr>
+                        <tr>
+                            <td><strong>2019</strong></td>
+                            <td>Anlægsfasen påbegyndes fysisk i Favrholm efter projekteringsfase.</td>
+                            <td>5,3 mia. kr.</td>
+                            <td>Udskudt til 2022</td>
+                        </tr>
+                        <tr>
+                            <td><strong>2021–2023</strong></td>
+                            <td>Projektet rammes af leverandørudfordringer og stigende materialepriser. Budgettet opskrives gradvist. Rigsrevisionen udtaler kritik af den tidlige risikovurdering.</td>
+                            <td>7,6 mia. kr.</td>
+                            <td>Udskudt til 2026</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Sept. 2024</strong></td>
+                            <td>Projektdirektør Lasse Krebs Manniche fratræder efter gensidig aftale; en ny byggeledelse indsættes.</td>
+                            <td>7,6 mia. kr.</td>
+                            <td>2026 fastholdt</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Juni 2025</strong></td>
+                            <td>Forretningsudvalget orienteres om et estimeret finansieringsbehov på op til 1 mia. kr.</td>
+                            <td>8,2 mia. kr.</td>
+                            <td>Skubbet mod 2027</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Juni 2026</strong></td>
+                            <td>Regionen ansøger ministeriet om låneadgang til en budgetforhøjelse på 3,172 mia. kr. Det samlede styrende budget lander på et historisk højt niveau.</td>
+                            <td><strong>11,3 mia. kr.</strong></td>
+                            <td><strong>Forventet ultimo 2027</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 style="margin: 22px 0 10px 0; color: var(--dark); font-size: 1.15rem;">Centrale observationer fra det faktuelle forløb</h3>
+            <ul style="margin: 0 0 16px 20px; font-size: 0.92rem; color: #334151;">
+                <li><strong>Budgetvækst over tid:</strong> Det samlede styrende budget er vokset fra 5,3 milliarder kroner ved det endelige statslige tilsagn i 2013 til 11,3 milliarder kroner i 2026. Det svarer til en stigning på over 110 % målt i løbende priser.</li>
+                <li><strong>Tidsmæssig forskydning:</strong> Ibrugtagningen var oprindeligt berammet til 2020. Den seneste tidsplan opererer med ibrugtagning i slutningen af 2027 – en samlet forskydning på syv år.</li>
+                <li><strong>Rigsrevisionens vurdering:</strong> Statsrevisorerne og Rigsrevisionen har i deres beretninger konstateret, at den oprindelige budgettering samlet set har været utilstrækkelig og behæftet med markant usikkerhed i forhold til projektets faktiske kompleksitet.</li>
+                <li><strong>Reviderede prognoser mellem 2025 og 2026:</strong> Hvor forventningen i sommeren 2025 lød på et merforbrug på op mod 1 milliard kroner, viste den konsoliderede opgørelse 12 måneder senere et reelt finansieringsbehov på 3,172 milliarder kroner.</li>
+            </ul>
+
+            <div class="callout-box">
+                <strong style="display: block; margin-bottom: 6px; font-size: 0.95rem;">De styringsmæssige rammer fremadrettet (Region Østdanmark pr. 1. januar 2027):</strong>
+                Med etableringen af Region Østdanmark pr. 1. januar 2027 overgår hospitalet til et nyt regionalt administrationsapparat bestående af en koncerndirektion og over 6.000 administrative og it-faglige medarbejdere. Fra et økonomistyringsmæssigt synspunkt efterlader forløbet to uafklarede driftsspørgsmål:
+                <ol style="margin: 8px 0 0 20px;">
+                    <li><strong>Afgrænsning af gældsforpligtelser:</strong> Hvorvidt og hvordan afdragene på det optagne lån på 3,172 milliarder kroner kan isoleres til det tidligere Region Hovedstads budgetter, så driftsrammen i de øvrige dele af den nye region friholdes.</li>
+                    <li><strong>Præcision i anlægsprognoser:</strong> Hvilke kontrolmekanismer der implementeres fremadrettet for at sikre, at risici i store offentlige infrastrukturprojekter afdækkes og indregnes tidligere i anlægsfasen.</li>
+                </ol>
             </div>
         </section>
 
-        <!-- POLITISKE HOVEDOMRÅDER -->
+        <!-- VIDEOER FRA REGIONSRÅDETS TRANSMISSIONER -->
         <section class="section-block">
-            <h2 class="section-title">Politiske Hovedtemaer</h2>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
-                <div style="background: #f8fafc; border: 1px solid var(--border); border-radius: 6px; padding: 16px;">
-                    <h3 style="margin: 0 0 6px 0; font-size: 1.05rem; color: var(--dark);">Et robust sundhedsvæsen</h3>
-                    <p style="font-size: 0.88rem; color: var(--text-muted); margin: 0;">
-                        Kortere ventetider, rekruttering og fastholdelse af sundhedsfagligt personale samt bedre rammer for psykiatrien.
-                    </p>
+            <h2 class="section-title">Videoer fra Regionsrådssalen</h2>
+            <p style="font-size: 0.92rem; color: var(--text-muted); margin-bottom: 16px;">
+                Politiske indlæg og debatter fra rådssalens tv-transmissioner:
+            </p>
+
+            <div class="video-grid">
+                <div class="video-card">
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube-nocookie.com/embed/videoseries?list=PLrA_eJ5mD_pI9b7Xv9eQ0y" title="Debat om anlæg og budget" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                    <div class="video-info">
+                        <span style="font-size: 0.75rem; color: #64748b; font-family: monospace; font-weight: 600;">REGIONSRÅDSSAMLING</span>
+                        <h4 style="margin: 4px 0 6px 0; color: var(--dark);">Budgetkontrol: Nyt Hospital Nordsjælland</h4>
+                        <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Indlæg om risikostyring og afdækning af merudgifter i store hospitalsbyggerier.</p>
+                    </div>
                 </div>
-                <div style="background: #f8fafc; border: 1px solid var(--border); border-radius: 6px; padding: 16px;">
-                    <h3 style="margin: 0 0 6px 0; font-size: 1.05rem; color: var(--dark);">Grøn omstilling & Infrastruktur</h3>
-                    <p style="font-size: 0.88rem; color: var(--text-muted); margin: 0;">
-                        Effektiv kollektiv transport, rent drikkevand og regional koordinering, der sikrer reel værdi for skatteborgernes penge.
-                    </p>
+
+                <div class="video-card">
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube-nocookie.com/embed/videoseries?list=PLrA_eJ5mD_pI9b7Xv9eQ0y" title="Kollektiv trafik og infrastruktur" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                    <div class="video-info">
+                        <span style="font-size: 0.75rem; color: #64748b; font-family: monospace; font-weight: 600;">REGIONSRÅDSSAMLING</span>
+                        <h4 style="margin: 4px 0 6px 0; color: var(--dark);">Kollektiv Trafik: Sammenhæng for pendlere</h4>
+                        <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Debat om letbane, buslinjer og regional mobilitet på tværs af kommunegrænser.</p>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
 
     <footer>
-        &copy; 2026 Lasse Holt. Regionsrådet.
+        &copy; 2026 Lasse Holt. Politisk virke & Anlægsstyring.
     </footer>
 
 </body>
