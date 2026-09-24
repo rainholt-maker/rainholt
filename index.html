@@ -3,51 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lasse Holt – Strategisk Kontrahering, Partnerskaber & Bæredygtig Kapitalisme</title>
-    <meta name="description" content="Lasse Holt. Specialiseret rådgivning og forskning inden for strategisk kontrahering, relationsbaserede kontrakter, innovationspartnerskaber og bæredygtig kapitalisme i værdikæder.">
-
-    <!-- AEO & SØGEMASKINEDATA -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Lasse Holt",
-      "url": "https://www.lasseholt.dk",
-      "jobTitle": "Ekstern Lektor & Ekspert i Strategisk Kontrahering",
-      "affiliation": {
-        "@type": "EducationalOrganization",
-        "name": "Copenhagen Business School"
-      },
-      "knowsAbout": [
-        "Strategisk kontrahering",
-        "Innovationspartnerskaber",
-        "Relationsbaserede kontrakter",
-        "Gensidigt værdiskabende samarbejder",
-        "Bæredygtig kapitalisme",
-        "Kontraktarkitektur og incitamentsstrukturer",
-        "Bæredygtighed i værdikæder"
-      ],
-      "author": [
-        {
-          "@type": "Book",
-          "name": "Bæredygtig Kapitalisme - Strategisk kontrahering i værdikæder",
-          "publisher": {
-            "@type": "Organization",
-            "name": "DJØF Forlag"
-          }
-        }
-      ]
-    }
-    </script>
-
+    <title>Lasse Holt</title>
+    <meta name="description" content="Lasse Holt – Forskning, undervisning på CBS, politisk virke i Regionsrådet og kontakt.">
     <style>
         :root {
             --primary: #1e3a8a;
+            --dark: #0f172a;
             --text-main: #1f2937;
             --text-muted: #4b5563;
+            --border: #e2e8f0;
             --bg-page: #fafafa;
             --card-bg: #ffffff;
-            --border: #e5e7eb;
         }
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -59,136 +25,78 @@
             background-color: var(--bg-page);
         }
         header {
-            margin-bottom: 45px;
+            margin-bottom: 40px;
             border-bottom: 1px solid var(--border);
             padding-bottom: 25px;
         }
-        .header-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-        }
         h1 {
-            font-size: 2.3rem;
+            font-size: 2.4rem;
             margin: 0 0 6px 0;
-            color: #111827;
+            color: var(--dark);
             letter-spacing: -0.5px;
-        }
-        .lang-switch {
-            font-size: 0.85rem;
-            font-weight: 600;
-        }
-        .lang-switch a {
-            text-decoration: none;
-            color: var(--primary);
         }
         .subtitle {
             font-size: 1.15rem;
             color: var(--primary);
             font-weight: 600;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
         .tagline {
             font-size: 1.0rem;
             color: var(--text-muted);
             max-width: 700px;
-            line-height: 1.5;
         }
         nav {
             display: flex;
-            gap: 22px;
+            gap: 24px;
             padding-top: 18px;
-            flex-wrap: wrap;
         }
         nav a {
             text-decoration: none;
             color: var(--primary);
-            font-weight: 500;
-            font-size: 0.95rem;
+            font-weight: 600;
+            font-size: 1.05rem;
         }
         nav a:hover { text-decoration: underline; }
 
-        /* GRID */
-        .pillar-grid {
+        .tri-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 22px;
-            margin: 35px 0 25px 0;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 40px 0;
         }
-        @media (max-width: 720px) {
-            .pillar-grid { grid-template-columns: 1fr; }
+        @media (max-width: 768px) {
+            .tri-grid { grid-template-columns: 1fr; }
         }
-        .card {
+        .tri-card {
             background: var(--card-bg);
             border: 1px solid var(--border);
-            border-radius: 6px;
+            border-radius: 8px;
             padding: 24px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             box-shadow: 0 1px 3px rgba(0,0,0,0.02);
         }
-        .card.primary { border-top: 3px solid var(--primary); }
-        .card.secondary { border-top: 3px solid #047857; }
-        .card h2 {
-            font-size: 1.2rem;
-            color: #0f172a;
-            margin-top: 0;
-            margin-bottom: 10px;
+        .tri-card.forskning { border-top: 4px solid var(--primary); }
+        .tri-card.politik { border-top: 4px solid #b91c1c; }
+        .tri-card.kontakt { border-top: 4px solid #047857; }
+        .tri-card h2 {
+            font-size: 1.3rem;
+            color: var(--dark);
+            margin: 0 0 10px 0;
         }
-        .card p {
+        .tri-card p {
             font-size: 0.92rem;
             color: var(--text-muted);
-            margin: 0 0 16px 0;
+            margin: 0 0 20px 0;
             line-height: 1.5;
         }
         .card-link {
             text-decoration: none;
             color: var(--primary);
             font-weight: 600;
-            font-size: 0.88rem;
-        }
-
-        /* BOGANKER */
-        .book-section {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-left: 4px solid #0f172a;
-            border-radius: 6px;
-            padding: 24px;
-            margin-bottom: 25px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
-        }
-        .book-tag {
-            font-size: 0.75rem;
-            color: #64748b;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 6px;
-        }
-        .book-title {
-            margin: 0 0 8px 0;
-            font-size: 1.25rem;
-            color: #0f172a;
-        }
-
-        /* NICHE HENVISNING */
-        .niche-ref {
-            background: #f8fafc;
-            border: 1px solid #e2e8f0;
-            border-radius: 6px;
-            padding: 18px 22px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        @media (max-width: 600px) {
-            .niche-ref { flex-direction: column; align-items: flex-start; gap: 10px; }
-        }
-        .niche-ref-text {
-            font-size: 0.88rem;
-            color: #475569;
+            font-size: 0.9rem;
         }
 
         footer {
@@ -204,59 +112,49 @@
 <body>
 
     <header>
-        <div class="header-top">
-            <h1>Lasse Holt</h1>
-            <div class="lang-switch"><strong>DA</strong> | <a href="en/index.html">EN</a></div>
-        </div>
-        <div class="subtitle">Strategisk Kontrahering • Innovationspartnerskaber • Bæredygtig Kapitalisme</div>
+        <h1>Lasse Holt</h1>
+        <div class="subtitle">Erhvervsjurist • Ekstern Lektor ved CBS • Regionsrådsmedlem</div>
         <div class="tagline">
-            Specialist i kontraktarkitektur, spilteoretiske incitamentsmekanismer og langsigtede partnerskaber i værdikæder. Ekstern Lektor ved Copenhagen Business School.
+            Akademisk virke inden for strategisk kontrahering og værdikæder, politisk engagement i regional udvikling samt direkte kontakt.
         </div>
         <nav>
-            <a href="forskning.html">Fagprofil & Metoder</a>
-            <a href="vejledninger.html">Vejledninger (150+)</a>
-            <a href="arkiv.html">Ugebreve & Analyser</a>
-            <a href="makro.html">Makroøkonomisk Radar</a>
+            <a href="forskning.html">Forskning & CBS</a>
+            <a href="politik.html">Politik</a>
             <a href="kontakt.html">Kontakt</a>
         </nav>
     </header>
 
     <main>
-        <section class="pillar-grid">
-            <div class="card primary">
+        <section class="tri-grid">
+            <div class="tri-card forskning">
                 <div>
-                    <h2>Strategisk Kontrahering & Partnerskaber</h2>
+                    <h2>1. Forskning & CBS</h2>
                     <p>
-                        Aftaler skal skabe værdi frem for at låse parterne i defensive nulsumsspil. Udvikling af relationsbaserede modeller og dynamisk kontraktarkitektur tilpasset uforudsigelighed.
+                        Kerneplatform for fagligt arbejde: Lærebogen <em>Bæredygtig Kapitalisme</em> (DJØF Forlag), over 150 kandidatvejledninger, undervisningsfag samt den ugentlige makroøkonomiske renteovervågning.
                     </p>
                 </div>
-                <a href="forskning.html" class="card-link">Se modeller og principper &rarr;</a>
+                <a href="forskning.html" class="card-link">Gå til Forskning & CBS &rarr;</a>
             </div>
 
-            <div class="card secondary">
+            <div class="tri-card politik">
                 <div>
-                    <h2>Bæredygtig Kapitalisme i Værdikæder</h2>
+                    <h2>2. Politik</h2>
                     <p>
-                        Integration af ESG-mål og forsyningskædesikkerhed som strategiske drivere. Balancering af omstillingsomkostninger og risikodeling mellem ordregiver og leverandører.
+                        Regionalpolitisk virke, taler og videoer fra Regionsrådssalen, mærkesager om sundhed og infrastruktur samt direkte dialog under valgkampe.
                     </p>
                 </div>
-                <a href="forskning.html" class="card-link">Læs om værdikædedesign &rarr;</a>
+                <a href="politik.html" class="card-link">Gå til Politik &rarr;</a>
             </div>
-        </section>
 
-        <section class="book-section">
-            <div class="book-tag">Kommende Bog • DJØF Forlag</div>
-            <h3 class="book-title">Bæredygtig Kapitalisme – Strategisk kontrahering i værdikæder</h3>
-            <p style="margin: 0; font-size: 0.92rem; color: var(--text-muted);">
-                En praktisk og teoretisk guide til hvordan jura, mikroøkonomi og spilteori forenes i moderne kontraktarkitektur, så bæredygtighed forankres som en reel konkurrencefordel.
-            </p>
-        </section>
-
-        <section class="niche-ref">
-            <div class="niche-ref-text">
-                <strong>Finansiel Radar:</strong> Løbende monitorering af kapitalomkostninger, rentekurver og statsgæld som ydre rammebetingelser for langsigtede kontrakter.
+            <div class="tri-card kontakt">
+                <div>
+                    <h2>3. Kontakt</h2>
+                    <p>
+                        Direkte kanaler for studerende, samarbejdspartnere, borgere og presse. Telefon, e-mail og professionelt LinkedIn-netværk.
+                    </p>
+                </div>
+                <a href="kontakt.html" class="card-link">Gå til Kontakt &rarr;</a>
             </div>
-            <a href="makro.html" class="card-link" style="white-space: nowrap;">Gå til telemetri &rarr;</a>
         </section>
     </main>
 
