@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lasse Holt</title>
-    <meta name="description" content="Lasse Holt – Forskning, undervisning på CBS, politisk virke i Regionsrådet og kontakt.">
+    <meta name="description" content="Lasse Holt – Makroøkonomisk radar, forskning og undervisning ved CBS, politisk virke i Regionsrådet samt rådgivning.">
     <style>
         :root {
             --primary: #1e3a8a;
@@ -14,12 +14,13 @@
             --border: #e2e8f0;
             --bg-page: #fafafa;
             --card-bg: #ffffff;
+            --danger: #b91c1c;
         }
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             line-height: 1.6;
             color: var(--text-main);
-            max-width: 860px;
+            max-width: 900px;
             margin: 0 auto;
             padding: 50px 20px;
             background-color: var(--bg-page);
@@ -44,12 +45,13 @@
         .tagline {
             font-size: 1.0rem;
             color: var(--text-muted);
-            max-width: 700px;
+            max-width: 720px;
         }
         nav {
             display: flex;
-            gap: 24px;
+            gap: 22px;
             padding-top: 18px;
+            flex-wrap: wrap;
         }
         nav a {
             text-decoration: none;
@@ -59,16 +61,16 @@
         }
         nav a:hover { text-decoration: underline; }
 
-        .tri-grid {
+        .four-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 22px;
             margin: 40px 0;
         }
-        @media (max-width: 768px) {
-            .tri-grid { grid-template-columns: 1fr; }
+        @media (max-width: 720px) {
+            .four-grid { grid-template-columns: 1fr; }
         }
-        .tri-card {
+        .pillar-card {
             background: var(--card-bg);
             border: 1px solid var(--border);
             border-radius: 8px;
@@ -78,18 +80,19 @@
             justify-content: space-between;
             box-shadow: 0 1px 3px rgba(0,0,0,0.02);
         }
-        .tri-card.forskning { border-top: 4px solid var(--primary); }
-        .tri-card.politik { border-top: 4px solid #b91c1c; }
-        .tri-card.kontakt { border-top: 4px solid #047857; }
-        .tri-card h2 {
+        .pillar-card.makro { border-top: 4px solid var(--danger); }
+        .pillar-card.forskning { border-top: 4px solid var(--primary); }
+        .pillar-card.politik { border-top: 4px solid #7c3aed; }
+        .pillar-card.kontakt { border-top: 4px solid #059669; }
+        .pillar-card h2 {
             font-size: 1.3rem;
             color: var(--dark);
             margin: 0 0 10px 0;
         }
-        .tri-card p {
+        .pillar-card p {
             font-size: 0.92rem;
             color: var(--text-muted);
-            margin: 0 0 20px 0;
+            margin: 0 0 18px 0;
             line-height: 1.5;
         }
         .card-link {
@@ -115,45 +118,60 @@
         <h1>Lasse Holt</h1>
         <div class="subtitle">Erhvervsjurist • Ekstern Lektor ved CBS • Regionsrådsmedlem</div>
         <div class="tagline">
-            Akademisk virke inden for strategisk kontrahering og værdikæder, politisk engagement i regional udvikling samt direkte kontakt.
+            Specialiseret overvågning af det globale gældsmarked, akademisk virke inden for strategisk kontrahering og værdikæder samt regionalpolitisk anlægsstyring.
         </div>
         <nav>
-            <a href="forskning.html">Forskning & CBS</a>
+            <a href="makro.html">Makroøkonomi</a>
+            <a href="forskning.html">Forskning</a>
             <a href="politik.html">Politik</a>
             <a href="kontakt.html">Kontakt</a>
         </nav>
     </header>
 
     <main>
-        <section class="tri-grid">
-            <div class="tri-card forskning">
+        <section class="four-grid">
+            <!-- 1. MAKROØKONOMI -->
+            <div class="pillar-card makro">
                 <div>
-                    <h2>1. Forskning & CBS</h2>
+                    <h2>1. Makroøkonomi</h2>
                     <p>
-                        Kerneplatform for fagligt arbejde: Lærebogen <em>Bæredygtig Kapitalisme</em> (DJØF Forlag), over 150 kandidatvejledninger, undervisningsfag samt den ugentlige makroøkonomiske renteovervågning.
+                        Systemisk telemetri og matematiske knækpunkts-målere for USA, Frankrig, Japan og EU. Overvågning af Term Premium, T-bill rollover og ugentlige analyser.
                     </p>
                 </div>
-                <a href="forskning.html" class="card-link">Gå til Forskning & CBS &rarr;</a>
+                <a href="makro.html" class="card-link" style="color: var(--danger);">Åbn Makroøkonomisk Radar &rarr;</a>
             </div>
 
-            <div class="tri-card politik">
+            <!-- 2. FORSKNING -->
+            <div class="pillar-card forskning">
                 <div>
-                    <h2>2. Politik</h2>
+                    <h2>2. Forskning</h2>
                     <p>
-                        Regionalpolitisk virke, taler og videoer fra Regionsrådssalen, mærkesager om sundhed og infrastruktur samt direkte dialog under valgkampe.
+                        Lærebogen <em>Bæredygtig Kapitalisme</em> (DJØF Forlag), 150+ katalogiserede kandidatafhandlinger samt aktuelle fag ved Copenhagen Business School.
                     </p>
                 </div>
-                <a href="politik.html" class="card-link">Gå til Politik &rarr;</a>
+                <a href="forskning.html" class="card-link">Gå til Forskning & Afhandlinger &rarr;</a>
             </div>
 
-            <div class="tri-card kontakt">
+            <!-- 3. POLITIK -->
+            <div class="pillar-card politik">
                 <div>
-                    <h2>3. Kontakt</h2>
+                    <h2>3. Politik</h2>
                     <p>
-                        Direkte kanaler for studerende, samarbejdspartnere, borgere og presse. Telefon, e-mail og professionelt LinkedIn-netværk.
+                        Regionalpolitisk virke, datadrevet anlægsanalyse af Nyt Hospital Nordsjælland (Favrholm), debatter fra rådssalen og direkte borgerdialog.
                     </p>
                 </div>
-                <a href="kontakt.html" class="card-link">Gå til Kontakt &rarr;</a>
+                <a href="politik.html" class="card-link" style="color: #7c3aed;">Gå til Politik &rarr;</a>
+            </div>
+
+            <!-- 4. KONTAKT -->
+            <div class="pillar-card kontakt">
+                <div>
+                    <h2>4. Kontakt</h2>
+                    <p>
+                        Uafhængig rådgivning og bestyrelsessparring inden for strategisk kontrahering, CSRD/CSDDD og makrorisici. Direkte telefon, e-mail og LinkedIn.
+                    </p>
+                </div>
+                <a href="kontakt.html" class="card-link" style="color: #059669;">Gå til Kontakt &rarr;</a>
             </div>
         </section>
     </main>
