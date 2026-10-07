@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Makroøkonomi: Systemisk Radar, Knækpunkter & Gældsfremskrivning – Lasse Holt</title>
-    <meta name="description" content="Mekanisk analyse af global likviditet, Term Premium, rollover-muren for amerikansk statsgæld og matematiske knækpunkter for USA, Frankrig, Japan og EU.">
+    <title>Makroøkonomi: Systemisk Radar & Knækpunkter – Lasse Holt</title>
+    <meta name="description" content="Analyse af global gældsdynamik, Term Premium, den amerikanske rollover-mur og finansielle knækpunkter for USA, Frankrig, Japan og EU.">
     <style>
         :root {
             --primary: #1e3a8a;
@@ -39,55 +39,6 @@
         nav { display: flex; gap: 20px; padding-top: 14px; flex-wrap: wrap; }
         nav a { text-decoration: none; color: var(--primary); font-weight: 600; font-size: 0.95rem; }
         nav a:hover { text-decoration: underline; }
-
-        /* FORMEL & TEORI SEKTION */
-        .theory-card {
-            background: #ffffff;
-            border: 1px solid var(--border);
-            border-left: 5px solid var(--primary);
-            border-radius: 8px;
-            padding: 26px;
-            margin-bottom: 35px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.03);
-        }
-        .theory-card h2 { margin: 0 0 12px 0; font-size: 1.35rem; color: var(--dark); }
-
-        .math-display-card {
-            background: #f8fafc;
-            border: 1px solid #e2e8f0;
-            border-radius: 6px;
-            padding: 16px 20px;
-            margin: 14px 0 18px 0;
-            text-align: center;
-        }
-        .math-formula {
-            font-family: "Cambria Math", "Georgia", "Times New Roman", serif;
-            font-size: 1.35rem;
-            color: #0f172a;
-            letter-spacing: 0.5px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-        }
-        .math-var { font-style: italic; }
-        .math-fraction {
-            display: inline-flex;
-            flex-direction: column;
-            vertical-align: middle;
-            text-align: center;
-            padding: 0 4px;
-        }
-        .math-fraction .num { border-bottom: 1.5px solid #0f172a; padding-bottom: 1px; }
-        .math-fraction .den { padding-top: 1px; }
-        .math-legend {
-            font-size: 0.82rem;
-            color: #64748b;
-            margin-top: 8px;
-            text-align: left;
-            border-top: 1px dashed #e2e8f0;
-            padding-top: 8px;
-        }
 
         /* 4-KOLONNE RADAR GRID */
         .radar-grid {
@@ -239,7 +190,7 @@
             color: #881337;
         }
 
-        /* DEDIKERET FREMSKRIVNINGS-SEKTION (ROLLOVER & RENTE-SNEBOLD) */
+        /* FREMSKRIVNINGS-SEKTION */
         .projection-section {
             background: #ffffff;
             border: 1px solid var(--border);
@@ -268,13 +219,8 @@
             flex-direction: column;
             justify-content: space-between;
         }
-        .timeline-step.active {
-            border-top: 4px solid var(--primary);
-        }
-        .timeline-step.danger {
-            border-top: 4px solid var(--danger);
-            background: #fffafa;
-        }
+        .timeline-step.active { border-top: 4px solid var(--primary); }
+        .timeline-step.danger { border-top: 4px solid var(--danger); background: #fffafa; }
         .timeline-year-tag {
             font-size: 0.75rem;
             font-weight: 800;
@@ -302,7 +248,6 @@
             line-height: 1.5;
         }
 
-        /* GRAFISK RENTE-SNEBOLD SAMMENLIGNING */
         .snowball-chart {
             background: #f8fafc;
             border: 1px solid #e2e8f0;
@@ -315,25 +260,117 @@
         .snowball-bar-bg { background: #e2e8f0; height: 18px; border-radius: 4px; overflow: hidden; width: 100%; }
         .snowball-bar-fill { height: 100%; border-radius: 4px; }
 
-        /* TRANSMISSIONSKÆDE */
-        .transmission-box {
+        /* FORMEL & TEORI SEKTION */
+        .theory-card {
+            background: #ffffff;
+            border: 1px solid var(--border);
+            border-left: 5px solid var(--primary);
+            border-radius: 8px;
+            padding: 26px;
+            margin-bottom: 35px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+        }
+        .theory-card h2 { margin: 0 0 12px 0; font-size: 1.35rem; color: var(--dark); }
+
+        .math-display-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            padding: 16px 20px;
+            margin: 14px 0 18px 0;
+            text-align: center;
+        }
+        .math-formula {
+            font-family: "Cambria Math", "Georgia", "Times New Roman", serif;
+            font-size: 1.35rem;
+            color: #0f172a;
+            letter-spacing: 0.5px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+        .math-var { font-style: italic; }
+        .math-fraction {
+            display: inline-flex;
+            flex-direction: column;
+            vertical-align: middle;
+            text-align: center;
+            padding: 0 4px;
+        }
+        .math-fraction .num { border-bottom: 1.5px solid #0f172a; padding-bottom: 1px; }
+        .math-fraction .den { padding-top: 1px; }
+        .math-legend {
+            font-size: 0.82rem;
+            color: #64748b;
+            margin-top: 8px;
+            text-align: left;
+            border-top: 1px dashed #e2e8f0;
+            padding-top: 8px;
+        }
+
+        /* GLOBALT PRES OG SAMMENHÆNG */
+        .global-context-box {
             background: #ffffff;
             border: 1px solid var(--border);
             border-radius: 8px;
-            padding: 24px;
+            padding: 26px;
             margin-bottom: 30px;
         }
-        .chain-item {
-            display: flex;
-            gap: 12px;
-            background: #f8fafc;
-            padding: 12px 14px;
-            border-radius: 6px;
-            border-left: 3px solid var(--primary);
-            font-size: 0.9rem;
-            margin-bottom: 8px;
+        .global-context-box h2 {
+            margin: 0 0 14px 0;
+            font-size: 1.35rem;
+            color: var(--dark);
         }
-        .chain-num { font-family: monospace; font-weight: 700; color: var(--primary); }
+        .context-intro {
+            font-size: 0.95rem;
+            color: #334151;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        .interconnect-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+        @media (max-width: 768px) {
+            .interconnect-grid { grid-template-columns: 1fr; }
+        }
+        .interconnect-item {
+            background: #f8fafc;
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--primary);
+            border-radius: 6px;
+            padding: 16px;
+        }
+        .interconnect-item.ai { border-left-color: #7c3aed; }
+        .interconnect-item.japan { border-left-color: var(--warning); }
+        .interconnect-item.usa { border-left-color: var(--danger); }
+        .interconnect-item.france { border-left-color: #0284c7; }
+        .interconnect-title {
+            font-size: 1.02rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin: 0 0 6px 0;
+        }
+        .interconnect-text {
+            font-size: 0.88rem;
+            color: #334151;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        .synthesis-card {
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+            border-left: 5px solid var(--danger);
+            border-radius: 6px;
+            padding: 18px 20px;
+            margin-top: 20px;
+            font-size: 0.92rem;
+            color: #7f1d1d;
+            line-height: 1.6;
+        }
 
         footer { text-align: center; margin-top: 60px; font-size: 0.85rem; color: #94a3b8; }
     </style>
@@ -345,7 +382,7 @@
             <h1>Makroøkonomi: Systemisk Radar</h1>
             <div style="font-size: 0.85rem;"><strong>DA</strong> | <a href="en/macro.html" style="color: var(--primary); text-decoration: none;">EN</a></div>
         </div>
-        <div class="subtitle">Mekanisk overvågning af gældsdynamik, Term Premium og systemiske knækpunkter</div>
+        <div class="subtitle">Analyse af global gældssætning, risikopræmier og finansielle knækpunkter</div>
         <nav>
             <a href="index.html">&larr; Forside</a>
             <a href="makro.html" style="color: var(--primary); border-bottom: 2px solid var(--primary);">Makroøkonomi</a>
@@ -356,45 +393,11 @@
     </header>
 
     <main>
-        <!-- TEORETISK FUNDAMENT -->
-        <section class="theory-card">
-            <h2>Teoretisk Fundament: Hvornår bryder gældsstabiliteten sammen?</h2>
-            <p style="font-size: 0.94rem; color: #334151; margin: 0 0 10px 0;">
-                Klassiske modeller som <strong>Fisher-effekten</strong> (<span class="math-var">i</span> &approx; <span class="math-var">r</span>* + <span class="math-var">&pi;</span><sup>e</sup>) og <strong>Taylor-reglen</strong> forudsætter rolige konjunkturer uden gældsmætning. Under finanspolitisk dominans bestemmes den nominelle markedsrente i stedet af markedets krav om risikotillæg for likviditets- og refinansieringsrisiko:
-            </p>
-
-            <div class="math-display-card">
-                <div class="math-formula">
-                    <span class="math-var">i</span><sub>t</sub> = <span class="math-var">r</span>* + <span class="math-var">&pi;</span><sup>e</sup> + <span class="math-var">&theta;</span><sub>t</sub> + <span class="math-var">s</span><sub>t</sub>
-                </div>
-                <div class="math-legend">
-                    <strong>Variable:</strong> <span class="math-var">i</span><sub>t</sub> (markedsrente) &bull; <span class="math-var">r</span>* (naturlig realrente) &bull; <span class="math-var">&pi;</span><sup>e</sup> (inflationsforventning) &bull; <span class="math-var">&theta;</span><sub>t</sub> (<strong>Term Premium</strong>) &bull; <span class="math-var">s</span><sub>t</sub> (suverænt kreditspænd)
-                </div>
-            </div>
-
-            <p style="font-size: 0.94rem; color: #334151; margin: 12px 0 10px 0;">
-                Ifølge <strong>Domar-betingelsen</strong> for gældsdynamik (&Delta;<span class="math-var">d</span><sub>t</sub> = (<span class="math-var">i</span><sub>t</sub> &minus; <span class="math-var">g</span><sub>t</sub>)&middot;<span class="math-var">d</span><sub>t&minus;1</sub> + <span class="math-var">pb</span><sub>t</sub>) indtræffer det matematiske <strong>knækpunkt (<span class="math-var">i</span><sub>crit</sub>)</strong>, når rentebetalingerne overstiger økonomiens nominelle vækstrate korrigeret for det primære budgetunderskud:
-            </p>
-
-            <div class="math-display-card">
-                <div class="math-formula">
-                    <span class="math-var">i</span><sub>crit</sub> = <span class="math-var">g</span><sub>t</sub> &minus; 
-                    <span class="math-fraction">
-                        <span class="num"><span class="math-var">pb</span><sub>t</sub></span>
-                        <span class="den"><span class="math-var">d</span><sub>t&minus;1</sub></span>
-                    </span>
-                </div>
-                <div class="math-legend">
-                    <strong>Tærskel:</strong> Når den effektive markedsrente <span class="math-var">i</span><sub>t</sub> &gt; <span class="math-var">i</span><sub>crit</sub>, vokser gældskvoten eksponentielt af sig selv udelukkende via renters rente.
-                </div>
-            </div>
-        </section>
-
-        <!-- TELEMETRI MED INDRAMMEDE KNÆKPUNKTSMÅLERE -->
-        <h2 style="font-size: 1.35rem; color: var(--dark); margin: 0 0 16px 0;">Systemisk Telemetri & Knækpunkts-målere</h2>
+        <!-- 1. TELEMETRI MED INDRAMMEDE KNÆKPUNKTSMÅLERE (ØVERST) -->
+        <h2 style="font-size: 1.35rem; color: var(--dark); margin: 0 0 16px 0;">Aktuelle Nøgletal & Knækpunkts-målere</h2>
         <section class="radar-grid">
 
-            <!-- 1. USA -->
+            <!-- USA -->
             <div class="pole-card" style="border-top: 4px solid var(--danger);">
                 <div>
                     <div class="pole-header">
@@ -402,8 +405,8 @@
                         <span class="pole-tag">Federal Reserve & Treasury</span>
                     </div>
                     <div class="stat-line"><span>Statsgæld / Underskud:</span><span class="stat-val">$40,1T (123% af BNP) / ~6%</span></div>
-                    <div class="stat-line"><span>Omsættelig Gæld (Public):</span><span class="stat-val">$32,4 billioner</span></div>
-                    <div class="stat-line"><span>Nuværende 10Y Rente:</span><span class="stat-val">4,97 % (Term Premium aktiv)</span></div>
+                    <div class="stat-line"><span>Omsættelig Gæld:</span><span class="stat-val">$32,4 billioner</span></div>
+                    <div class="stat-line"><span>10-årig Rente:</span><span class="stat-val">4,97 % (Term Premium aktiv)</span></div>
                     <div class="stat-line"><span>Kritisk Knækpunkt (i_crit):</span><span class="stat-val" style="color: var(--danger);">5,25 – 5,50 %</span></div>
 
                     <div class="knæk-box">
@@ -420,7 +423,7 @@
                         </div>
                         <div class="knæk-scale-labels">
                             <span>0% (Stabil)</span>
-                            <span>50% (Advarsel)</span>
+                            <span>50% (Forhøjet)</span>
                             <span style="color: var(--danger); font-weight: 700;">100% (Brud)</span>
                         </div>
                         <div class="knæk-stats-table">
@@ -440,7 +443,7 @@
                     </div>
 
                     <div class="pole-desc">
-                        Scott Bessent udsteder ~$1.090 mia. i kortfristede T-bills (andel ~24,9 %) for at holde 10Y under 5 %. Feds styringsrente (3,75–4,00 %) og opbremsningen i jobskabelsen (NFP: +29k) fastlåser Washington i en stagflationsklemme med renteudgifter over $1.100 mia. årligt.
+                        Finansminister Scott Bessent udsteder over $1.000 mia. i kortfristede T-bills for at afbøde rentehop på de lange løbetider. Den stramme pengepolitik fra Federal Reserve og vigende jobskabelse fastholder Washington i en stagflationsklemme, hvor de årlige renteudgifter alene overstiger $1.100 mia.
                     </div>
                 </div>
                 <div class="trigger-alert">
@@ -448,7 +451,7 @@
                 </div>
             </div>
 
-            <!-- 2. FRANKRIG (EURO-CRISIS II) -->
+            <!-- FRANKRIG -->
             <div class="pole-card" style="border-top: 4px solid #7c3aed;">
                 <div>
                     <div class="pole-header">
@@ -493,15 +496,15 @@
                     </div>
 
                     <div class="pole-desc">
-                        Rentespændet mod Tyskland udvides hurtigere end under krisen i 2011. Frankrig er <em>too big to bail</em>. Politisk fragmentering forhindrer finanslovskonsolidering, og med inflation over målet kan ECB ikke aktivere TPI-støtteopkøb uden tysk modstand.
+                        Rentespændet mod Tyskland udvides hurtigere end under gældskrisen i 2011. Frankrig er for stort til at blive reddet af de eksisterende krisemekanismer. Den parlamentariske lammelse forhindrer finanspolitiske reformer, mens inflationen udelukker støtteopkøb fra ECB uden tysk modstand.
                     </div>
                 </div>
                 <div class="trigger-alert">
-                    <strong>Primær trigger:</strong> OAT-Bund blowout over 110 bps tvinger regeringen i knæ; smitte til Sydeuropa.
+                    <strong>Primær trigger:</strong> OAT-Bund blowout over 110 bps udløser politisk krise og smitte i eurozonen.
                 </div>
             </div>
 
-            <!-- 3. JAPAN -->
+            <!-- JAPAN -->
             <div class="pole-card" style="border-top: 4px solid var(--warning);">
                 <div>
                     <div class="pole-header">
@@ -546,15 +549,15 @@
                     </div>
 
                     <div class="pole-desc">
-                        Trods rentehop til 1,25 % (højeste i 30 år) er yenen under voldsomt pres. For at forsvare valutaen tvinges Tokyo til at likvidere sine reserver af US Treasuries. Ketsjereffekten dumper kurserne i USA og fjerner marginalkøberen på det værst tænkelige tidspunkt.
+                        Trods renteforhøjelsen til 1,25 % er yenen fortsat under voldsomt pres. For at stabilisere valutaen tvinges Tokyo til at sælge ud af sine beholdninger af amerikanske statsobligationer. Det sender chokbølger ind i det amerikanske obligationsmarked og fjerner en central køber.
                     </div>
                 </div>
                 <div class="trigger-alert">
-                    <strong>Primær trigger:</strong> Yenkollaps fremkalder masselikvidation af amerikanske statsobligationer.
+                    <strong>Primær trigger:</strong> Akut yen-forsvar fremkalder frasalg af amerikanske statsobligationer.
                 </div>
             </div>
 
-            <!-- 4. EUROZONEN & DANMARK -->
+            <!-- EUROZONEN & DANMARK -->
             <div class="pole-card" style="border-top: 4px solid var(--safe);">
                 <div>
                     <div class="pole-header">
@@ -599,20 +602,20 @@
                     </div>
 
                     <div class="pole-desc">
-                        ECB nægter at slække pengepolitikken pga. olie (&gt; $97) og importeret inflation. I Danmark har Nationalbanken måttet intervenere med -5,6 mia. DKK for at forsvare kronen, hvilket afslutter årtiers renterabat og fastholder et massivt pres på ejendomsmarkedet.
+                        ECB fastholder disciplinen grundet råvarepriser og importeret inflation. I Danmark har Nationalbanken måttet intervenere med -5,6 mia. DKK for at forsvare kronen, hvilket fjerner årtiers renterabat over for euroen og fastholder et markant pres på bolig- og anlægssektoren.
                     </div>
                 </div>
                 <div class="trigger-alert">
-                    <strong>Primær trigger:</strong> Vedvarende 5,5 % realkredit fryser boliginvesteringer; kronepres tester fastkursen.
+                    <strong>Primær trigger:</strong> Vedvarende 5,5 % realkredit fryser ejendomsmarkedet; kronepres udfordrer fastkursen.
                 </div>
             </div>
         </section>
 
-        <!-- DEDIKERET FREMSKRIVNING AF ROLLE-OVER EFFEKTEN & RENTE-SNEBOLDEN -->
+        <!-- 2. FREMSKRIVNING AF ROLLOVER-EFFEKTEN -->
         <section class="projection-section">
-            <h2>Fremskrivningsmodel: Rollover-muren & Rente-Snebolden (2026–2031)</h2>
+            <h2>Fremskrivningsmodel: Rollover-muren (2026–2031)</h2>
             <p style="font-size: 0.94rem; color: #334151; margin: 0 0 14px 0;">
-                Når markedsgælden udløber, forvandles den historiske lavrenteperiode (1,0–2,5 %) til et akut renteshock. Med <strong>$32,4 billioner</strong> i omsættelig gæld og en årlig refinansieringsvolumen på <strong>33 % (~$8 til $9 billioner årligt)</strong> er gældens fornyelse en mekanisk snebold, der vokser uafhængigt af politiske ønsker:
+                I takt med at ældre obligationsserier fra lavrenteperioden (1,0–2,5 %) udløber, stiger de løbende renteudgifter markant. Med <strong>$32,4 billioner</strong> i omsættelig gæld og en årlig refinansieringsvolumen på <strong>ca. 33 % (~$8 til $9 billioner)</strong> akkumuleres rentebyrden år for år:
             </p>
 
             <div class="timeline-card-grid">
@@ -623,7 +626,7 @@
                         <div class="timeline-amount">$1,45 billioner</div>
                         <div class="timeline-bnp">~4,3 % af BNP</div>
                         <div class="timeline-desc">
-                            Corona-gæld udstedt til 1–2 % udløber og genudstedes til ~5,0 %. Årlige rentebetalinger stiger fra $1,2T til over $1,45T. Renteudgifterne overhaler USA's samlede forsvarsbudget.
+                            Gæld optaget under lavrenteperioden forfalder og genudstedes til ca. 5,0 %. De samlede årlige rentebetalinger stiger fra $1,2 billioner til over $1,45 billioner og overgår USA's samlede forsvarsbudget.
                         </div>
                     </div>
                 </div>
@@ -635,7 +638,7 @@
                         <div class="timeline-amount">$1,65 billioner</div>
                         <div class="timeline-bnp">~4,9 % af BNP</div>
                         <div class="timeline-desc">
-                            Næste bølge på ~$8–9 billioner forfalder plus det årlige budgetunderskud på ~$2 billioner. Renteudgifterne overstiger det samlede budget for forsvar og Medicare tilsammen.
+                            Næste store pulje på ~$8–9 billioner forfalder sideløbende med det årlige budgetunderskud på ~$2 billioner. Renteudgifterne overstiger det samlede budget for forsvar og Medicare tilsammen.
                         </div>
                     </div>
                 </div>
@@ -647,7 +650,7 @@
                         <div class="timeline-amount" style="color: var(--danger);">$1,90 – 2,00T</div>
                         <div class="timeline-bnp">5,5 – 6,0 % af BNP (BRUDPUNKT)</div>
                         <div class="timeline-desc">
-                            Al historisk billig gæld er udløbet. Hele gældsmassen på $40T+ bærer ~5 % i rente. Staten tvinges til ren gældsmonetarisering (pyramidespil) for blot at betale renterne.
+                            Al historisk billig gæld er udløbet. Hele gældsmassen på over $40 billioner forrentes nu til de nye markedsrenter, hvilket tvinger staten til at udstede ny gæld alene for at servicere renterne.
                         </div>
                     </div>
                 </div>
@@ -655,7 +658,7 @@
 
             <!-- GRAFISK FREMSKRIVNINGSSAMMENLIGNING -->
             <div class="snowball-chart">
-                <h4 style="margin: 0 0 14px 0; color: var(--dark); font-size: 1.05rem;">USA's Årlige Renteudgifter: Fra Lavrente til Gældskollaps</h4>
+                <h4 style="margin: 0 0 14px 0; color: var(--dark); font-size: 1.05rem;">USA's Årlige Renteudgifter: Fra Lavrente til Finansielt Brudpunkt</h4>
 
                 <div class="snowball-row">
                     <div class="snowball-label">
@@ -675,7 +678,7 @@
 
                 <div class="snowball-row">
                     <div class="snowball-label">
-                        <span>2027/2028: Rollover-chok bølge 2 (2/3 af gælden refinansieret ved 5 %)</span>
+                        <span>2027/2028: Anden bølge af refinansiering (2/3 af gælden fornyet ved 5 %)</span>
                         <span style="font-family: monospace;">$1.650 mia. (4,9 % af BNP)</span>
                     </div>
                     <div class="snowball-bar-bg"><div class="snowball-bar-fill" style="width: 82%; background: #f59e0b;"></div></div>
@@ -683,7 +686,7 @@
 
                 <div class="snowball-row" style="margin-bottom: 0;">
                     <div class="snowball-label" style="color: var(--danger);">
-                        <span><strong>2029–2031: Fuld gennemrulning (Domar-knækpunktet i_crit overskredet)</strong></span>
+                        <span><strong>2029–2031: Fuld fornyelse (Gældsbærende knækpunkt i_crit overskredet)</strong></span>
                         <span style="font-family: monospace;"><strong>$2.000 mia. (5,8 % af BNP)</strong></span>
                     </div>
                     <div class="snowball-bar-bg"><div class="snowball-bar-fill" style="width: 100%; background: #b91c1c;"></div></div>
@@ -691,15 +694,85 @@
             </div>
         </section>
 
-        <!-- TRANSMISSIONSKÆDE -->
-        <section class="transmission-box">
-            <h3 style="margin-top: 0; color: var(--dark);">Systemisk Transmissionskæde</h3>
-            <div class="chain-item"><span class="chain-num">1</span><div><strong>Råvarepres & Arbejdsmarkedsopbremsning:</strong> Olie over $97 fastholder inflation, mens det amerikanske kongetal (+29k) afslører stagnation.</div></div>
-            <div class="chain-item"><span class="chain-num">2</span><div><strong>Stagflationsklemme (Warsh):</strong> Fed kan hverken sænke renten uden at miste inflationsankeret eller hæve den uden at knække realøkonomien.</div></div>
-            <div class="chain-item"><span class="chain-num">3</span><div><strong>Frankrigs OAT-Bund chok (+67 bps):</strong> Gældspres i kernen af Europa blokerer for politisk handling; investorer flygter fra fransk statsgæld.</div></div>
-            <div class="chain-item"><span class="chain-num">4</span><div><strong>Japans ketsjereffekt:</strong> BoJ hæver til 1,25 %, men svag yen (157 USD/JPY) tvinger Tokyo til at likvidere US Treasuries for at skaffe dollars.</div></div>
-            <div class="chain-item"><span class="chain-num">5</span><div><strong>T-Bill rollover-muren ($8–9 billioner årligt):</strong> Washington må rulle 33 % af gælden over årligt til 5 %. Renteudgifterne eksploderer mod $2.000 mia. Term Premium udvides.</div></div>
-            <div class="chain-item"><span class="chain-num">6</span><div><strong>AI-afskrivningsbombe ($800 mia.):</strong> Tech-sektorens gældsfinansierede capex møder en afskrivningsmur i 2027–2029 uden dækkende pengestrømme.</div></div>
+        <!-- 3. TEORETISK FUNDAMENT OG FORMLER (PLACERET EFTER FREMSKRIVNINGEN) -->
+        <section class="theory-card">
+            <h2>Teoretisk Fundament: Betingelsen for Finansiel Stabilitet</h2>
+            <p style="font-size: 0.94rem; color: #334151; margin: 0 0 10px 0;">
+                Klassiske modeller som <strong>Fisher-effekten</strong> (<span class="math-var">i</span> &approx; <span class="math-var">r</span>* + <span class="math-var">&pi;</span><sup>e</sup>) og <strong>Taylor-reglen</strong> forudsætter rolige konjunkturer uden gældsmætning. Under finanspolitisk dominans bestemmes den nominelle markedsrente i stedet af markedets krav om risikotillæg for likviditets- og refinansieringsrisiko:
+            </p>
+
+            <div class="math-display-card">
+                <div class="math-formula">
+                    <span class="math-var">i</span><sub>t</sub> = <span class="math-var">r</span>* + <span class="math-var">&pi;</span><sup>e</sup> + <span class="math-var">&theta;</span><sub>t</sub> + <span class="math-var">s</span><sub>t</sub>
+                </div>
+                <div class="math-legend">
+                    <strong>Variable:</strong> <span class="math-var">i</span><sub>t</sub> (markedsrente) &bull; <span class="math-var">r</span>* (naturlig realrente) &bull; <span class="math-var">&pi;</span><sup>e</sup> (inflationsforventning) &bull; <span class="math-var">&theta;</span><sub>t</sub> (<strong>Term Premium</strong>) &bull; <span class="math-var">s</span><sub>t</sub> (suverænt kreditspænd)
+                </div>
+            </div>
+
+            <p style="font-size: 0.94rem; color: #334151; margin: 12px 0 10px 0;">
+                Ifølge <strong>Domar-betingelsen</strong> for gældsdynamik (&Delta;<span class="math-var">d</span><sub>t</sub> = (<span class="math-var">i</span><sub>t</sub> &minus; <span class="math-var">g</span><sub>t</sub>)&middot;<span class="math-var">d</span><sub>t&minus;1</sub> + <span class="math-var">pb</span><sub>t</sub>) indtræffer det <strong>kritiske knækpunkt (<span class="math-var">i</span><sub>crit</sub>)</strong>, når rentebetalingerne overstiger økonomiens nominelle vækstrate korrigeret for det primære budgetunderskud:
+            </p>
+
+            <div class="math-display-card">
+                <div class="math-formula">
+                    <span class="math-var">i</span><sub>crit</sub> = <span class="math-var">g</span><sub>t</sub> &minus; 
+                    <span class="math-fraction">
+                        <span class="num"><span class="math-var">pb</span><sub>t</sub></span>
+                        <span class="den"><span class="math-var">d</span><sub>t&minus;1</sub></span>
+                    </span>
+                </div>
+                <div class="math-legend">
+                    <strong>Konsekvens:</strong> Når den effektive markedsrente <span class="math-var">i</span><sub>t</sub> overstiger <span class="math-var">i</span><sub>crit</sub>, vokser gældskvoten af sig selv via renters rente. Centralbankerne stilles over for et valg mellem monetarisering eller gældssanering.
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. DET GLOBALE ØKONOMISKE PRES: USA, FRANKRIG, JAPAN OG AI -->
+        <section class="global-context-box">
+            <h2>Det Sammenkoblede Globale Pres</h2>
+            <p class="context-intro">
+                Det globale finansielle system er ramt af en hidtil uset samtidig efterspørgsel efter kapital. Når verdens største stater kæmper med historiske refinansieringsbehov, og den private tech-sektor samtidig støvsuger markedet for likviditet til kunstig intelligens, presses obligationskurserne ned og renterne op over hele linjen:
+            </p>
+
+            <div class="interconnect-grid">
+                <!-- AI -->
+                <div class="interconnect-item ai">
+                    <h3 class="interconnect-title">AI-sektorens Likviditetsdræn ($800 mia./år)</h3>
+                    <p class="interconnect-text">
+                        De største tech-hyperscalers pløjer over 800 milliarder dollar årligt i datacentre, chipproduktion og energiinfrastruktur. Denne massive private pengeefterspørgsel finansieres i vid udstrækning via gæld og obligationsudstedelser, hvilket støvsuger det globale likviditetsbassin og konkurrerer direkte med statsobligationer om den samme institutionelle opsparing.
+                    </p>
+                </div>
+
+                <!-- USA -->
+                <div class="interconnect-item usa">
+                    <h3 class="interconnect-title">USA: Finanspolitisk Flaskehals</h3>
+                    <p class="interconnect-text">
+                        Med et løbende budgetunderskud på $2 billioner og $40 billioner i gæld er Washington tvunget til at udstede gigantiske mængder obligationer. For at undgå et umiddelbart rentechok på 10- og 30-årige papirer flygter statskassen over i kort gæld (T-bills), hvilket skaber en konstant refinansieringsrisiko ved hver ugentlig auktion.
+                    </p>
+                </div>
+
+                <!-- FRANKRIG -->
+                <div class="interconnect-item france">
+                    <h3 class="interconnect-title">Frankrig: Det Europæiske Svaghedspunkt</h3>
+                    <p class="interconnect-text">
+                        Frankrigs statsgæld nærmer sig 120 % af BNP med et underskud over 5,5 %. Spændet til tyske statsobligationer udvides i et tempo, der overgår krisen i 2011. Den parlamentariske lammelse i Paris forhindrer konsolidering, og Frankrig er for stort til et bailout. Dette svækker tilliden til hele eurozonens finansielle fundament.
+                    </p>
+                </div>
+
+                <!-- JAPAN -->
+                <div class="interconnect-item japan">
+                    <h3 class="interconnect-title">Japan: Kreditorreserven Tømmes</h3>
+                    <p class="interconnect-text">
+                        For at dæmme op for yensvækkelsen (157 USD/JPY) tvinges de japanske myndigheder til at intervenere ved at sælge amerikanske statsobligationer for at købe yen. Verdens største udenlandske kreditor trækker således kapital hjem til Tokyo på det værst tænkelige tidspunkt for Washington.
+                    </p>
+                </div>
+            </div>
+
+            <div class="synthesis-card">
+                <strong>Syntese for det globale system:</strong>  
+                Staterne kan ikke længere låne gratis, fordi den globale kapital er blevet knap. Når suveræne ankerkøbere som Japan og Norges Oliefond reducerer deres engagement i statsobligationer, mens den private tech-sektor trækker hundredvis af milliarder ud til AI, stiger <strong>Term Premium</strong> markant. Resultatet er en strukturel rentebund, der forplanter sig direkte ud i boligrenter, erhvervskreditter og anlægsinvesteringer.
+            </div>
         </section>
     </main>
 
