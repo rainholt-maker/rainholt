@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Makroøkonomi: Systemisk Radar & Knækpunkter – Lasse Holt</title>
-    <meta name="description" content="Mekanisk analyse af global likviditet, Term Premium, gældsdynamik og beregnede knækpunkter for USA, Frankrig, Japan og EU/Danmark.">
+    <title>Makroøkonomi: Systemisk Radar, Knækpunkter & Gældsfremskrivning – Lasse Holt</title>
+    <meta name="description" content="Mekanisk analyse af global likviditet, Term Premium, rollover-muren for amerikansk statsgæld og matematiske knækpunkter for USA, Frankrig, Japan og EU.">
     <style>
         :root {
             --primary: #1e3a8a;
@@ -166,7 +166,6 @@
         .fill-japan { background: linear-gradient(90deg, #3b82f6 0%, #d97706 70%, #dc2626 100%); width: 82%; }
         .fill-eu { background: linear-gradient(90deg, #10b981 0%, #f59e0b 70%, #dc2626 100%); width: 80%; }
 
-        /* KNÆKPUNKTS-STOPLINJE */
         .knæk-threshold-marker {
             position: absolute;
             right: 0;
@@ -196,7 +195,6 @@
             margin-top: 4px;
         }
 
-        /* 3-DELT DATA RAMME */
         .knæk-stats-table {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -240,6 +238,82 @@
             border-radius: 0 4px 4px 0;
             color: #881337;
         }
+
+        /* DEDIKERET FREMSKRIVNINGS-SEKTION (ROLLOVER & RENTE-SNEBOLD) */
+        .projection-section {
+            background: #ffffff;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 26px;
+            margin-bottom: 35px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+        }
+        .projection-section h2 { margin: 0 0 10px 0; font-size: 1.35rem; color: var(--dark); }
+
+        .timeline-card-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin: 20px 0;
+        }
+        @media (max-width: 768px) {
+            .timeline-card-grid { grid-template-columns: 1fr; }
+        }
+        .timeline-step {
+            background: #f8fafc;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .timeline-step.active {
+            border-top: 4px solid var(--primary);
+        }
+        .timeline-step.danger {
+            border-top: 4px solid var(--danger);
+            background: #fffafa;
+        }
+        .timeline-year-tag {
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #64748b;
+            margin-bottom: 4px;
+        }
+        .timeline-amount {
+            font-family: monospace;
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 6px;
+        }
+        .timeline-bnp {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--danger);
+            margin-bottom: 10px;
+        }
+        .timeline-desc {
+            font-size: 0.86rem;
+            color: #334151;
+            line-height: 1.5;
+        }
+
+        /* GRAFISK RENTE-SNEBOLD SAMMENLIGNING */
+        .snowball-chart {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        .snowball-row { margin-bottom: 14px; }
+        .snowball-label { display: flex; justify-content: space-between; font-size: 0.86rem; font-weight: 600; margin-bottom: 4px; }
+        .snowball-bar-bg { background: #e2e8f0; height: 18px; border-radius: 4px; overflow: hidden; width: 100%; }
+        .snowball-bar-fill { height: 100%; border-radius: 4px; }
 
         /* TRANSMISSIONSKÆDE */
         .transmission-box {
@@ -327,7 +401,8 @@
                         <span class="pole-title">USA</span>
                         <span class="pole-tag">Federal Reserve & Treasury</span>
                     </div>
-                    <div class="stat-line"><span>Statsgæld / Underskud:</span><span class="stat-val">$40T+ (123% af BNP) / ~6%</span></div>
+                    <div class="stat-line"><span>Statsgæld / Underskud:</span><span class="stat-val">$40,1T (123% af BNP) / ~6%</span></div>
+                    <div class="stat-line"><span>Omsættelig Gæld (Public):</span><span class="stat-val">$32,4 billioner</span></div>
                     <div class="stat-line"><span>Nuværende 10Y Rente:</span><span class="stat-val">4,97 % (Term Premium aktiv)</span></div>
                     <div class="stat-line"><span>Kritisk Knækpunkt (i_crit):</span><span class="stat-val" style="color: var(--danger);">5,25 – 5,50 %</span></div>
 
@@ -533,6 +608,89 @@
             </div>
         </section>
 
+        <!-- DEDIKERET FREMSKRIVNING AF ROLLE-OVER EFFEKTEN & RENTE-SNEBOLDEN -->
+        <section class="projection-section">
+            <h2>Fremskrivningsmodel: Rollover-muren & Rente-Snebolden (2026–2031)</h2>
+            <p style="font-size: 0.94rem; color: #334151; margin: 0 0 14px 0;">
+                Når markedsgælden udløber, forvandles den historiske lavrenteperiode (1,0–2,5 %) til et akut renteshock. Med <strong>$32,4 billioner</strong> i omsættelig gæld og en årlig refinansieringsvolumen på <strong>33 % (~$8 til $9 billioner årligt)</strong> er gældens fornyelse en mekanisk snebold, der vokser uafhængigt af politiske ønsker:
+            </p>
+
+            <div class="timeline-card-grid">
+                <!-- ÅR 1 -->
+                <div class="timeline-step active">
+                    <div>
+                        <div class="timeline-year-tag">År 1 • 2026–2027</div>
+                        <div class="timeline-amount">$1,45 billioner</div>
+                        <div class="timeline-bnp">~4,3 % af BNP</div>
+                        <div class="timeline-desc">
+                            Corona-gæld udstedt til 1–2 % udløber og genudstedes til ~5,0 %. Årlige rentebetalinger stiger fra $1,2T til over $1,45T. Renteudgifterne overhaler USA's samlede forsvarsbudget.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ÅR 2 -->
+                <div class="timeline-step active" style="border-top-color: var(--warning);">
+                    <div>
+                        <div class="timeline-year-tag">År 2 • 2027–2028</div>
+                        <div class="timeline-amount">$1,65 billioner</div>
+                        <div class="timeline-bnp">~4,9 % af BNP</div>
+                        <div class="timeline-desc">
+                            Næste bølge på ~$8–9 billioner forfalder plus det årlige budgetunderskud på ~$2 billioner. Renteudgifterne overstiger det samlede budget for forsvar og Medicare tilsammen.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ÅR 3-5 -->
+                <div class="timeline-step danger">
+                    <div>
+                        <div class="timeline-year-tag" style="color: var(--danger);">År 3–5 • 2028–2031</div>
+                        <div class="timeline-amount" style="color: var(--danger);">$1,90 – 2,00T</div>
+                        <div class="timeline-bnp">5,5 – 6,0 % af BNP (BRUDPUNKT)</div>
+                        <div class="timeline-desc">
+                            Al historisk billig gæld er udløbet. Hele gældsmassen på $40T+ bærer ~5 % i rente. Staten tvinges til ren gældsmonetarisering (pyramidespil) for blot at betale renterne.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- GRAFISK FREMSKRIVNINGSSAMMENLIGNING -->
+            <div class="snowball-chart">
+                <h4 style="margin: 0 0 14px 0; color: var(--dark); font-size: 1.05rem;">USA's Årlige Renteudgifter: Fra Lavrente til Gældskollaps</h4>
+
+                <div class="snowball-row">
+                    <div class="snowball-label">
+                        <span>2015–2021: Gennemsnit i lavrente-æraen (Effektiv rente ~1,8 %)</span>
+                        <span style="font-family: monospace;">$380 mia. (1,6 % af BNP)</span>
+                    </div>
+                    <div class="snowball-bar-bg"><div class="snowball-bar-fill" style="width: 19%; background: #94a3b8;"></div></div>
+                </div>
+
+                <div class="snowball-row">
+                    <div class="snowball-label">
+                        <span>2025/2026: Nuværende udgangspunkt (Gæld runder $40T, 10Y ~4,97 %)</span>
+                        <span style="font-family: monospace;">$1.200 mia. (3,4 % af BNP)</span>
+                    </div>
+                    <div class="snowball-bar-bg"><div class="snowball-bar-fill" style="width: 60%; background: #3b82f6;"></div></div>
+                </div>
+
+                <div class="snowball-row">
+                    <div class="snowball-label">
+                        <span>2027/2028: Rollover-chok bølge 2 (2/3 af gælden refinansieret ved 5 %)</span>
+                        <span style="font-family: monospace;">$1.650 mia. (4,9 % af BNP)</span>
+                    </div>
+                    <div class="snowball-bar-bg"><div class="snowball-bar-fill" style="width: 82%; background: #f59e0b;"></div></div>
+                </div>
+
+                <div class="snowball-row" style="margin-bottom: 0;">
+                    <div class="snowball-label" style="color: var(--danger);">
+                        <span><strong>2029–2031: Fuld gennemrulning (Domar-knækpunktet i_crit overskredet)</strong></span>
+                        <span style="font-family: monospace;"><strong>$2.000 mia. (5,8 % af BNP)</strong></span>
+                    </div>
+                    <div class="snowball-bar-bg"><div class="snowball-bar-fill" style="width: 100%; background: #b91c1c;"></div></div>
+                </div>
+            </div>
+        </section>
+
         <!-- TRANSMISSIONSKÆDE -->
         <section class="transmission-box">
             <h3 style="margin-top: 0; color: var(--dark);">Systemisk Transmissionskæde</h3>
@@ -540,7 +698,7 @@
             <div class="chain-item"><span class="chain-num">2</span><div><strong>Stagflationsklemme (Warsh):</strong> Fed kan hverken sænke renten uden at miste inflationsankeret eller hæve den uden at knække realøkonomien.</div></div>
             <div class="chain-item"><span class="chain-num">3</span><div><strong>Frankrigs OAT-Bund chok (+67 bps):</strong> Gældspres i kernen af Europa blokerer for politisk handling; investorer flygter fra fransk statsgæld.</div></div>
             <div class="chain-item"><span class="chain-num">4</span><div><strong>Japans ketsjereffekt:</strong> BoJ hæver til 1,25 %, men svag yen (157 USD/JPY) tvinger Tokyo til at likvidere US Treasuries for at skaffe dollars.</div></div>
-            <div class="chain-item"><span class="chain-num">5</span><div><strong>T-Bill refinansieringsmur ($1.000 mia.):</strong> Washington ruller gæld over ved 4-5 % uden eksterne ankerkøbere (NBIM trækker -$80 mia.). Term Premium udvides.</div></div>
+            <div class="chain-item"><span class="chain-num">5</span><div><strong>T-Bill rollover-muren ($8–9 billioner årligt):</strong> Washington må rulle 33 % af gælden over årligt til 5 %. Renteudgifterne eksploderer mod $2.000 mia. Term Premium udvides.</div></div>
             <div class="chain-item"><span class="chain-num">6</span><div><strong>AI-afskrivningsbombe ($800 mia.):</strong> Tech-sektorens gældsfinansierede capex møder en afskrivningsmur i 2027–2029 uden dækkende pengestrømme.</div></div>
         </section>
     </main>
