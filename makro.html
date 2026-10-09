@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Makroøkonomi: Systemisk Radar & Knækpunkter – Lasse Holt</title>
-    <meta name="description" content="Analyse af global gældsdynamik, Term Premium, den amerikanske rollover-mur og finansielle knækpunkter for USA, Frankrig, Japan og EU.">
+    <meta name="description" content="Analyse af global gældsdynamik, Term Premium, aktivmarkedernes ligevægt (ERP), den amerikanske rollover-mur og finansielle knækpunkter.">
     <style>
         :root {
             --primary: #1e3a8a;
@@ -40,7 +40,7 @@
         nav a { text-decoration: none; color: var(--primary); font-weight: 600; font-size: 0.95rem; }
         nav a:hover { text-decoration: underline; }
 
-        /* 4-KOLONNE RADAR GRID */
+        /* 4-KOLONNE REGIONAL RADAR */
         .radar-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -113,7 +113,7 @@
             border-radius: 3px 0 0 3px;
         }
         .fill-usa { background: linear-gradient(90deg, #f59e0b 0%, #dc2626 100%); width: 91%; }
-        .fill-france { background: linear-gradient(90deg, #3b82f6 0%, #7c3aed 70%, #dc2626 100%); width: 75%; }
+        .fill-france { background: linear-gradient(90deg, #3b82f6 0%, #7c3aed 70%, #dc2626 100%); width: 77%; }
         .fill-japan { background: linear-gradient(90deg, #3b82f6 0%, #d97706 70%, #dc2626 100%); width: 82%; }
         .fill-eu { background: linear-gradient(90deg, #10b981 0%, #f59e0b 70%, #dc2626 100%); width: 80%; }
 
@@ -188,6 +188,97 @@
             padding: 8px 10px;
             border-radius: 0 4px 4px 0;
             color: #881337;
+        }
+
+        /* AKTIV-DASHBOARD BAR */
+        .asset-bar-section {
+            background: #ffffff;
+            border: 1px solid var(--border);
+            border-left: 5px solid #7c3aed;
+            border-radius: 8px;
+            padding: 26px;
+            margin-bottom: 35px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+        }
+        .asset-bar-section h2 { margin: 0 0 8px 0; font-size: 1.35rem; color: var(--dark); }
+        .asset-bar-intro { font-size: 0.94rem; color: #334151; line-height: 1.6; margin-bottom: 20px; }
+
+        .asset-metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+            margin-bottom: 20px;
+        }
+        @media (max-width: 820px) {
+            .asset-metrics-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 520px) {
+            .asset-metrics-grid { grid-template-columns: 1fr; }
+        }
+        .asset-card {
+            background: #f8fafc;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .asset-type {
+            font-size: 0.72rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #64748b;
+            margin-bottom: 4px;
+        }
+        .asset-val {
+            font-family: monospace;
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 4px;
+        }
+        .asset-subtag {
+            font-size: 0.78rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .asset-note {
+            font-size: 0.82rem;
+            color: #475569;
+            line-height: 1.45;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 8px;
+            margin: 0;
+        }
+
+        .erp-comparison-box {
+            background: #fffafa;
+            border: 1px solid #fecaca;
+            border-radius: 6px;
+            padding: 16px 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .erp-calc-text {
+            font-size: 0.9rem;
+            color: #7f1d1d;
+            line-height: 1.5;
+        }
+        .erp-calc-text strong { color: var(--danger); }
+        .erp-badge {
+            background: var(--danger);
+            color: #ffffff;
+            font-family: monospace;
+            font-weight: 700;
+            font-size: 0.95rem;
+            padding: 6px 12px;
+            border-radius: 4px;
+            white-space: nowrap;
         }
 
         /* FREMSKRIVNINGS-SEKTION */
@@ -393,8 +484,8 @@
     </header>
 
     <main>
-        <!-- 1. TELEMETRI MED INDRAMMEDE KNÆKPUNKTSMÅLERE (ØVERST) -->
-        <h2 style="font-size: 1.35rem; color: var(--dark); margin: 0 0 16px 0;">Aktuelle Nøgletal & Knækpunkts-målere</h2>
+        <!-- 1. REGIONALE KNÆKPUNKTSMÅLERE (ØVERST) -->
+        <h2 style="font-size: 1.35rem; color: var(--dark); margin: 0 0 16px 0;">Regionale Nøgletal & Knækpunkts-målere</h2>
         <section class="radar-grid">
 
             <!-- USA -->
@@ -406,7 +497,7 @@
                     </div>
                     <div class="stat-line"><span>Statsgæld / Underskud:</span><span class="stat-val">$40,1T (123% af BNP) / ~6%</span></div>
                     <div class="stat-line"><span>Omsættelig Gæld:</span><span class="stat-val">$32,4 billioner</span></div>
-                    <div class="stat-line"><span>10-årig Rente:</span><span class="stat-val">4,97 % (Term Premium aktiv)</span></div>
+                    <div class="stat-line"><span>10-årig Rente:</span><span class="stat-val">4,98 % (Term Premium aktiv)</span></div>
                     <div class="stat-line"><span>Kritisk Knækpunkt (i_crit):</span><span class="stat-val" style="color: var(--danger);">5,25 – 5,50 %</span></div>
 
                     <div class="knæk-box">
@@ -429,11 +520,11 @@
                         <div class="knæk-stats-table">
                             <div class="sub-stat">
                                 <span class="sub-stat-lbl">Aktuel rente</span>
-                                <span class="sub-stat-val">4,97 %</span>
+                                <span class="sub-stat-val">4,98 %</span>
                             </div>
                             <div class="sub-stat">
                                 <span class="sub-stat-lbl">Buffer til brud</span>
-                                <span class="sub-stat-val" style="color: var(--danger);">0,28 %-point</span>
+                                <span class="sub-stat-val" style="color: var(--danger);">0,27 %-point</span>
                             </div>
                             <div class="sub-stat">
                                 <span class="sub-stat-lbl">Knækpunkt</span>
@@ -459,17 +550,17 @@
                         <span class="pole-tag">Euro-Crisis II • OAT vs. Bund</span>
                     </div>
                     <div class="stat-line"><span>Statsgæld / Underskud:</span><span class="stat-val">~118% af BNP / ~5,5%</span></div>
-                    <div class="stat-line"><span>OAT-Bund Rentespænd:</span><span class="stat-val">+82 bps (+67 bps på &lt; 1 md)</span></div>
+                    <div class="stat-line"><span>OAT-Bund Rentespænd:</span><span class="stat-val">+85 bps (+67 bps på &lt; 1 md)</span></div>
                     <div class="stat-line"><span>Kritisk Knækpunkt (i_crit):</span><span class="stat-val" style="color: #7c3aed;">Spread &gt; 110 bps / OAT &gt; 4,10%</span></div>
 
                     <div class="knæk-box">
                         <div class="knæk-title-row">
                             <span style="color: #7c3aed;">Spændudvidelse</span>
-                            <span style="color: #7c3aed;">75 % af knækpunkt</span>
+                            <span style="color: #7c3aed;">77 % af knækpunkt</span>
                         </div>
                         <div class="knæk-track-wrapper">
                             <div class="knæk-track">
-                                <div class="knæk-fill fill-france"></div>
+                                <div class="knæk-fill fill-france" style="width: 77%;"></div>
                             </div>
                             <div class="knæk-threshold-marker"></div>
                             <span class="knæk-threshold-label">Knækpunkt</span>
@@ -482,11 +573,11 @@
                         <div class="knæk-stats-table">
                             <div class="sub-stat">
                                 <span class="sub-stat-lbl">Aktuelt spænd</span>
-                                <span class="sub-stat-val">+82 bps</span>
+                                <span class="sub-stat-val">+85 bps</span>
                             </div>
                             <div class="sub-stat">
                                 <span class="sub-stat-lbl">Buffer til brud</span>
-                                <span class="sub-stat-val" style="color: #7c3aed;">28 bps</span>
+                                <span class="sub-stat-val" style="color: #7c3aed;">25 bps</span>
                             </div>
                             <div class="sub-stat">
                                 <span class="sub-stat-lbl">Knækpunkt</span>
@@ -496,7 +587,7 @@
                     </div>
 
                     <div class="pole-desc">
-                        Rentespændet mod Tyskland udvides hurtigere end under gældskrisen i 2011. Frankrig er for stort til at blive reddet af de eksisterende krisemekanismer. Den parlamentariske lammelse forhindrer finanspolitiske reformer, mens inflationen udelukker støtteopkøb fra ECB uden tysk modstand.
+                        Rentespændet mod Tyskland udvides hurtigere end under gældskrisen i 2011. Frankrig er for stort til at blive reddet af de eksisterende krisemekanismer. Den parlamentariske lammelse i Paris forhindrer konsolidering, mens inflationen udelukker støtteopkøb fra ECB uden tysk modstand.
                     </div>
                 </div>
                 <div class="trigger-alert">
@@ -512,7 +603,7 @@
                         <span class="pole-tag">Bank of Japan & MoF</span>
                     </div>
                     <div class="stat-line"><span>Statsgæld af BNP:</span><span class="stat-val">~260 % (Global rekord)</span></div>
-                    <div class="stat-line"><span>Styringsrente / Valuta:</span><span class="stat-val">BoJ: 1,25 % / USD/JPY: ~157</span></div>
+                    <div class="stat-line"><span>Styringsrente / Valuta:</span><span class="stat-val">BoJ: 1,25 % / USD/JPY: ~157,20</span></div>
                     <div class="stat-line"><span>Kritisk Knækpunkt (i_crit):</span><span class="stat-val" style="color: var(--warning);">BoJ &gt; 2,00% / USD/JPY &gt; 162</span></div>
 
                     <div class="knæk-box">
@@ -535,11 +626,11 @@
                         <div class="knæk-stats-table">
                             <div class="sub-stat">
                                 <span class="sub-stat-lbl">Aktuel kurs</span>
-                                <span class="sub-stat-val">157 JPY</span>
+                                <span class="sub-stat-val">157,2 JPY</span>
                             </div>
                             <div class="sub-stat">
                                 <span class="sub-stat-lbl">Buffer til brud</span>
-                                <span class="sub-stat-val" style="color: var(--warning);">5 Yen</span>
+                                <span class="sub-stat-val" style="color: var(--warning);">4,8 Yen</span>
                             </div>
                             <div class="sub-stat">
                                 <span class="sub-stat-lbl">Knækpunkt</span>
@@ -611,7 +702,73 @@
             </div>
         </section>
 
-        <!-- 2. FREMSKRIVNING AF ROLLOVER-EFFEKTEN -->
+        <!-- 2. AKTIV-DASHBOARD BAR (OBLIGATIONER, AKTIER, REALRENTER & GULD) -->
+        <section class="asset-bar-section">
+            <h2>Aktivmarkedernes Ligevægt: Tværgående Radar</h2>
+            <p class="asset-bar-intro">
+                Når den risikofrie obligationsrente bider sig fast omkring 5 %, forplanter ubalancen sig direkte til værdiansættelsen af alle andre aktivklasser. Den traditionelle porteføljemodel (60/40) bryder sammen, fordi aktierisikopræmien udlignes, mens guld trodser høje realrenter som monetær mistillidsmåler:
+            </p>
+
+            <div class="asset-metrics-grid">
+                <!-- OBLIGATIONER -->
+                <div class="asset-card">
+                    <div>
+                        <div class="asset-type">Obligationer</div>
+                        <div class="asset-val">4,98 %</div>
+                        <div class="asset-subtag" style="color: var(--primary);">Diskonteringsanker (10Y)</div>
+                    </div>
+                    <p class="asset-note">
+                        Sætter en hård rentebund for al global kapital. Udhuler kurserne på ældre papirer via durationseffekten og øger kapitalomkostningerne.
+                    </p>
+                </div>
+
+                <!-- AKTIER -->
+                <div class="asset-card" style="border-top: 3px solid var(--danger);">
+                    <div>
+                        <div class="asset-type">Aktier (S&P 500)</div>
+                        <div class="asset-val">4,85 %</div>
+                        <div class="asset-subtag" style="color: var(--danger);">Earnings Yield (P/E ~20,6)</div>
+                    </div>
+                    <p class="asset-note">
+                        <strong>Negativ risikopræmie (ERP: -0,13 %)</strong>. Aktier handles til priser, hvor forventet afkast ikke kompenserer for den underliggende selskabsrisiko.
+                    </p>
+                </div>
+
+                <!-- REALRENTE -->
+                <div class="asset-card">
+                    <div>
+                        <div class="asset-type">Realrente (y &minus; &pi;)</div>
+                        <div class="asset-val">+1,95 %</div>
+                        <div class="asset-subtag" style="color: var(--warning);">Restriktiv kapitalomkostning</div>
+                    </div>
+                    <p class="asset-note">
+                        Skulle teoretisk undertrykke ikke-rentebærende aktiver. Virker opbremsende på gældsdrevne virksomheder og kapitalkrævende værdikæder.
+                    </p>
+                </div>
+
+                <!-- GULD -->
+                <div class="asset-card" style="border-top: 3px solid var(--safe);">
+                    <div>
+                        <div class="asset-type">Guld (Mistillidsmåler)</div>
+                        <div class="asset-val">Rekord</div>
+                        <div class="asset-subtag" style="color: var(--safe);">Afkoblet fra realrenten</div>
+                    </div>
+                    <p class="asset-note">
+                        Trodser den høje alternativomkostning. Søges af centralbanker og suveræne allokatorer som forsikring mod gældsdevaluering og finansiel repression.
+                    </p>
+                </div>
+            </div>
+
+            <div class="erp-comparison-box">
+                <div class="erp-calc-text">
+                    <strong>The Fed Model & Aktierisikopræmiens kollaps:</strong><br>
+                    Ved en obligationsrente på 4,98 % og et aktieafkast (E/P) på 4,85 % er <em>Equity Risk Premium</em> fuldstændig udtørret:
+                </div>
+                <div class="erp-badge">ERP = &minus;0,13 %-point</div>
+            </div>
+        </section>
+
+        <!-- 3. FREMSKRIVNING AF ROLLOVER-EFFEKTEN -->
         <section class="projection-section">
             <h2>Fremskrivningsmodel: Rollover-muren (2026–2031)</h2>
             <p style="font-size: 0.94rem; color: #334151; margin: 0 0 14px 0;">
@@ -670,7 +827,7 @@
 
                 <div class="snowball-row">
                     <div class="snowball-label">
-                        <span>2025/2026: Nuværende udgangspunkt (Gæld runder $40T, 10Y ~4,97 %)</span>
+                        <span>2025/2026: Nuværende udgangspunkt (Gæld runder $40T, 10Y ~4,98 %)</span>
                         <span style="font-family: monospace;">$1.200 mia. (3,4 % af BNP)</span>
                     </div>
                     <div class="snowball-bar-bg"><div class="snowball-bar-fill" style="width: 60%; background: #3b82f6;"></div></div>
@@ -694,7 +851,7 @@
             </div>
         </section>
 
-        <!-- 3. TEORETISK FUNDAMENT OG FORMLER (PLACERET EFTER FREMSKRIVNINGEN) -->
+        <!-- 4. TEORETISK FUNDAMENT OG FORMLER -->
         <section class="theory-card">
             <h2>Teoretisk Fundament: Betingelsen for Finansiel Stabilitet</h2>
             <p style="font-size: 0.94rem; color: #334151; margin: 0 0 10px 0;">
@@ -728,7 +885,7 @@
             </div>
         </section>
 
-        <!-- 4. DET GLOBALE ØKONOMISKE PRES: USA, FRANKRIG, JAPAN OG AI -->
+        <!-- 5. DET GLOBALE ØKONOMISKE PRES: USA, FRANKRIG, JAPAN OG AI -->
         <section class="global-context-box">
             <h2>Det Sammenkoblede Globale Pres</h2>
             <p class="context-intro">
