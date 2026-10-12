@@ -851,36 +851,41 @@
             </div>
         </section>
 
-        <!-- 4. TEORETISK FUNDAMENT OG FORMLER -->
+<!-- TEORETISK FUNDAMENT: DE TO KNÆKPUNKTER -->
         <section class="theory-card">
-            <h2>Teoretisk Fundament: Betingelsen for Finansiel Stabilitet</h2>
+            <h2>Teoretisk Fundament: De To Knækpunkter for Gældsstabilitet</h2>
             <p style="font-size: 0.94rem; color: #334151; margin: 0 0 10px 0;">
-                Klassiske modeller som <strong>Fisher-effekten</strong> (<span class="math-var">i</span> &approx; <span class="math-var">r</span>* + <span class="math-var">&pi;</span><sup>e</sup>) og <strong>Taylor-reglen</strong> forudsætter rolige konjunkturer uden gældsmætning. Under finanspolitisk dominans bestemmes den nominelle markedsrente i stedet af markedets krav om risikotillæg for likviditets- og refinansieringsrisiko:
+                Klassiske ligevægtsmodeller antager, at stater altid kan vokse sig ud af gæld. Men ifølge <strong>Domar-betingelsen</strong> (&Delta;<span class="math-var">d</span><sub>t</sub> = (<span class="math-var">i</span><sub>t</sub> &minus; <span class="math-var">g</span><sub>t</sub>)&middot;<span class="math-var">d</span><sub>t&minus;1</sub> + <span class="math-var">pd</span><sub>t</sub>) er der to afgørende tærskler, som afgør en stats overlevelse:
             </p>
 
-            <div class="math-display-card">
-                <div class="math-formula">
-                    <span class="math-var">i</span><sub>t</sub> = <span class="math-var">r</span>* + <span class="math-var">&pi;</span><sup>e</sup> + <span class="math-var">&theta;</span><sub>t</sub> + <span class="math-var">s</span><sub>t</sub>
+            <!-- NIVEAU 1 -->
+            <div class="math-display-card" style="border-left: 4px solid var(--warning); text-align: left;">
+                <div style="font-size: 0.85rem; font-weight: 700; text-transform: uppercase; color: var(--warning); margin-bottom: 4px;">
+                    Niveau 1: Det Matematiske Stabiliseringspunkt (Allerede Overskredet)
+                </div>
+                <div class="math-formula" style="font-size: 1.15rem; margin: 6px 0;">
+                    <span class="math-var">g</span><sub>t</sub> &minus; <span class="math-var">i</span><sub>t</sub> = 
+                    <span class="math-fraction">
+                        <span class="num"><span class="math-var">pd</span><sub>t</sub></span>
+                        <span class="den"><span class="math-var">d</span><sub>t&minus;1</sub></span>
+                    </span>
+                    &approx; 3,0 %
                 </div>
                 <div class="math-legend">
-                    <strong>Variable:</strong> <span class="math-var">i</span><sub>t</sub> (markedsrente) &bull; <span class="math-var">r</span>* (naturlig realrente) &bull; <span class="math-var">&pi;</span><sup>e</sup> (inflationsforventning) &bull; <span class="math-var">&theta;</span><sub>t</sub> (<strong>Term Premium</strong>) &bull; <span class="math-var">s</span><sub>t</sub> (suverænt kreditspænd)
+                    For at holde gældskvoten flad med et primært underskud på 3 % af BNP, skal den økonomiske vækst overstige renten med 3 %-point. Ved en rente på 4–5 % kræver det en <strong>nominel vækst på 7–8 % (reel vækst 5–6 %)</strong>, som CBO-direktør Phillip Swagel påpeger. Da den reelle vækst blot er ~2,2 %, er stabilisering umulig. Bessents tese om 3 % vækst er et regnestykke, der ikke går op.
                 </div>
             </div>
 
-            <p style="font-size: 0.94rem; color: #334151; margin: 12px 0 10px 0;">
-                Ifølge <strong>Domar-betingelsen</strong> for gældsdynamik (&Delta;<span class="math-var">d</span><sub>t</sub> = (<span class="math-var">i</span><sub>t</sub> &minus; <span class="math-var">g</span><sub>t</sub>)&middot;<span class="math-var">d</span><sub>t&minus;1</sub> + <span class="math-var">pb</span><sub>t</sub>) indtræffer det <strong>kritiske knækpunkt (<span class="math-var">i</span><sub>crit</sub>)</strong>, når rentebetalingerne overstiger økonomiens nominelle vækstrate korrigeret for det primære budgetunderskud:
-            </p>
-
-            <div class="math-display-card">
-                <div class="math-formula">
-                    <span class="math-var">i</span><sub>crit</sub> = <span class="math-var">g</span><sub>t</sub> &minus; 
-                    <span class="math-fraction">
-                        <span class="num"><span class="math-var">pb</span><sub>t</sub></span>
-                        <span class="den"><span class="math-var">d</span><sub>t&minus;1</sub></span>
-                    </span>
+            <!-- NIVEAU 2 -->
+            <div class="math-display-card" style="border-left: 4px solid var(--danger); text-align: left; margin-top: 14px;">
+                <div style="font-size: 0.85rem; font-weight: 700; text-transform: uppercase; color: var(--danger); margin-bottom: 4px;">
+                    Niveau 2: Turbocharger-Kollapspunktet (Systemisk Brud ved 5,25 – 5,50 %)
+                </div>
+                <div class="math-formula" style="font-size: 1.15rem; margin: 6px 0;">
+                    <span class="math-var">i</span><sub>crit</sub> = <span class="math-var">r</span>* + <span class="math-var">&pi;</span><sup>e</sup> + <span class="math-var">&theta;</span><sub>t</sub> (Term Premium) &gt; 5,25 %
                 </div>
                 <div class="math-legend">
-                    <strong>Konsekvens:</strong> Når den effektive markedsrente <span class="math-var">i</span><sub>t</sub> overstiger <span class="math-var">i</span><sub>crit</sub>, vokser gældskvoten af sig selv via renters rente. Centralbankerne stilles over for et valg mellem monetarisering eller gældssanering.
+                    Når obligationsrenten bryder 5,25–5,50 %, aktiveres den onde cirkel: Renteudgifterne overstiger 5,5 % af BNP ($1.500–2.000 mia./år), hvilket tvinger staten til at udstede gæld udelukkende for at servicere renter. Markedet nægter at absorbere papirerne uden voldsom Term Premium, og staten efterlades med kun én udvej: <strong>Finansiel repression og gældsdevaluering.</strong>
                 </div>
             </div>
         </section>
