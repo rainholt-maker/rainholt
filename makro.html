@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Makroøkonomi: Systemisk Radar & Knækpunkter – Lasse Holt</title>
-    <meta name="description" content="Analyse af global gældsdynamik, Term Premium, aktivmarkedernes ligevægt (ERP), den amerikanske rollover-mur og finansielle knækpunkter.">
+    <title>Makroøkonomi: Crisis Dashboard & Knækpunkter – Lasse Holt</title>
+    <meta name="description" content="Crisis Dashboard: Analyse af den synkrone transatlantiske statsgældskrise, fransk spændudvidelse, AI-boblens krak og systemiske knækpunkter.">
     <style>
         :root {
             --primary: #1e3a8a;
@@ -40,24 +40,13 @@
         nav a { text-decoration: none; color: var(--primary); font-weight: 600; font-size: 0.95rem; }
         nav a:hover { text-decoration: underline; }
 
-        /* GOOGLE TRANSLATE STYLING & SKJUL GOOGLE TOPBAR */
+        /* GOOGLE TRANSLATE STYLING */
         .goog-te-banner-frame.skiptranslate { display: none !important; }
         body { top: 0px !important; }
-        .language-selector {
-            margin-left: auto;
-            font-size: 0.85rem;
-        }
-        .goog-te-combo {
-            padding: 4px 8px;
-            border-radius: 4px;
-            border: 1px solid var(--border);
-            background: #ffffff;
-            color: var(--dark);
-            font-weight: 500;
-            cursor: pointer;
-        }
+        .language-selector { margin-left: auto; font-size: 0.85rem; }
+        .goog-te-combo { padding: 4px 8px; border-radius: 4px; border: 1px solid var(--border); background: #ffffff; color: var(--dark); font-weight: 500; cursor: pointer; }
 
-        /* SIDST OPDATERET BANNER */
+        /* SIDST OPDATERET STATUSLINJE */
         .status-timestamp-bar {
             background: #eff6ff;
             border: 1px solid #bfdbfe;
@@ -72,6 +61,49 @@
             color: #1e3a8a;
         }
 
+        /* CRISIS DASHBOARD (NYT) */
+        .crisis-dashboard {
+            background: #fff5f5;
+            border: 1px solid #fecaca;
+            border-left: 5px solid var(--danger);
+            border-radius: 8px;
+            padding: 24px;
+            margin-bottom: 35px;
+            box-shadow: 0 1px 3px rgba(185, 28, 28, 0.05);
+        }
+        .crisis-dashboard h2 { margin: 0 0 6px 0; font-size: 1.35rem; color: var(--danger); }
+        .crisis-sub { font-size: 0.88rem; color: #7f1d1d; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 16px; }
+        
+        .crisis-metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin-bottom: 18px;
+        }
+        @media (max-width: 820px) {
+            .crisis-metrics-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        .crisis-metric-card {
+            background: #ffffff;
+            border: 1px solid #fecaca;
+            border-radius: 6px;
+            padding: 14px;
+        }
+        .crisis-lbl { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; color: #64748b; margin-bottom: 4px; }
+        .crisis-val { font-family: monospace; font-size: 1.25rem; font-weight: 800; color: var(--danger); margin-bottom: 4px; }
+        .crisis-target { font-size: 0.78rem; font-weight: 600; color: #7f1d1d; }
+
+        .crisis-timeline-box {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            padding: 16px;
+            font-size: 0.9rem;
+            color: #334151;
+            line-height: 1.55;
+        }
+
+        /* REGIONALE RADAR GRID */
         .radar-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -142,8 +174,8 @@
             height: 100%;
             border-radius: 3px 0 0 3px;
         }
-        .fill-usa { background: linear-gradient(90deg, #f59e0b 0%, #dc2626 100%); width: 91%; }
-        .fill-france { background: linear-gradient(90deg, #3b82f6 0%, #7c3aed 70%, #dc2626 100%); width: 78%; }
+        .fill-usa { background: linear-gradient(90deg, #f59e0b 0%, #dc2626 100%); width: 93%; }
+        .fill-france { background: linear-gradient(90deg, #3b82f6 0%, #7c3aed 70%, #dc2626 100%); width: 85%; }
         .fill-japan { background: linear-gradient(90deg, #3b82f6 0%, #d97706 70%, #dc2626 100%); width: 82%; }
         .fill-eu { background: linear-gradient(90deg, #10b981 0%, #f59e0b 70%, #dc2626 100%); width: 80%; }
 
@@ -511,7 +543,6 @@
             <a href="politik.html">Politik</a>
             <a href="kontakt.html">Kontakt</a>
             
-            <!-- GOOGLE TRANSLATE SPROGVÆLGER -->
             <div class="language-selector" id="google_translate_element"></div>
         </nav>
     </header>
@@ -519,9 +550,43 @@
     <main>
         <!-- SIDST OPDATERET STATUSLINJE -->
         <div class="status-timestamp-bar">
-            <span><strong>Sidst opdateret:</strong> Fredag den 16. oktober 2026 kl. 17:00</span>
-            <a href="arkiv.html" style="color: #1e3a8a; font-weight: 600; text-decoration: none;">Læs ugens Fredagsbrief &rarr;</a>
+            <span><strong>Sidst opdateret:</strong> Søndag den 18. oktober 2026 kl. 12:00</span>
+            <a href="arkiv.html" style="color: #1e3a8a; font-weight: 600; text-decoration: none;">Læs seneste Fredagsbrief &rarr;</a>
         </div>
+
+        <!-- NYT: CRISIS DASHBOARD (KØREPLAN FOR SLUTFASEN) -->
+        <section class="crisis-dashboard">
+            <h2>Crisis Dashboard: Slutfasen mod det Synkrone Knækpunkt (3–5 Mdr.)</h2>
+            <div class="crisis-sub">Realtids-grænseværdier for bekræftelse af de næste faser (Forår 2027)</div>
+
+            <div class="crisis-metrics-grid">
+                <div class="crisis-metric-card">
+                    <div class="crisis-lbl">US 10-årig Rente</div>
+                    <div class="crisis-val">5,36 %</div>
+                    <div class="crisis-target">Knæk-mål: &gt; 5,50 %</div>
+                </div>
+                <div class="crisis-metric-card">
+                    <div class="crisis-lbl">Fransk OAT-Bund Spænd</div>
+                    <div class="crisis-val">+85 bps</div>
+                    <div class="crisis-target">Knæk-mål: &gt; 110 bps</div>
+                </div>
+                <div class="crisis-metric-card">
+                    <div class="crisis-lbl">VIX Markedsstres</div>
+                    <div class="crisis-val">+20,4</div>
+                    <div class="crisis-target">Knæk-mål: &gt; 30,0</div>
+                </div>
+                <div class="crisis-metric-card">
+                    <div class="crisis-lbl">Semiconductor (SMH)</div>
+                    <div class="crisis-val">Krak-fase</div>
+                    <div class="crisis-target">Knæk-mål: Under 500</div>
+                </div>
+            </div>
+
+            <div class="crisis-timeline-box">
+                <strong>Forventet tidslinje (Oktober 2026 – April 2027):</strong> 
+                Måned 1–2 (Okt–Nov) presses 10Y mod 5,5 % og tech-regnskaber viser faldende cashflow. Måned 3–4 (Dec–Jan) hæver Fed og ECB renten yderligere, mens franske generalstrejker og gældsforfald trækker tæppet væk under OAT-markedet. Måned 5–6 (Feb–Apr 2027) rammer det formelle amerikanske gældsloft ($41,1T) samtidig med det franske præsidentvalg – et synkront brudpunkt, hvor obligationsvigilanterne strejker på begge sider af Atlanten.
+            </div>
+        </section>
 
         <!-- 1. REGIONALE KNÆKPUNKTSMÅLERE -->
         <h2 style="font-size: 1.35rem; color: var(--dark); margin: 0 0 16px 0;">Regionale Nøgletal & Knækpunkts-målere</h2>
@@ -535,18 +600,17 @@
                         <span class="pole-tag">Federal Reserve & Treasury</span>
                     </div>
                     <div class="stat-line"><span>Statsgæld / Underskud:</span><span class="stat-val">$40,1T (123% af BNP) / ~6%</span></div>
-                    <div class="stat-line"><span>Omsættelig Gæld:</span><span class="stat-val">$32,4 billioner</span></div>
-                    <div class="stat-line"><span>10-årig Rente:</span><span class="stat-val">4,98 % (Term Premium aktiv)</span></div>
+                    <div class="stat-line"><span>10Y / 30Y Rente:</span><span class="stat-val">5,36 % / 5,73 % (Warsh-doktrin)</span></div>
                     <div class="stat-line"><span>Kritisk Knækpunkt (i_crit):</span><span class="stat-val" style="color: var(--danger);">5,25 – 5,50 %</span></div>
 
                     <div class="knæk-box">
                         <div class="knæk-title-row">
                             <span style="color: var(--danger);">Stressbelastning</span>
-                            <span style="color: var(--danger);">91 % af knækpunkt</span>
+                            <span style="color: var(--danger);">93 % af knækpunkt</span>
                         </div>
                         <div class="knæk-track-wrapper">
                             <div class="knæk-track">
-                                <div class="knæk-fill fill-usa"></div>
+                                <div class="knæk-fill fill-usa" style="width: 93%;"></div>
                             </div>
                             <div class="knæk-threshold-marker"></div>
                             <span class="knæk-threshold-label">Knækpunkt</span>
@@ -559,25 +623,25 @@
                         <div class="knæk-stats-table">
                             <div class="sub-stat">
                                 <span class="sub-stat-lbl">Aktuel rente</span>
-                                <span class="sub-stat-val">4,98 %</span>
+                                <span class="sub-stat-val">5,36 %</span>
                             </div>
                             <div class="sub-stat">
                                 <span class="sub-stat-lbl">Buffer til brud</span>
-                                <span class="sub-stat-val" style="color: var(--danger);">0,27 %-point</span>
+                                <span class="sub-stat-val" style="color: var(--danger);">0,14 %-point</span>
                             </div>
                             <div class="sub-stat">
                                 <span class="sub-stat-lbl">Knækpunkt</span>
-                                <span class="sub-stat-val" style="color: var(--danger);">5,25 %</span>
+                                <span class="sub-stat-val" style="color: var(--danger);">5,50 %</span>
                             </div>
                         </div>
                     </div>
 
                     <div class="pole-desc">
-                        Finansminister Scott Bessents tese om 3 % vækst som redning modsiges af CBO, da vækst automatisk udløser højere udgifter og renter (Swagels turbocharger). Med $40T i gæld og $8–9T i årlig rollover presses statskassen mod brudpunktet.
+                        Inflation på 3,7 % tvinger Fed-chef Kevin Warsh til kompromisløs stramning. 10Y bider sig fast over 5,3 %, og Swagels "turbocharger" fodrer direkte ind i et underskud på over $1,2 billioner i årlige renteudgifter.
                     </div>
                 </div>
                 <div class="trigger-alert">
-                    <strong>Primær trigger:</strong> T-bill rollover-chok; renteudgifter bryder 5,5 % af BNP ($1.400 mia./år).
+                    <strong>Primær trigger:</strong> 10Y bryder 5,50 %; renteudgifter overstiger 5,5 % af BNP.
                 </div>
             </div>
 
@@ -588,18 +652,18 @@
                         <span class="pole-title">Frankrig</span>
                         <span class="pole-tag">Euro-Crisis II • OAT vs. Bund</span>
                     </div>
-                    <div class="stat-line"><span>Statsgæld / Underskud:</span><span class="stat-val">~118% af BNP / ~5,5%</span></div>
-                    <div class="stat-line"><span>OAT-Bund Rentespænd:</span><span class="stat-val">+85 bps (Kraftig udvidelse)</span></div>
-                    <div class="stat-line"><span>Kritisk Knækpunkt (i_crit):</span><span class="stat-val" style="color: #7c3aed;">Spread &gt; 110 bps / OAT &gt; 4,10%</span></div>
+                    <div class="stat-line"><span>Statsgæld / Underskud:</span><span class="stat-val">118% af BNP / ~5,5%</span></div>
+                    <div class="stat-line"><span>Fransk 10Y Rente:</span><span class="stat-val">4,80 % (&gt; nominel vækst 3,1%)</span></div>
+                    <div class="stat-line"><span>Kritisk Knækpunkt (i_crit):</span><span class="stat-val" style="color: #7c3aed;">Spread &gt; 110 bps / OAT &gt; 5,0%</span></div>
 
                     <div class="knæk-box">
                         <div class="knæk-title-row">
-                            <span style="color: #7c3aed;">Spændudvidelse</span>
-                            <span style="color: #7c3aed;">78 % af knækpunkt</span>
+                            <span style="color: #7c3aed;">Spændudvidelse & Gældspres</span>
+                            <span style="color: #7c3aed;">85 % af knækpunkt</span>
                         </div>
                         <div class="knæk-track-wrapper">
                             <div class="knæk-track">
-                                <div class="knæk-fill fill-france" style="width: 78%;"></div>
+                                <div class="knæk-fill fill-france" style="width: 85%;"></div>
                             </div>
                             <div class="knæk-threshold-marker"></div>
                             <span class="knæk-threshold-label">Knækpunkt</span>
@@ -626,13 +690,295 @@
                     </div>
 
                     <div class="pole-desc">
-                        Rentespændet mod Tyskland udvides hurtigere end under gældskrisen i 2011. Politisk lammelse i Paris forhindrer reformer, og Frankrig er for stort til et bailout, hvilket truer hele eurozonens stabilitet.
+                        Frankrig betaler nu en højere rente (4,8 %) end Italien (4,6 %) og Grækenland (4,4 %). Med gadekampe (550.000 demonstranter, 1.200 anholdte) nægter befolkningen austerity. Uden mulighed for at devaluere euroen trues landet af et Liz Truss-øjeblik i megaskala.
                     </div>
                 </div>
                 <div class="trigger-alert">
-                    <strong>Primær trigger:</strong> OAT-Bund blowout over 110 bps udløser politisk krise og smitte i eurozonen.
+                    <strong>Primær trigger:</strong> OAT-Bund blowout over 110 bps; fransk 10Y bryder 5,0 %.
                 </div>
             </div>
 
             <!-- JAPAN -->
-            <div class="pole-card" style="border-top: 4px solid var
+            <div class="pole-card" style="border-top: 4px solid var(--warning);">
+                <div>
+                    <div class="pole-header">
+                        <span class="pole-title">Japan</span>
+                        <span class="pole-tag">Bank of Japan & MoF</span>
+                    </div>
+                    <div class="stat-line"><span>Statsgæld af BNP:</span><span class="stat-val">~260 % (Global rekord)</span></div>
+                    <div class="stat-line"><span>Styringsrente / Valuta:</span><span class="stat-val">BoJ: 1,25 % / USD/JPY: ~157,20</span></div>
+                    <div class="stat-line"><span>Kritisk Knækpunkt (i_crit):</span><span class="stat-val" style="color: var(--warning);">BoJ &gt; 2,00% / USD/JPY &gt; 162</span></div>
+
+                    <div class="knæk-box">
+                        <div class="knæk-title-row">
+                            <span style="color: var(--warning);">Valutapres</span>
+                            <span style="color: var(--warning);">82 % af knækpunkt</span>
+                        </div>
+                        <div class="knæk-track-wrapper">
+                            <div class="knæk-track">
+                                <div class="knæk-fill fill-japan"></div>
+                            </div>
+                            <div class="knæk-threshold-marker"></div>
+                            <span class="knæk-threshold-label">Knækpunkt</span>
+                        </div>
+                        <div class="knæk-scale-labels">
+                            <span>140 JPY</span>
+                            <span>150 JPY</span>
+                            <span style="color: var(--warning); font-weight: 700;">162 JPY (Brud)</span>
+                        </div>
+                        <div class="knæk-stats-table">
+                            <div class="sub-stat">
+                                <span class="sub-stat-lbl">Aktuel kurs</span>
+                                <span class="sub-stat-val">157,2 JPY</span>
+                            </div>
+                            <div class="sub-stat">
+                                <span class="sub-stat-lbl">Buffer til brud</span>
+                                <span class="sub-stat-val" style="color: var(--warning);">4,8 Yen</span>
+                            </div>
+                            <div class="sub-stat">
+                                <span class="sub-stat-lbl">Knækpunkt</span>
+                                <span class="sub-stat-val" style="color: var(--warning);">&gt; 162 JPY</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pole-desc">
+                        Yenen er presset mod 157,20. Tokyo tvinges til at likvidere beholdninger af amerikanske statsobligationer for at forsvare valutaen, hvilket dræner efterspørgslen efter amerikansk gæld.
+                    </div>
+                </div>
+                <div class="trigger-alert">
+                    <strong>Primær trigger:</strong> USD/JPY bryder 162; masselikvidation af US Treasuries.
+                </div>
+            </div>
+
+            <!-- EUROZONEN & DANMARK -->
+            <div class="pole-card" style="border-top: 4px solid var(--safe);">
+                <div>
+                    <div class="pole-header">
+                        <span class="pole-title">EU & Danmark</span>
+                        <span class="pole-tag">ECB & Nationalbanken</span>
+                    </div>
+                    <div class="stat-line"><span>ECB Forventet Rente:</span><span class="stat-val">Hæves yderligere i december</span></div>
+                    <div class="stat-line"><span>DK 30Y Realkredit:</span><span class="stat-val">5,00 % Fast (Kurs ~98)</span></div>
+                    <div class="stat-line"><span>Kritisk Knækpunkt (i_crit):</span><span class="stat-val" style="color: var(--safe);">Realkredit &gt; 5,50% / OAT-smitte</span></div>
+
+                    <div class="knæk-box">
+                        <div class="knæk-title-row">
+                            <span style="color: var(--safe);">Rente- og likviditetspres</span>
+                            <span style="color: var(--safe);">80 % af knækpunkt</span>
+                        </div>
+                        <div class="knæk-track-wrapper">
+                            <div class="knæk-track">
+                                <div class="knæk-fill fill-eu"></div>
+                            </div>
+                            <div class="knæk-threshold-marker"></div>
+                            <span class="knæk-threshold-label">Knækpunkt</span>
+                        </div>
+                        <div class="knæk-scale-labels">
+                            <span>2,0 %</span>
+                            <span>4,0 % (Moderat)</span>
+                            <span style="color: var(--safe); font-weight: 700;">5,50 % (Brud)</span>
+                        </div>
+                        <div class="knæk-stats-table">
+                            <div class="sub-stat">
+                                <span class="sub-stat-lbl">Aktuel rente</span>
+                                <span class="sub-stat-val">5,00 %</span>
+                            </div>
+                            <div class="sub-stat">
+                                <span class="sub-stat-lbl">Buffer til brud</span>
+                                <span class="sub-stat-val" style="color: var(--safe);">0,50 %-point</span>
+                            </div>
+                            <div class="sub-stat">
+                                <span class="sub-stat-lbl">Knækpunkt</span>
+                                <span class="sub-stat-val" style="color: var(--safe);">&gt; 5,50 %</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pole-desc">
+                        ECB har hænderne bundet af inflation og kan ikke redde Frankrig. Nationalbanken forsvarer fastkursen mod et massivt kronepres, mens 5 % realkredit lægger et fast greb om boligmarkedet.
+                    </div>
+                </div>
+                <div class="trigger-alert">
+                    <strong>Primær trigger:</strong> Fransk OAT-smitte rammer eurozonens banksystem.
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. AKTIV-DASHBOARD BAR -->
+        <section class="asset-bar-section">
+            <h2>Aktivmarkedernes Ligevægt: Tværgående Radar</h2>
+            <p class="asset-bar-intro">
+                Når statsrenterne bider sig fast over 5 %, kollapser aktierisikopræmien (ERP), mens guldpriserne reagerer på den tiltagende systemiske nervøsitet:
+            </p>
+
+            <div class="asset-metrics-grid">
+                <div class="asset-card">
+                    <div>
+                        <div class="asset-type">Obligationer</div>
+                        <div class="asset-val">5,36 %</div>
+                        <div class="asset-subtag" style="color: var(--primary);">Diskonteringsanker (10Y US)</div>
+                    </div>
+                    <p class="asset-note">Sætter brutal rentebund og udhuler nutidsværdien af fremtidige pengestrømme.</p>
+                </div>
+
+                <div class="asset-card" style="border-top: 3px solid var(--danger);">
+                    <div>
+                        <div class="asset-type">Aktier (S&P 500)</div>
+                        <div class="asset-val">4,85 %</div>
+                        <div class="asset-subtag" style="color: var(--danger);">Earnings Yield (P/E ~20,6)</div>
+                    </div>
+                    <p class="asset-note"><strong>Negativ risikopræmie (ERP: -0,51 %)</strong>. AI-pyramidens svageste selskaber presses af manglende pengestrømme.</p>
+                </div>
+
+                <div class="asset-card">
+                    <div>
+                        <div class="asset-type">Realrente (y &minus; &pi;)</div>
+                        <div class="asset-val">+1,95 %</div>
+                        <div class="asset-subtag" style="color: var(--warning);">Restriktiv kapitalomkostning</div>
+                    </div>
+                    <p class="asset-note">Opretholdes af råvare- og energipres, hvilket kvæler gældsdrevne modeller.</p>
+                </div>
+
+                <div class="asset-card" style="border-top: 3px solid var(--safe);">
+                    <div>
+                        <div class="asset-type">Guld (Mistillidsmåler)</div>
+                        <div class="asset-val">$4.183</div>
+                        <div class="asset-subtag" style="color: var(--safe);">Søges som hård valuta</div>
+                    </div>
+                    <p class="asset-note">Flygtet som ultimativ forsikring mod politisk lammelse i Paris og gældsdevaluering i Washington.</p>
+                </div>
+            </div>
+
+            <div class="erp-comparison-box">
+                <div class="erp-calc-text">
+                    <strong>Aktierisikopræmiens historiske kollaps:</strong><br>
+                    Når den 10-årige obligation giver 5,36 %, og aktiernes Earnings Yield er 4,85 %, er præmien for at tage selskabsrisiko fuldstændig forsvundet:
+                </div>
+                <div class="erp-badge">ERP = &minus;0,51 %-point</div>
+            </div>
+        </section>
+
+        <!-- 3. FREMSKRIVNING AF ROLLOVER-EFFEKTEN -->
+        <section class="projection-section">
+            <h2>Fremskrivningsmodel: Rollover-muren (2026–2031)</h2>
+            <p style="font-size: 0.94rem; color: #334151; margin: 0 0 14px 0;">
+                Med $32,4 billioner i omsættelig gæld og 33 % årlig refinansiering (€8–9T) forstærkes rentebyrden af Swagels turbocharger-effekt:
+            </p>
+
+            <div class="timeline-card-grid">
+                <div class="timeline-step active">
+                    <div>
+                        <div class="timeline-year-tag">År 1 • 2026–2027</div>
+                        <div class="timeline-amount">$1,45 billioner</div>
+                        <div class="timeline-bnp">~4,3 % af BNP</div>
+                        <div class="timeline-desc">Lavrente-gæld forfalder og genudstedes til ~5,3%. Renteudgifterne overstiger forsvarsbudgettet.</div>
+                    </div>
+                </div>
+
+                <div class="timeline-step active" style="border-top-color: var(--warning);">
+                    <div>
+                        <div class="timeline-year-tag">År 2 • 2027–2028</div>
+                        <div class="timeline-amount">$1,65 billioner</div>
+                        <div class="timeline-bnp">~4,9 % af BNP</div>
+                        <div class="timeline-desc">Næste bølge forfalder. Renteudgifterne overstiger forsvar og Medicare tilsammen.</div>
+                    </div>
+                </div>
+
+                <div class="timeline-step danger">
+                    <div>
+                        <div class="timeline-year-tag" style="color: var(--danger);">År 3–5 • 2028–2031</div>
+                        <div class="timeline-amount" style="color: var(--danger);">$1,90 – 2,00T</div>
+                        <div class="timeline-bnp">5,5 – 6,0 % af BNP (BRUDPUNKT)</div>
+                        <div class="timeline-desc">Al billig gæld er væk. Staten er fanget i et pyramidespil for at betale renterne.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="snowball-chart">
+                <h4 style="margin: 0 0 14px 0; color: var(--dark); font-size: 1.05rem;">USA's Årlige Renteudgifter: Fra Lavrente til Finansielt Brudpunkt</h4>
+                <div class="snowball-row">
+                    <div class="snowball-label"><span>2015–2021: Lavrente-æra</span><span style="font-family: monospace;">$380 mia. (1,6 % af BNP)</span></div>
+                    <div class="snowball-bar-bg"><div class="snowball-bar-fill" style="width: 19%; background: #94a3b8;"></div></div>
+                </div>
+                <div class="snowball-row">
+                    <div class="snowball-label"><span>2025/2026: Nuværende udgangspunkt</span><span style="font-family: monospace;">$1.200 mia. (3,4 % af BNP)</span></div>
+                    <div class="snowball-bar-bg"><div class="snowball-bar-fill" style="width: 60%; background: #3b82f6;"></div></div>
+                </div>
+                <div class="snowball-row">
+                    <div class="snowball-label"><span>2027/2028: Anden bølge af refinansiering</span><span style="font-family: monospace;">$1.650 mia. (4,9 % af BNP)</span></div>
+                    <div class="snowball-bar-bg"><div class="snowball-bar-fill" style="width: 82%; background: #f59e0b;"></div></div>
+                </div>
+                <div class="snowball-row" style="margin-bottom: 0;">
+                    <div class="snowball-label" style="color: var(--danger);"><span><strong>2029–2031: Fuld fornyelse (Knækpunkt overskredet)</strong></span><span style="font-family: monospace;"><strong>$2.000 mia. (5,8 % af BNP)</strong></span></div>
+                    <div class="snowball-bar-bg"><div class="snowball-bar-fill" style="width: 100%; background: #b91c1c;"></div></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. TEORETISK FUNDAMENT -->
+        <section class="theory-card">
+            <h2>Teoretisk Fundament: CBO & De To Knækpunkter</h2>
+            <p style="font-size: 0.94rem; color: #334151; margin: 0 0 10px 0;">
+                Som CBO-direktør Phillip Swagel bekræfter, kan USA ikke vokse sig ud af gælden (kræver 5–6 % realvækst mod faktiske 2,2 %). Høj vækst udløser blot Swagels <em>turbocharger</em>, hvor renter og udgifter stiger i takt.
+            </p>
+            <div class="math-display-card">
+                <div class="math-formula">
+                    <span class="math-var">i</span><sub>crit</sub> = <span class="math-var">r</span>* + <span class="math-var">&pi;</span><sup>e</sup> + <span class="math-var">&theta;</span><sub>t</sub> (Term Premium) &gt; 5,25 %
+                </div>
+                <div class="math-legend">
+                    Når obligationsrenten bryder 5,25–5,50 %, aktiveres den onde cirkel, hvor staten tvinges til gældsmonetarisering eller finansiel repression.
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. DET GLOBALE PRES OG AI-BOBLEN -->
+        <section class="global-context-box">
+            <h2>Det Sammenkoblede Globale Pres & AI-boblen</h2>
+            <p class="context-intro">
+                Det globale finansielle system er ramt af en synkroniseret statsgældskrise, hvor den transatlantiske kapitalduel og AI-pyramidens krak presser alle markeder i knæ:
+            </p>
+
+            <div class="interconnect-grid">
+                <div class="interconnect-item ai">
+                    <h3 class="interconnect-title">AI-boblens Kuldsejling</h3>
+                    <p class="interconnect-text">Kinesiske open-weight modeller presser outputpriserne ned med 98 %, mens høje renter tørrer den cirkulære finansiering ud. Svage AI-selskaber bløder på børserne.</p>
+                </div>
+
+                <div class="interconnect-item usa">
+                    <h3 class="interconnect-title">USA: 40 Billioner & Warsh-Doktrin</h3>
+                    <p class="interconnect-text">Med 10Y på 5,36 % og et underskud på $2B kæmper Treasury med at rulle 8–9 billioner over årligt i et støvsuget kapitalmarked.</p>
+                </div>
+
+                <div class="interconnect-item france">
+                    <h3 class="interconnect-title">Frankrig: Gadekampe & OAT-Smitte</h3>
+                    <p class="interconnect-text">Gæld på 118 % af BNP og en rente på 4,8 % overstiger væksten. Protester (1.200 anholdte) blokerer for reformer, hvilket truer eurozonen.</p>
+                </div>
+
+                <div class="interconnect-item japan">
+                    <h3 class="interconnect-title">Japan: Valutaforsvar & Likvidation</h3>
+                    <p class="interconnect-text">Yenen ved 157,20 tvinger Tokyo til at sælge amerikanske statsobligationer, hvilket accelererer rentepresset i USA.</p>
+                </div>
+            </div>
+
+            <div class="synthesis-card">
+                <strong>Syntese for markedet:</strong>  
+                Vi er i slutfasen (mellem 3 og 5 måneder før det fulde krak i foråret 2027). Med en defensiv positionering (F-kort realkredit og likvide kontanter) står du med frie hænder, når panikken rammer.
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        &copy; 2026 Lasse Holt. Makroøkonomisk Radar & Systemisk Telemetri.
+    </footer>
+
+    <!-- GOOGLE TRANSLATE WIDGET SCRIPT -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({pageLanguage: 'da', includedLanguages: 'en,de,fr,es', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>
