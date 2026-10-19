@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Politik – Lasse Holt</title>
-    <meta name="description" content="Lasse Holt – Medlem af Regionsrådet. Opsummering af dagsordener, anlægsanalyser af Nyt Hospital Nordsjælland og borgerdialog.">
+    <title>Politik & Taler – Lasse Holt</title>
+    <meta name="description" content="Lasse Holt – Medlem af Regionsrådet. Videoer og taler fra salen, anlægsanalyser af Nyt Hospital Nordsjælland og dagsordener.">
     <style>
         :root {
             --primary: #1e3a8a;
@@ -42,29 +42,6 @@
         .language-selector { margin-left: auto; font-size: 0.85rem; }
         .goog-te-combo { padding: 4px 8px; border-radius: 4px; border: 1px solid var(--border); background: #ffffff; color: var(--dark); font-weight: 500; cursor: pointer; }
 
-        .campaign-banner {
-            background: #ffffff;
-            border: 1px solid var(--border);
-            border-left: 5px solid var(--danger);
-            border-radius: 6px;
-            padding: 22px;
-            margin-bottom: 30px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
-        }
-        .campaign-banner h2 { margin: 0 0 8px 0; font-size: 1.25rem; color: var(--dark); }
-        .fb-btn {
-            display: inline-block;
-            background-color: #0064e0;
-            color: #ffffff;
-            text-decoration: none;
-            padding: 10px 18px;
-            border-radius: 6px;
-            font-weight: 600;
-            font-size: 0.92rem;
-            margin-top: 10px;
-        }
-        .fb-btn:hover { background-color: #0052b8; }
-
         .section-block {
             background: var(--card-bg);
             border: 1px solid var(--border);
@@ -81,14 +58,43 @@
             padding-bottom: 8px;
         }
 
+        /* VIDEO CONTAINER */
+        .video-container-box {
+            margin: 20px 0 30px 0;
+            background: #0f172a;
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+        }
+        .video-responsive {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 ratio */
+            height: 0;
+        }
+        .video-responsive iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        .video-meta {
+            padding: 14px 18px;
+            background: #ffffff;
+            border-top: 1px solid var(--border);
+        }
+        .video-meta h4 { margin: 0 0 4px 0; font-size: 1.05rem; color: var(--dark); }
+        .video-meta p { margin: 0; font-size: 0.88rem; color: var(--text-muted); }
+
         /* DAGSORDEN OPSUMMERING */
         .agenda-box {
             background: #f8fafc;
             border: 1px solid #e2e8f0;
             border-left: 4px solid var(--primary);
             border-radius: 6px;
-            padding: 20px;
-            margin-bottom: 20px;
+            padding: 18px;
+            margin-bottom: 16px;
         }
         .agenda-date {
             font-size: 0.78rem;
@@ -98,10 +104,10 @@
             margin-bottom: 4px;
         }
         .agenda-item-title {
-            font-size: 1.05rem;
+            font-size: 1.02rem;
             font-weight: 700;
             color: var(--dark);
-            margin-bottom: 6px;
+            margin-bottom: 4px;
         }
 
         /* TABEL OG DATA */
@@ -166,7 +172,7 @@
         <div class="header-top">
             <h1>Politik</h1>
         </div>
-        <div class="subtitle">Medlem af Regionsrådet • Dagsordener, anlægsanalyser og borgerdialog</div>
+        <div class="subtitle">Medlem af Regionsrådet • Taler fra salen, dagsordener og anlægsanalyser</div>
         <nav>
             <a href="index.html">&larr; Forside</a>
             <a href="makro.html">Makroøkonomi</a>
@@ -180,29 +186,45 @@
     </header>
 
     <main>
-        <!-- VALGKAMP & DIREKTE DIALOG -->
-        <section class="campaign-banner">
-            <h2>Borgerdialog & Valgkamp</h2>
-            <p style="margin: 0 0 10px 0; font-size: 0.94rem; color: #334151;">
-                Denne sektion aktiveres løbende med politiske udspil og under valgkampe. Har du spørgsmål eller input til de regionale beslutninger, kan du skrive direkte til mig via Messenger.
+        <!-- VIDEOER FRA REGIONSRÅDSSALEN (PLACERET ØVERST SOM ØNSKET) -->
+        <section class="section-block">
+            <h2 class="section-title">Taler & Debatter fra Regionsrådssalen</h2>
+            <p style="font-size: 0.92rem; color: var(--text-muted); margin-bottom: 20px;">
+                Direkte klip af indlæg og opfølgninger fra de officielle tv-transmissioner i Regionsrådet:
             </p>
-            <a href="https://www.facebook.com/messages/t/61582603754478/" target="_blank" rel="noopener noreferrer" class="fb-btn">
-                Send besked på Facebook Messenger &rarr;
-            </a>
+
+            <!-- VIDEO 1 -->
+            <div class="video-container-box">
+                <div class="video-responsive">
+                    <iframe src="https://regionoest.tv/player/11617?bar=1&t=1h51m28s" frameborder="0" scrolling="no" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                </div>
+                <div class="video-meta">
+                    <h4>Indlæg i Regionsrådssalen</h4>
+                    <p>Tale og debat vedrørende dagsordenspunkter i regionen (1h 51m).</p>
+                </div>
+            </div>
+
+            <!-- VIDEO 2 -->
+            <div class="video-container-box">
+                <div class="video-responsive">
+                    <iframe src="https://regionoest.tv/player/11617?bar=1&t=2h24m35s" frameborder="0" scrolling="no" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                </div>
+                <div class="video-meta">
+                    <h4>Opfølgning på Budgetoverskridelser</h4>
+                    <p>Skarp opfølgning og debat om anlægsøkonomi og økonomisk styring i regionen (2h 24m).</p>
+                </div>
+            </div>
         </section>
 
-        <!-- DAGSORDEN OPSUMMERING -->
+        <!-- AKTUELT FRA REGION ØSTDANMARK: DAGSODENER -->
         <section class="section-block">
-            <h2 class="section-title">Aktuelt fra Region Østdanmark: Hvad drøftes på dagsordenen?</h2>
-            <p style="font-size: 0.95rem; color: #334151; margin-bottom: 20px;">
-                For at gøre det let for almindelige borgere at følge med i det politiske arbejde i regionen, opsummerer vi her de vigtigste dagsordener, møder og beslutninger fra Region Østdanmarks mødeforum:
-            </p>
-
+            <h2 class="section-title">Aktuelt fra Region Østdanmark: Dagsordener</h2>
+            
             <div class="agenda-box">
                 <div class="agenda-date">Kommende Møde: 20. Oktober 2026 (Forberedende Regionsråd)</div>
                 <div class="agenda-item-title">Etablering af Region Østdanmark & Budgetkontrol</div>
                 <p style="font-size: 0.9rem; color: #334151; margin: 0;">
-                    På det kommende møde i Regionshuset behandles de sidste strukturelle rammer for sammenlægningen af Region Hovedstaden og Region Sjælland pr. 1. januar 2027. Særligt fokus er på at sikre stram økonomisk styring af anlægsprojekter og beskyttelse af hospitalernes driftsrammer.
+                    Behandling af de sidste strukturelle rammer for sammenlægningen af Region Hovedstaden og Region Sjælland pr. 1. januar 2027 med fokus på stram økonomisk styring af anlægsprojekter.
                 </p>
             </div>
 
@@ -210,15 +232,7 @@
                 <div class="agenda-date">Løbende Dagsorden: Sundhedsråd og Nærhospitaler</div>
                 <div class="agenda-item-title">Nye Sundhedsråd og Nærzoner</div>
                 <p style="font-size: 0.9rem; color: #334151; margin: 0;">
-                    Arbejdet med de nye sundhedsråd rulles ud med fokus på bedre sammenhæng mellem praktiserende læger, kommunernes genoptræning og regionens sygehuse.
-                </p>
-            </div>
-
-            <div class="agenda-box">
-                <div class="agenda-date">Infrastruktur & Regional Udvikling</div>
-                <div class="agenda-item-title">Kollektiv Trafik og Grøn Mobilitet</div>
-                <p style="font-size: 0.9rem; color: #334151; margin: 0;">
-                    Drøftelse af initiativer til at binde hovedstadsområdet og regionens yderområder bedre sammen via regional kollektiv trafik og grønne buskorridorer.
+                    Udrulning af de nye sundhedsråd for at sikre bedre sammenhæng mellem almen praksis, kommuner og sygehuse.
                 </p>
             </div>
 
@@ -227,11 +241,11 @@
             </div>
         </section>
 
-        <!-- DYBDEGÅENDE ANLÆGSANALYSE: NYT HOSPITAL NORDSJÆLLAND -->
+        <!-- ANLÆGSANALYSE: NYT HOSPITAL NORDSJÆLLAND -->
         <section class="section-block">
             <h2 class="section-title">Case: Nyt Hospital Nordsjælland (Favrholm)</h2>
             <p style="font-size: 0.95rem; color: #334151;">
-                Når man analyserer offentlige anlægsprojekter, er det afgørende at lade data og tidslinjer tale for sig selv. Byggeriet af Nyt Hospital Nordsjælland ved Favrholm syd for Hillerød er et af Danmarkshistoriens mest komplekse sygehusbyggerier.
+                Byggeriet af Nyt Hospital Nordsjælland ved Favrholm syd for Hillerød er et af Danmarkshistoriens mest komplekse sygehusbyggerier. Nedenfor følger en faktuel gennemgang af projektets økonomiske udvikling:
             </p>
             
             <div class="stat-grid">
@@ -284,13 +298,13 @@
                         </tr>
                         <tr>
                             <td><strong>2021–2023</strong></td>
-                            <td>Projektet rammes af leverandørudfordringer og stigende materialepriser. Budgettet opskrives gradvist. Rigsrevisionen udtaler kritik af den tidlige risikovurdering.</td>
+                            <td>Projektet rammes af leverandørudfordringer og stigende materialepriser. Rigsrevisionen udtaler kritik.</td>
                             <td>7,6 mia. kr.</td>
                             <td>Udskudt til 2026</td>
                         </tr>
                         <tr>
                             <td><strong>Sept. 2024</strong></td>
-                            <td>Projektdirektør Lasse Krebs Manniche fratræder efter gensidig aftale; en ny byggeledelse indsættes.</td>
+                            <td>Projektdirektør Lasse Krebs Manniche fratræder efter gensidig aftale; ny byggeledelse indsættes.</td>
                             <td>7,6 mia. kr.</td>
                             <td>2026 fastholdt</td>
                         </tr>
@@ -302,7 +316,7 @@
                         </tr>
                         <tr>
                             <td><strong>Juni 2026</strong></td>
-                            <td>Regionen ansøger ministeriet om låneadgang til en budgetforhøjelse på 3,172 mia. kr. Det samlede styrende budget lander på et historisk højt niveau.</td>
+                            <td>Regionen ansøger ministeriet om låneadgang til en budgetforhøjelse på 3,172 mia. kr.</td>
                             <td><strong>11,3 mia. kr.</strong></td>
                             <td><strong>Forventet ultimo 2027</strong></td>
                         </tr>
@@ -312,10 +326,10 @@
 
             <div class="callout-box">
                 <strong style="display: block; margin-bottom: 6px; font-size: 0.95rem;">De styringsmæssige rammer fremadrettet (Region Østdanmark pr. 1. januar 2027):</strong>
-                Med etableringen af Region Østdanmark overgår hospitalet til et nyt administrationsapparat. Fra et økonomistyringsmæssigt synspunkt efterlader forløbet to uafklarede driftsspørgsmål:
+                Med etableringen af Region Østdanmark overgår hospitalet til et nyt administrationsapparat. To uafklarede driftsspørgsmål:
                 <ol style="margin: 8px 0 0 20px;">
-                    <li><strong>Afgrænsning af gældsforpligtelser:</strong> Hvorvidt og hvordan afdragene på det optagne lån på 3,172 milliarder kroner kan isoleres til det tidligere Region Hovedstads budgetter.</li>
-                    <li><strong>Præcision i anlægsprognoser:</strong> Hvilke kontrolmekanismer der implementeres fremadrettet for at sikre, at risici afdækkes tidligere.</li>
+                    <li><strong>Afgrænsning af gældsforpligtelser:</strong> Hvordan afdragene på lånet på 3,172 milliarder kroner isoleres, så driftsrammen friholdes.</li>
+                    <li><strong>Præcision i anlægsprognoser:</strong> Kontrolmekanismer der sikrer, at risici afdækkes tidligere.</li>
                 </ol>
             </div>
         </section>
