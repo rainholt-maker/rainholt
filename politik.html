@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Politik – Lasse Holt</title>
-    <meta name="description" content="Lasse Holt – Medlem af Regionsrådet. Opsummering af dagsordener, anlægsanalyser af Nyt Hospital Nordsjælland, videoer og borgerdialog.">
+    <meta name="description" content="Lasse Holt – Medlem af Regionsrådet. Opsummering af dagsordener, anlægsanalyser af Nyt Hospital Nordsjælland og borgerdialog.">
     <style>
         :root {
             --primary: #1e3a8a;
@@ -81,7 +81,7 @@
             padding-bottom: 8px;
         }
 
-        /* DAGSORDEN OPSUMMERING (NYT) */
+        /* DAGSORDEN OPSUMMERING */
         .agenda-box {
             background: #f8fafc;
             border: 1px solid #e2e8f0;
@@ -139,37 +139,6 @@
         .stat-num { font-size: 1.4rem; font-weight: 700; color: var(--dark); font-family: monospace; }
         .stat-label { font-size: 0.8rem; font-weight: 600; color: #64748b; text-transform: uppercase; margin-bottom: 4px; }
 
-        .video-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin-top: 15px;
-        }
-        @media (max-width: 720px) { .video-grid { grid-template-columns: 1fr; } }
-        .video-card {
-            background: #f8fafc;
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-        }
-        .video-wrapper {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            background: #000000;
-        }
-        .video-wrapper iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: 0;
-        }
-        .video-info { padding: 14px; }
-
         .callout-box {
             background: #fef2f2;
             border: 1px solid #fecaca;
@@ -194,7 +163,9 @@
 <body>
 
     <header>
-        <h1>Politik</h1>
+        <div class="header-top">
+            <h1>Politik</h1>
+        </div>
         <div class="subtitle">Medlem af Regionsrådet • Dagsordener, anlægsanalyser og borgerdialog</div>
         <nav>
             <a href="index.html">&larr; Forside</a>
@@ -220,18 +191,18 @@
             </a>
         </section>
 
-        <!-- NYT: LETFORSTÅELIG OPSUMMERING AF REGION ØSTDANMARKS DAGSODENER -->
+        <!-- DAGSORDEN OPSUMMERING -->
         <section class="section-block">
             <h2 class="section-title">Aktuelt fra Region Østdanmark: Hvad drøftes på dagsordenen?</h2>
             <p style="font-size: 0.95rem; color: #334151; margin-bottom: 20px;">
-                For at gøre det let for almindelige borgere at følge med i det politiske arbejde i regionen, opsummerer vi her de vigtigste dagsordener, møder og beslutninger fra Region Østdanmarks mødeforum (bl.a. det forberedende regionsråd i Sorø):
+                For at gøre det let for almindelige borgere at følge med i det politiske arbejde i regionen, opsummerer vi her de vigtigste dagsordener, møder og beslutninger fra Region Østdanmarks mødeforum:
             </p>
 
             <div class="agenda-box">
                 <div class="agenda-date">Kommende Møde: 20. Oktober 2026 (Forberedende Regionsråd)</div>
                 <div class="agenda-item-title">Etablering af Region Østdanmark & Budgetkontrol</div>
                 <p style="font-size: 0.9rem; color: #334151; margin: 0;">
-                    På det kommende møde i Regionshuset i Sorø behandles de sidste strukturelle rammer for den store sammenlægning af Region Hovedstaden og Region Sjælland pr. 1. januar 2027. Særligt fokus er på at sikre en stram økonomisk styring af de store anlægsprojekter og beskyttelse af hospitalernes driftsrammer mod uforudsete udgifter.
+                    På det kommende møde i Regionshuset behandles de sidste strukturelle rammer for sammenlægningen af Region Hovedstaden og Region Sjælland pr. 1. januar 2027. Særligt fokus er på at sikre stram økonomisk styring af anlægsprojekter og beskyttelse af hospitalernes driftsrammer.
                 </p>
             </div>
 
@@ -239,7 +210,7 @@
                 <div class="agenda-date">Løbende Dagsorden: Sundhedsråd og Nærhospitaler</div>
                 <div class="agenda-item-title">Nye Sundhedsråd og Nærzoner</div>
                 <p style="font-size: 0.9rem; color: #334151; margin: 0;">
-                    Arbejdet med de nye sundhedsråd rulles ud. Dagsordenerne fokuserer på at skabe bedre sammenhæng mellem de praktiserende læger, kommunernes genoptræning og regionens sygehuse, så patienter oplever færre fald i overgangene mellem sektorerne.
+                    Arbejdet med de nye sundhedsråd rulles ud med fokus på bedre sammenhæng mellem praktiserende læger, kommunernes genoptræning og regionens sygehuse.
                 </p>
             </div>
 
@@ -247,12 +218,12 @@
                 <div class="agenda-date">Infrastruktur & Regional Udvikling</div>
                 <div class="agenda-item-title">Kollektiv Trafik og Grøn Mobilitet</div>
                 <p style="font-size: 0.9rem; color: #334151; margin: 0;">
-                    Der drøftes løbende initiativer til at binde hovedstadsområdet og regionens yderområder bedre sammen via regional kollektiv trafik, grønne buskorridorer og smartere pendlerejseløsninger for borgerne.
+                    Drøftelse af initiativer til at binde hovedstadsområdet og regionens yderområder bedre sammen via regional kollektiv trafik og grønne buskorridorer.
                 </p>
             </div>
 
             <div style="font-size: 0.88rem; margin-top: 15px;">
-                <em>Vil du læse de fulde, officielle dagsordener og referater i fuld længde? Besøg <a href="https://www.regionoest.dk/politik/dagsordener-og-referater" target="_blank" rel="noopener noreferrer" style="color: var(--primary); font-weight: 600;">Region Østdanmarks officielle dagsordensportal</a>.</em>
+                <em>Læs de fulde dagsordener og referater på <a href="https://www.regionoest.dk/politik/dagsordener-og-referater" target="_blank" rel="noopener noreferrer" style="color: var(--primary); font-weight: 600;">Region Østdanmarks officielle dagsordensportal</a>.</em>
             </div>
         </section>
 
@@ -346,38 +317,6 @@
                     <li><strong>Afgrænsning af gældsforpligtelser:</strong> Hvorvidt og hvordan afdragene på det optagne lån på 3,172 milliarder kroner kan isoleres til det tidligere Region Hovedstads budgetter.</li>
                     <li><strong>Præcision i anlægsprognoser:</strong> Hvilke kontrolmekanismer der implementeres fremadrettet for at sikre, at risici afdækkes tidligere.</li>
                 </ol>
-            </div>
-        </section>
-
-        <!-- VIDEOER FRA REGIONSRÅDETS TRANSMISSIONER -->
-        <section class="section-block">
-            <h2 class="section-title">Videoer fra Regionsrådssalen</h2>
-            <p style="font-size: 0.92rem; color: var(--text-muted); margin-bottom: 16px;">
-                Politiske indlæg og debatter fra rådssalens tv-transmissioner:
-            </p>
-
-            <div class="video-grid">
-                <div class="video-card">
-                    <div class="video-wrapper">
-                        <iframe src="https://www.youtube-nocookie.com/embed/videoseries?list=PLrA_eJ5mD_pI9b7Xv9eQ0y" title="Debat om anlæg og budget" allowfullscreen loading="lazy"></iframe>
-                    </div>
-                    <div class="video-info">
-                        <span style="font-size: 0.75rem; color: #64748b; font-family: monospace; font-weight: 600;">REGIONSRÅDSSAMLING</span>
-                        <h4 style="margin: 4px 0 6px 0; color: var(--dark);">Budgetkontrol: Nyt Hospital Nordsjælland</h4>
-                        <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Indlæg om risikostyring og afdækning af merudgifter i store hospitalsbyggerier.</p>
-                    </div>
-                </div>
-
-                <div class="video-card">
-                    <div class="video-wrapper">
-                        <iframe src="https://www.youtube-nocookie.com/embed/videoseries?list=PLrA_eJ5mD_pI9b7Xv9eQ0y" title="Kollektiv trafik og infrastruktur" allowfullscreen loading="lazy"></iframe>
-                    </div>
-                    <div class="video-info">
-                        <span style="font-size: 0.75rem; color: #64748b; font-family: monospace; font-weight: 600;">REGIONSRÅDSSAMLING</span>
-                        <h4 style="margin: 4px 0 6px 0; color: var(--dark);">Kollektiv Trafik: Sammenhæng for pendlere</h4>
-                        <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Debat om letbane, buslinjer og regional mobilitet på tværs af kommunegrænser.</p>
-                    </div>
-                </div>
             </div>
         </section>
     </main>
