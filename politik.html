@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Politik & Taler – Lasse Holt</title>
-    <meta name="description" content="Lasse Holt – Medlem af Regionsrådet. Videoer og taler fra salen, anlægsanalyser af Nyt Hospital Nordsjælland og dagsordener.">
+    <meta name="description" content="Lasse Holt – Forberedende Regionsråd Østdanmark (Liberal Alliance). Taler fra salen, kampen mod regional planøkonomi, psykiatrisk forskning og anlægsanalyser.">
     <style>
         :root {
             --primary: #1e3a8a;
@@ -15,14 +15,15 @@
             --border: #e2e8f0;
             --bg-page: #fafafa;
             --card-bg: #ffffff;
+            --accent-teal: #0d9488;
         }
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            line-height: 1.6;
+            line-height: 1.65;
             color: var(--text-main);
-            max-width: 920px;
+            max-width: 940px;
             margin: 0 auto;
-            padding: 40px 20px 60px;
+            padding: 40px 20px 70px;
             background-color: var(--bg-page);
         }
         header {
@@ -51,24 +52,103 @@
             box-shadow: 0 1px 3px rgba(0,0,0,0.02);
         }
         .section-title {
-            font-size: 1.35rem;
+            font-size: 1.4rem;
             color: var(--dark);
             margin: 0 0 14px 0;
             border-bottom: 2px solid #f1f5f9;
             padding-bottom: 8px;
         }
 
+        /* ARTIKEL & DEBATOPLÆG STYLING */
+        .article-lead {
+            font-size: 1.02rem;
+            color: #1e293b;
+            font-weight: 500;
+            background: #f8fafc;
+            border-left: 4px solid var(--primary);
+            padding: 16px 20px;
+            border-radius: 0 6px 6px 0;
+            margin-bottom: 26px;
+        }
+        .debate-topic {
+            border-top: 1px solid var(--border);
+            padding-top: 24px;
+            margin-top: 28px;
+        }
+        .debate-topic:first-of-type {
+            border-top: none;
+            padding-top: 0;
+            margin-top: 0;
+        }
+        .topic-badge {
+            display: inline-block;
+            background: #eff6ff;
+            color: var(--primary);
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 3px 10px;
+            border-radius: 4px;
+            border: 1px solid #bfdbfe;
+            margin-bottom: 8px;
+        }
+        .debate-topic h3 {
+            font-size: 1.25rem;
+            color: var(--dark);
+            margin: 0 0 12px 0;
+        }
+        .debate-topic p {
+            font-size: 0.94rem;
+            color: #334151;
+            margin: 0 0 12px 0;
+        }
+        .contrast-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin: 16px 0;
+        }
+        @media (max-width: 720px) {
+            .contrast-grid { grid-template-columns: 1fr; }
+        }
+        .contrast-box {
+            padding: 16px;
+            border-radius: 6px;
+            font-size: 0.88rem;
+            line-height: 1.55;
+        }
+        .contrast-box.others {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-left: 4px solid #64748b;
+        }
+        .contrast-box.la {
+            background: #f0fdfa;
+            border: 1px solid #ccfbf1;
+            border-left: 4px solid var(--accent-teal);
+        }
+        .contrast-box strong.box-head {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+            color: var(--dark);
+        }
+
         /* VIDEO CONTAINER */
         .video-container-box {
-            margin: 20px 0 30px 0;
+            margin: 18px 0 10px 0;
             background: #0f172a;
             border-radius: 6px;
             overflow: hidden;
             box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+            border: 1px solid var(--border);
         }
         .video-responsive {
             position: relative;
-            padding-bottom: 56.25%; /* 16:9 ratio */
+            padding-bottom: 56.25%; /* 16:9 */
             height: 0;
         }
         .video-responsive iframe {
@@ -80,37 +160,29 @@
             border: 0;
         }
         .video-meta {
-            padding: 14px 18px;
+            padding: 12px 18px;
             background: #ffffff;
             border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
         }
-        .video-meta h4 { margin: 0 0 4px 0; font-size: 1.05rem; color: var(--dark); }
-        .video-meta p { margin: 0; font-size: 0.88rem; color: var(--text-muted); }
+        .video-meta h4 { margin: 0; font-size: 0.98rem; color: var(--dark); }
+        .video-meta span { font-size: 0.82rem; color: var(--text-muted); font-family: monospace; }
 
-        /* DAGSORDEN OPSUMMERING */
-        .agenda-box {
-            background: #f8fafc;
-            border: 1px solid #e2e8f0;
-            border-left: 4px solid var(--primary);
+        .bottom-conclusion {
+            background: #eff6ff;
+            border: 1px solid #bfdbfe;
             border-radius: 6px;
-            padding: 18px;
-            margin-bottom: 16px;
-        }
-        .agenda-date {
-            font-size: 0.78rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            color: var(--primary);
-            margin-bottom: 4px;
-        }
-        .agenda-item-title {
-            font-size: 1.02rem;
-            font-weight: 700;
-            color: var(--dark);
-            margin-bottom: 4px;
+            padding: 16px 20px;
+            margin-top: 24px;
+            font-size: 0.94rem;
+            color: #1e3a8a;
         }
 
-        /* TABEL OG DATA */
+        /* TABEL OG DATA (FAVRHOLM) */
         .table-container { overflow-x: auto; margin: 18px 0; }
         table {
             width: 100%;
@@ -172,7 +244,7 @@
         <div class="header-top">
             <h1>Politik</h1>
         </div>
-        <div class="subtitle">Medlem af Regionsrådet • Taler fra salen, dagsordener og anlægsanalyser</div>
+        <div class="subtitle">Forberedende Regionsråd Østdanmark (Liberal Alliance) • Taler, principper og anlægsanalyser</div>
         <nav>
             <a href="index.html">&larr; Forside</a>
             <a href="makro.html">Makroøkonomi</a>
@@ -186,66 +258,129 @@
     </header>
 
     <main>
-        <!-- VIDEOER FRA REGIONSRÅDSSALEN (PLACERET ØVERST SOM ØNSKET) -->
+        <!-- 1. HOVEDSEKTION: SUNDHEDSPLANEN & PSYKIATRISK FORSKNINGSCENTER -->
         <section class="section-block">
-            <h2 class="section-title">Taler & Debatter fra Regionsrådssalen</h2>
-            <p style="font-size: 0.92rem; color: var(--text-muted); margin-bottom: 20px;">
-                Direkte klip af indlæg og opfølgninger fra de officielle tv-transmissioner i Regionsrådet:
+            <h2 class="section-title">Sundhed skabes af frie læger og stærk forskning – ikke af regional planøkonomi</h2>
+            
+            <div class="article-lead">
+                På det seneste møde i det forberedende regionsråd stod de politiske skillelinjer krystalklart. Mens de øvrige partier i vid udstrækning sætter deres lid til central styring, administrative planhierarkier og ideologisk modstand mod private midler, kæmper jeg og Liberal Alliance for det stik modsatte: faglig frihed, tillid til lægerne og modet til at tage imod historiske investeringer i patienternes helbred.
+            </div>
+
+            <!-- PUNKT 2: SUNDHEDSPLANEN -->
+            <div class="debate-topic">
+                <span class="topic-badge">Dagsordenspunkt 2 • Sundhedsplanens strategiske ramme</span>
+                <h3>Læger er læger – ikke brikker på et politisk skakbræt</h3>
+                <p>
+                    I debatten om den nye regionale sundhedsplan for Region Østdanmark fylder ord som <em>»populationsansvar«</em>, <em>»planlægningsgrundlag«</em> og <em>»tre-trinsmodeller«</em> det meste. Administrationen og det politiske flertal lægger op til, at politikere og embedsmænd i seks nye sundhedsråd skal detailstyre, hvor praktiserende læger og speciallæger må åbne klinikker, ligesom man åbner for administrativt at »udlåne« hospitalslæger for at løse geografisk lægemangel.
+                </p>
+
+                <div class="contrast-grid">
+                    <div class="contrast-box others">
+                        <strong class="box-head">Hvad de andre partier vil</strong>
+                        Flertallet af partierne tror grundlæggende på, at man kan planøkonomisere sig til et bedre sundhedsvæsen. De lader sig trække ind i en klassisk slåskamp mellem land og by, hvor sundhedspolitik reduceres til regional fordelingspolitik og politiske studehandler om, hvem der skal have hvad.
+                    </div>
+                    <div class="contrast-box la">
+                        <strong class="box-head">Hvad jeg og Liberal Alliance kæmper for</strong>
+                        Stavnsbåndet blev ophævet i 1788. Læger er højtuddannede, frie fagpersoner – ikke brikker, embedsmænd kan flytte rundt på et kort. En praktiserende læge skal være selvstændig erhvervsdrivende med høj faglig autonomi, ikke filialbestyrer i et regionalt monopol.
+                    </div>
+                </div>
+
+                <p>
+                    Vi skaber ikke lægedækning gennem tvang eller ved at sprede vores specialiserede miljøer så tyndt ud, at vi ender med lighed i middelmådighed. Danmark er et lille land, og Region Østdanmark er en lille geografi. Patienterne bekymrer sig om én ting: at møde det stærkeste faglige miljø. Sundhed skabes i det frie møde mellem læge og patient – ikke i et regionalt planlægningsbureaukrati.
+                </p>
+
+                <div class="video-container-box">
+                    <div class="video-responsive">
+                        <iframe src="https://regionoest.tv/player/11920?bar=1&t=0h29m31s" width="1200" height="540" frameborder="0" scrolling="no" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                    </div>
+                    <div class="video-meta">
+                        <h4>Punkt 2: Drøftelse af sundhedsplanens strategiske ramme og fælles planlægningsgrundlag</h4>
+                        <span>Start: 0h 29m 31s</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PUNKT 3: PSYKIATRISK FORSKNINGSCENTER -->
+            <div class="debate-topic">
+                <span class="topic-badge">Dagsordenspunkt 3 • Nationalt forskningscenter i klinisk psykiatri</span>
+                <h3>Mod til at gribe en historisk milliardmulighed i psykiatrien</h3>
+                <p>
+                    Regionsrådet skulle samtidig tage stilling til etableringen af et nationalt forskningscenter i klinisk psykiatri på Bispebjerg Hospital – muliggjort af en ekstern bevilling på op til én milliard kroner over 10 år fra Lundbeckfonden.
+                </p>
+
+                <div class="contrast-grid">
+                    <div class="contrast-box others">
+                        <strong class="box-head">Modstanden fra venstrefløjen</strong>
+                        I forretningsudvalget stemte Enhedslisten imod med den velkendte begrundelse, at private fonde og virksomheder ikke må knyttes for tæt til det offentlige sundhedsvæsen. Enhedslisten frygter privat indflydelse mere, end de ønsker banebrydende behandlinger for psykisk syge.
+                    </div>
+                    <div class="contrast-box la">
+                        <strong class="box-head">Hvorfor Liberal Alliance stemmer helhjertet ja</strong>
+                        Venstrefløjens modstand er udtryk for en forældet, ideologisk berøringsangst, som svigter både patienterne og de kliniske forskere. Private midler er ikke en trussel mod det offentlige sundhedsvæsen; de er en afgørende løftestang.
+                    </div>
+                </div>
+
+                <p>
+                    I årtier har psykiatrien haltet efter somatikken. Mens kræft- og diabetesbehandlingen er blevet revolutioneret gennem massive investeringer og forskning, har psykiatriske patienter alt for længe måttet nøjes med symptombehandling og medicinsk famlen i blinde. Med denne donation giver vi Danmarks dygtigste psykiatere og professorer ressourcerne til at skabe internationale gennembrud inden for præcisionsmedicin, AI og behandlingsresistens ved lidelser som skizofreni, bipolar sygdom, autisme og ADHD.
+                </p>
+                <p>
+                    Forskningsfriheden er fuldstændig sikret – fonden har klogeligt frasagt sig stemmeret i bestyrelsen netop for at garantere uafhængigheden. Vores eneste opgave som politikere er at sikre, at regionens egne midler ikke drukner i administrativt overhead, men går ubeskåret til den kliniske forskning.
+                </p>
+
+                <div class="video-container-box">
+                    <div class="video-responsive">
+                        <iframe src="https://regionoest.tv/player/11920?bar=1&t=0h57m34s" width="1200" height="540" frameborder="0" scrolling="no" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                    </div>
+                    <div class="video-meta">
+                        <h4>Punkt 3: Etablering og drift af nationalt forskningscenter i klinisk psykiatri</h4>
+                        <span>Start: 0h 57m 34s</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bottom-conclusion">
+                <strong>Principiel linje:</strong> Uanset om det gælder almen praksis eller den mest avancerede psykiatriske forskning, er Liberal Alliances linje konsekvent: Vi skal give fagligheden fri, respektere det private initiativ og sætte patientens reelle behandling over systemets kasser.
+            </div>
+        </section>
+
+        <!-- 2. TIDLIGERE TALER FRA SALEN (BUDGET & ANLÆGSSTYRING) -->
+        <section class="section-block">
+            <h2 class="section-title">Tidligere indlæg: Budgetkontrol & Anlægsstyring</h2>
+            <p style="font-size: 0.92rem; color: var(--text-muted); margin-bottom: 18px;">
+                Debatter fra tidligere møder i det forberedende regionsråd vedrørende økonomisk styring og budgetoverskridelser:
             </p>
 
-            <!-- VIDEO 1 -->
-            <div class="video-container-box">
+            <!-- TIDLIGERE VIDEO 1 -->
+            <div class="video-container-box" style="margin-bottom: 24px;">
                 <div class="video-responsive">
-                    <iframe src="https://regionoest.tv/player/11617?bar=1&t=1h51m28s" frameborder="0" scrolling="no" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                    <iframe src="https://regionoest.tv/player/11617?bar=1&t=1h51m28s" width="1200" height="540" frameborder="0" scrolling="no" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
                 </div>
                 <div class="video-meta">
-                    <h4>Indlæg i Regionsrådssalen</h4>
-                    <p>Tale og debat vedrørende dagsordenspunkter i regionen (1h 51m).</p>
+                    <h4>Indlæg i Regionsrådssalen om styring og prioritering</h4>
+                    <span>Start: 1h 51m 28s</span>
                 </div>
             </div>
 
-            <!-- VIDEO 2 -->
+            <!-- TIDLIGERE VIDEO 2 -->
             <div class="video-container-box">
                 <div class="video-responsive">
-                    <iframe src="https://regionoest.tv/player/11617?bar=1&t=2h24m35s" frameborder="0" scrolling="no" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                    <iframe src="https://regionoest.tv/player/11617?bar=1&t=2h24m35s" width="1200" height="540" frameborder="0" scrolling="no" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
                 </div>
                 <div class="video-meta">
-                    <h4>Opfølgning på Budgetoverskridelser</h4>
-                    <p>Skarp opfølgning og debat om anlægsøkonomi og økonomisk styring i regionen (2h 24m).</p>
+                    <h4>Opfølgning på budgetoverskridelser i anlægsprojekter</h4>
+                    <span>Start: 2h 24m 35s</span>
                 </div>
+            </div>
+
+            <div style="font-size: 0.88rem; margin-top: 16px;">
+                <em>Alle officielle dagsordener og referater kan tilgås via <a href="https://www.regionoest.dk/politik/dagsordener-og-referater" target="_blank" rel="noopener noreferrer" style="color: var(--primary); font-weight: 600;">Region Østdanmarks mødeportal</a>.</em>
             </div>
         </section>
 
-        <!-- AKTUELT FRA REGION ØSTDANMARK: DAGSODENER -->
-        <section class="section-block">
-            <h2 class="section-title">Aktuelt fra Region Østdanmark: Dagsordener</h2>
-            
-            <div class="agenda-box">
-                <div class="agenda-date">Kommende Møde: 20. Oktober 2026 (Forberedende Regionsråd)</div>
-                <div class="agenda-item-title">Etablering af Region Østdanmark & Budgetkontrol</div>
-                <p style="font-size: 0.9rem; color: #334151; margin: 0;">
-                    Behandling af de sidste strukturelle rammer for sammenlægningen af Region Hovedstaden og Region Sjælland pr. 1. januar 2027 med fokus på stram økonomisk styring af anlægsprojekter.
-                </p>
-            </div>
-
-            <div class="agenda-box">
-                <div class="agenda-date">Løbende Dagsorden: Sundhedsråd og Nærhospitaler</div>
-                <div class="agenda-item-title">Nye Sundhedsråd og Nærzoner</div>
-                <p style="font-size: 0.9rem; color: #334151; margin: 0;">
-                    Udrulning af de nye sundhedsråd for at sikre bedre sammenhæng mellem almen praksis, kommuner og sygehuse.
-                </p>
-            </div>
-
-            <div style="font-size: 0.88rem; margin-top: 15px;">
-                <em>Læs de fulde dagsordener og referater på <a href="https://www.regionoest.dk/politik/dagsordener-og-referater" target="_blank" rel="noopener noreferrer" style="color: var(--primary); font-weight: 600;">Region Østdanmarks officielle dagsordensportal</a>.</em>
-            </div>
-        </section>
-
-        <!-- ANLÆGSANALYSE: NYT HOSPITAL NORDSJÆLLAND -->
+        <!-- 3. ANLÆGSANALYSE: NYT HOSPITAL NORDSJÆLLAND -->
         <section class="section-block">
             <h2 class="section-title">Case: Nyt Hospital Nordsjælland (Favrholm)</h2>
             <p style="font-size: 0.95rem; color: #334151;">
-                Byggeriet af Nyt Hospital Nordsjælland ved Favrholm syd for Hillerød er et af Danmarkshistoriens mest komplekse sygehusbyggerier. Nedenfor følger en faktuel gennemgang af projektets økonomiske udvikling:
+                Når man analyserer offentlige anlægsprojekter, er det afgørende at lade data og tidslinjer tale for sig selv. Byggeriet af Nyt Hospital Nordsjælland ved Favrholm syd for Hillerød er et af Danmarkshistoriens mest komplekse sygehusbyggerier:
             </p>
             
             <div class="stat-grid">
@@ -328,15 +463,15 @@
                 <strong style="display: block; margin-bottom: 6px; font-size: 0.95rem;">De styringsmæssige rammer fremadrettet (Region Østdanmark pr. 1. januar 2027):</strong>
                 Med etableringen af Region Østdanmark overgår hospitalet til et nyt administrationsapparat. To uafklarede driftsspørgsmål:
                 <ol style="margin: 8px 0 0 20px;">
-                    <li><strong>Afgrænsning af gældsforpligtelser:</strong> Hvordan afdragene på lånet på 3,172 milliarder kroner isoleres, så driftsrammen friholdes.</li>
-                    <li><strong>Præcision i anlægsprognoser:</strong> Kontrolmekanismer der sikrer, at risici afdækkes tidligere.</li>
+                    <li><strong>Afgrænsning af gældsforpligtelser:</strong> Hvordan afdragene på lånet på 3,172 milliarder kroner isoleres, så driftsrammen i den øvrige region friholdes.</li>
+                    <li><strong>Præcision i anlægsprognoser:</strong> Kontrolmekanismer der sikrer, at risici i store infrastrukturprojekter afdækkes tidligere.</li>
                 </ol>
             </div>
         </section>
     </main>
 
     <footer>
-        &copy; 2026 Lasse Holt. Politisk virke & Anlægsstyring.
+        &copy; 2026 Lasse Holt. Forberedende Regionsråd Østdanmark (Liberal Alliance).
     </footer>
 
     <!-- GOOGLE TRANSLATE WIDGET SCRIPT -->
