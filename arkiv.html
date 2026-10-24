@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ugebreve & Analyser – Lasse Holt</title>
-    <meta name="description" content="Kronologiske analyser af makroøkonomiske chok, energidrevet inflation, AI-boblens første krak, guldpriser og systemiske knækpunkter.">
+    <meta name="description" content="Kronologiske analyser af makroøkonomiske chok, CDS-rekorder i AI-sektoren, fransk gældskrise, amerikansk forbrugerklemme og systemiske knækpunkter.">
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -26,9 +26,15 @@
             align-items: baseline;
         }
         h1 { font-size: 2.1rem; color: #111827; margin: 0 0 6px 0; }
-        nav { display: flex; gap: 20px; padding-top: 14px; flex-wrap: wrap; }
-        nav a { text-decoration: none; color: #1e3a8a; font-weight: 500; font-size: 0.95rem; }
+        nav { display: flex; gap: 20px; padding-top: 14px; flex-wrap: wrap; align-items: center; }
+        nav a { text-decoration: none; color: #1e3a8a; font-weight: 600; font-size: 0.95rem; }
         nav a:hover { text-decoration: underline; }
+
+        /* GOOGLE TRANSLATE STYLING */
+        .goog-te-banner-frame.skiptranslate { display: none !important; }
+        body { top: 0px !important; }
+        .language-selector { margin-left: auto; font-size: 0.85rem; }
+        .goog-te-combo { padding: 4px 8px; border-radius: 4px; border: 1px solid #cbd5e1; background: #ffffff; color: #0f172a; font-weight: 500; cursor: pointer; }
 
         /* SIDST OPDATERET BANNER */
         .status-timestamp-bar {
@@ -77,7 +83,7 @@
             color: #0f172a;
         }
         .brief-point {
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             font-size: 0.92rem;
             color: #334151;
         }
@@ -123,9 +129,8 @@
     <header>
         <div class="header-top">
             <h1>Ugebreve & Makroøkonomisk Analyse</h1>
-            <div style="font-size: 0.85rem;"><strong>DA</strong> | <a href="en/archive.html" style="color: #1e3a8a; text-decoration: none;">EN</a></div>
         </div>
-        <div style="color: #64748b;">Observationer af gældsmarkeder, likviditetsdræn, Term Premium og strukturelle skift</div>
+        <div style="color: #64748b;">Observationer af gældsmarkeder, kreditstress, Term Premium og strukturelle skift</div>
         <nav>
             <a href="index.html">&larr; Forside</a>
             <a href="makro.html">Makroøkonomi</a>
@@ -133,37 +138,53 @@
             <a href="arkiv.html" style="color: #1e3a8a; font-weight: 700; border-bottom: 2px solid #1e3a8a;">Ugebrev Arkiv</a>
             <a href="politik.html">Politik</a>
             <a href="kontakt.html">Kontakt</a>
+
+            <div class="language-selector" id="google_translate_element"></div>
         </nav>
     </header>
 
     <main>
         <!-- SIDST OPDATERET STATUSLINJE -->
         <div class="status-timestamp-bar">
-            <span><strong>Sidst opdateret:</strong> Fredag den 16. oktober 2026 kl. 17:00</span>
-            <a href="makro.html" style="color: #1e3a8a; font-weight: 600; text-decoration: none;">Gå til Makro-Radar &rarr;</a>
+            <span><strong>Sidst opdateret:</strong> Lørdag den 24. oktober 2026</span>
+            <a href="makro.html" style="color: #1e3a8a; font-weight: 600; text-decoration: none;">Gå til Crisis Dashboard &rarr;</a>
         </div>
 
-        <div class="section-header">Seneste 4 Fredagsbriefs</div>
+        <div class="section-header">Seneste 4 Ugebreve</div>
 
-        <!-- BRIEF 1: 16. OKTOBER 2026 KL. 17 -->
+        <!-- BRIEF 1: 24. OKTOBER 2026 -->
         <article class="brief-card" style="border-left-color: #b91c1c;">
-            <div class="brief-meta" style="display: flex; justify-content: space-between;">
-                <span>FREDAGSBRIEF • 16. OKTOBER 2026 KL. 17:00</span>
-                <a href="en/archive.html#brief-2026-10-16" style="color: #1e3a8a; text-decoration: none; font-size: 0.8rem; font-weight: 700;">EN 🇬🇧</a>
+            <div class="brief-meta">
+                <span>UGEBREV • LØRDAG DEN 24. OKTOBER 2026</span>
             </div>
-            <h2 class="brief-title">Energiinflation, AI-boblens Krak og Guldets Retmæssige Flugt</h2>
+            <h2 class="brief-title">Fundamentet Skrider: Anthropics 537 Mia. Tab, CDS-Panik i Tech, Fransk 24-Års Rentetop og 22,36 % Kreditkortrente</h2>
             <div class="brief-point">
-                <strong>Ugens status:</strong> Inflationen buldrer derudaf, drevet af et vedvarende energipres, der cementerer centralbankernes fastlåste renter. Samtidig rulles AI-boblen op i fuld offentlighed: De svagere, overbelånte AI-selskaber og datacenter-aktører styrtdykker på børserne, efterhånden som de høje kapitalkomkostninger og den cirkulære finansiering møder virkeligheden. Midt i dette kaos fortsætter guldpriserne deres uimodståelige stigning.
-            </div>
-            <div class="brief-point">
-                <strong>Underliggende transmissionsmekanisme:</strong> Det er ikke tilfældigt, at guld stiger. Guldpriserne stiger på baggrund af dyb markedsservøsitet – og med rette. Når energipriserne holder inflationen oppe, og de statslige gældsbjerge ($40+ billioner i USA) vokser uhindret, fungerer guld som den eneste sande måler for mistillid til det fiat-baserede system. Samtidig rammer kapitalduellen for alvor tech-sektoren: De svage AI-aktører, der ikke kan generere ægte frie pengestrømme, afskæres fra billig kapital, når statskasserne støvsuger markederne.
+                <strong>1. AI-pyramiden slår revner og CDS-markedet går i panik:</strong> Det cirkulære "Global Crossing 2.0"-kredsløb ramte muren i denne uge. Et udkast til børsprospekt afslørede onsdag, at AI-darlingen Anthropic tabte svimlende $80,7 mia. (537 mia. kr.) alene i 1. halvår 2026 – mere end en seksdobling af underskuddet, drevet af konvertibel gæld og eksplosive udviklingsomkostninger, mens selskabet nu håber at rejse 640 mia. kr. i en IPO for at overleve. Samtidig ramte prisen på konkursforsikringer (Credit Default Swaps, CDS) natten til fredag det højeste niveau nogensinde for Meta og satte rekorder for Oracle, SpaceX, Amazon og Nvidia, mens Softbank er halveret siden juni. I neocloud-mellemleddet trak Microsoft stikket som ankerkunde på Storbritanniens største AI-datacenter (Nscale i Essex) pga. strømmangel, CoreWeave og Nebius har tabt over en fjerdedel af deres værdi, og Elon Musk luftede onsdag en gigant-fusion mellem et gældsramt SpaceX og Tesla ($3,5T) for at samle balancerne. Torsdag faldt Nasdaq 2,7 % (Meta -7,5 %, Nvidia -4,4 %, CoreWeave -10 %), og VIX hoppede yderligere 14 %.
             </div>
             <div class="brief-point">
-                <strong>Perspektiv:</strong> Vi befinder os i udskillelsesfasen. Illusionen om, at teknologi kan vokse ud af gældskrisen uden kapitalkostnader, er knust. Når de svage aktører falder, og energipriserne bider sig fast, presses <em>Term Premium</em> yderligere op. Markedets 'smart money' søger mod modstandsdygtige realaktiver, mens staterne tvinges stadig tættere på deres finansielle knækpunkter.
+                <strong>2. Frankrig i 24-års rentetop og den amerikanske forbruger på 22,36 %:</strong> Efter weekendens voldsomme optøjer i Frankrig (550.000 demonstranter, 1.200 anholdte og rådhuset i Limoges i flammer) straffede obligationsmarkedet onsdag Paris med den højeste rente siden 2002. Med en gæld på 118 % af BNP betaler Frankrig nu 4,8 % for 10-årig gæld – højere end Italien (4,6 %) og Grækenland (4,4 %). Da renten (4,8 %) overstiger den nominelle trendvækst (3,1 %), kræves en finanspolitisk stramning på 4,7 % af BNP blot for at holde gælden i ro. Samtidig viser dagens tal fra New York Fed, at den amerikanske husholdningsgæld har nået $18,77 billioner. Kreditkortgælden på $1,26 billioner bærer nu en gennemsnitsrente på 22,36 %, hvilket har sendt 6,97 % i alvorlig misligholdelse (90+ dage), mens nye misligholdelser på boliglån er i højeste niveau siden 2015 (og overvismanden i Danmark onsdag advarede om en bombe under det københavnske ejerlejlighedsmarked i 2027).
+            </div>
+            <div class="brief-point">
+                <strong>3. Perspektiv og geopolitisk frakobling:</strong> Alle tre ben under det finansielle system – staterne, AI-giganterne og forbrugerne – svigter nu samtidigt, mens centralbankerne (Fed under Warsh og ECB) er låst af 3,7 % inflation. Sideløbende forbereder Canada (under Mark Carney) og EU på topmødet i Montreal en historisk alliance, der i 2027 skal gøre Canada til associeret medlem af EU for at mindske afhængigheden af USA. Vi følger drejebogen i Fase 1 (Oktober–November) præcist frem mod FOMC-mødet i slutningen af oktober og det amerikanske midtvejsvalg i november.
             </div>
         </article>
 
-        <!-- BRIEF 2: 9. OKTOBER 2026 -->
+        <!-- BRIEF 2: 16. OKTOBER 2026 -->
+        <article class="brief-card">
+            <div class="brief-meta">FREDAGSBRIEF • 16. OKTOBER 2026 KL. 17:00</div>
+            <h2 class="brief-title">Energiinflation, AI-boblens Krak og Guldets Retmæssige Flugt</h2>
+            <div class="brief-point">
+                <strong>Ugens status:</strong> Inflationen buldrer derudaf, drevet af et vedvarende energipres, der cementerer centralbankernes fastlåste renter. Samtidig rulles AI-boblen op i fuld offentlighed: De svagere, overbelånte AI-selskaber og datacenter-aktører styrtdykker på børserne, efterhånden som de høje kapitalomkostninger og den cirkulære finansiering møder virkeligheden. Midt i dette kaos fortsætter guldpriserne deres uimodståelige stigning.
+            </div>
+            <div class="brief-point">
+                <strong>Underliggende transmissionsmekanisme:</strong> Det er ikke tilfældigt, at guld stiger. Guldpriserne stiger på baggrund af dyb markedsnervøsitet – og med rette. Når energipriserne holder inflationen oppe, og de statslige gældsbjerge ($40+ billioner i USA) vokser uhindret, fungerer guld som den eneste sande måler for mistillid til det fiat-baserede system. Samtidig rammer kapitalduellen for alvor tech-sektoren: De svage AI-aktører, der ikke kan generere ægte frie pengestrømme, afskæres fra billig kapital, når statskasserne støvsuger markederne.
+            </div>
+            <div class="brief-point">
+                <strong>Perspektiv:</strong> Vi befinder os i udskillelsesfasen. Illusionen om, at teknologi kan vokse ud af gældskrisen uden kapitalomkostninger, er knust. Når de svage aktører falder, og energipriserne bider sig fast, presses <em>Term Premium</em> yderligere op. Markedets 'smart money' søger mod modstandsdygtige realaktiver, mens staterne tvinges stadig tættere på deres finansielle knækpunkter.
+            </div>
+        </article>
+
+        <!-- BRIEF 3: 9. OKTOBER 2026 -->
         <article class="brief-card">
             <div class="brief-meta">FREDAGSBRIEF • 9. OKTOBER 2026</div>
             <h2 class="brief-title">Aktivmarkedernes Ligevægt: Kollapset i Aktierisikopræmien og Guldets Frigørelse</h2>
@@ -178,7 +199,7 @@
             </div>
         </article>
 
-        <!-- BRIEF 3: 2. OKTOBER 2026 -->
+        <!-- BRIEF 4: 2. OKTOBER 2026 -->
         <article class="brief-card">
             <div class="brief-meta">FREDAGSBRIEF • 2. OKTOBER 2026</div>
             <h2 class="brief-title">Stagflationsfælden: Kongetallet Skuffer Fælt Mens Gældsmuren Rejser Sig</h2>
@@ -193,27 +214,16 @@
             </div>
         </article>
 
-        <!-- BRIEF 4: 25. SEPTEMBER 2026 -->
-        <article class="brief-card">
-            <div class="brief-meta">FREDAGSBRIEF • 25. SEPTEMBER 2026</div>
-            <h2 class="brief-title">Dominospil på Gældsmarkedet: Japans Ketsjereffekt, Bessents T-Bill Mur og Term Premium</h2>
-            <div class="brief-point">
-                <strong>Ugens bevægelse:</strong> US Treasury udsteder op mod $1.090 mia. i kortfristet gæld (T-bills), og andelen presses op på 24,9 %. BoJ hæver renten til 1,25 %, mens USD/JPY handles omkring 157.
-            </div>
-            <div class="brief-point">
-                <strong>Transmissionsmekanisme:</strong> Feds styringsrente rammer statens rentebyrde (> $1.100 mia. årligt). Japansk valutaforsvar tvinger Tokyo til at likvidere US Treasuries.
-            </div>
-            <div class="brief-point">
-                <strong>Perspektiv:</strong> Term Premium udvides strukturelt, mens BIS advarer om $800 mia. i gældsfinansierede AI-investeringer.
-            </div>
-        </article>
-
         <!-- HISTORISK ARKIV -->
         <div class="section-header">Historisk Arkiv (Ældre analyser)</div>
         <div class="archive-tree">
             <details open>
                 <summary>2026</summary>
                 <ul class="archive-list">
+                    <li>
+                        <a href="#">25. september: Dominospil på Gældsmarkedet – Japans Ketsjereffekt og Bessents T-Bill Mur</a>
+                        <span class="archive-date">25.09.2026</span>
+                    </li>
                     <li>
                         <a href="#">18. september: Fed trodser Det Hvide Hus – Rentehop og AI-kapitalkapløb</a>
                         <span class="archive-date">18.09.2026</span>
@@ -267,6 +277,14 @@
     <footer>
         &copy; 2026 Lasse Holt. Ugebreve & Systemisk Analyse.
     </footer>
+
+    <!-- GOOGLE TRANSLATE WIDGET SCRIPT -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({pageLanguage: 'da', includedLanguages: 'en,de,fr,es', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 </body>
 </html>
