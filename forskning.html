@@ -58,7 +58,7 @@
             padding-bottom: 8px;
         }
 
-        /* BOG HERO BOKS (ØVERST) */
+        /* BOG HERO BOKS MED FORSIDEBILLEDE (ØVERST) */
         .book-hero {
             background: #ffffff;
             border: 1px solid #cbd5e1;
@@ -67,7 +67,72 @@
             padding: 28px;
             margin-bottom: 30px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+            display: grid;
+            grid-template-columns: 220px 1fr;
+            gap: 28px;
+            align-items: start;
         }
+        @media (max-width: 720px) {
+            .book-hero {
+                grid-template-columns: 1fr;
+            }
+            .book-cover-wrapper {
+                max-width: 200px;
+                margin: 0 auto;
+            }
+        }
+        .book-cover-wrapper {
+            width: 100%;
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(15, 23, 42, 0.15), 0 2px 6px rgba(15, 23, 42, 0.1);
+            border: 1px solid #e2e8f0;
+            background: #0f172a;
+        }
+        .book-cover-img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        /* Stilrent grafisk fallback-omslag hvis billedfilen ikke er uploadet endnu */
+        .book-cover-fallback {
+            display: none;
+            aspect-ratio: 2 / 3;
+            background: linear-gradient(145deg, #1e3a8a 0%, #0f172a 100%);
+            color: #ffffff;
+            padding: 22px 18px;
+            flex-direction: column;
+            justify-content: space-between;
+            box-sizing: border-box;
+            text-align: left;
+        }
+        .fallback-pub {
+            font-size: 0.68rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #93c5fd;
+            font-weight: 700;
+        }
+        .fallback-title {
+            font-size: 1.15rem;
+            font-weight: 800;
+            line-height: 1.25;
+            margin: 10px 0 6px 0;
+            color: #ffffff;
+        }
+        .fallback-sub {
+            font-size: 0.78rem;
+            color: #cbd5e1;
+            line-height: 1.35;
+        }
+        .fallback-authors {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            padding-top: 10px;
+        }
+
         .book-badge {
             display: inline-block;
             background: #eff6ff;
@@ -247,28 +312,43 @@
     </header>
 
     <main>
-        <!-- 1. LÆREBOG (ØVERST PÅ SIDEN) -->
+        <!-- 1. LÆREBOG MED FORSIDEBILLEDE (ØVERST PÅ SIDEN) -->
         <section class="book-hero">
-            <span class="book-badge">Ny udgivelse • Djøf Forlag (Udkommer 18. november 2026)</span>
-            <h2 class="book-title">Bæredygtig Kapitalisme – Strategisk kontrahering i komplekse værdikæder</h2>
-            <div class="book-authors">Af Lasse Holt &amp; Professor Kim Østergaard</div>
-            <p style="margin: 0 0 12px 0; font-size: 0.95rem; color: #334151; line-height: 1.6;">
-                Bogen er skrevet som et anker for den moderne erhvervsjuridiske undervisning og fungerer som lærebog på Copenhagen Business Schools cand.merc.(jur.)-studie. Den forener kontraktret, spilteori og ny-institutionel økonomi og klæder fremtidens erhvervsjurister og strateger på til at navigere i globale aftalekomplekser, så bæredygtighed og interdisciplinær styring omsættes til reel merværdi og konkurrencefordel.
-            </p>
-            <div class="book-chapters">
-                <strong>Indholdsoversigt:</strong>
-                <ul>
-                    <li>Kapitel 1: Fra den enkeltstående kontrakt til parallelle og komplementære værdikæder</li>
-                    <li>Kapitel 2: Strategisk kontrahering</li>
-                    <li>Kapitel 3: Spilteori i strategisk kontrahering</li>
-                    <li>Kapitel 4: Værdikæden som overlappende gentagne spil</li>
-                    <li>Kapitel 5: Klubgoder i bæredygtige overlappende værdikæder</li>
-                    <li>Kapitel 6: Fremtidens kontrakt</li>
-                </ul>
-            </div>
-            <a href="https://djoefforlag.dk/products/baeredygtig-kapitalisme-strategisk-kontrahering-i-komplekse-vaerdikaeder" target="_blank" rel="noopener noreferrer" class="book-btn">
-                Se og bestil bogen hos Djøf Forlag &rarr;
+            <a href="https://djoefforlag.dk/products/baeredygtig-kapitalisme-strategisk-kontrahering-i-komplekse-vaerdikaeder" target="_blank" rel="noopener noreferrer" class="book-cover-wrapper" style="text-decoration: none;">
+                <!-- Læg bogforsiden i samme mappe på GitHub under navnet "bog-forside.jpg" -->
+                <img src="bog-forside.jpg" alt="Bæredygtig Kapitalisme – Strategisk kontrahering i komplekse værdikæder" class="book-cover-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="book-cover-fallback">
+                    <div>
+                        <div class="fallback-pub">Djøf Forlag</div>
+                        <div class="fallback-title">Bæredygtig Kapitalisme</div>
+                        <div class="fallback-sub">Strategisk kontrahering i komplekse værdikæder</div>
+                    </div>
+                    <div class="fallback-authors">Kim Østergaard &amp; Lasse Holt</div>
+                </div>
             </a>
+
+            <div>
+                <span class="book-badge">Ny udgivelse • Djøf Forlag (Udkommer 18. november 2026)</span>
+                <h2 class="book-title">Bæredygtig Kapitalisme – Strategisk kontrahering i komplekse værdikæder</h2>
+                <div class="book-authors">Af Kim Østergaard &amp; Lasse Holt</div>
+                <p style="margin: 0 0 12px 0; font-size: 0.95rem; color: #334151; line-height: 1.6;">
+                    Bogen er skrevet som et anker for den moderne erhvervsjuridiske undervisning og fungerer som lærebog på Copenhagen Business Schools cand.merc.(jur.)-studie. Den forener kontraktret, spilteori og ny-institutionel økonomi og klæder fremtidens erhvervsjurister og strateger på til at navigere i globale aftalekomplekser, så bæredygtighed og interdisciplinær styring omsættes til reel merværdi og konkurrencefordel.
+                </p>
+                <div class="book-chapters">
+                    <strong>Indholdsoversigt:</strong>
+                    <ul>
+                        <li>Kapitel 1: Fra den enkeltstående kontrakt til parallelle og komplementære værdikæder</li>
+                        <li>Kapitel 2: Strategisk kontrahering</li>
+                        <li>Kapitel 3: Spilteori i strategisk kontrahering</li>
+                        <li>Kapitel 4: Værdikæden som overlappende gentagne spil</li>
+                        <li>Kapitel 5: Klubgoder i bæredygtige overlappende værdikæder</li>
+                        <li>Kapitel 6: Fremtidens kontrakt</li>
+                    </ul>
+                </div>
+                <a href="https://djoefforlag.dk/products/baeredygtig-kapitalisme-strategisk-kontrahering-i-komplekse-vaerdikaeder" target="_blank" rel="noopener noreferrer" class="book-btn">
+                    Se og bestil bogen hos Djøf Forlag &rarr;
+                </a>
+            </div>
         </section>
 
         <!-- 2. UNDERVISNING VED COPENHAGEN BUSINESS SCHOOL -->
