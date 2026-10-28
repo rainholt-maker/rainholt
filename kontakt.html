@@ -3,133 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kontakt & Rådgivning – Lasse Holt</title>
-    <meta name="description" content="Kontakt Lasse Holt. Rådgivning til direktioner og bestyrelser inden for strategisk kontrahering, værdikæder (CSRD/CSDDD), makroøkonomisk analyse og ledelse.">
-    <meta property="og:title" content="Lasse Holt | Kontakt & Rådgivning">
-    <meta property="og:description" content="Specialiseret sparring inden for strategisk kontrahering, gældsdynamikker og ledelse.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.lasseholt.dk/kontakt.html">
-
-    <!-- Cookiebot CMP -->
-    <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="7809ffeb-a0f3-4d32-b5b1-2339a4797b45" data-blockingmode="auto" type="text/javascript"></script>
-
-    <!-- Google Analytics 4 (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HJJ2ZVFCY0"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-HJJ2ZVFCY0');
-    </script>
-
+    <title>Kontakt – Lasse Holt</title>
+    <meta name="description" content="Kontakt Lasse Holt for rådgivning, foredrag og sparring inden for strategisk kontrahering, værdikæder, makroøkonomiske risici og politik.">
     <style>
         :root {
             --primary: #1e3a8a;
             --dark: #0f172a;
-            --text-main: #334155;
-            --text-muted: #64748b;
+            --text-main: #1f2937;
+            --text-muted: #4b5563;
             --border: #e2e8f0;
             --bg-page: #fafafa;
             --card-bg: #ffffff;
-            --accent: #2563eb;
+            --safe: #059669;
         }
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            line-height: 1.65;
+            line-height: 1.6;
             color: var(--text-main);
-            max-width: 860px;
+            max-width: 900px;
             margin: 0 auto;
             padding: 40px 20px 60px;
             background-color: var(--bg-page);
         }
         header {
-            margin-bottom: 30px;
+            margin-bottom: 35px;
             border-bottom: 1px solid var(--border);
             padding-bottom: 20px;
         }
-        h1 {
-            font-size: 2.2rem;
-            color: var(--dark);
-            margin: 0 0 6px 0;
-            letter-spacing: -0.5px;
-        }
-        .subtitle {
-            color: var(--text-muted);
-            font-size: 1.05rem;
-        }
-        nav {
-            display: flex;
-            gap: 20px;
-            padding-top: 14px;
-        }
-        nav a {
-            text-decoration: none;
-            color: var(--primary);
-            font-weight: 600;
-            font-size: 0.95rem;
-        }
+        .header-top { display: flex; justify-content: space-between; align-items: baseline; }
+        h1 { font-size: 2.2rem; color: var(--dark); margin: 0 0 6px 0; letter-spacing: -0.5px; }
+        .subtitle { color: #64748b; font-size: 1.05rem; }
+        nav { display: flex; gap: 20px; padding-top: 14px; flex-wrap: wrap; align-items: center; }
+        nav a { text-decoration: none; color: var(--primary); font-weight: 600; font-size: 0.95rem; }
         nav a:hover { text-decoration: underline; }
 
-        /* SEKTIONER OG KORT */
-        .section-block {
+        /* GOOGLE TRANSLATE STYLING */
+        .goog-te-banner-frame.skiptranslate { display: none !important; }
+        body { top: 0px !important; }
+        .language-selector { margin-left: auto; font-size: 0.85rem; }
+        .goog-te-combo { padding: 4px 8px; border-radius: 4px; border: 1px solid var(--border); background: #ffffff; color: var(--dark); font-weight: 500; cursor: pointer; }
+
+        .contact-card {
             background: var(--card-bg);
             border: 1px solid var(--border);
+            border-top: 4px solid var(--safe);
             border-radius: 8px;
-            padding: 28px;
+            padding: 30px;
             margin-bottom: 30px;
             box-shadow: 0 1px 3px rgba(0,0,0,0.02);
         }
-        h2 {
+        .contact-card h2 {
+            margin: 0 0 12px 0;
             font-size: 1.35rem;
             color: var(--dark);
-            margin: 0 0 16px 0;
-            border-bottom: 2px solid var(--primary);
-            padding-bottom: 6px;
         }
-
-        /* YDELSER LISTE */
-        .services-list {
-            list-style: none;
-            padding: 0;
-            margin: 16px 0 0 0;
-        }
-        .services-list li {
-            padding: 12px 0;
-            border-bottom: 1px solid #f1f5f9;
-            font-size: 0.95rem;
-        }
-        .services-list li:last-child { border-bottom: none; }
-        .services-list strong { color: var(--dark); }
-
-        /* KONTAKT DETALJER */
         .contact-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-            margin-top: 15px;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+            margin-top: 24px;
         }
-        @media (max-width: 650px) {
-            .contact-grid { grid-template-columns: 1fr; }
-        }
-        .contact-box {
+        .contact-item {
             background: #f8fafc;
             border: 1px solid var(--border);
             border-radius: 6px;
-            padding: 16px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+            padding: 18px;
         }
         .contact-label {
             font-size: 0.75rem;
             font-weight: 700;
             text-transform: uppercase;
-            color: var(--text-muted);
+            color: #64748b;
             letter-spacing: 0.5px;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
         .contact-value {
-            font-size: 1.05rem;
+            font-size: 1.02rem;
             font-weight: 600;
             color: var(--dark);
         }
@@ -139,22 +88,11 @@
         }
         .contact-value a:hover { text-decoration: underline; }
 
-        .note-box {
-            background: #f8fafc;
-            border: 1px solid var(--border);
-            border-left: 4px solid var(--primary);
-            border-radius: 4px;
-            padding: 14px 18px;
-            margin-top: 20px;
-            font-size: 0.88rem;
-            color: var(--text-muted);
-        }
-
         footer {
             text-align: center;
             margin-top: 60px;
             font-size: 0.85rem;
-            color: var(--text-muted);
+            color: #94a3b8;
             border-top: 1px solid var(--border);
             padding-top: 20px;
         }
@@ -163,69 +101,51 @@
 <body>
 
     <header>
-        <h1>Kontakt & Rådgivning</h1>
-        <div class="subtitle">Erhvervsjurist (cand.merc.jur.) • Ekstern Lektor (CBS) • Sektionschef</div>
+        <div class="header-top">
+            <h1>Kontakt</h1>
+        </div>
+        <div class="subtitle">Rådgivning, foredrag, akademiske henvendelser og politisk dialog</div>
         <nav>
             <a href="index.html">&larr; Forside</a>
-            <a href="forskning.html">Forskning & CBS</a>
+            <a href="makro.html">Makroøkonomi</a>
+            <a href="forskning.html">Copenhagen Business School</a>
+            <a href="arkiv.html">Økonomisk Blog</a>
             <a href="politik.html">Politik</a>
+            <a href="kontakt.html" style="color: var(--primary); border-bottom: 2px solid var(--primary);">Kontakt</a>
+
+            <div class="language-selector" id="google_translate_element"></div>
         </nav>
     </header>
 
     <main>
-        <!-- KONSULENTPROFIL & BESTYRELSESSPARRING -->
-        <section class="section-block">
-            <h2>Konsulentydelser & Rådgivning</h2>
-            <p>
-                Med udgangspunkt i mit arbejde inden for kontraktret, incitamentsteori og makroøkonomi tilbyder jeg specialiseret og uafhængig sparring til direktioner og bestyrelser:
-            </p>
-            <ul class="services-list">
-                <li>
-                    <strong>Strategisk Kontrahering & Værdikæder:</strong> 
-                    Design af moderne, incitamentsdrevne samarbejdsmodeller og klubgoder. Hvordan udformes aftalegrundlag, der reducerer transaktionsomkostninger i en regulatorisk virkelighed præget af CSDDD og CSRD?
-                </li>
-                <li>
-                    <strong>Makroøkonomisk Analyse & Risikostyring:</strong> 
-                    Skræddersyet beslutningsstøtte baseret på analyse af globale rentemiljøer, obligationsudbud, ophøret af gratis kapital og geopolitiske forsyningsrisici.
-                </li>
-                <li>
-                    <strong>Ledelse & Insourcing:</strong> 
-                    Rådgivning om opbygning af højtydende juridiske og tværfaglige teams, eksekvering af insourcing-strategier og systematisk eliminering af organisatorisk friktion.
-                </li>
-            </ul>
-        </section>
-
-        <!-- DIREKTE KONTAKTOPLYSNINGER -->
-        <section class="section-block">
-            <h2>Direkte Kontakt</h2>
-            <p>
-                Henvendelser vedrørende rådgivningsopgaver, forskningssamarbejde, undervisning eller regionalpolitiske sager kan ske via nedenstående kanaler:
+        <section class="contact-card">
+            <h2>Direkte Kontakt &amp; Sparring</h2>
+            <p style="font-size: 0.95rem; color: #334151; margin-bottom: 10px;">
+                Du er velkommen til at tage direkte kontakt vedrørende oplæg, rådgivning om strategisk kontrahering og bæredygtige værdikæder (CSRD/CSDDD), spørgsmål til bogen <em>Bæredygtig Kapitalisme</em>, specialevejledning på CBS eller politiske sager i Region Østdanmark.
             </p>
 
             <div class="contact-grid">
-                <div class="contact-box">
-                    <span class="contact-label">Telefon</span>
-                    <span class="contact-value"><a href="tel:+4522332111">+45 22 33 21 11</a></span>
+                <div class="contact-item">
+                    <div class="contact-label">LinkedIn</div>
+                    <div class="contact-value">
+                        <a href="https://www.linkedin.com/in/lasseholt/" target="_blank" rel="noopener noreferrer">linkedin.com/in/lasseholt &rarr;</a>
+                    </div>
                 </div>
 
-                <div class="contact-box">
-                    <span class="contact-label">E-mail</span>
-                    <span class="contact-value"><a href="mailto:lasseholt@gmail.com">lasseholt@gmail.com</a></span>
+                <div class="contact-item">
+                    <div class="contact-label">Politisk Dialog (Messenger)</div>
+                    <div class="contact-value">
+                        <a href="https://www.facebook.com/messages/t/61582603754478/" target="_blank" rel="noopener noreferrer">Skriv via Facebook Messenger &rarr;</a>
+                    </div>
                 </div>
 
-                <div class="contact-box">
-                    <span class="contact-label">LinkedIn</span>
-                    <span class="contact-value"><a href="https://www.linkedin.com/in/lasseholt/" target="_blank" rel="noopener noreferrer">linkedin.com/in/lasseholt</a></span>
+                <div class="contact-item">
+                    <div class="contact-label">Akademisk Tilknytning</div>
+                    <div class="contact-value">
+                        Copenhagen Business School (CBS LAW)<br>
+                        <span style="font-size: 0.85rem; font-weight: 400; color: #64748b;">Solbjerg Plads 3, 2000 Frederiksberg</span>
+                    </div>
                 </div>
-
-                <div class="contact-box">
-                    <span class="contact-label">Messenger (Valgkamp & Politik)</span>
-                    <span class="contact-value"><a href="https://www.facebook.com/messages/t/61582603754478/" target="_blank" rel="noopener noreferrer">Send besked på Facebook</a></span>
-                </div>
-            </div>
-
-            <div class="note-box">
-                <strong>Studerende ved CBS:</strong> Henvendelser vedrørende specialevejledning, godkendelse af emner eller undervisningsspørgsmål bedes fremsendt via e-mail med kort problemstilling vedhæftet.
             </div>
         </section>
     </main>
@@ -233,6 +153,14 @@
     <footer>
         &copy; 2026 Lasse Holt.
     </footer>
+
+    <!-- GOOGLE TRANSLATE WIDGET SCRIPT -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({pageLanguage: 'da', includedLanguages: 'en,de,fr,es', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 </body>
 </html>
