@@ -52,6 +52,7 @@
             gap: 22px;
             padding-top: 18px;
             flex-wrap: wrap;
+            align-items: center;
         }
         nav a {
             text-decoration: none;
@@ -60,6 +61,12 @@
             font-size: 1.05rem;
         }
         nav a:hover { text-decoration: underline; }
+
+        /* GOOGLE TRANSLATE STYLING */
+        .goog-te-banner-frame.skiptranslate { display: none !important; }
+        body { top: 0px !important; }
+        .language-selector { margin-left: auto; font-size: 0.85rem; }
+        .goog-te-combo { padding: 4px 8px; border-radius: 4px; border: 1px solid var(--border); background: #ffffff; color: var(--dark); font-weight: 500; cursor: pointer; }
 
         .four-grid {
             display: grid;
@@ -118,14 +125,16 @@
         <h1>Lasse Holt</h1>
         <div class="subtitle">Erhvervsjurist • Ekstern Lektor ved Copenhagen Business School • Regionsrådsmedlem</div>
         <div class="tagline">
-            Specialiseret overvågning af det globale gældsmarked, akademisk virke inden for strategisk kontrahering og værdikæder samt regionalpolitisk anlægsstyring.
+            Overvågning af det globale gældsmarked, akademisk virke inden for strategisk kontrahering og værdikæder samt regionalpolitisk anlægsstyring.
         </div>
         <nav>
             <a href="makro.html">Makroøkonomi</a>
             <a href="forskning.html">Copenhagen Business School</a>
-            <a href="arkiv.html">Ugebrev Arkiv</a>
+            <a href="arkiv.html">Økonomisk Blog</a>
             <a href="politik.html">Politik</a>
             <a href="kontakt.html">Kontakt</a>
+
+            <div class="language-selector" id="google_translate_element"></div>
         </nav>
     </header>
 
@@ -134,12 +143,15 @@
             <!-- 1. MAKROØKONOMI -->
             <div class="pillar-card makro">
                 <div>
-                    <h2>1. Makroøkonomi</h2>
+                    <h2>1. Makroøkonomi &amp; Blog</h2>
                     <p>
-                        Systemisk telemetri og matematiske knækpunkts-målere for USA, Frankrig, Japan og EU. Overvågning af Term Premium, T-bill rollover og ugentlige analyser.
+                        Crisis Dashboard og matematiske knækpunkts-målere for USA, Frankrig, Japan og EU. Overvågning af Term Premium, T-bill rollover og løbende indlæg på den økonomiske blog.
                     </p>
                 </div>
-                <a href="makro.html" class="card-link" style="color: var(--danger);">Åbn Makroøkonomisk Radar &rarr;</a>
+                <div>
+                    <a href="makro.html" class="card-link" style="color: var(--danger); display: block; margin-bottom: 6px;">Åbn Makroøkonomisk Radar &rarr;</a>
+                    <a href="arkiv.html" class="card-link" style="color: #64748b; font-size: 0.85rem;">Læs Økonomisk Blog &rarr;</a>
+                </div>
             </div>
 
             <!-- 2. COPENHAGEN BUSINESS SCHOOL -->
@@ -147,7 +159,7 @@
                 <div>
                     <h2>2. Copenhagen Business School</h2>
                     <p>
-                        Lærebogen <em>Bæredygtig Kapitalisme</em> (DJØF Forlag), vejledte afhandlinger samt aktuelle fag ved Copenhagen Business School.
+                        Lærebogen <em>Bæredygtig Kapitalisme – Strategisk kontrahering i komplekse værdikæder</em> (Djøf Forlag), aktuelle fag samt vejledte afhandlinger ved Copenhagen Business School.
                     </p>
                 </div>
                 <a href="forskning.html" class="card-link">Gå til Copenhagen Business School &rarr;</a>
@@ -158,7 +170,7 @@
                 <div>
                     <h2>3. Politik</h2>
                     <p>
-                        Regionalpolitisk virke, datadrevet anlægsanalyse af Nyt Hospital Nordsjælland (Favrholm), debatter fra rådssalen og direkte borgerdialog.
+                        Regionalpolitisk virke i Region Østdanmark, taler fra rådssalen, kampen for faglig frihed samt datadrevet anlægsanalyse af Nyt Hospital Nordsjælland.
                     </p>
                 </div>
                 <a href="politik.html" class="card-link" style="color: #7c3aed;">Gå til Politik &rarr;</a>
@@ -180,6 +192,14 @@
     <footer>
         &copy; 2026 Lasse Holt.
     </footer>
+
+    <!-- GOOGLE TRANSLATE WIDGET SCRIPT -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({pageLanguage: 'da', includedLanguages: 'en,de,fr,es', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 </body>
 </html>
