@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Makroøkonomi: Crisis Dashboard & Knækpunkter – Lasse Holt</title>
-    <meta name="description" content="Crisis Dashboard pr. 31. oktober 2026: Intels fald på 28 %, AI-sektorens blodbad, Bessents kreditkort-strategi (QRA 4. nov) og rollover-matematikken.">
+    <title>Makroøkonomi: Crisis Dashboard, VIX & Knækpunkter – Lasse Holt</title>
+    <meta name="description" content="Crisis Dashboard pr. 6. november 2026: Nasdaq -5,4 %, VIX nær 30, midtvejsvalgets chok for AI-datacentre, Anthropics IPO-lakmusprøve og rollover-muren i Q1 2027.">
     <style>
         :root {
             --primary: #1e3a8a;
@@ -93,6 +93,45 @@
         .crisis-val { font-family: monospace; font-size: 1.2rem; font-weight: 800; color: var(--danger); margin-bottom: 4px; }
         .crisis-target { font-size: 0.78rem; font-weight: 600; color: #7f1d1d; }
 
+        /* VIX METER BOKS */
+        .vix-focus-box {
+            background: #ffffff;
+            border: 1px solid #fecaca;
+            border-radius: 6px;
+            padding: 16px 18px;
+            margin-bottom: 16px;
+        }
+        .vix-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 8px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--dark);
+        }
+        .vix-bar-track {
+            height: 16px;
+            background: #e2e8f0;
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+            border: 1px solid #cbd5e1;
+        }
+        .vix-bar-fill {
+            height: 100%;
+            width: 52%;
+            background: linear-gradient(90deg, #10b981 0%, #f59e0b 45%, #dc2626 85%, #7f1d1d 100%);
+        }
+        .vix-scale {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.72rem;
+            color: #64748b;
+            font-weight: 600;
+            margin-top: 5px;
+        }
+
         .crisis-timeline-box {
             background: #ffffff;
             border: 1px solid #e2e8f0;
@@ -101,6 +140,61 @@
             font-size: 0.9rem;
             color: #334151;
             line-height: 1.55;
+        }
+
+        /* DEEP DIVE TIDSLINJE SEKTION */
+        .audit-timeline-section {
+            background: #ffffff;
+            border: 1px solid var(--border);
+            border-left: 5px solid var(--dark);
+            border-radius: 8px;
+            padding: 26px;
+            margin-bottom: 35px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+        }
+        .audit-timeline-section h2 { margin: 0 0 8px 0; font-size: 1.35rem; color: var(--dark); }
+        .audit-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin: 18px 0;
+        }
+        @media (max-width: 768px) {
+            .audit-grid { grid-template-columns: 1fr; }
+        }
+        .audit-card {
+            background: #f8fafc;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 16px;
+        }
+        .audit-phase {
+            font-size: 0.72rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            color: var(--primary);
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+        .audit-title {
+            font-size: 1.02rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin: 0 0 8px 0;
+        }
+        .audit-text {
+            font-size: 0.86rem;
+            color: #334151;
+            margin: 0 0 8px 0;
+            line-height: 1.5;
+        }
+        .audit-reality {
+            font-size: 0.84rem;
+            background: #fff5f5;
+            border-left: 3px solid var(--danger);
+            padding: 8px 10px;
+            color: #7f1d1d;
+            border-radius: 0 4px 4px 0;
         }
 
         /* REGIONALE RADAR GRID */
@@ -174,10 +268,10 @@
             height: 100%;
             border-radius: 3px 0 0 3px;
         }
-        .fill-usa { background: linear-gradient(90deg, #f59e0b 0%, #dc2626 100%); width: 95%; }
+        .fill-usa { background: linear-gradient(90deg, #f59e0b 0%, #dc2626 100%); width: 96%; }
         .fill-france { background: linear-gradient(90deg, #3b82f6 0%, #7c3aed 70%, #dc2626 100%); width: 94%; }
-        .fill-japan { background: linear-gradient(90deg, #3b82f6 0%, #d97706 70%, #dc2626 100%); width: 82%; }
-        .fill-eu { background: linear-gradient(90deg, #10b981 0%, #f59e0b 70%, #dc2626 100%); width: 84%; }
+        .fill-japan { background: linear-gradient(90deg, #3b82f6 0%, #d97706 70%, #dc2626 100%); width: 84%; }
+        .fill-eu { background: linear-gradient(90deg, #10b981 0%, #f59e0b 70%, #dc2626 100%); width: 85%; }
 
         .knæk-threshold-marker {
             position: absolute;
@@ -550,11 +644,125 @@
     <main>
         <!-- SIDST OPDATERET STATUSLINJE -->
         <div class="status-timestamp-bar">
-            <span><strong>Sidst opdateret:</strong> Lørdag den 31. oktober 2026</span>
-            <a href="arkiv.html" style="color: #1e3a8a; font-weight: 600; text-decoration: none;">Læs seneste indlæg på Økonomisk Blog &rarr;</a>
+            <span><strong>Sidst opdateret:</strong> Fredag den 6. november 2026 kl. 16:30</span>
+            <a href="arkiv.html" style="color: #1e3a8a; font-weight: 600; text-decoration: none;">Læs dagens Deep Dive på Økonomisk Blog &rarr;</a>
         </div>
 
-        <!-- CRISIS DASHBOARD -->
+        <!-- CRISIS DASHBOARD MED FOKUS PÅ VIX & KORREKTION -->
         <section class="crisis-dashboard">
-            <h2>Crisis Dashboard: Intel-Krak (-28 %), AI-Blodbad &amp; Bessents "Kreditkort"-Strategi</h2>
-            <div class="crisis-sub">Realtids-status
+            <h2>Crisis Dashboard: Nasdaq i Korrektion (&minus;5,4 %), VIX Nærmer Sig 30 &amp; Tvangssalg</h2>
+            <div class="crisis-sub">Status pr. 6. november 2026: Den indledende likvidationsfase er udløst efter midtvejsvalgets "gridlock"-kollaps og hedgefondenes de-grossing.</div>
+
+            <div class="crisis-metrics-grid">
+                <div class="crisis-metric-card">
+                    <div class="crisis-lbl">VIX (Frygtens Indeks)</div>
+                    <div class="crisis-val">~30,0</div>
+                    <div class="crisis-target">"Stærk storm" • Orkan venter ved &gt; 45</div>
+                </div>
+                <div class="crisis-metric-card">
+                    <div class="crisis-lbl">Nasdaq (Officiel Korrektion)</div>
+                    <div class="crisis-val">&minus;5,40 %</div>
+                    <div class="crisis-target">Største dyk i 19 mdr. (Rangvid: År 2000)</div>
+                </div>
+                <div class="crisis-metric-card">
+                    <div class="crisis-lbl">Hedgefond Gross-Flow</div>
+                    <div class="crisis-val">&minus;7,8 %</div>
+                    <div class="crisis-target">Største de-grossing i 10 år (Drawdown)</div>
+                </div>
+                <div class="crisis-metric-card">
+                    <div class="crisis-lbl">Næste Lakmusprøve (14 dage)</div>
+                    <div class="crisis-val">Anthropic IPO</div>
+                    <div class="crisis-target">9.000 mia. kr. værdiansættelse testes</div>
+                </div>
+            </div>
+
+            <!-- VIX TERMOMETER -->
+            <div class="vix-focus-box">
+                <div class="vix-header">
+                    <span>VIX Stress- og Likvidationsskala (Frygtens Indeks)</span>
+                    <span style="color: var(--danger); font-family: monospace;">Aktuelt niveau: ~30 ("Stærk storm" – Margin Calls begynder)</span>
+                </div>
+                <div class="vix-bar-track">
+                    <div class="vix-bar-fill"></div>
+                </div>
+                <div class="vix-scale">
+                    <span>12–15 (Eufori)</span>
+                    <span>20 (Uro)</span>
+                    <span style="color: var(--danger); font-weight: 700;">30 (Stærk storm: Tvangssalg)</span>
+                    <span>50–80 (Systemisk Orkan: 2008 / 2020)</span>
+                </div>
+            </div>
+
+            <div class="crisis-timeline-box">
+                <strong>Hvorfor bunden ikke er nået endnu (Fremskrivning Nov 2026 – Q1 2027):</strong> 
+                Et VIX-indeks nær 30 afspejler, at investorerne nu indregner, at kursfald følges op af nye store kursfald. Det nuværende dyk er blot det indledende lufthul efter Demokraternes uventede valgsejr i røde datacenter-stater (Texas, Georgia, Ohio), der i går kostede Elon Musk over 530 mia. kr., da Tesla og SpaceX styrtdykkede. Den egentlige systemiske test indtræffer om <strong>14 dage ved børsnoteringen af Anthropic (9.000 mia. kr.)</strong>: Svigter køberne her, bryder sikkerhedsstillelsen (collateral) i hele AI-økosystemet sammen, netop som <strong>rollover-muren i Q1 2027</strong> tvinger gearede fonde ud i margin calls.
+            </div>
+        </section>
+
+        <!-- DEEP DIVE TIDSLINJE: HVAD VI HAR GENNEMGÅET OG HVORDAN DET GIK I OPFYLDELSE -->
+        <section class="audit-timeline-section">
+            <h2>Fra Blind Eufori til Likvidation: Tidslinjen for den Bekræftede Model</h2>
+            <p style="font-size: 0.94rem; color: #334151; margin: 0;">
+                Mens markedsanalytikere i dag taler om "pludselig usikkerhed", følger sammenbruddet præcis den matematiske og makroøkonomiske rækkefølge, vi har kortlagt gennem 2026:
+            </p>
+
+            <div class="audit-grid">
+                <div class="audit-card">
+                    <div class="audit-phase">Fase 1 • Forår / Sommer 2026</div>
+                    <h3 class="audit-title">1. Erkendelsen af 5-Års Renterollover-fælden</h3>
+                    <p class="audit-text">
+                        <strong>Modellen:</strong> Mens markedet jublede over uændrede styringsrenter, påviste vi, at USA's gæld på $40,58T ruller over i en 5-års cyklus, hvor 2020–2021-gæld til ~1 % løbende udskiftes med 4,5–5,2 %.
+                    </p>
+                    <div class="audit-reality">
+                        <strong>Virkeligheden i dag:</strong> Renteudgifterne æder nu over 14,2 % af statsbudgettet ($1.052 mia. netto) og støvsuger likviditeten (crowding out) fra erhvervslivet.
+                    </div>
+                </div>
+
+                <div class="audit-card">
+                    <div class="audit-phase">Fase 2 • Sensommer / Efterår 2026</div>
+                    <h3 class="audit-title">2. Afsløringen af AI-boblens Cirkulære Økonomi</h3>
+                    <p class="audit-text">
+                        <strong>Modellen:</strong> Vi kortlagde, at hyperscalernes indtjening blev holdt kunstigt oppe af over 200 gearede "neoclouds", der lånte penge for at købe Nvidia-chips uden uafhængige slutkunder.
+                    </p>
+                    <div class="audit-reality">
+                        <strong>Virkeligheden i dag:</strong> Gældsmarkedet smækkede kassen i i oktober. Alphabet og Amazon viser negativt cash flow, og professor Jesper Rangvid sammenligner nu direkte med dotcom-krakket i år 2000 (Nasdaq &minus;50 %).
+                    </div>
+                </div>
+
+                <div class="audit-card">
+                    <div class="audit-phase">Fase 3 • Oktober 2026</div>
+                    <h3 class="audit-title">3. "De-grossing" – Kreditmarkedets Tavse Krak</h3>
+                    <p class="audit-text">
+                        <strong>Modellen:</strong> Før aktierne faldt, fulgte vi eksplosionen i CDS-konkursforsikringer på Big Tech samt et fald i hedgefondenes gross-flow på &minus;7,8 % (største på et årti).
+                    </p>
+                    <div class="audit-reality">
+                        <strong>Virkeligheden i dag:</strong> Fondene har ramt deres smertetærskler (drawdown limits). Tvangssalget driver nu VIX mod 30 og sender Nasdaq ned med 5,4 %.
+                    </div>
+                </div>
+
+                <div class="audit-card">
+                    <div class="audit-phase">Fase 4 • November 2026 (Udløseren)</div>
+                    <h3 class="audit-title">4. Midtvejsvalget Smadrer "Gridlock"-Håbet</h3>
+                    <p class="audit-text">
+                        <strong>Modellen:</strong> Markedet klyngede sig til et delt politisk system, der kunne frede skattefradrag og ureguleret udbygning af AI-datacentre.
+                    </p>
+                    <div class="audit-reality">
+                        <strong>Virkeligheden i dag:</strong> Demokraterne vandt massivt – også guvernørposterne i Texas, Georgia og Ohio. Akut frygt for datacenter-regulering udløste paniksalg og kostede i går Elon Musk over 530 mia. kr.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 1. REGIONALE KNÆKPUNKTSMÅLERE -->
+        <h2 style="font-size: 1.35rem; color: var(--dark); margin: 0 0 16px 0;">Regionale Nøgletal &amp; Knækpunkts-målere</h2>
+        <section class="radar-grid">
+
+            <!-- USA -->
+            <div class="pole-card" style="border-top: 4px solid var(--danger);">
+                <div>
+                    <div class="pole-header">
+                        <span class="pole-title">USA</span>
+                        <span class="pole-tag">Treasury, Midtvejsvalg &amp; WAM-Risiko</span>
+                    </div>
+                    <div class="stat-line"><span>Bruttogæld / Offentlig Gæld:</span><span class="stat-val">$40,58T / $32,43T</span></div>
+                    <div class="stat-line
