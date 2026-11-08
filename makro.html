@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Makroøkonomi: Crisis Dashboard, VIX & Knækpunkter – Lasse Holt</title>
-    <meta name="description" content="Crisis Dashboard pr. 6. november 2026: Nasdaq -5,4 %, VIX nær 30, midtvejsvalgets chok for AI-datacentre, Anthropics IPO-lakmusprøve og rollover-muren i Q1 2027.">
+    <meta name="description" content="Crisis Dashboard pr. 8. november 2026: Stærk US jobrapport og lønpres tvinger Fed til nye rentehop midt i Nasdaq-korrektionen (-5,4 %), VIX nær 30, Anthropics 9.000 mia. kr. IPO og USA's gældsmur.">
     <style>
         :root {
             --primary: #1e3a8a;
@@ -120,7 +120,7 @@
         }
         .vix-bar-fill {
             height: 100%;
-            width: 52%;
+            width: 55%;
             background: linear-gradient(90deg, #10b981 0%, #f59e0b 45%, #dc2626 85%, #7f1d1d 100%);
         }
         .vix-scale {
@@ -268,10 +268,10 @@
             height: 100%;
             border-radius: 3px 0 0 3px;
         }
-        .fill-usa { background: linear-gradient(90deg, #f59e0b 0%, #dc2626 100%); width: 96%; }
+        .fill-usa { background: linear-gradient(90deg, #f59e0b 0%, #dc2626 100%); width: 98%; }
         .fill-france { background: linear-gradient(90deg, #3b82f6 0%, #7c3aed 70%, #dc2626 100%); width: 94%; }
-        .fill-japan { background: linear-gradient(90deg, #3b82f6 0%, #d97706 70%, #dc2626 100%); width: 84%; }
-        .fill-eu { background: linear-gradient(90deg, #10b981 0%, #f59e0b 70%, #dc2626 100%); width: 85%; }
+        .fill-japan { background: linear-gradient(90deg, #3b82f6 0%, #d97706 70%, #dc2626 100%); width: 85%; }
+        .fill-eu { background: linear-gradient(90deg, #10b981 0%, #f59e0b 70%, #dc2626 100%); width: 86%; }
 
         .knæk-threshold-marker {
             position: absolute;
@@ -644,16 +644,21 @@
     <main>
         <!-- SIDST OPDATERET STATUSLINJE -->
         <div class="status-timestamp-bar">
-            <span><strong>Sidst opdateret:</strong> Fredag den 6. november 2026 kl. 16:30</span>
-            <a href="arkiv.html" style="color: #1e3a8a; font-weight: 600; text-decoration: none;">Læs dagens Deep Dive på Økonomisk Blog &rarr;</a>
+            <span><strong>Sidst opdateret:</strong> Søndag den 8. november 2026</span>
+            <a href="arkiv.html" style="color: #1e3a8a; font-weight: 600; text-decoration: none;">Læs søndagens opdatering på Økonomisk Blog &rarr;</a>
         </div>
 
-        <!-- CRISIS DASHBOARD MED FOKUS PÅ VIX & KORREKTION -->
+        <!-- CRISIS DASHBOARD MED FOKUS PÅ JOBRAPPORT, VIX & KORREKTION -->
         <section class="crisis-dashboard">
-            <h2>Crisis Dashboard: Nasdaq i Korrektion (&minus;5,4 %), VIX Nærmer Sig 30 &amp; Tvangssalg</h2>
-            <div class="crisis-sub">Status pr. 6. november 2026: Den indledende likvidationsfase er udløst efter midtvejsvalgets "gridlock"-kollaps og hedgefondenes de-grossing.</div>
+            <h2>Crisis Dashboard: Stærk Jobrapport &amp; Lønpres Tvinger Fed til Nye Rentehop Midt i Nasdaq-Korrektion (&minus;5,4 %)</h2>
+            <div class="crisis-sub">Status pr. 8. november 2026: "Fed Put" er død – Løninflation + $40,58T statsgæld gør rentebyrden til den altdominerende post i USA.</div>
 
             <div class="crisis-metrics-grid">
+                <div class="crisis-metric-card">
+                    <div class="crisis-lbl">US Jobrapport &amp; Løn</div>
+                    <div class="crisis-val">Lønpres &rarr; Fed Hop</div>
+                    <div class="crisis-target">Tvinger Fed til fortsatte stramninger</div>
+                </div>
                 <div class="crisis-metric-card">
                     <div class="crisis-lbl">VIX (Frygtens Indeks)</div>
                     <div class="crisis-val">~30,0</div>
@@ -662,15 +667,10 @@
                 <div class="crisis-metric-card">
                     <div class="crisis-lbl">Nasdaq (Officiel Korrektion)</div>
                     <div class="crisis-val">&minus;5,40 %</div>
-                    <div class="crisis-target">Største dyk i 19 mdr. (Rangvid: År 2000)</div>
+                    <div class="crisis-target">Hedgefond gross-flow &minus;7,8% (10-års bund)</div>
                 </div>
                 <div class="crisis-metric-card">
-                    <div class="crisis-lbl">Hedgefond Gross-Flow</div>
-                    <div class="crisis-val">&minus;7,8 %</div>
-                    <div class="crisis-target">Største de-grossing i 10 år (Drawdown)</div>
-                </div>
-                <div class="crisis-metric-card">
-                    <div class="crisis-lbl">Næste Lakmusprøve (14 dage)</div>
+                    <div class="crisis-lbl">Lakmusprøve (Om få uger)</div>
                     <div class="crisis-val">Anthropic IPO</div>
                     <div class="crisis-target">9.000 mia. kr. værdiansættelse testes</div>
                 </div>
@@ -680,7 +680,7 @@
             <div class="vix-focus-box">
                 <div class="vix-header">
                     <span>VIX Stress- og Likvidationsskala (Frygtens Indeks)</span>
-                    <span style="color: var(--danger); font-family: monospace;">Aktuelt niveau: ~30 ("Stærk storm" – Margin Calls begynder)</span>
+                    <span style="color: var(--danger); font-family: monospace;">Aktuelt niveau: ~30 ("Stærk storm" – Margin Calls accelererer uden Fed-redning)</span>
                 </div>
                 <div class="vix-bar-track">
                     <div class="vix-bar-fill"></div>
@@ -694,16 +694,16 @@
             </div>
 
             <div class="crisis-timeline-box">
-                <strong>Hvorfor bunden ikke er nået endnu (Fremskrivning Nov 2026 – Q1 2027):</strong> 
-                Et VIX-indeks nær 30 afspejler, at investorerne nu indregner, at kursfald følges op af nye store kursfald. Det nuværende dyk er blot det indledende lufthul efter Demokraternes uventede valgsejr i røde datacenter-stater (Texas, Georgia, Ohio), der i går kostede Elon Musk over 530 mia. kr., da Tesla og SpaceX styrtdykkede. Den egentlige systemiske test indtræffer om <strong>14 dage ved børsnoteringen af Anthropic (9.000 mia. kr.)</strong>: Svigter køberne her, bryder sikkerhedsstillelsen (collateral) i hele AI-økosystemet sammen, netop som <strong>rollover-muren i Q1 2027</strong> tvinger gearede fonde ud i margin calls.
+                <strong>Dødsstødet fra fredagens jobrapport (8. november 2026):</strong> 
+                Fredag aftens amerikanske jobrapport lukkede den sidste mulige redningskrans for markederne. Et fortsat stærkt arbejdsmarked kombineret med stigende lønninger skaber en klassisk løn-pris-spiral oven i energiinflationen. Det betyder, at Federal Reserve under Kevin Warsh er tvunget til at sætte renten op igen og igen over det næste lange stykke tid, indtil inflationen er nedkæmpet – <em>samtidig</em> med at aktiemarkedet allerede er i officiel korrektion (Nasdaq &minus;5,4 %), og VIX rammer 30. Med en statsgæld på $40,58 billioner smadrer dette den amerikanske økonomi: Renteudgifterne ($1.052 mia. netto) har allerede overhalet forsvarsbudgettet og vil fremover vokse til den altdominerende post, der fortrænger alt andet.
             </div>
         </section>
 
-        <!-- DEEP DIVE TIDSLINJE: HVAD VI HAR GENNEMGÅET OG HVORDAN DET GIK I OPFYLDELSE -->
+        <!-- DEEP DIVE TIDSLINJE: DE 4 FASER AF KRAKKET -->
         <section class="audit-timeline-section">
-            <h2>Fra Blind Eufori til Likvidation: Tidslinjen for den Bekræftede Model</h2>
+            <h2>Den 4-Fasede Dokumentation af Krakket: Fra Model til Virkelighed</h2>
             <p style="font-size: 0.94rem; color: #334151; margin: 0;">
-                Mens markedsanalytikere i dag taler om "pludselig usikkerhed", følger sammenbruddet præcis den matematiske og makroøkonomiske rækkefølge, vi har kortlagt gennem 2026:
+                Mens markedsanalytikere i dag taler om "pludselig usikkerhed", følger sammenbruddet præcis den matematiske og makroøkonomiske rækkefølge, vi har dokumenteret gennem 2026:
             </p>
 
             <div class="audit-grid">
@@ -711,10 +711,10 @@
                     <div class="audit-phase">Fase 1 • Forår / Sommer 2026</div>
                     <h3 class="audit-title">1. Erkendelsen af 5-Års Renterollover-fælden</h3>
                     <p class="audit-text">
-                        <strong>Modellen:</strong> Mens markedet jublede over uændrede styringsrenter, påviste vi, at USA's gæld på $40,58T ruller over i en 5-års cyklus, hvor 2020–2021-gæld til ~1 % løbende udskiftes med 4,5–5,2 %.
+                        <strong>Modellen:</strong> Vi påviste, at USA's gæld på $40,58T ruller over i en 5-års cyklus, hvor 2020–2021-gæld til ~1 % løbende udskiftes med høje markedsrenter (33 % / $10,7T årligt).
                     </p>
                     <div class="audit-reality">
-                        <strong>Virkeligheden i dag:</strong> Renteudgifterne æder nu over 14,2 % af statsbudgettet ($1.052 mia. netto) og støvsuger likviditeten (crowding out) fra erhvervslivet.
+                        <strong>Virkeligheden i dag:</strong> Med fredagens stærke jobrapport og lønpres skal gælden nu ikke blot rulles over til uændrede renter, men til <em>stadig højere</em> Fed-renter. Rentebyrden sprænger statsbudgettet.
                     </div>
                 </div>
 
@@ -725,7 +725,7 @@
                         <strong>Modellen:</strong> Vi kortlagde, at hyperscalernes indtjening blev holdt kunstigt oppe af over 200 gearede "neoclouds", der lånte penge for at købe Nvidia-chips uden uafhængige slutkunder.
                     </p>
                     <div class="audit-reality">
-                        <strong>Virkeligheden i dag:</strong> Gældsmarkedet smækkede kassen i i oktober. Alphabet og Amazon viser negativt cash flow, og professor Jesper Rangvid sammenligner nu direkte med dotcom-krakket i år 2000 (Nasdaq &minus;50 %).
+                        <strong>Virkeligheden i dag:</strong> Gældsmarkedet smækkede kassen i i oktober. Alphabet og Amazon viser negativt cash flow, Intel faldt 28,6 %, og professor Jesper Rangvid sammenligner nu direkte med dotcom-krakket i år 2000 (Nasdaq &minus;50 %).
                     </div>
                 </div>
 
@@ -736,18 +736,18 @@
                         <strong>Modellen:</strong> Før aktierne faldt, fulgte vi eksplosionen i CDS-konkursforsikringer på Big Tech samt et fald i hedgefondenes gross-flow på &minus;7,8 % (største på et årti).
                     </p>
                     <div class="audit-reality">
-                        <strong>Virkeligheden i dag:</strong> Fondene har ramt deres smertetærskler (drawdown limits). Tvangssalget driver nu VIX mod 30 og sender Nasdaq ned med 5,4 %.
+                        <strong>Virkeligheden i dag:</strong> Fondene har ramt deres smertetærskler (drawdown limits). Tvangssalget driver nu VIX mod 30 og sender Nasdaq i officiel korrektion (&minus;5,4 %).
                     </div>
                 </div>
 
                 <div class="audit-card">
                     <div class="audit-phase">Fase 4 • November 2026 (Udløseren)</div>
-                    <h3 class="audit-title">4. Midtvejsvalget Smadrer "Gridlock"-Håbet</h3>
+                    <h3 class="audit-title">4. Midtvejsvalget &amp; Jobrapporten Lukker Fælden</h3>
                     <p class="audit-text">
-                        <strong>Modellen:</strong> Markedet klyngede sig til et delt politisk system, der kunne frede skattefradrag og ureguleret udbygning af AI-datacentre.
+                        <strong>Modellen:</strong> En politisk overraskelse ved midtvejsvalget kombineret med vedvarende inflationspres ville fjerne både skattesubsidier til AI og centralbankens redningskrans.
                     </p>
                     <div class="audit-reality">
-                        <strong>Virkeligheden i dag:</strong> Demokraterne vandt massivt – også guvernørposterne i Texas, Georgia og Ohio. Akut frygt for datacenter-regulering udløste paniksalg og kostede i går Elon Musk over 530 mia. kr.
+                        <strong>Virkeligheden i dag:</strong> Demokraterne vandt guvernørposterne i datacenter-staterne Texas, Georgia og Ohio (kostede Musk &gt;530 mia. kr.), og fredagens varme jobrapport tvinger nu Fed til yderligere renteforhøjelser.
                     </div>
                 </div>
             </div>
@@ -762,7 +762,396 @@
                 <div>
                     <div class="pole-header">
                         <span class="pole-title">USA</span>
-                        <span class="pole-tag">Treasury, Midtvejsvalg &amp; WAM-Risiko</span>
+                        <span class="pole-tag">Fed Løn-Spiral, Treasury &amp; Rollover</span>
                     </div>
                     <div class="stat-line"><span>Bruttogæld / Offentlig Gæld:</span><span class="stat-val">$40,58T / $32,43T</span></div>
-                    <div class="stat-line
+                    <div class="stat-line"><span>Netto-renteudgift (FY26):</span><span class="stat-val">$1.052 mia. (&gt; Forsvaret $965 mia.)</span></div>
+                    <div class="stat-line"><span>Jobrapport &amp; Lønpres (6. nov):</span><span class="stat-val">Tvinger Fed til nye rentehop</span></div>
+                    <div class="stat-line"><span>Kritisk Knækpunkt (i_crit):</span><span class="stat-val" style="color: var(--danger);">5,25 – 5,50 %</span></div>
+
+                    <div class="knæk-box">
+                        <div class="knæk-title-row">
+                            <span style="color: var(--danger);">Rollover + Stigende Fed-rente</span>
+                            <span style="color: var(--danger);">98 % af knækpunkt</span>
+                        </div>
+                        <div class="knæk-track-wrapper">
+                            <div class="knæk-track">
+                                <div class="knæk-fill fill-usa" style="width: 98%;"></div>
+                            </div>
+                            <div class="knæk-threshold-marker"></div>
+                            <span class="knæk-threshold-label">Knækpunkt</span>
+                        </div>
+                        <div class="knæk-scale-labels">
+                            <span>0% (Stabil)</span>
+                            <span>50% (Forhøjet)</span>
+                            <span style="color: var(--danger); font-weight: 700;">100% (Brud)</span>
+                        </div>
+                        <div class="knæk-stats-table">
+                            <div class="sub-stat">
+                                <span class="sub-stat-lbl">Gennemsnitsrente</span>
+                                <span class="sub-stat-val">3,53 % &rarr; 5%+</span>
+                            </div>
+                            <div class="sub-stat">
+                                <span class="sub-stat-lbl">12-mdr Rollover</span>
+                                <span class="sub-stat-val" style="color: var(--danger);">$10,7T (33%)</span>
+                            </div>
+                            <div class="sub-stat">
+                                <span class="sub-stat-lbl">Knækpunkt</span>
+                                <span class="sub-stat-val" style="color: var(--danger);">5,25 %</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pole-desc">
+                        Fredagens stærke jobrapport med høje lønstigninger tvinger Fed til at sætte renten op igen og igen for at bekæmpe inflationen. Når $10,7T i 2020–2021-gæld (til ~1 %) rulles over i et stigende rentemiljø, vokser rentebyrden eksplosivt og opsluger hele det amerikanske statsbudget.
+                    </div>
+                </div>
+                <div class="trigger-alert">
+                    <strong>Primær trigger:</strong> Fortsatte Fed-rentehop oven i 33 % årlig rollover + Anthropic IPO-test (9.000 mia. kr.).
+                </div>
+            </div>
+
+            <!-- FRANKRIG -->
+            <div class="pole-card" style="border-top: 4px solid #7c3aed;">
+                <div>
+                    <div class="pole-header">
+                        <span class="pole-title">Frankrig</span>
+                        <span class="pole-tag">Euro-Crisis II • 3Q BNP -0,1 %</span>
+                    </div>
+                    <div class="stat-line"><span>Statsgæld / 3Q BNP-vækst:</span><span class="stat-val">118% af BNP / &minus;0,1 %</span></div>
+                    <div class="stat-line"><span>Fransk 10Y Rente (24-års top):</span><span class="stat-val">4,80 % (&gt; Italien 4,6%, Grækenland 4,4%)</span></div>
+                    <div class="stat-line"><span>Krav til primær stramning:</span><span class="stat-val">4,7 % af BNP for at stabilisere</span></div>
+                    <div class="stat-line"><span>Kritisk Knækpunkt (i_crit):</span><span class="stat-val" style="color: #7c3aed;">OAT &gt; 5,00 % / Spread &gt; 110 bps</span></div>
+
+                    <div class="knæk-box">
+                        <div class="knæk-title-row">
+                            <span style="color: #7c3aed;">Obligationsstress &amp; Kontraktion</span>
+                            <span style="color: #7c3aed;">94 % af knækpunkt</span>
+                        </div>
+                        <div class="knæk-track-wrapper">
+                            <div class="knæk-track">
+                                <div class="knæk-fill fill-france" style="width: 94%;"></div>
+                            </div>
+                            <div class="knæk-threshold-marker"></div>
+                            <span class="knæk-threshold-label">Knækpunkt</span>
+                        </div>
+                        <div class="knæk-scale-labels">
+                            <span>3,0 %</span>
+                            <span>4,0 % (Advarsel)</span>
+                            <span style="color: #7c3aed; font-weight: 700;">5,00 % (Brud)</span>
+                        </div>
+                        <div class="knæk-stats-table">
+                            <div class="sub-stat">
+                                <span class="sub-stat-lbl">Aktuel 10Y OAT</span>
+                                <span class="sub-stat-val">4,80 %</span>
+                            </div>
+                            <div class="sub-stat">
+                                <span class="sub-stat-lbl">Buffer til brud</span>
+                                <span class="sub-stat-val" style="color: #7c3aed;">0,20 %-point</span>
+                            </div>
+                            <div class="sub-stat">
+                                <span class="sub-stat-lbl">Knækpunkt</span>
+                                <span class="sub-stat-val" style="color: #7c3aed;">&gt; 5,00 %</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pole-desc">
+                        Med en økonomi i kontraktion (-0,1 %) og en rente på 4,80 % er Frankrig fanget i Mitterrand-fælden. Landet betaler mere end Grækenland, og når Fed tvinges op i rente af den amerikanske jobrapport, trækkes de europæiske lange renter yderligere op.
+                    </div>
+                </div>
+                <div class="trigger-alert">
+                    <strong>Primær trigger:</strong> Fransk 10Y bryder 5,0 % frem mod præsidentvalget i april 2027.
+                </div>
+            </div>
+
+            <!-- JAPAN -->
+            <div class="pole-card" style="border-top: 4px solid var(--warning);">
+                <div>
+                    <div class="pole-header">
+                        <span class="pole-title">Japan</span>
+                        <span class="pole-tag">Bank of Japan &amp; Softbank-stres</span>
+                    </div>
+                    <div class="stat-line"><span>Statsgæld af BNP:</span><span class="stat-val">~260 % (Global rekord)</span></div>
+                    <div class="stat-line"><span>Styringsrente / Valuta:</span><span class="stat-val">BoJ: 1,25 % / USD/JPY: ~157,20</span></div>
+                    <div class="stat-line"><span>Forventet December-rentehop:</span><span class="stat-val">~80 % sandsynlighed i markedet</span></div>
+                    <div class="stat-line"><span>Kritisk Knækpunkt (i_crit):</span><span class="stat-val" style="color: var(--warning);">BoJ &gt; 2,00% / USD/JPY &gt; 162</span></div>
+
+                    <div class="knæk-box">
+                        <div class="knæk-title-row">
+                            <span style="color: var(--warning);">Valutapres</span>
+                            <span style="color: var(--warning);">85 % af knækpunkt</span>
+                        </div>
+                        <div class="knæk-track-wrapper">
+                            <div class="knæk-track">
+                                <div class="knæk-fill fill-japan" style="width: 85%;"></div>
+                            </div>
+                            <div class="knæk-threshold-marker"></div>
+                            <span class="knæk-threshold-label">Knækpunkt</span>
+                        </div>
+                        <div class="knæk-scale-labels">
+                            <span>140 JPY</span>
+                            <span>150 JPY</span>
+                            <span style="color: var(--warning); font-weight: 700;">162 JPY (Brud)</span>
+                        </div>
+                        <div class="knæk-stats-table">
+                            <div class="sub-stat">
+                                <span class="sub-stat-lbl">Aktuel kurs</span>
+                                <span class="sub-stat-val">157,2 JPY</span>
+                            </div>
+                            <div class="sub-stat">
+                                <span class="sub-stat-lbl">Buffer til brud</span>
+                                <span class="sub-stat-val" style="color: var(--warning);">4,8 Yen</span>
+                            </div>
+                            <div class="sub-stat">
+                                <span class="sub-stat-lbl">Knækpunkt</span>
+                                <span class="sub-stat-val" style="color: var(--warning);">&gt; 162 JPY</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pole-desc">
+                        Når Fed tvinges til at hæve renten yderligere oven på fredagens jobrapport, øges presset på yenen voldsomt, hvilket tvinger Tokyo til yderligere frasalg af amerikanske statsobligationer.
+                    </div>
+                </div>
+                <div class="trigger-alert">
+                    <strong>Primær trigger:</strong> USD/JPY bryder 162; BoJ tvunget til stramning midt i global likvidationsfase.
+                </div>
+            </div>
+
+            <!-- EUROZONEN & DANMARK -->
+            <div class="pole-card" style="border-top: 4px solid var(--safe);">
+                <div>
+                    <div class="pole-header">
+                        <span class="pole-title">EU &amp; Danmark</span>
+                        <span class="pole-tag">ECB, Nationalbanken &amp; ESO-Beredskab</span>
+                    </div>
+                    <div class="stat-line"><span>3Q Eurozone BNP:</span><span class="stat-val">+0,4 % (Irland slører tysk opbremsning)</span></div>
+                    <div class="stat-line"><span>DK 30Y Realkredit:</span><span class="stat-val">5,00 % Fast (Kurs ~98)</span></div>
+                    <div class="stat-line"><span>Dansk Beredskab:</span><span class="stat-val">ESO lanceret mod forsyningskriser</span></div>
+                    <div class="stat-line"><span>Kritisk Knækpunkt (i_crit):</span><span class="stat-val" style="color: var(--safe);">Realkredit &gt; 5,50% / OAT-smitte</span></div>
+
+                    <div class="knæk-box">
+                        <div class="knæk-title-row">
+                            <span style="color: var(--safe);">Rente- og forsyningspres</span>
+                            <span style="color: var(--safe);">86 % af knækpunkt</span>
+                        </div>
+                        <div class="knæk-track-wrapper">
+                            <div class="knæk-track">
+                                <div class="knæk-fill fill-eu" style="width: 86%;"></div>
+                            </div>
+                            <div class="knæk-threshold-marker"></div>
+                            <span class="knæk-threshold-label">Knækpunkt</span>
+                        </div>
+                        <div class="knæk-scale-labels">
+                            <span>2,0 %</span>
+                            <span>4,0 % (Moderat)</span>
+                            <span style="color: var(--safe); font-weight: 700;">5,50 % (Brud)</span>
+                        </div>
+                        <div class="knæk-stats-table">
+                            <div class="sub-stat">
+                                <span class="sub-stat-lbl">Aktuel rente</span>
+                                <span class="sub-stat-val">5,00 %</span>
+                            </div>
+                            <div class="sub-stat">
+                                <span class="sub-stat-lbl">Buffer til brud</span>
+                                <span class="sub-stat-val" style="color: var(--safe);">0,50 %-point</span>
+                            </div>
+                            <div class="sub-stat">
+                                <span class="sub-stat-lbl">Knækpunkt</span>
+                                <span class="sub-stat-val" style="color: var(--safe);">&gt; 5,50 %</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pole-desc">
+                        ECB forventes at hæve renten i december pga. inflation. Danmark har lanceret erhvervsberedskabet ESO, mens overvismanden advarer om prisfald på ejerlejligheder i 2027, når de globale renter bider sig fast.
+                    </div>
+                </div>
+                <div class="trigger-alert">
+                    <strong>Primær trigger:</strong> Fransk OAT-smitte kombineret med global tech-likvidation og højere lange renter.
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. AKTIV-DASHBOARD BAR -->
+        <section class="asset-bar-section">
+            <h2>Aktivmarkedernes Ligevægt: Tværgående Radar</h2>
+            <p class="asset-bar-intro">
+                Kombinationen af en officiel aktiekorrektion (Nasdaq &minus;5,4 %) og fredagens stærke jobrapport med lønstigninger er enhver investors mareridt: Aktierne falder, <em>mens</em> centralbanken tvinges til at stramme pengepolitikken yderligere:
+            </p>
+
+            <div class="asset-metrics-grid">
+                <div class="asset-card">
+                    <div>
+                        <div class="asset-type">VIX (Frygtens Indeks)</div>
+                        <div class="asset-val">~30,0</div>
+                        <div class="asset-subtag" style="color: var(--danger);">Stærk storm • Ingen Fed-hjælp</div>
+                    </div>
+                    <p class="asset-note">Gross-flow er faldet 7,8 % (største fald på et årti). Uden udsigt til rentesænkninger fra Fed accelererer margin calls.</p>
+                </div>
+
+                <div class="asset-card" style="border-top: 3px solid var(--danger);">
+                    <div>
+                        <div class="asset-type">Tech &amp; AI-Korrektion</div>
+                        <div class="asset-val">Nasdaq &minus;5,4 %</div>
+                        <div class="asset-subtag" style="color: var(--danger);">Musk &minus;530 mia. kr.</div>
+                    </div>
+                    <p class="asset-note">Største fald i 19 mdr. Demokraternes valgsejr i Texas, Georgia og Ohio udløser panik for ny regulering af AI-datacentre.</p>
+                </div>
+
+                <div class="asset-card">
+                    <div>
+                        <div class="asset-type">Collateral-Test (Anthropic)</div>
+                        <div class="asset-val">9.000 mia. kr.</div>
+                        <div class="asset-subtag" style="color: var(--warning);">Kommende Børsnotering</div>
+                    </div>
+                    <p class="asset-note">Lakmusprøven for hele AI-økosystemet midt i stigende renter. Afviser markedet prisen, brister sikkerhedsstillelsen i sektoren.</p>
+                </div>
+
+                <div class="asset-card" style="border-top: 3px solid var(--safe);">
+                    <div>
+                        <div class="asset-type">Guld &amp; Kontant Likviditet</div>
+                        <div class="asset-val">$4.183+</div>
+                        <div class="asset-subtag" style="color: var(--safe);">Strategisk Tørt Krudt</div>
+                    </div>
+                    <p class="asset-note">Når statsgælden løber løbsk under stigende renter, fungerer guld og likvide kontanter som eneste reelle værn.</p>
+                </div>
+            </div>
+
+            <div class="erp-comparison-box">
+                <div class="erp-calc-text">
+                    <strong>Rangvids År 2000-parallel &amp; Løn-Pris-Spiralen:</strong><br>
+                    Når aktierisikopræmien (ERP) er negativ, gældsmarkedet lukker for over 200 neoclouds, og løninflationen tvinger Fed til nye rentehop, fjernes gulvet under tech-sektoren.
+                </div>
+                <div class="erp-badge">Nasdaq: Officiel Korrektion</div>
+            </div>
+        </section>
+
+        <!-- 3. FREMSKRIVNING AF ROLLOVER-EFFEKTEN -->
+        <section class="projection-section">
+            <h2>Fremskrivningsmodel: Rollover-muren Accelererer under Nye Fed-Rentehop (2026–2030)</h2>
+            <p style="font-size: 0.94rem; color: #334151; margin: 0 0 14px 0;">
+                Allerede ved en uændret markedsrente ($i^m = 4,80\,\%$) viste vores grundmodel en fordobling af USA's renteudgifter fra $1,05T til $2,14T, efterhånden som 33 % af gælden ($\alpha = 0,33$) rulles over hvert år. Når fredagens jobrapport og lønpres nu tvinger Fed til at <strong>hæve renten igen og igen</strong>, rykkes kurven endnu stejlere op, så rentebyrden bliver den altoverskyggende udgiftspost i USA:
+            </p>
+
+            <div class="timeline-card-grid">
+                <div class="timeline-step active">
+                    <div>
+                        <div class="timeline-year-tag">2026 (Aktuel) • Gæld: $32,4T</div>
+                        <div class="timeline-amount">$1,05 billioner</div>
+                        <div class="timeline-bnp">3,6 % af BNP (Snitrente: 3,53 %)</div>
+                        <div class="timeline-desc">Netto-renteudgiften ($1.052 mia.) har allerede overhalet hele det amerikanske forsvarsbudget ($965 mia.). 14,2 cent af hver dollar går til renter.</div>
+                    </div>
+                </div>
+
+                <div class="timeline-step active" style="border-top-color: var(--warning);">
+                    <div>
+                        <div class="timeline-year-tag">2027–2028 • Gæld: $35,1T &rarr; $38,0T</div>
+                        <div class="timeline-amount">$1,45T &rarr; $1,85T+</div>
+                        <div class="timeline-bnp">4,8 % &rarr; 6,0 % af BNP (Med nye Fed-hop)</div>
+                        <div class="timeline-desc">2020–2021 pandemigælden til 1 % udløber i Q1 2027 ($10,7T på 12 mdr.) midt i Feds nye stramningscyklus mod løninflationen.</div>
+                    </div>
+                </div>
+
+                <div class="timeline-step danger">
+                    <div>
+                        <div class="timeline-year-tag" style="color: var(--danger);">2029–2030 • Gæld: $41,2T &rarr; $45,0T+</div>
+                        <div class="timeline-amount" style="color: var(--danger);">$2,14T &rarr; $2,40T+</div>
+                        <div class="timeline-bnp">&gt; 7,0 % af BNP (Altdominerende post)</div>
+                        <div class="timeline-desc">Hele gældsporteføljen er rullet over til de nye højere renter. Renteudgifterne fortrænger alt andet på statsbudgettet og smadrer realøkonomien.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="snowball-chart">
+                <h4 style="margin: 0 0 14px 0; color: var(--dark); font-size: 1.05rem;">5-Årig Matematisk Fremskrivning af USA's Netto-Renteudgifter ($IE_t = i_t^w \cdot D_t$)</h4>
+                <div class="snowball-row">
+                    <div class="snowball-label"><span>2026 (Aktuel): Gennemsnitsrente 3,53 % (Markedsgæld: $32,4T)</span><span style="font-family: monospace;">$1.052 mia. (3,6 % af BNP)</span></div>
+                    <div class="snowball-bar-bg"><div class="snowball-bar-fill" style="width: 44%; background: #3b82f6;"></div></div>
+                </div>
+                <div class="snowball-row">
+                    <div class="snowball-label"><span>2027: Gennemsnitsrente 4,12 %+ (Markedsgæld: $35,1T)</span><span style="font-family: monospace;">$1.450 mia.+ (4,8 % af BNP)</span></div>
+                    <div class="snowball-bar-bg"><div class="snowball-bar-fill" style="width: 63%; background: #f59e0b;"></div></div>
+                </div>
+                <div class="snowball-row">
+                    <div class="snowball-label"><span>2028: Gennemsnitsrente 4,55 %+ (Markedsgæld: $38,0T)</span><span style="font-family: monospace;">$1.730–1.850 mia. (5,8 % af BNP)</span></div>
+                    <div class="snowball-bar-bg"><div class="snowball-bar-fill" style="width: 80%; background: #ea580c;"></div></div>
+                </div>
+                <div class="snowball-row" style="margin-bottom: 0;">
+                    <div class="snowball-label" style="color: var(--danger);"><span><strong>2030: Fuld Rollover + Fed Løn-Stramning (Markedsgæld: $44,6T+)</strong></span><span style="font-family: monospace;"><strong>$2.140–2.400 mia. (&gt;7,0 % af BNP)</strong></span></div>
+                    <div class="snowball-bar-bg"><div class="snowball-bar-fill" style="width: 100%; background: #b91c1c;"></div></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. TEORETISK FUNDAMENT -->
+        <section class="theory-card">
+            <h2>Teoretisk Fundament: Intertemporal Budgetrestriktion, Blanchard &amp; Sargent-Wallace</h2>
+            <p style="font-size: 0.94rem; color: #334151; margin: 0 0 10px 0;">
+                Når 33 % ($\alpha = 0,33$) af gælden udløber årligt, og løninflationen fra arbejdsmarkedet samtidig tvinger centralbanken til at hæve markedsrenten ($i_t^m$), rammes statens vægtede gennemsnitsrente ($i_t^w$) af en dobbelt multiplikator:
+            </p>
+            <div class="math-display-card">
+                <div class="math-formula">
+                    <span class="math-var">i</span><sub>t+1</sub><sup>w</sup> = 
+                    <span class="math-fraction">
+                        <span class="num">(1 &minus; &alpha;)<span class="math-var">D</span><sub>t</sub> &middot; <span class="math-var">i</span><sub>t</sub><sup>w</sup> + (&alpha;<span class="math-var">D</span><sub>t</sub> + <span class="math-var">PD</span><sub>t</sub> + <span class="math-var">IE</span><sub>t</sub>) &middot; <span class="math-var">i</span><sub>t</sub><sup>m</sup>(&uarr;)</span>
+                        <span class="den"><span class="math-var">D</span><sub>t+1</sub></span>
+                    </span>
+                </div>
+                <div class="math-legend">
+                    <strong>Sargent-Wallace (1981) &amp; Blanchard (2019):</strong> Når finanspolitikken er dominant (primært underskud $pd_t &gt; 4,5\,\%$), og centralbanken tvinges til at hæve $i_t^m$ mod løn- og energiinflation, accelererer renteudgiften $IE_t$ eksponentielt, indtil rentebyrden opsluger hele det fiskale råderum.
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. DET GLOBALE PRES: HVAD DER SKER DE NÆSTE MÅNEDER -->
+        <section class="global-context-box">
+            <h2>De Næste Måneder: Fire Afgørende Eskaleringstrin</h2>
+            <p class="context-intro">
+                Kombinationen af fredagens stærke jobrapport og en officiel korrektion på Nasdaq (&minus;5,4 %) viser, at vi kun har set begyndelsen på nedturen:
+            </p>
+
+            <div class="interconnect-grid">
+                <div class="interconnect-item usa">
+                    <h3 class="interconnect-title">1. Løn-Pris-Spiral Tvinger Fed Op i Rente</h3>
+                    <p class="interconnect-text">Fredagens jobrapport viste et stærkt arbejdsmarked med tiltagende lønstigninger. Det gør det umuligt for Fed at redde markedet; renten må sættes op igen og igen for at tøjle inflationen, hvilket kvæler USA's statsfinanser indefra.</p>
+                </div>
+
+                <div class="interconnect-item ai">
+                    <h3 class="interconnect-title">2. Om 14 dage: Anthropics 9.000 Mia. Kr. Lakmusprøve</h3>
+                    <p class="interconnect-text">Børsnoteringen af Anthropic til en anslået værdi på 9.000 mia. kr. bliver skæbnetesten for hele AI-sektoren. Må selskabet barbere værdiansættelsen efter H1-tabet på 537 mia. kr., kollapser sikkerhedsstillelsen (collateral) i hele økosystemet.</p>
+                </div>
+
+                <div class="interconnect-item bessent">
+                    <h3 class="interconnect-title">3. VIX fra "Stærk Storm" (30) til "Orkan" (&gt;45)</h3>
+                    <p class="interconnect-text">Hedgefondenes gross-flow er allerede dykket 7,8 %. Når faldet i tech-aktier, tabet af politisk rygdækning i Texas, Georgia og Ohio samt udsigten til nye Fed-rentehop udløser margin calls, accelererer tvangssalget.</p>
+                </div>
+
+                <div class="interconnect-item france">
+                    <h3 class="interconnect-title">4. Q1 2027: Rollover-Mur &amp; Fransk Valg</h3>
+                    <p class="interconnect-text">Ved årsskiftet rammer $10,7T i amerikansk statsgæld refinansieringsmuren samtidig med erhvervslivets 2021-lån, mens den amerikanske forbruger bløder under 22,36 % i kreditkortrente og Frankrig går mod præsidentvalg i april 2027.</p>
+                </div>
+            </div>
+
+            <div class="synthesis-card">
+                <strong>Syntese pr. 8. november 2026:</strong>  
+                Fredagens jobrapport har forseglet udfaldet: Der kommer ingen redningskrans fra centralbanken. Når Fed tvinges til at hæve renten ind i en officiel aktiekorrektion og en statsgæld på over $40,5 billioner, vil rentebyrden vokse til at fylde alt fremover. En defensiv positionering med likvide midler og variabel F-kort-rente står maksimalt beskyttet mod stormen.
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        &copy; 2026 Lasse Holt. Makroøkonomisk Radar &amp; Systemisk Telemetri.
+    </footer>
+
+    <!-- GOOGLE TRANSLATE WIDGET SCRIPT -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({pageLanguage: 'da', includedLanguages: 'en,de,fr,es', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>
