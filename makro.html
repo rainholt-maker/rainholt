@@ -473,3 +473,685 @@
             font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            color: #64748b;
+            margin-bottom: 4px;
+        }
+        .timeline-amount {
+            font-family: monospace;
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 6px;
+        }
+        .timeline-bnp {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--danger);
+            margin-bottom: 10px;
+        }
+        .timeline-desc {
+            font-size: 0.86rem;
+            color: #334151;
+            line-height: 1.5;
+        }
+
+        .snowball-chart {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        .snowball-row { margin-bottom: 14px; }
+        .snowball-label { display: flex; justify-content: space-between; font-size: 0.86rem; font-weight: 600; margin-bottom: 4px; }
+        .snowball-bar-bg { background: #e2e8f0; height: 18px; border-radius: 4px; overflow: hidden; width: 100%; }
+        .snowball-bar-fill { height: 100%; border-radius: 4px; }
+
+        /* TEORETISK FUNDAMENT */
+        .theory-card {
+            background: #ffffff;
+            border: 1px solid var(--border);
+            border-left: 5px solid var(--primary);
+            border-radius: 8px;
+            padding: 26px;
+            margin-bottom: 35px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+        }
+        .theory-card h2 { margin: 0 0 12px 0; font-size: 1.35rem; color: var(--dark); }
+
+        .math-display-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            padding: 16px 20px;
+            margin: 14px 0 18px 0;
+            text-align: center;
+        }
+        .math-formula {
+            font-family: "Cambria Math", "Georgia", "Times New Roman", serif;
+            font-size: 1.35rem;
+            color: #0f172a;
+            letter-spacing: 0.5px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+        .math-var { font-style: italic; }
+        .math-fraction {
+            display: inline-flex;
+            flex-direction: column;
+            vertical-align: middle;
+            text-align: center;
+            padding: 0 4px;
+        }
+        .math-fraction .num { border-bottom: 1.5px solid #0f172a; padding-bottom: 1px; }
+        .math-fraction .den { padding-top: 1px; }
+        .math-legend {
+            font-size: 0.82rem;
+            color: #64748b;
+            margin-top: 8px;
+            text-align: left;
+            border-top: 1px dashed #e2e8f0;
+            padding-top: 8px;
+        }
+
+        /* GLOBALT PRES */
+        .global-context-box {
+            background: #ffffff;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 26px;
+            margin-bottom: 30px;
+        }
+        .global-context-box h2 {
+            margin: 0 0 14px 0;
+            font-size: 1.35rem;
+            color: var(--dark);
+        }
+        .context-intro {
+            font-size: 0.95rem;
+            color: #334151;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        .interconnect-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+        @media (max-width: 768px) {
+            .interconnect-grid { grid-template-columns: 1fr; }
+        }
+        .interconnect-item {
+            background: #f8fafc;
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--primary);
+            border-radius: 6px;
+            padding: 16px;
+        }
+        .interconnect-item.ai { border-left-color: #7c3aed; }
+        .interconnect-item.bessent { border-left-color: var(--warning); }
+        .interconnect-item.usa { border-left-color: var(--danger); }
+        .interconnect-item.france { border-left-color: #0284c7; }
+        .interconnect-title {
+            font-size: 1.02rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin: 0 0 6px 0;
+        }
+        .interconnect-text {
+            font-size: 0.88rem;
+            color: #334151;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        .synthesis-card {
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+            border-left: 5px solid var(--danger);
+            border-radius: 6px;
+            padding: 18px 20px;
+            margin-top: 20px;
+            font-size: 0.92rem;
+            color: #7f1d1d;
+            line-height: 1.6;
+        }
+
+        footer { text-align: center; margin-top: 60px; font-size: 0.85rem; color: #94a3b8; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-top">
+            <h1>Makroøkonomi: Systemisk Radar</h1>
+        </div>
+        <div class="subtitle">Analyse af global gældssætning, risikopræmier og finansielle knækpunkter</div>
+        <nav>
+            <a href="index.html">&larr; Forside</a>
+            <a href="makro.html" style="color: var(--primary); border-bottom: 2px solid var(--primary);">Makroøkonomi</a>
+            <a href="forskning.html">Copenhagen Business School</a>
+            <a href="arkiv.html">Økonomisk Blog</a>
+            <a href="politik.html">Politik</a>
+            <a href="kontakt.html">Kontakt</a>
+            
+            <div class="language-selector" id="google_translate_element"></div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- SIDST OPDATERET STATUSLINJE -->
+        <div class="status-timestamp-bar">
+            <span><strong>Sidst opdateret:</strong> Fredag den 13. november 2026</span>
+            <a href="arkiv.html" style="color: #1e3a8a; font-weight: 600; text-decoration: none;">Læs ugens store analyse på Økonomisk Blog &rarr;</a>
+        </div>
+
+        <!-- CRISIS DASHBOARD MED FOKUS PÅ NVIDIA SOM SKYGGEBANK, ROLLOVER & DE-GROSSING -->
+        <section class="crisis-dashboard">
+            <h2>Crisis Dashboard: Korthuset Vælter – Nvidia som Skyggebank, Kreditstop &amp; De-Grossing</h2>
+            <div class="crisis-sub">Status pr. 13. november 2026: Bundproppen i AI-pyramiden er trukket ud – Cirkulær vendor financing kolliderer med USA's 11-billioners rollover-mur.</div>
+
+            <div class="crisis-metrics-grid">
+                <div class="crisis-metric-card">
+                    <div class="crisis-lbl">AI-Skyggebank &amp; Neoclouds</div>
+                    <div class="crisis-val">Kreditstop (200+)</div>
+                    <div class="crisis-target">CoreWeave &minus;36 % • Ordrebog fordamper</div>
+                </div>
+                <div class="crisis-metric-card">
+                    <div class="crisis-lbl">12-Mdr. US Rollover-Mur</div>
+                    <div class="crisis-val">~$11,0 Billioner</div>
+                    <div class="crisis-target">33 % af gælden fra 1 % &rarr; 4,5–5,2 %</div>
+                </div>
+                <div class="crisis-metric-card">
+                    <div class="crisis-lbl">Forbruger &amp; Kreditkort</div>
+                    <div class="crisis-val">22,36 % Rente</div>
+                    <div class="crisis-target">~7 % i alvorlig misligholdelse</div>
+                </div>
+                <div class="crisis-metric-card">
+                    <div class="crisis-lbl">Politisk Chok (Blue Sweep)</div>
+                    <div class="crisis-val">Slut på Gridlock</div>
+                    <div class="crisis-target">Trussel mod 2025-skattefradrag &amp; DC</div>
+                </div>
+            </div>
+
+            <!-- VIX TERMOMETER -->
+            <div class="vix-focus-box">
+                <div class="vix-header">
+                    <span>Likvidations- og De-Grossing-Skala (VIX &amp; Hedgefond Drawdowns)</span>
+                    <span style="color: var(--danger); font-family: monospace;">Fase: Aktiv De-grossing (Spredning fra Tech til Kreditmarkedet i 2027)</span>
+                </div>
+                <div class="vix-bar-track">
+                    <div class="vix-bar-fill"></div>
+                </div>
+                <div class="vix-scale">
+                    <span>12–15 (Eufori)</span>
+                    <span>20 (Uro)</span>
+                    <span style="color: var(--danger); font-weight: 700;">30 (De-grossing: Tvangssalg)</span>
+                    <span>50–80 (Kreditfrysning: 2027 Corporate Wall)</span>
+                </div>
+            </div>
+
+            <div class="crisis-timeline-box">
+                <strong>Hvorfor bundproppen er trukket ud (13. november 2026):</strong> 
+                Den igangværende nedtur er ikke en almindelig priskorrektion, men afviklingen af en lukket, gældsfinansieret cirkeløkonomi, hvor <strong>Nvidia har fungeret som skyggebank</strong> for sine egne kunder via vendor financing og garantier, mens over 200 neoclouds (som CoreWeave, der er faldet 36 % på en måned) pantsatte de indkøbte GPU-chips som sikkerhed (collateral) for lån i Private Credit. Da USA's 5-års rollover-mur (~$11T årligt) og stigende <strong>Term Premium</strong> i oktober støvsugede likviditeten, smækkede gældsmarkedet kassen i. Samtidig er slutbrugeren knækket under 22,36 % i kreditkortrente (~7 % i misligholdelse), og Demokraternes <em>Blue Sweep</em> truer nu både datacenter-udbygningen og skattefradragene fra <em>One Big Beautiful Bill Act</em> (2025).
+            </div>
+        </section>
+
+        <!-- DEEP DIVE TIDSLINJE: DE 4 FASER AF KRAKKET -->
+        <section class="audit-timeline-section">
+            <h2>Den Systemiske Kædereaktion: Fra Cirkulær AI-Gæld til Kreditmarkedets 2027-Mur</h2>
+            <p style="font-size: 0.94rem; color: #334151; margin: 0;">
+                Nedturen er drevet af AI, men formet af makroøkonomi. Her er de fire sammenkoblede mekanismer, der nu driver likvidationsfasen:
+            </p>
+
+            <div class="audit-grid">
+                <div class="audit-card">
+                    <div class="audit-phase">Mekanisme 1 • Cirkulær Kapital</div>
+                    <h3 class="audit-title">1. Nvidia som Skyggebank &amp; GPU-Collateral</h3>
+                    <p class="audit-text">
+                        <strong>Strukturen:</strong> Nvidia skød kapital og garantier i neocloud-startups, som købte Nvidias egne GPU'er og brugte hardwaren som sikkerhedsstillelse for milliardlån hos skyggebanker og hedgefonde.
+                    </p>
+                    <div class="audit-reality">
+                        <strong>Bruddet i dag:</strong> Gældsmarkedet lukkede i oktober for de 200+ neoclouds. Ordrebogen fordamper, CoreWeave er nede med 36 %, og Nvidia sidder tilbage med direkte kreditrisiko på kriseramte kunder.
+                    </div>
+                </div>
+
+                <div class="audit-card">
+                    <div class="audit-phase">Mekanisme 2 • Makroskruestikken</div>
+                    <h3 class="audit-title">2. 5-Års Rollover-Muren &amp; Term Premium</h3>
+                    <p class="audit-text">
+                        <strong>Strukturen:</strong> Med en gennemsnitlig løbetid (WAM) på 5,9 år udløber pandemi-gælden fra 2020–2021 (til 1–1,5 %) netop nu. 33 % af statsgælden (~$11T) skal refinansieres over 12 måneder til 4,5–5,2 %.
+                    </p>
+                    <div class="audit-reality">
+                        <strong>Bruddet i dag:</strong> Renteudgifterne (&gt;$1.050 mia.) har overhalet forsvarsbudgettet. Bessents kortfristede udstedelser presser <em>Term Premium</em> op og dræner systemet for den kapital, der skulle redde AI-sektoren.
+                    </div>
+                </div>
+
+                <div class="audit-card">
+                    <div class="audit-phase">Mekanisme 3 • Slutbruger &amp; Politik</div>
+                    <h3 class="audit-title">3. Forbrugerkollaps (22,36 %) &amp; "Blue Sweep"</h3>
+                    <p class="audit-text">
+                        <strong>Strukturen:</strong> Hele datacenter-investeringen forudsatte, at forbrugerne og virksomhederne kunne betale for de færdige AI-løsninger, samt at skatteregimet forblev gunstigt.
+                    </p>
+                    <div class="audit-reality">
+                        <strong>Bruddet i dag:</strong> Med 22,36 % i kreditkortrente og ~7 % i misligholdelse svigter slutkunderne (Alphabet og Amazon har negativt frit cash flow). Samtidig truer Demokraternes Blue Sweep med at rulle 2025-skattefradragene tilbage.
+                    </div>
+                </div>
+
+                <div class="audit-card">
+                    <div class="audit-phase">Mekanisme 4 • Næste Kapitel (2027)</div>
+                    <h3 class="audit-title">4. De-Grossing &amp; Smitten til Erhvervsgælden</h3>
+                    <p class="audit-text">
+                        <strong>Strukturen:</strong> Gearede hedgefonde har ramt deres tabsgrænser (drawdown limits) og gennemfører nu tvangssalg (de-grossing) på tværs af aktivklasser for at skaffe kontanter.
+                    </p>
+                    <div class="audit-reality">
+                        <strong>Næste fase:</strong> I 2027 spreder krisen sig fra tech til de traditionelle kreditmarkeder, når almindelige virksomheder i realøkonomien skal refinansiere deres 5-årige 2021/2022-erhvervsgæld og møder lukkede døre.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 1. REGIONALE KNÆKPUNKTSMÅLERE -->
+        <h2 style="font-size: 1.35rem; color: var(--dark); margin: 0 0 16px 0;">Regionale Nøgletal &amp; Knækpunkts-målere</h2>
+        <section class="radar-grid">
+
+            <!-- USA -->
+            <div class="pole-card" style="border-top: 4px solid var(--danger);">
+                <div>
+                    <div class="pole-header">
+                        <span class="pole-title">USA</span>
+                        <span class="pole-tag">Treasury, Term Premium &amp; Rollover</span>
+                    </div>
+                    <div class="stat-line"><span>Bruttogæld / Offentlig Gæld:</span><span class="stat-val">$40,58T / $32,43T</span></div>
+                    <div class="stat-line"><span>Netto-renteudgift (FY26):</span><span class="stat-val">$1.052 mia. (&gt; Forsvaret $965 mia.)</span></div>
+                    <div class="stat-line"><span>Kreditkortrente / Misligholdelse:</span><span class="stat-val">22,36 % / ~7,0 % (Alvorlig)</span></div>
+                    <div class="stat-line"><span>Kritisk Knækpunkt (i_crit):</span><span class="stat-val" style="color: var(--danger);">5,25 – 5,50 %</span></div>
+
+                    <div class="knæk-box">
+                        <div class="knæk-title-row">
+                            <span style="color: var(--danger);">Crowding Out &amp; Rollover-stres</span>
+                            <span style="color: var(--danger);">98 % af knækpunkt</span>
+                        </div>
+                        <div class="knæk-track-wrapper">
+                            <div class="knæk-track">
+                                <div class="knæk-fill fill-usa" style="width: 98%;"></div>
+                            </div>
+                            <div class="knæk-threshold-marker"></div>
+                            <span class="knæk-threshold-label">Knækpunkt</span>
+                        </div>
+                        <div class="knæk-scale-labels">
+                            <span>0% (Stabil)</span>
+                            <span>50% (Forhøjet)</span>
+                            <span style="color: var(--danger); font-weight: 700;">100% (Brud)</span>
+                        </div>
+                        <div class="knæk-stats-table">
+                            <div class="sub-stat">
+                                <span class="sub-stat-lbl">Gennemsnitsrente</span>
+                                <span class="sub-stat-val">3,53 % &rarr; 5%+</span>
+                            </div>
+                            <div class="sub-stat">
+                                <span class="sub-stat-lbl">12-mdr Rollover</span>
+                                <span class="sub-stat-val" style="color: var(--danger);">~$11,0T (33%)</span>
+                            </div>
+                            <div class="sub-stat">
+                                <span class="sub-stat-lbl">Knækpunkt</span>
+                                <span class="sub-stat-val" style="color: var(--danger);">5,25 %</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pole-desc">
+                        Når ~$11 billioner i gammel pandemi-gæld (1–1,5 %) rulles over til 4,5–5,2 %, støvsuger US Treasury al likviditet i markedet og presser <em>Term Premium</em> op. Det har udløst det akutte kreditstop for AI-sektorens neoclouds og rammer den bredere erhvervsgæld i 2027.
+                    </div>
+                </div>
+                <div class="trigger-alert">
+                    <strong>Primær trigger:</strong> Crowding out fra statsgælden fryser refinansieringen af erhvervsgæld i Q1 2027.
+                </div>
+            </div>
+
+            <!-- FRANKRIG -->
+            <div class="pole-card" style="border-top: 4px solid #7c3aed;">
+                <div>
+                    <div class="pole-header">
+                        <span class="pole-title">Frankrig</span>
+                        <span class="pole-tag">Euro-Crisis II • 3Q BNP -0,1 %</span>
+                    </div>
+                    <div class="stat-line"><span>Statsgæld / 3Q BNP-vækst:</span><span class="stat-val">118% af BNP / &minus;0,1 %</span></div>
+                    <div class="stat-line"><span>Fransk 10Y Rente (24-års top):</span><span class="stat-val">4,80 % (&gt; Italien 4,6%, Grækenland 4,4%)</span></div>
+                    <div class="stat-line"><span>Krav til primær stramning:</span><span class="stat-val">4,7 % af BNP for at stabilisere</span></div>
+                    <div class="stat-line"><span>Kritisk Knækpunkt (i_crit):</span><span class="stat-val" style="color: #7c3aed;">OAT &gt; 5,00 % / Spread &gt; 110 bps</span></div>
+
+                    <div class="knæk-box">
+                        <div class="knæk-title-row">
+                            <span style="color: #7c3aed;">Obligationsstress &amp; Kontraktion</span>
+                            <span style="color: #7c3aed;">94 % af knækpunkt</span>
+                        </div>
+                        <div class="knæk-track-wrapper">
+                            <div class="knæk-track">
+                                <div class="knæk-fill fill-france" style="width: 94%;"></div>
+                            </div>
+                            <div class="knæk-threshold-marker"></div>
+                            <span class="knæk-threshold-label">Knækpunkt</span>
+                        </div>
+                        <div class="knæk-scale-labels">
+                            <span>3,0 %</span>
+                            <span>4,0 % (Advarsel)</span>
+                            <span style="color: #7c3aed; font-weight: 700;">5,00 % (Brud)</span>
+                        </div>
+                        <div class="knæk-stats-table">
+                            <div class="sub-stat">
+                                <span class="sub-stat-lbl">Aktuel 10Y OAT</span>
+                                <span class="sub-stat-val">4,80 %</span>
+                            </div>
+                            <div class="sub-stat">
+                                <span class="sub-stat-lbl">Buffer til brud</span>
+                                <span class="sub-stat-val" style="color: #7c3aed;">0,20 %-point</span>
+                            </div>
+                            <div class="sub-stat">
+                                <span class="sub-stat-lbl">Knækpunkt</span>
+                                <span class="sub-stat-val" style="color: #7c3aed;">&gt; 5,00 %</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pole-desc">
+                        Med en økonomi i kontraktion (-0,1 %) og en rente på 4,80 % er Frankrig fanget i Mitterrand-fælden. Landet betaler mere end Grækenland, og ECB er afskåret fra at redde obligationsmarkedet pga. det globale inflationspres.
+                    </div>
+                </div>
+                <div class="trigger-alert">
+                    <strong>Primær trigger:</strong> Fransk 10Y bryder 5,0 % frem mod præsidentvalget i april 2027.
+                </div>
+            </div>
+
+            <!-- JAPAN -->
+            <div class="pole-card" style="border-top: 4px solid var(--warning);">
+                <div>
+                    <div class="pole-header">
+                        <span class="pole-title">Japan</span>
+                        <span class="pole-tag">Bank of Japan &amp; Softbank-stres</span>
+                    </div>
+                    <div class="stat-line"><span>Statsgæld af BNP:</span><span class="stat-val">~260 % (Global rekord)</span></div>
+                    <div class="stat-line"><span>Styringsrente / Valuta:</span><span class="stat-val">BoJ: 1,25 % / USD/JPY: ~157,20</span></div>
+                    <div class="stat-line"><span>Softbank &amp; AI-eksponering:</span><span class="stat-val">Halveret siden juni (CDS i top)</span></div>
+                    <div class="stat-line"><span>Kritisk Knækpunkt (i_crit):</span><span class="stat-val" style="color: var(--warning);">BoJ &gt; 2,00% / USD/JPY &gt; 162</span></div>
+
+                    <div class="knæk-box">
+                        <div class="knæk-title-row">
+                            <span style="color: var(--warning);">Valutapres &amp; Likvidation</span>
+                            <span style="color: var(--warning);">85 % af knækpunkt</span>
+                        </div>
+                        <div class="knæk-track-wrapper">
+                            <div class="knæk-track">
+                                <div class="knæk-fill fill-japan" style="width: 85%;"></div>
+                            </div>
+                            <div class="knæk-threshold-marker"></div>
+                            <span class="knæk-threshold-label">Knækpunkt</span>
+                        </div>
+                        <div class="knæk-scale-labels">
+                            <span>140 JPY</span>
+                            <span>150 JPY</span>
+                            <span style="color: var(--warning); font-weight: 700;">162 JPY (Brud)</span>
+                        </div>
+                        <div class="knæk-stats-table">
+                            <div class="sub-stat">
+                                <span class="sub-stat-lbl">Aktuel kurs</span>
+                                <span class="sub-stat-val">157,2 JPY</span>
+                            </div>
+                            <div class="sub-stat">
+                                <span class="sub-stat-lbl">Buffer til brud</span>
+                                <span class="sub-stat-val" style="color: var(--warning);">4,8 Yen</span>
+                            </div>
+                            <div class="sub-stat">
+                                <span class="sub-stat-lbl">Knækpunkt</span>
+                                <span class="sub-stat-val" style="color: var(--warning);">&gt; 162 JPY</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pole-desc">
+                        Mens Tokyo tvinges til at sælge ud af amerikanske statsobligationer for at støtte yenen, rammes japanske Softbank hårdt af nedsmeltningen i neocloud- og AI-økosystemet.
+                    </div>
+                </div>
+                <div class="trigger-alert">
+                    <strong>Primær trigger:</strong> USD/JPY bryder 162; BoJ tvunget til stramning midt i global de-grossing.
+                </div>
+            </div>
+
+            <!-- EUROZONEN & DANMARK -->
+            <div class="pole-card" style="border-top: 4px solid var(--safe);">
+                <div>
+                    <div class="pole-header">
+                        <span class="pole-title">EU &amp; Danmark</span>
+                        <span class="pole-tag">ECB, Nationalbanken &amp; Robusthed</span>
+                    </div>
+                    <div class="stat-line"><span>ECB Rente &amp; Inflation:</span><span class="stat-val">Tvunget til stram linje mod inflation</span></div>
+                    <div class="stat-line"><span>DK 30Y Realkredit:</span><span class="stat-val">5,00 % Fast (Kurs ~98)</span></div>
+                    <div class="stat-line"><span>Dansk Beredskab:</span><span class="stat-val">ESO lanceret mod forsyningskriser</span></div>
+                    <div class="stat-line"><span>Kritisk Knækpunkt (i_crit):</span><span class="stat-val" style="color: var(--safe);">Realkredit &gt; 5,50% / OAT-smitte</span></div>
+
+                    <div class="knæk-box">
+                        <div class="knæk-title-row">
+                            <span style="color: var(--safe);">Rente- og kreditmarkedspres</span>
+                            <span style="color: var(--safe);">86 % af knækpunkt</span>
+                        </div>
+                        <div class="knæk-track-wrapper">
+                            <div class="knæk-track">
+                                <div class="knæk-fill fill-eu" style="width: 86%;"></div>
+                            </div>
+                            <div class="knæk-threshold-marker"></div>
+                            <span class="knæk-threshold-label">Knækpunkt</span>
+                        </div>
+                        <div class="knæk-scale-labels">
+                            <span>2,0 %</span>
+                            <span>4,0 % (Moderat)</span>
+                            <span style="color: var(--safe); font-weight: 700;">5,50 % (Brud)</span>
+                        </div>
+                        <div class="knæk-stats-table">
+                            <div class="sub-stat">
+                                <span class="sub-stat-lbl">Aktuel rente</span>
+                                <span class="sub-stat-val">5,00 %</span>
+                            </div>
+                            <div class="sub-stat">
+                                <span class="sub-stat-lbl">Buffer til brud</span>
+                                <span class="sub-stat-val" style="color: var(--safe);">0,50 %-point</span>
+                            </div>
+                            <div class="sub-stat">
+                                <span class="sub-stat-lbl">Knækpunkt</span>
+                                <span class="sub-stat-val" style="color: var(--safe);">&gt; 5,50 %</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pole-desc">
+                        Både USA og Europa rammes af det globale rentepres for at undgå en ny inflationsbølge, men mens fransk statsgæld udgør eurozonens svage led, står den nordeuropæiske og danske realøkonomi med et mere robust udgangspunkt end den gearede amerikanske AI-økonomi.
+                    </div>
+                </div>
+                <div class="trigger-alert">
+                    <strong>Primær trigger:</strong> Fransk OAT-smitte kombineret med global kreditstramning i 2027.
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. AKTIV-DASHBOARD BAR -->
+        <section class="asset-bar-section">
+            <h2>Aktivmarkedernes Ligevægt: Tværgående Radar</h2>
+            <p class="asset-bar-intro">
+                Når Nvidias cirkulære vendor financing stopper, og US Treasury støvsuger likviditeten via rollover-muren, rammes aktivmarkederne af en synkron de-grossing-bølge:
+            </p>
+
+            <div class="asset-metrics-grid">
+                <div class="asset-card">
+                    <div>
+                        <div class="asset-type">Nvidia &amp; Neoclouds</div>
+                        <div class="asset-val">Skyggebank-Brud</div>
+                        <div class="asset-subtag" style="color: var(--danger);">CoreWeave &minus;36 % (1 md.)</div>
+                    </div>
+                    <p class="asset-note">GPU'er brugt som sikkerhed (collateral) i Private Credit mister værdi, når kreditmarkedet smækker kassen i for 200+ neoclouds.</p>
+                </div>
+
+                <div class="asset-card" style="border-top: 3px solid var(--danger);">
+                    <div>
+                        <div class="asset-type">Big Tech Cash Flow</div>
+                        <div class="asset-val">Negativt FCF</div>
+                        <div class="asset-subtag" style="color: var(--danger);">Alphabet &amp; Amazon bløder</div>
+                    </div>
+                    <p class="asset-note">Astronomiske CapEx-udgifter kolliderer med en udpint forbruger (22,36 % kreditkortrente), der ikke har råd til AI-softwaren.</p>
+                </div>
+
+                <div class="asset-card">
+                    <div>
+                        <div class="asset-type">Term Premium &amp; Renter</div>
+                        <div class="asset-val">4,5 – 5,2 %</div>
+                        <div class="asset-subtag" style="color: var(--warning);">Crowding Out fra ~$11T</div>
+                    </div>
+                    <p class="asset-note">Staten ruller 33 % af gælden over og suger al kapital ud af markedet. Risikotillægget på lange renter presses strukturelt op.</p>
+                </div>
+
+                <div class="asset-card" style="border-top: 3px solid var(--safe);">
+                    <div>
+                        <div class="asset-type">Guld &amp; Kontant Likviditet</div>
+                        <div class="asset-val">$4.183+</div>
+                        <div class="asset-subtag" style="color: var(--safe);">Strategisk Tørt Krudt</div>
+                    </div>
+                    <p class="asset-note">Mens gearede hedgefonde tvangssælger alt for at skaffe kontanter, giver likviditet og kort variabel rente fuld handlefrihed.</p>
+                </div>
+            </div>
+
+            <div class="erp-comparison-box">
+                <div class="erp-calc-text">
+                    <strong>Fra AI-Eufori til De-Grossing &amp; Kreditkrise:</strong><br>
+                    Når sikkerhedsstillelsen (GPU-collateral) falder i værdi, og Term Premium stiger, udløses tvangssalg hos gearede fonde – optakten til 2027-erhvervsgældsmuren.
+                </div>
+                <div class="erp-badge">Fase: Aktiv Likvidation</div>
+            </div>
+        </section>
+
+        <!-- 3. FREMSKRIVNING AF ROLLOVER-EFFEKTEN -->
+        <section class="projection-section">
+            <h2>Fremskrivningsmodel: Rollover-muren (2026–2030) &amp; Smitten til Erhvervsgælden</h2>
+            <p style="font-size: 0.94rem; color: #334151; margin: 0 0 14px 0;">
+                USA's statsgæld på over $40,5 billioner ($32,43T i markedet) har en gennemsnitlig løbetid (WAM) på knap 5,9 år. Det betyder, at 33 % (~$11 billioner) udløber inden for 12 måneder og skal refinansieres fra pandemiens 1–1,5 % til dagens markedsrente på 4,5–5,2 %+:
+            </p>
+
+            <div class="timeline-card-grid">
+                <div class="timeline-step active">
+                    <div>
+                        <div class="timeline-year-tag">2026 (Aktuel) • Gæld: $32,4T</div>
+                        <div class="timeline-amount">$1,05 billioner</div>
+                        <div class="timeline-bnp">3,6 % af BNP (Snitrente: 3,53 %)</div>
+                        <div class="timeline-desc">Netto-renteudgiften ($1.052 mia.) har allerede overhalet hele det amerikanske forsvarsbudget ($965 mia.). Crowding out lukker gældsmarkedet for AI-neoclouds.</div>
+                    </div>
+                </div>
+
+                <div class="timeline-step active" style="border-top-color: var(--warning);">
+                    <div>
+                        <div class="timeline-year-tag">2027–2028 • Gæld: $35,1T &rarr; $38,0T</div>
+                        <div class="timeline-amount">$1,45T &rarr; $1,85T+</div>
+                        <div class="timeline-bnp">4,8 % &rarr; 6,0 % af BNP (Corporate Wall)</div>
+                        <div class="timeline-desc">Samtidig med statens rollover-mur skal erhvervslivet refinansiere deres 5-årige 2021/2022-lån og møder præcis de samme lukkede kreditdøre som AI-sektoren.</div>
+                    </div>
+                </div>
+
+                <div class="timeline-step danger">
+                    <div>
+                        <div class="timeline-year-tag" style="color: var(--danger);">2029–2030 • Gæld: $41,2T &rarr; $45,0T+</div>
+                        <div class="timeline-amount" style="color: var(--danger);">$2,14T &rarr; $2,40T+</div>
+                        <div class="timeline-bnp">&gt; 7,0 % af BNP (Altdominerende post)</div>
+                        <div class="timeline-desc">Hele gældsporteføljen er rullet over til de nye højere renter. Renteudgifterne fortrænger alt andet på statsbudgettet.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="snowball-chart">
+                <h4 style="margin: 0 0 14px 0; color: var(--dark); font-size: 1.05rem;">5-Årig Matematisk Fremskrivning af USA's Netto-Renteudgifter ($IE_t = i_t^w \cdot D_t$)</h4>
+                <div class="snowball-row">
+                    <div class="snowball-label"><span>2026 (Aktuel): Gennemsnitsrente 3,53 % (Markedsgæld: $32,4T)</span><span style="font-family: monospace;">$1.052 mia. (3,6 % af BNP)</span></div>
+                    <div class="snowball-bar-bg"><div class="snowball-bar-fill" style="width: 44%; background: #3b82f6;"></div></div>
+                </div>
+                <div class="snowball-row">
+                    <div class="snowball-label"><span>2027: Gennemsnitsrente 4,12 %+ (Markedsgæld: $35,1T)</span><span style="font-family: monospace;">$1.450 mia.+ (4,8 % af BNP)</span></div>
+                    <div class="snowball-bar-bg"><div class="snowball-bar-fill" style="width: 63%; background: #f59e0b;"></div></div>
+                </div>
+                <div class="snowball-row">
+                    <div class="snowball-label"><span>2028: Gennemsnitsrente 4,55 %+ (Markedsgæld: $38,0T)</span><span style="font-family: monospace;">$1.730–1.850 mia. (5,8 % af BNP)</span></div>
+                    <div class="snowball-bar-bg"><div class="snowball-bar-fill" style="width: 80%; background: #ea580c;"></div></div>
+                </div>
+                <div class="snowball-row" style="margin-bottom: 0;">
+                    <div class="snowball-label" style="color: var(--danger);"><span><strong>2030: Fuld Rollover + Stigende Term Premium (Markedsgæld: $44,6T+)</strong></span><span style="font-family: monospace;"><strong>$2.140–2.400 mia. (&gt;7,0 % af BNP)</strong></span></div>
+                    <div class="snowball-bar-bg"><div class="snowball-bar-fill" style="width: 100%; background: #b91c1c;"></div></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. TEORETISK FUNDAMENT -->
+        <section class="theory-card">
+            <h2>Teoretisk Fundament: Intertemporal Budgetrestriktion, Blanchard &amp; Sargent-Wallace</h2>
+            <p style="font-size: 0.94rem; color: #334151; margin: 0 0 10px 0;">
+                Når 33 % ($\alpha = 0,33$) af gælden udløber årligt, og statens massive udbud af obligationer presser <em>Term Premium</em> og markedsrenten ($i_t^m$) op, rammes statens vægtede gennemsnitsrente ($i_t^w$) af en ubønhørlig mekanisk stigning:
+            </p>
+            <div class="math-display-card">
+                <div class="math-formula">
+                    <span class="math-var">i</span><sub>t+1</sub><sup>w</sup> = 
+                    <span class="math-fraction">
+                        <span class="num">(1 &minus; &alpha;)<span class="math-var">D</span><sub>t</sub> &middot; <span class="math-var">i</span><sub>t</sub><sup>w</sup> + (&alpha;<span class="math-var">D</span><sub>t</sub> + <span class="math-var">PD</span><sub>t</sub> + <span class="math-var">IE</span><sub>t</sub>) &middot; <span class="math-var">i</span><sub>t</sub><sup>m</sup>(&uarr;)</span>
+                        <span class="den"><span class="math-var">D</span><sub>t+1</sub></span>
+                    </span>
+                </div>
+                <div class="math-legend">
+                    <strong>Sargent-Wallace (1981) &amp; Blanchard (2019):</strong> Når finanspolitikken er dominant (primært underskud $pd_t &gt; 4,5\,\%$), og staten forkorter løbetiden ($\alpha \uparrow$), accelererer renteudgiften $IE_t$ og fortrænger privat kreditgivning (crowding out).
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. DET GLOBALE PRES: HVAD DER SKER DE NÆSTE MÅNEDER -->
+        <section class="global-context-box">
+            <h2>Fra Tech-Kollaps til Traditionel Kreditkrise: De Fire Fronter</h2>
+            <p class="context-intro">
+                Krakket "kommer" ikke længere – vi befinder os midt i den indledende likvidationsfase, hvor chokket nu forplanter sig fra AI-kredsløbet til den bredere økonomi:
+            </p>
+
+            <div class="interconnect-grid">
+                <div class="interconnect-item ai">
+                    <h3 class="interconnect-title">1. Nvidias Skyggebank-Model Er Brudt Sammen</h3>
+                    <p class="interconnect-text">Ved at skyde kapital og garantier i neoclouds (som CoreWeave, &minus;36 %), der pantsatte GPU'er i Private Credit, skabte Nvidia en kunstig efterspørgsel. Med oktober-kreditstoppet fordamper ordrebogen, og Nvidia står tilbage med direkte kreditrisiko.</p>
+                </div>
+
+                <div class="interconnect-item usa">
+                    <h3 class="interconnect-title">2. Crowding Out fra USA's 11-Billioners Rollover</h3>
+                    <p class="interconnect-text">33 % af USA's statsgæld skal refinansieres over de næste 12 måneder fra 1–1,5 % til 4,5–5,2 %. Bessents kortfristede gældsudstedelser suger al likviditet ud af systemet og løfter Term Premium.</p>
+                </div>
+
+                <div class="interconnect-item bessent">
+                    <h3 class="interconnect-title">3. Forbrugeren (22,36 %) &amp; "Blue Sweep"-Chokket</h3>
+                    <p class="interconnect-text">Slutbrugeren er knækket under 22,36 % i kreditkortrente (~7 % i misligholdelse), mens Demokraternes Blue Sweep åbner for stram datacenter-regulering og tilbagerulning af Trumps 2025-skattefradrag (One Big Beautiful Bill Act).</p>
+                </div>
+
+                <div class="interconnect-item france">
+                    <h3 class="interconnect-title">4. 2027: Smitten til Traditionelle Kreditmarkeder</h3>
+                    <p class="interconnect-text">Mens gearede hedgefonde gennemfører tvangssalg (de-grossing), bliver næste kapitel spredningen fra tech over i de traditionelle kreditmarkeder, når erhvervslivets 2027-gældsmur møder de samme lukkede døre.</p>
+                </div>
+            </div>
+
+            <div class="synthesis-card">
+                <strong>Syntese pr. 13. november 2026:</strong>  
+                Nedturen er drevet af AI, men formet af makroøkonomisk tyngdekraft. Når den strukturelle bundprop (Nvidias vendor financing) trækkes ud midt i en statslig rollover-mur på ~$11 billioner, bevæger markedet sig direkte fra tech-likvidation til en bred erhvervskreditkrise i 2027.
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        &copy; 2026 Lasse Holt. Makroøkonomisk Radar &amp; Systemisk Telemetri.
+    </footer>
+
+    <!-- GOOGLE TRANSLATE WIDGET SCRIPT -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({pageLanguage: 'da', includedLanguages: 'en,de,fr,es', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>
