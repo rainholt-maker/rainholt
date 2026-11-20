@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Makroøkonomi: Systemisk Radar, WAM & Knækpunkter – Lasse Holt</title>
-    <meta name="description" content="Systemisk makroøkonomisk analyse pr. 13. november 2026: Weighted Average Maturity (5-års lag-effekt), skyggebankernes GPU-collateral krise, japansk statsgæld, Term Premium, guld og synkrone knækpunkter.">
+    <title>Makroøkonomi: Systemisk Radar, OAS & Knækpunkter – Lasse Holt</title>
+    <meta name="description" content="Systemisk makroøkonomisk analyse pr. 20. november 2026: Inversion i Tech-kreditspænd (OAS), Metas 220 bps udstedelse, $440-685 mia. AI-gæld i 2027, WAM rollover-mur, Term Premium og Anything but AI-rotationen.">
     <style>
         :root {
             --primary: #1e3a8a;
@@ -96,47 +96,6 @@
         .crisis-val { font-family: monospace; font-size: 1.18rem; font-weight: 800; color: var(--danger); margin-bottom: 4px; }
         .crisis-target { font-size: 0.78rem; font-weight: 600; color: #7f1d1d; }
 
-        /* VIX METER BOKS */
-        .vix-focus-box {
-            background: #ffffff;
-            border: 1px solid #fecaca;
-            border-radius: 6px;
-            padding: 16px 18px;
-            margin-bottom: 16px;
-        }
-        .vix-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            margin-bottom: 8px;
-            font-size: 0.85rem;
-            font-weight: 700;
-            color: var(--dark);
-            flex-wrap: wrap;
-            gap: 6px;
-        }
-        .vix-bar-track {
-            height: 16px;
-            background: #e2e8f0;
-            border-radius: 4px;
-            overflow: hidden;
-            position: relative;
-            border: 1px solid #cbd5e1;
-        }
-        .vix-bar-fill {
-            height: 100%;
-            width: 60%;
-            background: linear-gradient(90deg, #10b981 0%, #f59e0b 45%, #dc2626 85%, #7f1d1d 100%);
-        }
-        .vix-scale {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.72rem;
-            color: #64748b;
-            font-weight: 600;
-            margin-top: 5px;
-        }
-
         .crisis-timeline-box {
             background: #ffffff;
             border: 1px solid #e2e8f0;
@@ -147,47 +106,8 @@
             line-height: 1.6;
         }
 
-        /* SEKTION: WAM & PENGEPOLITISK LAG-EFFEKT */
-        .wam-section {
-            background: #ffffff;
-            border: 1px solid var(--border);
-            border-left: 5px solid var(--dark);
-            border-radius: 8px;
-            padding: 28px;
-            margin-bottom: 35px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
-        }
-        .wam-section h2 { margin: 0 0 10px 0; font-size: 1.38rem; color: var(--dark); }
-        .wam-comparison-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 18px;
-            margin: 18px 0;
-        }
-        @media (max-width: 768px) {
-            .wam-comparison-grid { grid-template-columns: 1fr; }
-        }
-        .wam-box {
-            background: #f8fafc;
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            padding: 18px;
-        }
-        .wam-box.myth { border-top: 4px solid #64748b; }
-        .wam-box.reality { border-top: 4px solid var(--danger); background: #fffafa; }
-        .wam-tag {
-            font-size: 0.72rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 6px;
-            display: block;
-        }
-        .wam-box h3 { margin: 0 0 8px 0; font-size: 1.08rem; color: var(--dark); }
-        .wam-box p { margin: 0; font-size: 0.89rem; color: #334151; line-height: 1.55; }
-
-        /* SKYGGEBANK TRANSMISSIONS-FLOW */
-        .shadow-bank-section {
+        /* NY SEKTION: KREDITSPÆND (OAS) & HYPERSCALER TABEL */
+        .oas-section {
             background: #ffffff;
             border: 1px solid var(--border);
             border-left: 5px solid var(--purple);
@@ -196,7 +116,42 @@
             margin-bottom: 35px;
             box-shadow: 0 1px 3px rgba(0,0,0,0.02);
         }
-        .shadow-bank-section h2 { margin: 0 0 10px 0; font-size: 1.38rem; color: var(--dark); }
+        .oas-section h2 { margin: 0 0 10px 0; font-size: 1.38rem; color: var(--dark); }
+        .table-responsive { overflow-x: auto; margin: 18px 0; }
+        table.oas-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.87rem;
+            background: #ffffff;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+        }
+        table.oas-table th, table.oas-table td {
+            padding: 11px 14px;
+            border-bottom: 1px solid var(--border);
+            text-align: left;
+            vertical-align: top;
+        }
+        table.oas-table th {
+            background: #f8fafc;
+            font-weight: 700;
+            color: var(--dark);
+            border-bottom: 2px solid var(--border);
+        }
+        table.oas-table tr:hover { background: #fbfcfe; }
+        .neg-fcf { color: var(--danger); font-family: monospace; font-weight: 700; }
+
+        /* ROTATION & 2027 TRENDS */
+        .rotation-section {
+            background: #ffffff;
+            border: 1px solid var(--border);
+            border-left: 5px solid var(--safe);
+            border-radius: 8px;
+            padding: 28px;
+            margin-bottom: 35px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+        }
+        .rotation-section h2 { margin: 0 0 10px 0; font-size: 1.38rem; color: var(--dark); }
         .chain-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -214,12 +169,11 @@
             border: 1px solid var(--border);
             border-radius: 6px;
             padding: 15px;
-            position: relative;
         }
         .chain-step-num {
             font-size: 0.72rem;
             font-weight: 800;
-            color: var(--purple);
+            color: var(--safe);
             text-transform: uppercase;
             margin-bottom: 4px;
             display: block;
@@ -376,97 +330,6 @@
             color: #881337;
         }
 
-        /* AKTIV-DASHBOARD BAR */
-        .asset-bar-section {
-            background: #ffffff;
-            border: 1px solid var(--border);
-            border-left: 5px solid var(--safe);
-            border-radius: 8px;
-            padding: 26px;
-            margin-bottom: 35px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
-        }
-        .asset-bar-section h2 { margin: 0 0 8px 0; font-size: 1.35rem; color: var(--dark); }
-        .asset-bar-intro { font-size: 0.94rem; color: #334151; line-height: 1.6; margin-bottom: 20px; }
-
-        .asset-metrics-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 14px;
-            margin-bottom: 20px;
-        }
-        @media (max-width: 820px) {
-            .asset-metrics-grid { grid-template-columns: repeat(2, 1fr); }
-        }
-        @media (max-width: 520px) {
-            .asset-metrics-grid { grid-template-columns: 1fr; }
-        }
-        .asset-card {
-            background: #f8fafc;
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            padding: 16px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-        .asset-type {
-            font-size: 0.72rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            color: #64748b;
-            margin-bottom: 4px;
-        }
-        .asset-val {
-            font-family: monospace;
-            font-size: 1.3rem;
-            font-weight: 800;
-            color: var(--dark);
-            margin-bottom: 4px;
-        }
-        .asset-subtag {
-            font-size: 0.78rem;
-            font-weight: 700;
-            margin-bottom: 8px;
-        }
-        .asset-note {
-            font-size: 0.82rem;
-            color: #475569;
-            line-height: 1.45;
-            border-top: 1px solid #e2e8f0;
-            padding-top: 8px;
-            margin: 0;
-        }
-
-        .erp-comparison-box {
-            background: #fffafa;
-            border: 1px solid #fecaca;
-            border-radius: 6px;
-            padding: 16px 18px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
-        .erp-calc-text {
-            font-size: 0.9rem;
-            color: #7f1d1d;
-            line-height: 1.5;
-        }
-        .erp-calc-text strong { color: var(--danger); }
-        .erp-badge {
-            background: var(--danger);
-            color: #ffffff;
-            font-family: monospace;
-            font-weight: 700;
-            font-size: 0.95rem;
-            padding: 6px 12px;
-            border-radius: 4px;
-            white-space: nowrap;
-        }
-
         /* FREMSKRIVNINGS-SEKTION */
         .projection-section {
             background: #ffffff;
@@ -478,117 +341,19 @@
         }
         .projection-section h2 { margin: 0 0 10px 0; font-size: 1.35rem; color: var(--dark); }
 
-        .timeline-card-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 16px;
-            margin: 20px 0;
-        }
-        @media (max-width: 768px) {
-            .timeline-card-grid { grid-template-columns: 1fr; }
-        }
-        .timeline-step {
-            background: #f8fafc;
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            padding: 16px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-        .timeline-step.active { border-top: 4px solid var(--primary); }
-        .timeline-step.danger { border-top: 4px solid var(--danger); background: #fffafa; }
-        .timeline-year-tag {
-            font-size: 0.75rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            color: #64748b;
-            margin-bottom: 4px;
-        }
-        .timeline-amount {
-            font-family: monospace;
-            font-size: 1.35rem;
-            font-weight: 800;
-            color: var(--dark);
-            margin-bottom: 6px;
-        }
-        .timeline-bnp {
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: var(--danger);
-            margin-bottom: 10px;
-        }
-        .timeline-desc {
-            font-size: 0.86rem;
-            color: #334151;
-            line-height: 1.5;
-        }
-
         .snowball-chart {
             background: #f8fafc;
             border: 1px solid #e2e8f0;
             border-radius: 6px;
             padding: 20px;
-            margin-top: 20px;
+            margin-top: 16px;
         }
         .snowball-row { margin-bottom: 14px; }
         .snowball-label { display: flex; justify-content: space-between; font-size: 0.86rem; font-weight: 600; margin-bottom: 4px; flex-wrap: wrap; }
         .snowball-bar-bg { background: #e2e8f0; height: 18px; border-radius: 4px; overflow: hidden; width: 100%; }
         .snowball-bar-fill { height: 100%; border-radius: 4px; }
 
-        /* TEORETISK FUNDAMENT */
-        .theory-card {
-            background: #ffffff;
-            border: 1px solid var(--border);
-            border-left: 5px solid var(--primary);
-            border-radius: 8px;
-            padding: 26px;
-            margin-bottom: 35px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.03);
-        }
-        .theory-card h2 { margin: 0 0 12px 0; font-size: 1.35rem; color: var(--dark); }
-
-        .math-display-card {
-            background: #f8fafc;
-            border: 1px solid #e2e8f0;
-            border-radius: 6px;
-            padding: 16px 20px;
-            margin: 14px 0 18px 0;
-            text-align: center;
-        }
-        .math-formula {
-            font-family: "Cambria Math", "Georgia", "Times New Roman", serif;
-            font-size: 1.25rem;
-            color: #0f172a;
-            letter-spacing: 0.5px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 6px;
-        }
-        .math-var { font-style: italic; }
-        .math-fraction {
-            display: inline-flex;
-            flex-direction: column;
-            vertical-align: middle;
-            text-align: center;
-            padding: 0 4px;
-        }
-        .math-fraction .num { border-bottom: 1.5px solid #0f172a; padding-bottom: 1px; }
-        .math-fraction .den { padding-top: 1px; }
-        .math-legend {
-            font-size: 0.83rem;
-            color: #475569;
-            margin-top: 10px;
-            text-align: left;
-            border-top: 1px dashed #cbd5e1;
-            padding-top: 10px;
-            line-height: 1.55;
-        }
-
-        /* GLOBALT PRES */
+        /* 2027 STRUKTURELLE TRENDS */
         .global-context-box {
             background: #ffffff;
             border: 1px solid var(--border);
@@ -622,10 +387,10 @@
             border-radius: 6px;
             padding: 16px;
         }
-        .interconnect-item.ai { border-left-color: #7c3aed; }
-        .interconnect-item.bessent { border-left-color: var(--warning); }
-        .interconnect-item.usa { border-left-color: var(--danger); }
-        .interconnect-item.france { border-left-color: #0284c7; }
+        .interconnect-item.energy { border-left-color: var(--warning); }
+        .interconnect-item.intl { border-left-color: #0284c7; }
+        .interconnect-item.bonds { border-left-color: var(--purple); }
+        .interconnect-item.cash { border-left-color: var(--safe); }
         .interconnect-title {
             font-size: 1.02rem;
             font-weight: 700;
@@ -660,7 +425,7 @@
         <div class="header-top">
             <h1>Makroøkonomi: Systemisk Radar</h1>
         </div>
-        <div class="subtitle">Overvågning af global gældsdynamik, Weighted Average Maturity (WAM), Term Premium og finansielle knækpunkter</div>
+        <div class="subtitle">Overvågning af kreditspænd (OAS), Weighted Average Maturity (WAM), Term Premium og finansielle knækpunkter</div>
         <nav>
             <a href="index.html">&larr; Forside</a>
             <a href="makro.html" style="color: var(--primary); border-bottom: 2px solid var(--primary);">Makroøkonomi</a>
@@ -676,130 +441,128 @@
     <main>
         <!-- SIDST OPDATERET STATUSLINJE -->
         <div class="status-timestamp-bar">
-            <span><strong>Sidst opdateret:</strong> Fredag den 13. november 2026 kl. 20:30</span>
-            <a href="arkiv.html" style="color: #1e3a8a; font-weight: 600; text-decoration: none;">Læs ugens komplette systemiske gennemgang på Økonomisk Blog &rarr;</a>
+            <span><strong>Sidst opdateret:</strong> Fredag den 20. november 2026</span>
+            <a href="arkiv.html" style="color: #1e3a8a; font-weight: 600; text-decoration: none;">Læs ugens analyse om OAS &amp; "Anything but AI" på Økonomisk Blog &rarr;</a>
         </div>
 
         <!-- CRISIS DASHBOARD -->
         <section class="crisis-dashboard">
-            <h2>Crisis Dashboard: Den 5-Årige WAM-Fælde Klapper – Skyggebank-Kollaps, Suveræn Rollover &amp; Likvidationsfase</h2>
-            <div class="crisis-sub">Status pr. 13. november 2026: Hvorfor korthuset falder sammen netop nu – Sammenstødet mellem $10,7T statslig rollover, 200+ fastfrosne AI-neoclouds og globalt rentepres.</div>
+            <h2>Crisis Dashboard: Kreditspændene (OAS) Slår Nvidias Rally – "Anything but AI"-Rotationen i Fuld Gang</h2>
+            <div class="crisis-sub">Status pr. 20. november 2026: Obligationsmarkedet har stoppet med at behandle Big Tech som risikofrit, mens forvalternes kontantandel er nede på 3,6 %.</div>
 
             <div class="crisis-metrics-grid">
                 <div class="crisis-metric-card">
-                    <div class="crisis-lbl">WAM Rollover-Mur (12 mdr.)</div>
-                    <div class="crisis-val">$10,7 Billioner</div>
-                    <div class="crisis-target">WAM: 5,9 år (33 % fra 1 % &rarr; ~5 %)</div>
+                    <div class="crisis-lbl">Meta 2056-Spænd (Fitch)</div>
+                    <div class="crisis-val">220 bps</div>
+                    <div class="crisis-target">+90 bps udvidelse siden april 2026</div>
                 </div>
                 <div class="crisis-metric-card">
-                    <div class="crisis-lbl">Skyggebank &amp; GPU-Collateral</div>
-                    <div class="crisis-val">Kreditstop (200+)</div>
-                    <div class="crisis-target">CoreWeave &minus;36 % • De-grossing &minus;7,8 %</div>
+                    <div class="crisis-lbl">US High Yield OAS</div>
+                    <div class="crisis-val">334–357 bps</div>
+                    <div class="crisis-target">Oppe fra 270 bps (21. sept.) • Top: 367</div>
                 </div>
                 <div class="crisis-metric-card">
-                    <div class="crisis-lbl">Suveræne Renter (US / FR / JP)</div>
-                    <div class="crisis-val">5,36% / 4,80% / 1,25%</div>
-                    <div class="crisis-target">Synkron stramning • Ingen "Fed/ECB Put"</div>
+                    <div class="crisis-lbl">AI-Gældsbølge (2027 Est.)</div>
+                    <div class="crisis-val">$440 – $685 mia.</div>
+                    <div class="crisis-target">Kolliderer med $10,7T US Rollover</div>
                 </div>
                 <div class="crisis-metric-card">
-                    <div class="crisis-lbl">Guld vs. Forbrugerrente</div>
-                    <div class="crisis-val">$4.183+ / 22,36 %</div>
-                    <div class="crisis-target">Mistillidsrekord • ~7 % CC-misligholdelse</div>
-                </div>
-            </div>
-
-            <!-- VIX TERMOMETER -->
-            <div class="vix-focus-box">
-                <div class="vix-header">
-                    <span>Systemisk Likvidations- og De-Grossing-Skala (VIX, CDS &amp; Margin Calls)</span>
-                    <span style="color: var(--danger); font-family: monospace;">Aktuelt stadie: Fase 1 Likvidation (Nasdaq i korrektion &minus;5,4 % • VIX ~30)</span>
-                </div>
-                <div class="vix-bar-track">
-                    <div class="vix-bar-fill"></div>
-                </div>
-                <div class="vix-scale">
-                    <span>12–15 (Likviditetseufori)</span>
-                    <span>20 (Kreditspænd udvides)</span>
-                    <span style="color: var(--danger); font-weight: 700;">30 (De-grossing &amp; GPU Collateral Call)</span>
-                    <span>50–80 (2027 Corporate Maturity Freeze)</span>
+                    <div class="crisis-lbl">Forvalter-Cash (BofA FMS)</div>
+                    <div class="crisis-val">3,6 %</div>
+                    <div class="crisis-target">Ingen støddæmper ved 2027-kreditevent</div>
                 </div>
             </div>
 
             <div class="crisis-timeline-box">
-                <strong>Den kausale sammenhæng – Hvorfor bruddet sker nu (13. november 2026):</strong> 
-                Markedet befinder sig ikke i en almindelig aktiekorrektion, men i brudpunktet mellem to synkrone gældscyklusser: 
-                <strong>(1) Den 5-årige pengepolitiske lag-effekt (WAM):</strong> Den enorme mængde stats- og erhvervsgæld, der blev udstedt under nulrentepolitikken i 2020–2021 med en gennemsnitlig løbetid på 5–6 år, rammer refinansieringsmuren i Q4 2026 og gennem 2027. Når 33 % af USA's omsættelige gæld ($10,7T) skal rulles over fra ~1 % til ~5 % samtidigt med, at Japan (gæld 260 % af BNP) tvinges til at sælge US Treasuries for at forsvare yenen, støvsuges det globale kapitalmarked for likviditet (<em>crowding out</em>), og <strong>Term Premium</strong> presses strukturelt op. 
-                <strong>(2) Skyggebankernes kollaps i AI-sektoren:</strong> Denne likviditetstørke har lukket gældsmarkedet for de over 200 neoclouds, hvor Nvidia agerede skyggebank via <em>vendor financing</em>, og hvor indkøbte GPU-chips lå som sikkerhedsstillelse (collateral) i Private Credit. Når værdien af sikkerheden falder, udløses tvangssalg (de-grossing) hos gearede hedgefonde.
+                <strong>Rationel status (20. november 2026):</strong> 
+                Mens aktiemarkedet reagerede med et kortsigtet lettelsesrally på Nvidias Q3-regnskab (efterfulgt af fornyet uro), fortæller kreditmarkedet (OAS) en helt anden historie. Obligationsinvestorer bærer kun nedsiden, hvis gælden bliver for tung, og ifølge både <strong>Charles Schwab (13. nov.)</strong> og <strong>ECB's Financial Stability Review (10. nov.)</strong> har amerikanske tech-obligationer nu <em>overhalet</em> det brede Investment Grade-marked i kreditspænd. Når hyperscalerne i 2027 skal udstede $440–685 mia. i ny gæld oven i US Treasurys rollover-mur på over $10 billioner, opstår en dobbelt klemme: stigende OAS-spænd oven på en forhøjet <strong>Term Premium</strong>.
             </div>
         </section>
 
-        <!-- NY SEKTION: OPGØRET MED 12-18 MÅNEDERS MYTEN (WAM = 5,9 ÅR) -->
-        <section class="wam-section">
-            <h2>1. Pengepolitikkens Reelle Lag-Effekt: Hvorfor 5-Års WAM (Ikke 12–18 Måneder) Udløser Krakket i 2026/2027</h2>
-            <p style="font-size: 0.94rem; color: #334151; margin: 0;">
-                Under renteforhøjelserne i 2022–2024 konkluderede økonomer fejlagtigt, at økonomien var "immun" over for høje renter, fordi recessionen udeblev efter de klassiske 12–18 måneder. De overså, at transmissionsmekanismen på udbuds- og balancesiden styres af gældens <strong>Weighted Average Maturity (WAM)</strong>:
+        <!-- 1. KREDITSPÆNDENE (OAS) & HYPERSCALER-TABEL -->
+        <section class="oas-section">
+            <h2>1. Kreditspændene (OAS): Modvægten til Aktiemarkedets Rally</h2>
+            <p style="font-size: 0.94rem; color: #334151; margin: 0 0 12px 0;">
+                US Investment Grade OAS ligger omkring 90 bps (pr. 16. nov.), men dækker over en kraftig stigning i udstedelsesvolumen (+33 % år-til-år til $940 mia. i ikke-finansiel IG-gæld, tungt drevet af AI). Markedet prissætter nu hyperscalernes risiko hårdere end kreditvurderingsbureauerne:
             </p>
 
-            <div class="wam-comparison-grid">
-                <div class="wam-box myth">
-                    <span class="wam-tag" style="color: #64748b;">Den Klassiske Lærebogsmyte (Efterspørgsels-lag)</span>
-                    <h3>12 – 18 Måneders Horisont</h3>
-                    <p>
-                        Måler alene den kortsigtede effekt på nykredit og variabelt forrentede lån. Da både den amerikanske stat, S&amp;P 500-virksomhederne og erhvervsejendomssektoren (CRE) i 2020–2021 kurssikrede og udstedte 5- til 7-årige obligationer til 0,5–2,5 % i rente, blev rentechokket i 2022–2025 absorberet uden øjeblikkelig likvidationskrise.
-                    </p>
-                </div>
-
-                <div class="wam-box reality">
-                    <span class="wam-tag" style="color: var(--danger);">Den Strukturelle Balance-Virkelighed (Rollover-lag)</span>
-                    <h3>5,0 – 5,9 Års WAM-Horisont (Rammer Q4 2026 – 2028)</h3>
-                    <p>
-                        Den vægtede gennemsnitlige løbetid (WAM) på USA's omsættelige statsgæld ($32,43T) er <strong>71 måneder (5,9 år)</strong>, mens erhvervsobligationer (High Yield og Investment Grade) samt CRE-lån typisk udstedes med <strong>5 års løbetid</strong>. Det betyder, at 2021-udstedelserne udløber eksakt i <strong>slutningen af 2026 og gennem 2027</strong>. Rentestigningen slår først igennem i pengestrømmene i det øjeblik, gammel gæld på ~1 % tvangsomlægges til 5 %+ (statsgæld) og 7–9 % (erhvervsgæld).
-                    </p>
-                </div>
-            </div>
-
-            <div style="background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 6px; padding: 14px 18px; font-size: 0.89rem; color: #1e293b;">
-                <strong>Konsekvensen af finansminister Scott Bessents forkortelse af WAM:</strong> Ved at finansiere det løbende budgetunderskud på ~$2 billioner gennem kortfristede T-Bills (kreditkort-modellen) har US Treasury øget rollover-brøken ($\alpha = 0,33$), så hele <strong>$10,7 billioner skal refinansieres inden for 12 måneder</strong>. Samtidig rammer erhvervslivets <em>Corporate Debt Maturity Wall</em> i 2026–2028 på tværs af erhvervsejendomme (CRE), small-caps og kapitalintensiv energi/infrastruktur.
+            <div class="table-responsive">
+                <table class="oas-table">
+                    <thead>
+                        <tr>
+                            <th>Hyperscaler / Segment</th>
+                            <th>Frit Cash Flow (Seneste)</th>
+                            <th>Ny Gældsudstedelse / Risiko</th>
+                            <th>Kreditmarkedets Signal (Nov 2026)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Alphabet</strong></td>
+                            <td class="neg-fcf">&minus;$9,1 mia.</td>
+                            <td>~$80,8 mia. (første 9 mdr.) + €6 mia.</td>
+                            <td>Hurtig gældsvækst; markedet tester absorptionsgrænsen.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Meta</strong></td>
+                            <td class="neg-fcf">&minus;$1,2 mia.</td>
+                            <td>~$25,1 mia. i nye obligationer (udløb 2056)</td>
+                            <td><strong>+90 bps bredere spænd</strong> på lang gæld siden april (nu 220 bps over UST).</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Oracle</strong></td>
+                            <td class="neg-fcf">&minus;$5,4 mia.</td>
+                            <td>$10 mia. i High Yield + aktier</td>
+                            <td>Højeste finansieringsomkostninger; &gt;8 % effektiv rente.</td>
+                        </tr>
+                        <tr style="background: #fffafa;">
+                            <td><strong>Samlet AI-kredit (2027-estimat)</strong></td>
+                            <td class="neg-fcf">Stramt / Negativt</td>
+                            <td><strong>$440 mia.</strong> (Goldman) til <strong>$685 mia.</strong> inkl. Private Credit (BofA)</td>
+                            <td>Udstedelsesbølgen kolliderer frontalt med statens rollover-mur og Term Premium.</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </section>
 
-        <!-- NY SEKTION: SKYGGEBANKERNES FUNKTION & GPU-COLLATERAL SPIRALEN -->
-        <section class="shadow-bank-section">
-            <h2>2. Skyggebankernes Funktion: Fra Cirkulær Vendor Financing til GPU-Collateral Call</h2>
+        <!-- 2. "ANYTHING BUT AI"-ROTATIONEN -->
+        <section class="rotation-section">
+            <h2>2. Kapitalstrømme: "Anything but AI"-Rotationen</h2>
             <p style="font-size: 0.94rem; color: #334151; margin: 0;">
-                Hvor finanskrisen i 2008 blev drevet af subprime-boliglån pakket i CDO'er, er AI-boblen i 2024–2026 blevet finansieret uden om de regulerede forretningsbanker gennem et lukket kredsløb mellem <strong>Nvidia, over 200 "neoclouds" og skyggebanksektoren (Private Credit &amp; gearede hedgefonde)</strong>:
+                BofA's Fund Manager Survey dokumenterer, at forvalterne har barberet deres tech-overvægt ned i det hurtigste tempo siden 2006. Pengene er dog ikke parkeret i kontanter (cash-andelen er nede på 3,6 %), men er strømmet ind i fire konkrete lommer:
             </p>
 
             <div class="chain-grid">
                 <div class="chain-step">
-                    <span class="chain-step-num">Trin 1 • Vendor Financing</span>
-                    <h4>Nvidia som Skyggebank</h4>
+                    <span class="chain-step-num">Lomme 1 • Største Vinder</span>
+                    <h4>Energi (+15,3 % i 2H)</h4>
                     <p>
-                        Nvidia skyder direkte egenkapital og lejegarantier ind i urentable AI-startups og neoclouds (som CoreWeave). Pengene returneres straks til Nvidia som "organisk omsætning" ved køb af GPU-chips.
+                        Under AI-udsalget i oktober og november overperformede energisektoren massivt (+14,05 % i Morningstars US Energy Index under nedturen).
                     </p>
                 </div>
 
                 <div class="chain-step">
-                    <span class="chain-step-num">Trin 2 • Hardware-Pantsætning</span>
-                    <h4>GPU'er som Collateral</h4>
+                    <span class="chain-step-num">Lomme 2 • Defensiv Fælde</span>
+                    <h4>Healthcare &amp; Staples</h4>
                     <p>
-                        Neocloud-selskaberne bruger de indkøbte Nvidia-chips som fysisk sikkerhedsstillelse (collateral) til at optage milliardlån til 8–12 % rente hos Private Credit-fonde til opførelse af datacentre.
+                        Massive indstrømninger (+8,8 % til +14 % i 2H). Morningstar og Trustnet (16. nov.) advarer dog nu om boblelignende overvurdering i netop disse sektorer.
                     </p>
                 </div>
 
                 <div class="chain-step">
-                    <span class="chain-step-num">Trin 3 • Værdiforringelse</span>
-                    <h4>Teknologisk Forældelse &amp; Renter</h4>
+                    <span class="chain-step-num">Lomme 3 • Bredde</span>
+                    <h4>Equal-Weight S&amp;P 500</h4>
                     <p>
-                        En GPU har en økonomisk levetid på 2–3 år, før næste chipgeneration og kinesiske open-weight modeller udhuler lejeprisen. Når renterne stiger, falder nutidsværdien af sikkerheden under låneværdien (LTV bryder sammen).
+                        Kapitalen søger væk fra tech-koncentrationen: Det ligevægtede S&amp;P 500-indeks slog det markedsvægtede indeks med over 5 procentpoint i slutningen af oktober.
                     </p>
                 </div>
 
-                <div class="chain-step" style="border-top: 3px solid var(--danger); background: #fff5f5;">
-                    <span class="chain-step-num" style="color: var(--danger);">Trin 4 • Likvidation (Nu)</span>
-                    <h4>Kreditstop &amp; De-Grossing</h4>
+                <div class="chain-step">
+                    <span class="chain-step-num">Lomme 4 • Geografisk Flugt</span>
+                    <h4>Ud af USA mod 2027</h4>
                     <p>
-                        Skyggebankerne har lukket for ny gæld i oktober. CoreWeave er dykket 36 %, CDS-priserne på Big Tech er i rekord, og hedgefonde (som kontrollerer 8,5 % af US-statsgælden) tvangssælger aktiver (-7,8 % gross-flow).
+                        Institutionelle investorer har skiftet præference for 2027 væk fra dyre US-aktier: Netto 36 % foretrækker internationale aktier mod blot 24 % for USA.
                     </p>
                 </div>
             </div>
@@ -814,13 +577,12 @@
                 <div>
                     <div class="pole-header">
                         <span class="pole-title">USA</span>
-                        <span class="pole-tag">Treasury, WAM (5,9 år) &amp; Fed-Klemme</span>
+                        <span class="pole-tag">Treasury, WAM (5,9 år) &amp; Term Premium</span>
                     </div>
                     <div class="stat-line"><span>Bruttogæld / Offentligt holdt:</span><span class="stat-val">$40,58T (123% BNP) / $32,43T</span></div>
                     <div class="stat-line"><span>Netto-renteudgift (FY26):</span><span class="stat-val">$1.052 mia. (14,2% af budget)</span></div>
                     <div class="stat-line"><span>Gennemsnitsrente ($i^w$) vs. 10Y:</span><span class="stat-val">3,53 % vs. 5,05–5,36 %</span></div>
                     <div class="stat-line"><span>Forbrugergæld / Kreditkortrente:</span><span class="stat-val">$18,77T / 22,36 % (~7% misligh.)</span></div>
-                    <div class="stat-line"><span>Kritisk Knækpunkt (i_crit):</span><span class="stat-val" style="color: var(--danger);">5,25 – 5,50 % (Term Premium)</span></div>
 
                     <div class="knæk-box">
                         <div class="knæk-title-row">
@@ -856,11 +618,11 @@
                     </div>
 
                     <div class="pole-desc">
-                        Med en inflation på 3,7 % og stærkt lønpres er Fed under Kevin Warsh tvunget til at fastholde – og potentielt hæve – renten (op mod 50 bps risiko), mens $10,7T i 2020–2021-gæld skal rulles over. Samtidig kontrollerer gearede hedgefonde nu 8,5 % af Treasury-markedet via <em>basis trades</em>, hvilket gør statsgælden ekstremt sårbar over for de-grossing.
+                        5-års WAM-cyklussen (71 mdr.) sender $10,7T i 2020–2021-gæld ind i refinansieringsmuren samtidig med $440–685 mia. i ny AI-gæld i 2027. Det presser både Term Premium og OAS-spændene op samtidigt.
                     </div>
                 </div>
                 <div class="trigger-alert">
-                    <strong>Primær trigger:</strong> Samtidig likvidation af hedgefondenes Treasury basis-trades og 2027 Corporate Rollover.
+                    <strong>Primær trigger:</strong> Sammenstødet mellem US Treasury rollover og $685 mia. AI-kredit i 2027.
                 </div>
             </div>
 
@@ -875,7 +637,6 @@
                     <div class="stat-line"><span>Fransk 10Y OAT-rente:</span><span class="stat-val">4,80 % (&gt; Italien 4,6%, Grækenland 4,4%)</span></div>
                     <div class="stat-line"><span>Rente ($i$) vs. Trendvækst ($g$):</span><span class="stat-val">4,80 % vs. 3,10 % (Stramning: 4,7% BNP)</span></div>
                     <div class="stat-line"><span>OAT-Bund Rentespænd:</span><span class="stat-val">+85 bps (Hastig udvidelse)</span></div>
-                    <div class="stat-line"><span>Kritisk Knækpunkt (i_crit):</span><span class="stat-val" style="color: #7c3aed;">OAT &gt; 5,00 % / Spread &gt; 110 bps</span></div>
 
                     <div class="knæk-box">
                         <div class="knæk-title-row">
@@ -911,11 +672,11 @@
                     </div>
 
                     <div class="pole-desc">
-                        Frankrig er eurozonens tikkende bombe: For blot at stabilisere gældskvoten ved 4,80 % rente kræves en permanent finanspolitisk stramning på 4,7 % af BNP. Med optøjer i gaderne og et præsidentvalg i april 2027 (hvor yderfløjene kræver gældsannullering og lavere pensionsalder) kan Frankrig hverken devaluere eller reddes af ECB uden at udløse en inflationsbølge.
+                        Med en økonomi i kontraktion (-0,1 %) og en 10-årig rente over både Italien og Grækenland er Frankrig eurozonens svage led frem mod præsidentvalget i april 2027.
                     </div>
                 </div>
                 <div class="trigger-alert">
-                    <strong>Primær trigger:</strong> OAT bryder 5,00 % under finanslovskrisen og udløser et fransk "Liz Truss-øjeblik".
+                    <strong>Primær trigger:</strong> OAT bryder 5,00 % under finanslovskrisen i Q1 2027.
                 </div>
             </div>
 
@@ -924,13 +685,11 @@
                 <div>
                     <div class="pole-header">
                         <span class="pole-title">Japan</span>
-                        <span class="pole-tag">260 % Gæld, Carry-Trade &amp; Kreditor-Dræn</span>
+                        <span class="pole-tag">260 % Gæld &amp; Kreditor-Dræn</span>
                     </div>
                     <div class="stat-line"><span>Statsgæld af BNP:</span><span class="stat-val">~260 % (Verdens højeste)</span></div>
-                    <div class="stat-line"><span>BoJ Styringsrente / Valuta:</span><span class="stat-val">1,25 % (80% sandsynl. for hop) / ~157,2 JPY</span></div>
-                    <div class="stat-line"><span>Rolle i US Treasury-markedet:</span><span class="stat-val">Største udenlandske kreditor (Sælger ud)</span></div>
+                    <div class="stat-line"><span>BoJ Styringsrente / Valuta:</span><span class="stat-val">1,25 % (80% hop-risiko) / ~157,2 JPY</span></div>
                     <div class="stat-line"><span>Softbank (AI-konglomerat):</span><span class="stat-val">&minus;50 % siden juni (CDS i 4-års top)</span></div>
-                    <div class="stat-line"><span>Kritisk Knækpunkt (i_crit):</span><span class="stat-val" style="color: var(--warning);">BoJ &gt; 1,50–2,00% / USD/JPY &gt; 162</span></div>
 
                     <div class="knæk-box">
                         <div class="knæk-title-row">
@@ -966,11 +725,11 @@
                     </div>
 
                     <div class="pole-desc">
-                        Japan kunne kun bære 260 % statsgæld, så længe renten var 0 %. Nu tvinger inflation BoJ op i rente (1,25 % på vej mod december-stramning), hvilket udløser en dobbelt ketsjereffekt: Japanske institutioner trækker kapital hjem fra USA og Europa (hjemtagning af yen-carry-trade), mens Finansministeriet i Tokyo sælger US Treasuries i de asiatiske timer for at støtte yenen.
+                        BoJ's renteforhøjelser udløser hjemtagning af yen-carry-trade, mens Tokyo sælger US Treasuries for at støtte yenen midt i det amerikanske gældsudbud.
                     </div>
                 </div>
                 <div class="trigger-alert">
-                    <strong>Primær trigger:</strong> BoJ-stramning i december accelererer afviklingen af den globale yen-carry-trade.
+                    <strong>Primær trigger:</strong> BoJ-stramning i december accelererer afviklingen af yen-carry-trade.
                 </div>
             </div>
 
@@ -979,12 +738,11 @@
                 <div>
                     <div class="pole-header">
                         <span class="pole-title">EU &amp; Danmark</span>
-                        <span class="pole-tag">ECB Synkron Stramning &amp; Nordisk Robusthed</span>
+                        <span class="pole-tag">ECB Financial Stability &amp; Nordisk Robusthed</span>
                     </div>
                     <div class="stat-line"><span>ECB Indlånsrente &amp; Retning:</span><span class="stat-val">2,75 % (64/73 økonomer venter hop i dec.)</span></div>
                     <div class="stat-line"><span>DK 30Y Realkredit / F-Kort:</span><span class="stat-val">5,00 % Fast / Variabel beskytter kurs</span></div>
-                    <div class="stat-line"><span>Det Økonomiske Råd (Vismænd):</span><span class="stat-val">Advarer om prisfald på ejerlejligheder i 2027</span></div>
-                    <div class="stat-line"><span>Kritisk Knækpunkt (i_crit):</span><span class="stat-val" style="color: var(--safe);">Realkredit &gt; 5,50% / Europæisk bank-smitte</span></div>
+                    <div class="stat-line"><span>ECB FSR (10. nov.):</span><span class="stat-val">Advarer om tech-kreditspænd &amp; koncentration</span></div>
 
                     <div class="knæk-box">
                         <div class="knæk-title-row">
@@ -1020,113 +778,28 @@
                     </div>
 
                     <div class="pole-desc">
-                        ECB følger Fed op i rente, fordi den samlede vestlige statsgæld og energiinflationen tvinger centralbankerne til at stramme synkront for at undgå en ukontrolleret inflationsbølge. Mens Sydeuropa og Frankrig er sårbare, står den nordeuropæiske og danske realøkonomi med langt sundere statsfinanser til at modstå rystelsen.
+                        ECB advarer i sin seneste stabilitetsrapport direkte om inversionsrisikoen i amerikanske tech-obligationer. Kapitalen søger i stigende grad mod lavere prissatte europæiske og nordiske realværdier.
                     </div>
                 </div>
                 <div class="trigger-alert">
-                    <strong>Primær trigger:</strong> Synkron Fed/ECB-rentestramning i december fryser det europæiske ejendoms- og kreditmarked.
+                    <strong>Primær trigger:</strong> Synkron Fed/ECB-rentestramning i december rammer ejendoms- og kreditmarkedet.
                 </div>
             </div>
         </section>
 
-        <!-- 4. AKTIV-DASHBOARD BAR (INKL. GULD SOM MONETÆR DOMMER) -->
-        <section class="asset-bar-section">
-            <h2>4. Aktivmarkedernes Ligevægt: Guldets Frigørelse, ERP-Kollaps &amp; Kreditspænd</h2>
-            <p class="asset-bar-intro">
-                Det stærkeste matematiske bevis på, at systemet nærmer sig et regimebrud, findes i sammenbruddet af de klassiske korrelationer mellem statsobligationer, aktier og guld:
-            </p>
-
-            <div class="asset-metrics-grid">
-                <div class="asset-card" style="border-top: 3px solid var(--safe);">
-                    <div>
-                        <div class="asset-type">Guld &amp; Sølv (Mistillidsanker)</div>
-                        <div class="asset-val">$4.183 / $60+</div>
-                        <div class="asset-subtag" style="color: var(--safe);">Centralbank-andel: 27 %</div>
-                    </div>
-                    <p class="asset-note">Trods en positiv realrente (+1,95 %) stiger guld til historiske rekorder. Markedet prissætter <em>Fiscal Theory of the Price Level</em>: At vestlig statsgæld kun kan løses via finansiel repression og devaluering.</p>
-                </div>
-
-                <div class="asset-card" style="border-top: 3px solid var(--danger);">
-                    <div>
-                        <div class="asset-type">Aktierisikopræmie (ERP)</div>
-                        <div class="asset-val">&minus;0,51 %</div>
-                        <div class="asset-subtag" style="color: var(--danger);">E/P (4,85%) &lt; 10Y (5,36%)</div>
-                    </div>
-                    <p class="asset-note">Investorer får negativ kompensation for at bære aktierisiko frem for statsgæld. 80 % af Goldman Sachs' ultra-rige klienter har nu forladt 60/40-porteføljen.</p>
-                </div>
-
-                <div class="asset-card">
-                    <div>
-                        <div class="asset-type">Tech &amp; Skyggebank-CDS</div>
-                        <div class="asset-val">Rekord-Spænd</div>
-                        <div class="asset-subtag" style="color: var(--purple);">Anthropic IPO: 9.000 mia. kr.</div>
-                    </div>
-                    <p class="asset-note">Konkursforsikringer (CDS) på Meta, Oracle, SpaceX og Nvidia er i rekord. Anthropics forestående børsnotering bliver lakmusprøven for hele AI-kredsløbets sikkerhedsstillelse.</p>
-                </div>
-
-                <div class="asset-card">
-                    <div>
-                        <div class="asset-type">Term Premium (&theta;_t)</div>
-                        <div class="asset-val">Strukturelt Hop</div>
-                        <div class="asset-subtag" style="color: var(--warning);">Udbudschok på $10,7T</div>
-                    </div>
-                    <p class="asset-note">Når stater (US/EU/JP) og AI-hyperscalers ($900B CapEx) kæmper om den samme svindende pulje af global likviditet, kræver investorerne en permanent højere løbetidspræmie.</p>
-                </div>
-            </div>
-
-            <div class="erp-comparison-box">
-                <div class="erp-calc-text">
-                    <strong>Hvorfor Guld og Renter Stiger Samtidigt (Bruddet på 40 års korrelation):</strong><br>
-                    Når guld ($4.183+) stiger hånd i hånd med stigende lange statsrenter, skyldes det, at statsobligationer har mistet deres status som "risikofrit aktiv". Kapitalen flygter fra suveræn varighedsrisiko over i fysisk guld og ultrakort likviditet.
-                </div>
-                <div class="erp-badge">60/40-Modellen Er Brudt</div>
-            </div>
-        </section>
-
-        <!-- 5. FREMSKRIVNING AF ROLLOVER-EFFEKTEN -->
+        <!-- 4. FREMSKRIVNING AF ROLLOVER-EFFEKTEN -->
         <section class="projection-section">
-            <h2>5. Fremskrivningsmodel: Rollover-Muren (2026–2030) &amp; Erhvervsgældens Forfald</h2>
-            <p style="font-size: 0.94rem; color: #334151; margin: 0 0 14px 0;">
-                Med $32,43 billioner i omsættelig amerikansk statsgæld, en gennemsnitsrente ($i_0^w$) på 3,53 % og en årlig rollover-brøk på 33 % ($\alpha = 0,33$) viser den matematiske fremskrivning, hvordan renteudgiften ($IE_t$) eksploderer og fremtvinger et systemisk brud, samtidig med at erhvervslivets 5-årige 2021/2022-lån rammer muren:
+            <h2>4. Rollover-Muren (2026–2030): USA's Netto-Renteudgifter ($IE_t = i_t^w \cdot D_t$)</h2>
+            <p style="font-size: 0.94rem; color: #334151; margin: 0 0 12px 0;">
+                Med en gennemsnitlig løbetid (WAM) på 5,9 år og 33 % årlig rollover ($10,7T) løftes den vægtede gennemsnitsrente ($i_t^w$) mekanisk fra 3,53 % mod 4,80 %+, hvilket fordobler USA's årlige renteudgifter frem mod 2030 og fortrænger privat kreditgivning:
             </p>
-
-            <div class="timeline-card-grid">
-                <div class="timeline-step active">
-                    <div>
-                        <div class="timeline-year-tag">2026 (Aktuel) • Gæld: $32,4T</div>
-                        <div class="timeline-amount">$1,05 billioner</div>
-                        <div class="timeline-bnp">3,6 % af BNP (Snitrente: 3,53 %)</div>
-                        <div class="timeline-desc">Netto-renteudgiften ($1.052 mia.) har overhalet forsvarsbudgettet ($965 mia.). Crowding out har udløst oktober-kreditstoppet for AI-sektorens neoclouds.</div>
-                    </div>
-                </div>
-
-                <div class="timeline-step active" style="border-top-color: var(--warning);">
-                    <div>
-                        <div class="timeline-year-tag">2027–2028 • Gæld: $35,1T &rarr; $38,0T</div>
-                        <div class="timeline-amount">$1,45T &rarr; $1,85T+</div>
-                        <div class="timeline-bnp">4,8 % &rarr; 6,0 % af BNP (Corporate Wall)</div>
-                        <div class="timeline-desc">Spredning fra tech til realøkonomien: Amerikanske og europæiske virksomheder i CRE, small-caps og industri skal refinansiere 2021/2022-gæld og møder lukkede kreditdøre.</div>
-                    </div>
-                </div>
-
-                <div class="timeline-step danger">
-                    <div>
-                        <div class="timeline-year-tag" style="color: var(--danger);">2029–2030 • Gæld: $41,2T &rarr; $45,0T+</div>
-                        <div class="timeline-amount" style="color: var(--danger);">$2,14T &rarr; $2,40T+</div>
-                        <div class="timeline-bnp">&gt; 7,0 % af BNP (Fiskal Dominans)</div>
-                        <div class="timeline-desc">Hele gældsporteføljen er rullet over til nye renter. Renteudgifterne opsluger statsbudgettet og tvinger systemet ud i finansiel repression og gældsmonetarisering.</div>
-                    </div>
-                </div>
-            </div>
-
             <div class="snowball-chart">
-                <h4 style="margin: 0 0 14px 0; color: var(--dark); font-size: 1.05rem;">5-Årig Matematisk Fremskrivning af USA's Netto-Renteudgifter ($IE_t = i_t^w \cdot D_t$)</h4>
                 <div class="snowball-row">
                     <div class="snowball-label"><span>2026 (Aktuel): Gennemsnitsrente 3,53 % (Markedsgæld: $32,4T)</span><span style="font-family: monospace;">$1.052 mia. (3,6 % af BNP)</span></div>
                     <div class="snowball-bar-bg"><div class="snowball-bar-fill" style="width: 44%; background: #3b82f6;"></div></div>
                 </div>
                 <div class="snowball-row">
-                    <div class="snowball-label"><span>2027: Gennemsnitsrente 4,12 %+ (Markedsgæld: $35,1T + Corporate Wall)</span><span style="font-family: monospace;">$1.450 mia.+ (4,8 % af BNP)</span></div>
+                    <div class="snowball-label"><span>2027: Gennemsnitsrente 4,12 %+ (+ $440–685B AI-gældsbølge)</span><span style="font-family: monospace;">$1.450 mia.+ (4,8 % af BNP)</span></div>
                     <div class="snowball-bar-bg"><div class="snowball-bar-fill" style="width: 63%; background: #f59e0b;"></div></div>
                 </div>
                 <div class="snowball-row">
@@ -1140,73 +813,38 @@
             </div>
         </section>
 
-        <!-- 6. TEORETISK FUNDAMENT -->
-        <section class="theory-card">
-            <h2>6. Teoretisk Fundament: WAM-Ligningen, Blanchard, Sargent-Wallace &amp; FTPL</h2>
-            <p style="font-size: 0.94rem; color: #334151; margin: 0 0 10px 0;">
-                Tre formelle makroøkonomiske ligninger beviser, hvorfor kombinationen af en kort <em>Weighted Average Maturity</em> ($\alpha = \frac{1}{\text{WAM}} \approx 0,33$ inkl. T-bills), et primært underskud ($PD_t &gt; 4,5\,\%$) og en markedsrente over væksten ($i_t^m &gt; g_t$) gør et systemisk brud uundgåeligt:
-            </p>
-            <div class="math-display-card">
-                <div class="math-formula">
-                    (1) &nbsp; <span class="math-var">i</span><sub>t+1</sub><sup>w</sup> = 
-                    <span class="math-fraction">
-                        <span class="num">(1 &minus; &alpha;)<span class="math-var">D</span><sub>t</sub> &middot; <span class="math-var">i</span><sub>t</sub><sup>w</sup> + (&alpha;<span class="math-var">D</span><sub>t</sub> + <span class="math-var">PD</span><sub>t</sub> + <span class="math-var">IE</span><sub>t</sub>) &middot; <span class="math-var">i</span><sub>t</sub><sup>m</sup>(&uarr;)</span>
-                        <span class="den"><span class="math-var">D</span><sub>t+1</sub></span>
-                    </span>
-                    &nbsp;&nbsp;|&nbsp;&nbsp;
-                    (2) &nbsp; &Delta;<span class="math-var">b</span><sub>t</sub> = (<span class="math-var">r</span><sub>t</sub><sup>w</sup> &minus; <span class="math-var">g</span><sub>t</sub>)<span class="math-var">b</span><sub>t</sub> + <span class="math-var">pd</span><sub>t</sub>
-                    &nbsp;&nbsp;|&nbsp;&nbsp;
-                    (3) &nbsp; 
-                    <span class="math-fraction">
-                        <span class="num"><span class="math-var">D</span><sub>t</sub></span>
-                        <span class="den"><span class="math-var">P</span><sub>t</sub></span>
-                    </span>
-                    = &sum; 
-                    <span class="math-fraction">
-                        <span class="num"><span class="math-var">E</span><sub>t</sub>[<span class="math-var">s</span><sub>t+j</sub>]</span>
-                        <span class="den">(1 + <span class="math-var">r</span>)<sup>j</sup></span>
-                    </span>
-                </div>
-                <div class="math-legend">
-                    &bull; <strong>Ligning (1) – WAM Rollover-mekanikken:</strong> Jo mere finansministeren forkorter løbetiden (øger $\alpha$), desto hurtigere konvergerer den vægtede gennemsnitsrente $i_t^w$ (3,53 %) mod markedsrenten $i_t^m$ (~5 %+), hvilket skaber CBO's <em>turbocharger-effekt</em>.<br>
-                    &bull; <strong>Ligning (2) – Domar/Blanchard-snebolden:</strong> Når den reale gennemsnitsrente $r_t^w$ overstiger realvæksten $g_t$, og politikerne i USA og Frankrig nægter at skabe primære overskud ($pd_t &gt; 0$), vokser gældskvoten $b_t$ eksponentielt af sig selv (<em>Sargent &amp; Wallace, 1981</em>).<br>
-                    &bull; <strong>Ligning (3) – Fiscal Theory of the Price Level (Leeper/Cochrane):</strong> Når nutidsværdien af fremtidige primære overskud ($s_{t+j}$) falder, og diskonteringsrenten ($r$) stiger, kan ligningen kun balancere ved, at prisniveauet $P_t$ springer op (inflationsbølge / guldrekord) eller gennem kreditmisligholdelse.
-                </div>
-            </div>
-        </section>
-
-        <!-- 7. SYNTESE: HVORDAN KORTHUSET FALDER SAMMEN -->
+        <!-- 5. FREMSKRIVNING FOR 2027: DE FIRE STRUKTURELLE TRENDS UDEN FOR AI -->
         <section class="global-context-box">
-            <h2>7. Syntese: Sådan Falder Korthuset Sammen (Q4 2026 – H1 2027)</h2>
+            <h2>5. Fremskrivning for 2027: Fire Strukturelle Trends (Uden for AI)</h2>
             <p class="context-intro">
-                Når alle brikkerne samles, står det klart, hvorfor sammenbruddet ikke er en fjern teoretisk risiko, men en igangværende kædereaktion i fire sammenhængende led:
+                Kombinerer man den matematiske gældsvirkelighed (rollover, højere Term Premium og $440–685 mia. i AI-obligationsudstedelser) med de faktiske kapitalstrømme, tegner der sig fire strukturelle 2027-trends:
             </p>
 
             <div class="interconnect-grid">
-                <div class="interconnect-item usa">
-                    <h3 class="interconnect-title">Led 1: Suveræn Rollover &amp; Japansk Dræn</h3>
-                    <p class="interconnect-text">USA skal rulle $10,7T over på 12 måneder og finansiere $2T i nyt underskud, netop som Japan (gæld 260 % af BNP, BoJ på 1,25 %) og asiatiske investorer sælger US Treasuries, og både Fed og ECB tvinges til at holde renterne høje mod inflationen. Resultat: Likviditeten suges ud af markedet, og Term Premium stiger.</p>
+                <div class="interconnect-item energy">
+                    <h3 class="interconnect-title">1. Realaktiver, Energi &amp; Råvarer (FTPL-Hedgen)</h3>
+                    <p class="interconnect-text">I en verden med finanspolitisk dominans (permanente budgetunderskud på begge sider af Atlanten) og udbudschok på energi, fungerer fysiske aktiver, olie/gas og råvarer som direkte værn mod valutadevaluering og vedvarende inflation.</p>
                 </div>
 
-                <div class="interconnect-item ai">
-                    <h3 class="interconnect-title">Led 2: Skyggebank-Stoppet Rammer Nvidia</h3>
-                    <p class="interconnect-text">Likviditetstørken lukker skyggebankernes (Private Credit) udlån til de 200+ neoclouds, der pantsatte Nvidia-GPU'er. Nvidias cirkulære vendor financing-model bryder sammen, CoreWeave styrtdykker (-36 %), og Anthropics 9.000 mia. kr. IPO møder et iskoldt marked efter H1-tabet på 537 mia. kr.</p>
+                <div class="interconnect-item intl">
+                    <h3 class="interconnect-title">2. International Value &amp; Fysisk Infrastruktur (Ikke-US)</h3>
+                    <p class="interconnect-text">Kapitalen søger væk fra koncentrationsrisikoen i amerikansk tech mod lavere prissatte markeder i Europa og udvalgte Emerging Markets – særligt inden for industri, forsyningsnet, forsvar og fysisk beredskabsinfrastruktur.</p>
                 </div>
 
-                <div class="interconnect-item bessent">
-                    <h3 class="interconnect-title">Led 3: De-Grossing &amp; Forbrugerens Kollaps</h3>
-                    <p class="interconnect-text">Når GPU-sikkerheden og tech-aktierne falder (Nasdaq i korrektion, Intel -28,6 %, Alphabet/Amazon med negativt FCF), rammer gearede hedgefonde deres drawdown-grænser (-7,8 % gross-flow) og udløser bredt tvangssalg, mens den amerikanske forbruger knækker under 22,36 % i kreditkortrente (~7 % i misligholdelse) og Demokraternes Blue Sweep fjerner skattesubsidierne.</p>
+                <div class="interconnect-item bonds">
+                    <h3 class="interconnect-title">3. Kvalitetsobligationer uden Tech (Kort Varighed &amp; Fallen Angels)</h3>
+                    <p class="interconnect-text">Når AI-obligationsudbuddet i 2027 presser kreditspændene bredere ud, trækkes solide ikke-tech virksomhedsobligationer (energi, telekom, basisindustri) med ned i kurs. Det skaber en attraktiv indgang i kortfristet kredit med høj kupon (yield cushion) uden lang varighedsrisiko.</p>
                 </div>
 
-                <div class="interconnect-item france">
-                    <h3 class="interconnect-title">Led 4: 2027 Corporate Wall &amp; Fransk Gældskrise</h3>
-                    <p class="interconnect-text">I 1. kvartal 2027 spreder kreditstoppet sig fra AI-sektoren til de traditionelle kreditmarkeder, når almindelige virksomheder (CRE, small-caps, industri) rammer 5-års WAM-muren fra 2021/2022, samtidig med at Frankrigs 10Y-rente (4,80 % mod -0,1 % BNP-vækst) konvergerer mod præsidentvalget i april 2027.</p>
+                <div class="interconnect-item cash">
+                    <h3 class="interconnect-title">4. Kontrær Likviditet (Kontanter &amp; Guld)</h3>
+                    <p class="interconnect-text">Fordi forvalterne sidder med historisk lave 3,6 % i kontanter og har skubbet defensive aktier (staples/healthcare) op i dyre værdiansættelser, er der ingen reel støddæmper ved et kreditevent i 1. halvår 2027. Kontanter og guld ($4.183+) fungerer som en call-option på tvangssalg.</p>
                 </div>
             </div>
 
             <div class="synthesis-card">
-                <strong>Strategisk konklusion pr. 13. november 2026:</strong>  
-                Det finansielle system kan ikke opretholde ~5 % lange statsrenter, 22,36 % forbrugerrenter og en 5-årig WAM-rollover-mur uden at fremkalde en dyb likvidations- og kreditkrise. Mens gearede investorer og fastforrentede obligationsbeholdninger fanges i saksen mellem stigende Term Premium og faldende aktivpriser, sikrer en defensiv positionering (kort variabel F-kort-rente, guld/realværdier og fuld kontant likviditet) optimal beskyttelse og købekraft, når tvangssalget kulminerer.
+                <strong>Rationel konklusion pr. 20. november 2026:</strong>  
+                Aktiemarkedet kan svinge på kortsigtede regnskabsoverskrifter, men obligationsmarkedet lyver ikke. Når Meta må betale +90 bps mere i spænd på et halvt år, og $440–685 mia. i AI-kredit rammer en 10-billioners statslig rollover-mur, forbliver disciplin, kort varighed og likviditet det stærkeste fundament ind i 2027.
             </div>
         </section>
     </main>
