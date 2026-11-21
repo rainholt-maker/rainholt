@@ -3,622 +3,254 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Makroøkonomi: Systemisk Radar, OAS-Spænd & Knækpunkter – Lasse Holt</title>
-    <meta name="description" content="Systemisk makroøkonomisk analyse pr. 21. november 2026: Aktiemarkedets nedsmeltning (S&P 500 -5,28 %, Nvidia -14 %, Anthropic IPO-fald), kreditspændenes OAS-inversion, WAM-rollover og 2027-rotationen.">
+    <title>Makroøkonomi: Kvantitativ Radar & Værdiansættelse – Lasse Holt</title>
+    <meta name="description" content="Kvantitativ analyse pr. 21. november 2026: S&P 500 normaliseringsmatematik (-54 %), USA vs. Europa P/E-skævhed, OAS-kreditspænd, WAM-rollover og Term Premium.">
     <style>
         :root {
             --primary: #1e3a8a;
+            --steel: #64829c;
+            --steel-light: #93aec5;
             --dark: #0f172a;
             --text-main: #1f2937;
             --text-muted: #4b5563;
             --border: #cbd5e1;
             --bg-card: #ffffff;
-            --bg-page: #fafafa;
+            --bg-page: #f8fafc;
             --danger: #b91c1c;
             --danger-bg: #fef2f2;
             --warning: #d97706;
             --safe: #059669;
-            --purple: #7c3aed;
         }
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            line-height: 1.65;
+            line-height: 1.55;
             color: var(--text-main);
-            max-width: 1000px;
+            max-width: 1020px;
             margin: 0 auto;
-            padding: 40px 20px 80px;
+            padding: 36px 20px 80px;
             background-color: var(--bg-page);
         }
         header {
-            margin-bottom: 35px;
+            margin-bottom: 28px;
             border-bottom: 1px solid var(--border);
-            padding-bottom: 20px;
+            padding-bottom: 18px;
         }
-        .header-top { display: flex; justify-content: space-between; align-items: baseline; }
-        h1 { font-size: 2.2rem; color: var(--dark); margin: 0 0 6px 0; letter-spacing: -0.5px; }
-        .subtitle { color: #64748b; font-size: 1.05rem; }
+        h1 { font-size: 2.1rem; color: var(--dark); margin: 0 0 4px 0; letter-spacing: -0.5px; }
+        .subtitle { color: #64748b; font-size: 0.98rem; font-family: monospace; }
         nav { display: flex; gap: 20px; padding-top: 14px; flex-wrap: wrap; align-items: center; }
         nav a { text-decoration: none; color: var(--primary); font-weight: 600; font-size: 0.95rem; }
         nav a:hover { text-decoration: underline; }
 
-        /* GOOGLE TRANSLATE STYLING */
+        /* GOOGLE TRANSLATE */
         .goog-te-banner-frame.skiptranslate { display: none !important; }
         body { top: 0px !important; }
         .language-selector { margin-left: auto; font-size: 0.85rem; }
-        .goog-te-combo { padding: 4px 8px; border-radius: 4px; border: 1px solid var(--border); background: #ffffff; color: var(--dark); font-weight: 500; cursor: pointer; }
+        .goog-te-combo { padding: 4px 8px; border-radius: 4px; border: 1px solid var(--border); background: #fff; color: var(--dark); }
 
-        /* SIDST OPDATERET STATUSLINJE */
-        .status-timestamp-bar {
+        .status-bar {
             background: #eff6ff;
             border: 1px solid #bfdbfe;
             border-left: 4px solid var(--primary);
             border-radius: 4px;
-            padding: 10px 16px;
-            margin-bottom: 25px;
+            padding: 9px 16px;
+            margin-bottom: 24px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
             gap: 10px;
-            font-size: 0.88rem;
+            font-size: 0.85rem;
             color: #1e3a8a;
+            font-family: monospace;
         }
 
-        /* CRISIS DASHBOARD */
-        .crisis-dashboard {
-            background: #fff5f5;
-            border: 1px solid #fecaca;
-            border-left: 5px solid var(--danger);
+        /* KPI STRIP */
+        .kpi-strip {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+            margin-bottom: 28px;
+        }
+        @media (max-width: 860px) { .kpi-strip { grid-template-columns: repeat(2, 1fr); } }
+        .kpi-box {
+            background: #ffffff;
+            border: 1px solid var(--border);
+            border-top: 3px solid var(--danger);
+            border-radius: 6px;
+            padding: 12px 14px;
+        }
+        .kpi-lbl { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; color: #64748b; display: block; }
+        .kpi-val { font-family: monospace; font-size: 1.25rem; font-weight: 800; color: var(--dark); display: block; margin: 2px 0; }
+        .kpi-sub { font-size: 0.75rem; font-weight: 600; color: var(--danger); }
+
+        /* KORT & SEKTIONER */
+        .quant-card {
+            background: #ffffff;
+            border: 1px solid var(--border);
             border-radius: 8px;
             padding: 26px;
-            margin-bottom: 35px;
-            box-shadow: 0 1px 3px rgba(185, 28, 28, 0.05);
+            margin-bottom: 28px;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.03);
         }
-        .crisis-dashboard h2 { margin: 0 0 6px 0; font-size: 1.4rem; color: var(--danger); }
-        .crisis-sub { font-size: 0.85rem; color: #7f1d1d; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 18px; }
-        
-        .crisis-metrics-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 12px;
-            margin-bottom: 18px;
-        }
-        @media (max-width: 820px) {
-            .crisis-metrics-grid { grid-template-columns: repeat(2, 1fr); }
-        }
-        .crisis-metric-card {
-            background: #ffffff;
-            border: 1px solid #fecaca;
-            border-radius: 6px;
-            padding: 14px;
-        }
-        .crisis-lbl { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; color: #64748b; margin-bottom: 4px; }
-        .crisis-val { font-family: monospace; font-size: 1.18rem; font-weight: 800; color: var(--danger); margin-bottom: 4px; }
-        .crisis-target { font-size: 0.78rem; font-weight: 600; color: #7f1d1d; }
-
-        /* VIX METER BOKS */
-        .vix-focus-box {
-            background: #ffffff;
-            border: 1px solid #fecaca;
-            border-radius: 6px;
-            padding: 16px 18px;
-            margin-bottom: 16px;
-        }
-        .vix-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            margin-bottom: 8px;
-            font-size: 0.85rem;
-            font-weight: 700;
+        .quant-card.accent-red { border-left: 5px solid var(--danger); }
+        .quant-card.accent-blue { border-left: 5px solid var(--primary); }
+        .quant-card.accent-dark { border-left: 5px solid var(--dark); }
+        .quant-card h2 {
+            margin: 0 0 6px 0;
+            font-size: 1.32rem;
             color: var(--dark);
-            flex-wrap: wrap;
-            gap: 6px;
+            letter-spacing: -0.3px;
         }
-        .vix-bar-track {
-            height: 16px;
-            background: #e2e8f0;
-            border-radius: 4px;
-            overflow: hidden;
-            position: relative;
-            border: 1px solid #cbd5e1;
-        }
-        .vix-bar-fill {
-            height: 100%;
-            width: 68%;
-            background: linear-gradient(90deg, #10b981 0%, #f59e0b 40%, #dc2626 80%, #7f1d1d 100%);
-        }
-        .vix-scale {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.72rem;
+        .quant-sub {
+            font-size: 0.86rem;
             color: #64748b;
-            font-weight: 600;
-            margin-top: 5px;
+            margin: 0 0 18px 0;
+            font-style: italic;
         }
 
-        .crisis-timeline-box {
-            background: #ffffff;
+        /* FORMELBOKS */
+        .formula-bar {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            padding: 14px 18px;
+            margin: 14px 0 20px 0;
+            font-family: "Cambria Math", "Georgia", serif;
+            font-size: 1.12rem;
+            color: var(--dark);
+            text-align: center;
+            overflow-x: auto;
+        }
+        .formula-note {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            font-size: 0.8rem;
+            color: #475569;
+            margin-top: 8px;
+            border-top: 1px dashed #cbd5e1;
+            padding-top: 8px;
+            text-align: left;
+        }
+
+        /* GRAFISKE SØJLER (PAICE / FT STIL) */
+        .chart-grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-top: 16px;
+        }
+        @media (max-width: 780px) { .chart-grid-2 { grid-template-columns: 1fr; } }
+
+        .chart-panel {
+            background: #fcfcfd;
             border: 1px solid #e2e8f0;
             border-radius: 6px;
             padding: 18px;
-            font-size: 0.91rem;
-            color: #334151;
-            line-height: 1.6;
+        }
+        .chart-panel h3 {
+            margin: 0 0 14px 0;
+            font-size: 0.96rem;
+            color: var(--dark);
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 6px;
         }
 
-        /* KREDITMARKED & OAS SEKTION */
-        .oas-section {
-            background: #ffffff;
-            border: 1px solid var(--border);
-            border-left: 5px solid var(--purple);
-            border-radius: 8px;
-            padding: 28px;
-            margin-bottom: 35px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+        .bar-row { margin-bottom: 14px; }
+        .bar-row:last-child { margin-bottom: 0; }
+        .bar-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.83rem;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 4px;
         }
-        .oas-section h2 { margin: 0 0 10px 0; font-size: 1.38rem; color: var(--dark); }
-        .table-responsive { overflow-x: auto; margin: 18px 0; }
-        table.oas-table {
+        .bar-meta span.val { font-family: monospace; font-weight: 800; }
+        .bar-track {
+            width: 100%;
+            height: 22px;
+            background: #eef2f6;
+            border-radius: 3px;
+            position: relative;
+            overflow: hidden;
+        }
+        .bar-fill {
+            height: 100%;
+            border-radius: 3px 0 0 3px;
+            display: flex;
+            align-items: center;
+            padding-left: 8px;
+            color: #fff;
+            font-family: monospace;
+            font-size: 0.78rem;
+            font-weight: 700;
+            box-sizing: border-box;
+        }
+        .bar-dark { background: #1e293b; }
+        .bar-steel { background: #64829c; }
+        .bar-steel-light { background: #8da6bd; }
+        .bar-red { background: #b91c1c; }
+        .bar-green { background: #059669; }
+        .bar-amber { background: #d97706; }
+
+        /* REFERENCE-LINJE PÅ SØJLE */
+        .ref-line {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #0f172a;
+            z-index: 4;
+        }
+
+        /* TABELLER */
+        .table-wrap { overflow-x: auto; margin: 14px 0; }
+        table.data-table {
             width: 100%;
             border-collapse: collapse;
-            font-size: 0.88rem;
-            background: #ffffff;
-            border: 1px solid var(--border);
+            font-size: 0.85rem;
         }
-        table.oas-table th, table.oas-table td {
-            padding: 11px 14px;
-            border-bottom: 1px solid var(--border);
+        table.data-table th, table.data-table td {
+            padding: 9px 12px;
+            border-bottom: 1px solid #e2e8f0;
             text-align: left;
             vertical-align: top;
         }
-        table.oas-table th {
-            background: #f8fafc;
+        table.data-table th {
+            background: #f1f5f9;
             font-weight: 700;
             color: var(--dark);
-            border-bottom: 2px solid var(--border);
-        }
-        table.oas-table tr:hover { background: #fbfcfe; }
-        .neg-val { font-family: monospace; font-weight: 700; color: var(--danger); }
-
-        .oas-highlights-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 14px;
-            margin-top: 16px;
-        }
-        @media (max-width: 768px) {
-            .oas-highlights-grid { grid-template-columns: 1fr; }
-        }
-        .oas-card {
-            background: #f8fafc;
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            padding: 15px;
-        }
-        .oas-card h4 { margin: 0 0 6px 0; font-size: 0.96rem; color: var(--dark); }
-        .oas-card p { margin: 0; font-size: 0.84rem; color: #475569; line-height: 1.5; }
-
-        /* ANYTHING BUT AI ROTATION */
-        .rotation-section {
-            background: #ffffff;
-            border: 1px solid var(--border);
-            border-left: 5px solid var(--safe);
-            border-radius: 8px;
-            padding: 28px;
-            margin-bottom: 35px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
-        }
-        .rotation-section h2 { margin: 0 0 10px 0; font-size: 1.38rem; color: var(--dark); }
-        .rotation-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 16px;
-            margin: 18px 0;
-        }
-        @media (max-width: 768px) {
-            .rotation-grid { grid-template-columns: 1fr; }
-        }
-        .rot-card {
-            background: #f8fafc;
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            padding: 16px;
-        }
-        .rot-tag {
-            font-size: 0.72rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            color: var(--safe);
-            letter-spacing: 0.5px;
-            display: block;
-            margin-bottom: 4px;
-        }
-        .rot-card h3 { margin: 0 0 6px 0; font-size: 1.02rem; color: var(--dark); }
-        .rot-card p { margin: 0; font-size: 0.86rem; color: #334151; line-height: 1.5; }
-
-        /* SEKTION: WAM & PENGEPOLITISK LAG-EFFEKT */
-        .wam-section {
-            background: #ffffff;
-            border: 1px solid var(--border);
-            border-left: 5px solid var(--dark);
-            border-radius: 8px;
-            padding: 28px;
-            margin-bottom: 35px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
-        }
-        .wam-section h2 { margin: 0 0 10px 0; font-size: 1.38rem; color: var(--dark); }
-        .wam-comparison-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 18px;
-            margin: 18px 0;
-        }
-        @media (max-width: 768px) {
-            .wam-comparison-grid { grid-template-columns: 1fr; }
-        }
-        .wam-box {
-            background: #f8fafc;
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            padding: 18px;
-        }
-        .wam-box.myth { border-top: 4px solid #64748b; }
-        .wam-box.reality { border-top: 4px solid var(--danger); background: #fffafa; }
-        .wam-tag {
-            font-size: 0.72rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 6px;
-            display: block;
-        }
-        .wam-box h3 { margin: 0 0 8px 0; font-size: 1.08rem; color: var(--dark); }
-        .wam-box p { margin: 0; font-size: 0.89rem; color: #334151; line-height: 1.55; }
-
-        /* REGIONALE RADAR GRID */
-        .radar-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 22px;
-            margin-bottom: 35px;
-        }
-        @media (max-width: 768px) {
-            .radar-grid { grid-template-columns: 1fr; }
-        }
-        .pole-card {
-            background: #ffffff;
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 22px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-        .pole-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            border-bottom: 1px solid #f1f5f9;
-            padding-bottom: 8px;
-            margin-bottom: 12px;
-        }
-        .pole-title { font-size: 1.25rem; font-weight: 700; color: var(--dark); margin: 0; }
-        .pole-tag { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; color: #64748b; }
-
-        .stat-line {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.89rem;
-            margin-bottom: 5px;
-        }
-        .stat-val { font-family: monospace; font-weight: 700; color: var(--dark); }
-
-        .knæk-box {
-            background: #f8fafc;
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            padding: 14px;
-            margin: 16px 0 14px 0;
-        }
-        .knæk-title-row {
-            display: flex;
-            justify-content: space-between;
             font-size: 0.78rem;
-            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 8px;
+            letter-spacing: 0.4px;
         }
-        .knæk-track-wrapper {
-            position: relative;
-            margin: 6px 0 18px 0;
-        }
-        .knæk-track {
-            height: 18px;
-            background: #e2e8f0;
-            border-radius: 4px;
-            position: relative;
-            overflow: hidden;
-            border: 1px solid #cbd5e1;
-        }
-        .knæk-fill {
-            height: 100%;
-            border-radius: 3px 0 0 3px;
-        }
-        .fill-usa { background: linear-gradient(90deg, #f59e0b 0%, #dc2626 100%); width: 98%; }
-        .fill-france { background: linear-gradient(90deg, #3b82f6 0%, #7c3aed 70%, #dc2626 100%); width: 95%; }
-        .fill-japan { background: linear-gradient(90deg, #3b82f6 0%, #d97706 70%, #dc2626 100%); width: 88%; }
-        .fill-eu { background: linear-gradient(90deg, #10b981 0%, #f59e0b 70%, #dc2626 100%); width: 86%; }
+        .mono { font-family: monospace; font-weight: 700; }
+        .txt-red { color: var(--danger); }
+        .txt-green { color: var(--safe); }
 
-        .knæk-threshold-marker {
-            position: absolute;
-            right: 0;
-            top: -3px;
-            bottom: -3px;
-            width: 4px;
-            background: #991b1b;
-            z-index: 5;
-            box-shadow: 0 0 4px rgba(153, 27, 27, 0.6);
-        }
-        .knæk-threshold-label {
-            position: absolute;
-            right: 0;
-            top: 22px;
-            font-size: 0.70rem;
-            font-weight: 800;
-            color: #991b1b;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        .knæk-scale-labels {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.70rem;
-            color: #64748b;
-            font-weight: 600;
-            margin-top: 4px;
-        }
-
-        .knæk-stats-table {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 6px;
-            margin-top: 10px;
+        /* KILDEFOD */
+        .source-footer {
+            margin-top: 18px;
+            padding-top: 12px;
             border-top: 1px solid #e2e8f0;
-            padding-top: 10px;
-            text-align: center;
-        }
-        .sub-stat {
-            background: #ffffff;
-            border: 1px solid #e2e8f0;
-            border-radius: 4px;
-            padding: 6px 2px;
-        }
-        .sub-stat-lbl {
-            font-size: 0.68rem;
-            text-transform: uppercase;
+            font-size: 0.78rem;
             color: #64748b;
-            font-weight: 600;
-            display: block;
-        }
-        .sub-stat-val {
-            font-family: monospace;
-            font-size: 0.88rem;
-            font-weight: 700;
-            color: var(--dark);
-        }
-
-        .pole-desc {
-            font-size: 0.88rem;
-            color: #334151;
-            line-height: 1.55;
-            margin-bottom: 12px;
-        }
-        .trigger-alert {
-            font-size: 0.8rem;
-            background: var(--danger-bg);
-            border-left: 3px solid var(--danger);
-            padding: 8px 10px;
-            border-radius: 0 4px 4px 0;
-            color: #881337;
-        }
-
-        /* FREMSKRIVNINGS-SEKTION */
-        .projection-section {
-            background: #ffffff;
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 26px;
-            margin-bottom: 35px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
-        }
-        .projection-section h2 { margin: 0 0 10px 0; font-size: 1.35rem; color: var(--dark); }
-
-        .timeline-card-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 16px;
-            margin: 20px 0;
-        }
-        @media (max-width: 768px) {
-            .timeline-card-grid { grid-template-columns: 1fr; }
-        }
-        .timeline-step {
-            background: #f8fafc;
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            padding: 16px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-        .timeline-step.active { border-top: 4px solid var(--primary); }
-        .timeline-step.danger { border-top: 4px solid var(--danger); background: #fffafa; }
-        .timeline-year-tag {
-            font-size: 0.75rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            color: #64748b;
-            margin-bottom: 4px;
-        }
-        .timeline-amount {
-            font-family: monospace;
-            font-size: 1.35rem;
-            font-weight: 800;
-            color: var(--dark);
-            margin-bottom: 6px;
-        }
-        .timeline-bnp {
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: var(--danger);
-            margin-bottom: 10px;
-        }
-        .timeline-desc {
-            font-size: 0.86rem;
-            color: #334151;
             line-height: 1.5;
         }
+        .source-footer a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .source-footer a:hover { text-decoration: underline; }
 
-        .snowball-chart {
-            background: #f8fafc;
-            border: 1px solid #e2e8f0;
-            border-radius: 6px;
-            padding: 20px;
-            margin-top: 20px;
-        }
-        .snowball-row { margin-bottom: 14px; }
-        .snowball-label { display: flex; justify-content: space-between; font-size: 0.86rem; font-weight: 600; margin-bottom: 4px; flex-wrap: wrap; }
-        .snowball-bar-bg { background: #e2e8f0; height: 18px; border-radius: 4px; overflow: hidden; width: 100%; }
-        .snowball-bar-fill { height: 100%; border-radius: 4px; }
-
-        /* TEORETISK FUNDAMENT */
-        .theory-card {
-            background: #ffffff;
-            border: 1px solid var(--border);
-            border-left: 5px solid var(--primary);
-            border-radius: 8px;
-            padding: 26px;
-            margin-bottom: 35px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.03);
-        }
-        .theory-card h2 { margin: 0 0 12px 0; font-size: 1.35rem; color: var(--dark); }
-
-        .math-display-card {
-            background: #f8fafc;
-            border: 1px solid #e2e8f0;
-            border-radius: 6px;
-            padding: 16px 20px;
-            margin: 14px 0 18px 0;
-            text-align: center;
-        }
-        .math-formula {
-            font-family: "Cambria Math", "Georgia", "Times New Roman", serif;
-            font-size: 1.25rem;
-            color: #0f172a;
-            letter-spacing: 0.5px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 6px;
-        }
-        .math-var { font-style: italic; }
-        .math-fraction {
-            display: inline-flex;
-            flex-direction: column;
-            vertical-align: middle;
-            text-align: center;
-            padding: 0 4px;
-        }
-        .math-fraction .num { border-bottom: 1.5px solid #0f172a; padding-bottom: 1px; }
-        .math-fraction .den { padding-top: 1px; }
-        .math-legend {
-            font-size: 0.83rem;
-            color: #475569;
-            margin-top: 10px;
-            text-align: left;
-            border-top: 1px dashed #cbd5e1;
-            padding-top: 10px;
-            line-height: 1.55;
-        }
-
-        /* 2027 TRENDS BOX */
-        .global-context-box {
-            background: #ffffff;
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 26px;
-            margin-bottom: 30px;
-        }
-        .global-context-box h2 {
-            margin: 0 0 14px 0;
-            font-size: 1.35rem;
-            color: var(--dark);
-        }
-        .context-intro {
-            font-size: 0.95rem;
-            color: #334151;
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-        .interconnect-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 16px;
-        }
-        @media (max-width: 768px) {
-            .interconnect-grid { grid-template-columns: 1fr; }
-        }
-        .interconnect-item {
-            background: #f8fafc;
-            border: 1px solid var(--border);
-            border-left: 4px solid var(--primary);
-            border-radius: 6px;
-            padding: 16px;
-        }
-        .interconnect-item.ftpl { border-left-color: var(--warning); }
-        .interconnect-item.intl { border-left-color: var(--safe); }
-        .interconnect-item.credit { border-left-color: var(--purple); }
-        .interconnect-item.cash { border-left-color: var(--danger); }
-        .interconnect-title {
-            font-size: 1.02rem;
-            font-weight: 700;
-            color: var(--dark);
-            margin: 0 0 6px 0;
-        }
-        .interconnect-text {
-            font-size: 0.88rem;
-            color: #334151;
-            line-height: 1.55;
-            margin: 0;
-        }
-
-        .synthesis-card {
-            background: #fef2f2;
-            border: 1px solid #fecaca;
-            border-left: 5px solid var(--danger);
-            border-radius: 6px;
-            padding: 18px 20px;
-            margin-top: 20px;
-            font-size: 0.92rem;
-            color: #7f1d1d;
-            line-height: 1.6;
-        }
-
-        footer { text-align: center; margin-top: 60px; font-size: 0.85rem; color: #94a3b8; }
+        footer { text-align: center; margin-top: 50px; font-size: 0.82rem; color: #94a3b8; }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="header-top">
-            <h1>Makroøkonomi: Systemisk Radar</h1>
-        </div>
-        <div class="subtitle">Overvågning af kreditspænd (OAS), Weighted Average Maturity (WAM), likviditetsrotationer og finansielle knækpunkter</div>
+        <h1>Makroøkonomi: Kvantitativ Radar</h1>
+        <div class="subtitle">Værdiansættelsesmatematik (P/E &amp; NGDP) • Kreditspænd (OAS) • WAM-Rollover • Term Premium</div>
         <nav>
             <a href="index.html">&larr; Forside</a>
             <a href="makro.html" style="color: var(--primary); border-bottom: 2px solid var(--primary);">Makroøkonomi</a>
@@ -626,545 +258,391 @@
             <a href="arkiv.html">Økonomisk Blog</a>
             <a href="politik.html">Politik</a>
             <a href="kontakt.html">Kontakt</a>
-            
             <div class="language-selector" id="google_translate_element"></div>
         </nav>
     </header>
 
     <main>
-        <!-- SIDST OPDATERET STATUSLINJE -->
-        <div class="status-timestamp-bar">
-            <span><strong>Sidst opdateret:</strong> Lørdag den 21. november 2026</span>
-            <a href="arkiv.html" style="color: #1e3a8a; font-weight: 600; text-decoration: none;">Læs analysen af nedsmeltningen &amp; OAS-spændene på Økonomisk Blog &rarr;</a>
+        <div class="status-bar">
+            <span>DATA PR.: 21. NOVEMBER 2026</span>
+            <span>S&amp;P 500: 6.910 (&minus;8,6 % UGE / &minus;11,6 % FRA TOP)</span>
+            <a href="arkiv.html" style="color: #1e3a8a; font-weight: 700; text-decoration: none;">Økonomisk Blog &rarr;</a>
         </div>
 
-        <!-- CRISIS DASHBOARD -->
-        <section class="crisis-dashboard">
-            <h2>Crisis Dashboard: Aktiemarkedets Nedsmeltning, Nvidia (&minus;14 %) &amp; Anthropic IPO-Chokket</h2>
-            <div class="crisis-sub">Status pr. 21. november 2026: S&amp;P 500 i femte ugentlige tabsstreg siden 2. Verdenskrig – Kreditspænd (OAS) afslører bruddet bag Nvidias regnskabsrally.</div>
-
-            <div class="crisis-metrics-grid">
-                <div class="crisis-metric-card">
-                    <div class="crisis-lbl">US Indeks (Fredag 20. nov)</div>
-                    <div class="crisis-val">S&amp;P &minus;5,28 %</div>
-                    <div class="crisis-target">Nasdaq &minus;3,70 % (Hele 2026-gevinst væk)</div>
-                </div>
-                <div class="crisis-metric-card">
-                    <div class="crisis-lbl">Nvidia &amp; Anthropic IPO</div>
-                    <div class="crisis-val">NVDA &minus;14 % / ANTH &minus;9 %</div>
-                    <div class="crisis-target">Nvidia &minus;17.000 mia. kr. • Huang ude</div>
-                </div>
-                <div class="crisis-metric-card">
-                    <div class="crisis-lbl">Tech OAS-Inversion (Meta)</div>
-                    <div class="crisis-val">+220 bps (2056-gæld)</div>
-                    <div class="crisis-target">+90 bps siden april • Overhaler bred IG</div>
-                </div>
-                <div class="crisis-metric-card">
-                    <div class="crisis-lbl">Forvalter-Cash (BofA FMS)</div>
-                    <div class="crisis-val">3,6 % (Kritisk lavt)</div>
-                    <div class="crisis-target">Ingen støddæmper ved 2027-kreditstres</div>
-                </div>
+        <!-- TOP KPI STRIP -->
+        <section class="kpi-strip">
+            <div class="kpi-box">
+                <span class="kpi-lbl">S&amp;P 500 P/E (Normaliseret)</span>
+                <span class="kpi-val">23,4 / 39,8</span>
+                <span class="kpi-sub">Gns. 1947–2026: 18,4 / 17,2</span>
             </div>
-
-            <!-- VIX TERMOMETER -->
-            <div class="vix-focus-box">
-                <div class="vix-header">
-                    <span>Systemisk De-Risking &amp; Likvidationsskala (VIX, OAS-Inversion &amp; Margin Calls)</span>
-                    <span style="color: var(--danger); font-family: monospace;">Aktuelt stadie: Aktiv Nedsmeltning (5 dage i træk med &gt;1 % fald i S&amp;P 500)</span>
-                </div>
-                <div class="vix-bar-track">
-                    <div class="vix-bar-fill"></div>
-                </div>
-                <div class="vix-scale">
-                    <span>12–15 (Eufori)</span>
-                    <span>20 (Uro)</span>
-                    <span style="color: var(--danger); font-weight: 700;">30+ (De-Risking &amp; Tech OAS-Inversion)</span>
-                    <span>50–80 (2027 Corporate Credit Freeze)</span>
-                </div>
+            <div class="kpi-box">
+                <span class="kpi-lbl">US Indtjening / NGDP</span>
+                <span class="kpi-val">170</span>
+                <span class="kpi-sub">+70 % over gns. (100)</span>
             </div>
-
-            <div class="crisis-timeline-box">
-                <strong>Hvorfor redningskransen brast i denne uge (21. november 2026):</strong> 
-                Markedet klyngede sig til to håb: Nvidias Q3-regnskab og torsdagens historiske børsnotering af Anthropic. Begge håb brast fredag den 20. november. Selvom Nvidia leverede flotte tal, styrtdykkede aktien 14 % fredag (samlet tab på over 17.000 mia. kr. de seneste uger) efter Jensen Huangs skandaleombruste exit, og nydebuterede Anthropic faldt over 9 % på andendagen (fra kurs 111,5 $ i fri handel ned i 93–99 $). S&amp;P 500 faldt over 1 % samtlige fem handelsdage i ugen – kun femte gang siden Anden Verdenskrig. Vigtigst af alt afslører <strong>kreditmarkedet (OAS)</strong>, at obligationsinvestorerne er holdt op med at behandle Big Tech som risikofrit: Hyperscalerne brænder deres frie cash flow af og skal udstede <strong>440–685 mia. dollar</strong> i ny gæld i 2027 oven i statens $10,7T rollover-mur.
+            <div class="kpi-box">
+                <span class="kpi-lbl">S&amp;P 500 Normalisering</span>
+                <span class="kpi-val">3.202</span>
+                <span class="kpi-sub">&minus;54 % fra 6.910</span>
+            </div>
+            <div class="kpi-box">
+                <span class="kpi-lbl">Meta 2056 OAS-Spænd</span>
+                <span class="kpi-val">+220 bps</span>
+                <span class="kpi-sub">+90 bps siden april 2026</span>
+            </div>
+            <div class="kpi-box">
+                <span class="kpi-lbl">US Rollover (WAM 5,9 år)</span>
+                <span class="kpi-val">$10,7T / år</span>
+                <span class="kpi-sub">33 % af gæld fra 1 % &rarr; ~5 %</span>
             </div>
         </section>
 
-        <!-- 1. KREDITSPÆNDENE (OAS): MODVÆGTEN TIL AKTIEEUFORIEN -->
-        <section class="oas-section">
-            <h2>1. Kreditspændene (OAS): Obligationsmarkedets Kyniske Dom over Big Tech</h2>
-            <p style="font-size: 0.94rem; color: #334151; margin: 0;">
-                Obligationsinvestorer får ikke del i opsiden ved +75 % vækst – de bærer kun nedsiden, når gælden bliver for tung. Data fra midten af november 2026 (fra bl.a. Charles Schwab, ECB's <em>Financial Stability Review</em> og Fitch Ratings) dokumenterer en historisk inversion i kreditmarkedet:
-            </p>
+        <!-- SEKTION 1: S&P 500 NORMALISERINGSMATEMATIK (SHILLER / FRED / PAICE) -->
+        <section class="quant-card accent-red">
+            <h2>1. S&amp;P 500 Værdiansættelse: Matematisk Normalisering (&minus;54 %)</h2>
+            <p class="quant-sub">Dekomponering af P/E og indtjening i forhold til amerikansk nominelt BNP (NGDP), kvartalsdata 1947–2026.</p>
 
-            <div class="table-responsive">
-                <table class="oas-table">
+            <div class="formula-bar">
+                P/E<sub>norm</sub> = (P / E<sub>12m</sub>) &times; ( (E / NGDP)<sub>aktuel</sub> / (E / NGDP)<sub>gns.</sub> ) = 23,4 &times; 1,70 = <strong>39,8</strong>
+                <div class="formula-note">
+                    <strong>Regneøvelse (Lukkekurs 20/11/2026 = 6.910):</strong><br>
+                    &bull; Kun P/E &rarr; gns. (18,4 / 23,4): 6.910 &times; 0,786 = <strong>5.450 (&minus;21 %)</strong>.<br>
+                    &bull; Kun Indtjening/NGDP &rarr; gns. (100 / 170): 6.910 &times; 0,588 = <strong>4.060 (&minus;41 %)</strong>.<br>
+                    &bull; Begge led normaliseret (0,786 &times; 0,588 = 0,463): 6.910 &times; 0,463 = <strong>3.202 (&minus;54 %)</strong>. <em>(Reference: Dot-com 2000–2002: &minus;49 %, genopretning &gt;7 år).</em>
+                </div>
+            </div>
+
+            <div class="chart-grid-2">
+                <!-- VENSTRE GRAF: DE TO OVERPRISSÆTNINGS-FAKTORER -->
+                <div class="chart-panel">
+                    <h3>A. Indekserede Afvigelser fra 1947–2026 Gennemsnit</h3>
+                    
+                    <div class="bar-row">
+                        <div class="bar-meta">
+                            <span>S&amp;P 500 Trailing P/E (12 mdr.)</span>
+                            <span class="val txt-red">23,4 <span style="color:#64748b; font-weight:400;">(Gns: 18,4)</span></span>
+                        </div>
+                        <div class="bar-track">
+                            <div class="bar-fill bar-steel" style="width: 58.5%;">+27 % over gns.</div>
+                            <div class="ref-line" style="left: 46%;" title="Gns: 18,4"></div>
+                        </div>
+                    </div>
+
+                    <div class="bar-row">
+                        <div class="bar-meta">
+                            <span>Indtjening / Nominelt BNP (NGDP, gns. = 100)</span>
+                            <span class="val txt-red">170 <span style="color:#64748b; font-weight:400;">(Rekord: 1949)</span></span>
+                        </div>
+                        <div class="bar-track">
+                            <div class="bar-fill bar-amber" style="width: 85%;">+70 % over gns.</div>
+                            <div class="ref-line" style="left: 50%;" title="Gns: 100"></div>
+                        </div>
+                    </div>
+
+                    <div class="bar-row">
+                        <div class="bar-meta">
+                            <span>Normaliseret P/E (ved normal indtjeningsandel)</span>
+                            <span class="val txt-red">39,8 <span style="color:#64748b; font-weight:400;">(Gns: 17,2)</span></span>
+                        </div>
+                        <div class="bar-track">
+                            <div class="bar-fill bar-red" style="width: 99.5%;">+131 % over gns. (2,3x normalt)</div>
+                            <div class="ref-line" style="left: 43%;" title="Gns: 17,2"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- HØJRE GRAF: S&P 500 VED NORMALISERING -->
+                <div class="chart-panel">
+                    <h3>B. S&amp;P 500 Implicitte Indeksniveauer ved Normalisering</h3>
+
+                    <div class="bar-row">
+                        <div class="bar-meta">
+                            <span>Lukkekurs 20/11/2026</span>
+                            <span class="val">6.910</span>
+                        </div>
+                        <div class="bar-track">
+                            <div class="bar-fill bar-dark" style="width: 100%;">100 % (Udgangspunkt)</div>
+                        </div>
+                    </div>
+
+                    <div class="bar-row">
+                        <div class="bar-meta">
+                            <span>P/E normal (18,4)</span>
+                            <span class="val">5.450 (&minus;21 %)</span>
+                        </div>
+                        <div class="bar-track">
+                            <div class="bar-fill bar-steel-light" style="width: 78.9%;">5.450</div>
+                        </div>
+                    </div>
+
+                    <div class="bar-row">
+                        <div class="bar-meta">
+                            <span>Indtjening/NGDP normal (100)</span>
+                            <span class="val">4.060 (&minus;41 %)</span>
+                        </div>
+                        <div class="bar-track">
+                            <div class="bar-fill bar-steel" style="width: 58.8%;">4.060</div>
+                        </div>
+                    </div>
+
+                    <div class="bar-row">
+                        <div class="bar-meta">
+                            <span>Begge dele normaliseret</span>
+                            <span class="val txt-red">3.202 (&minus;54 %)</span>
+                        </div>
+                        <div class="bar-track">
+                            <div class="bar-fill bar-red" style="width: 46.3%;">3.202 (&minus;54 %)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="source-footer">
+                <strong>Kilder &amp; direkte data-links:</strong> 
+                <a href="http://www.econ.yale.edu/~shiller/data.htm" target="_blank" rel="noopener noreferrer">Robert J. Shiller Data (Yale / CAPE &amp; P/E)</a> &bull; 
+                <a href="https://fred.stlouisfed.org/series/GDP" target="_blank" rel="noopener noreferrer">FRED Nominal GDP (USA)</a> &bull; 
+                <a href="https://www.spglobal.com/spdji/en/indices/equity/sp-500/" target="_blank" rel="noopener noreferrer">S&amp;P Dow Jones Indices</a> &bull; 
+                Model: Lars Christensen / <a href="https://paice.io" target="_blank" rel="noopener noreferrer">PAICE</a> (november 2026).
+            </div>
+        </section>
+
+        <!-- SEKTION 2: USA VS. EUROPA P/E-SKÆVHED -->
+        <section class="quant-card accent-blue">
+            <h2>2. Transatlantisk Prissætningsskævhed: USA (S&amp;P 500) vs. Europa (STOXX 600)</h2>
+            <p class="quant-sub">Sammenligning af P/E-multipler, implicit indtjeningsafkast (Earnings Yield = E/P) og aktierisikopræmie (ERP = E/P &minus; 10Y Statsrente).</p>
+
+            <div class="chart-grid-2">
+                <!-- P/E SAMMENLIGNING -->
+                <div class="chart-panel">
+                    <h3>A. P/E-Multipel (Pris pr. 1 enhed indtjening)</h3>
+
+                    <div class="bar-row">
+                        <div class="bar-meta">
+                            <span>USA – S&amp;P 500 (Normaliseret P/E)</span>
+                            <span class="val txt-red">39,8x</span>
+                        </div>
+                        <div class="bar-track">
+                            <div class="bar-fill bar-red" style="width: 99.5%;">39,8x (Ekstrem overpris)</div>
+                        </div>
+                    </div>
+
+                    <div class="bar-row">
+                        <div class="bar-meta">
+                            <span>USA – S&amp;P 500 (Trailing 12m P/E)</span>
+                            <span class="val txt-red">23,4x</span>
+                        </div>
+                        <div class="bar-track">
+                            <div class="bar-fill bar-amber" style="width: 58.5%;">23,4x</div>
+                        </div>
+                    </div>
+
+                    <div class="bar-row">
+                        <div class="bar-meta">
+                            <span>USA – Historisk gns. (1947–2026)</span>
+                            <span class="val">18,4x</span>
+                        </div>
+                        <div class="bar-track">
+                            <div class="bar-fill bar-steel-light" style="width: 46%;">18,4x</div>
+                        </div>
+                    </div>
+
+                    <div class="bar-row">
+                        <div class="bar-meta">
+                            <span>Europa – STOXX Europe 600 (Trailing P/E)</span>
+                            <span class="val txt-green">14,5x</span>
+                        </div>
+                        <div class="bar-track">
+                            <div class="bar-fill bar-green" style="width: 36.3%;">14,5x (&minus;38 % rabat vs. US)</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- EARNINGS YIELD & ERP TABEL -->
+                <div class="chart-panel">
+                    <h3>B. The Fed Model: Earnings Yield (E/P) vs. 10Y Rente</h3>
+                    <div class="table-wrap" style="margin: 0;">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Marked</th>
+                                    <th>P/E</th>
+                                    <th>E/P</th>
+                                    <th>10Y Rente</th>
+                                    <th>ERP</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>USA (Normaliseret)</strong></td>
+                                    <td class="mono txt-red">39,8</td>
+                                    <td class="mono">2,51 %</td>
+                                    <td class="mono">5,05 %</td>
+                                    <td class="mono txt-red">&minus;2,54 %</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>USA (Trailing 12m)</strong></td>
+                                    <td class="mono txt-red">23,4</td>
+                                    <td class="mono">4,27 %</td>
+                                    <td class="mono">5,05 %</td>
+                                    <td class="mono txt-red">&minus;0,78 %</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Europa (STOXX 600)</strong></td>
+                                    <td class="mono txt-green">14,5</td>
+                                    <td class="mono">6,90 %</td>
+                                    <td class="mono">2,65 %*</td>
+                                    <td class="mono txt-green">+4,25 %</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div style="font-size: 0.78rem; color: #475569; margin-top: 10px;">
+                        <em>*Tysk 10Y Bund som eurozonens risikofrie anker.</em> I USA er risikopræmien for aktier negativ (&minus;0,78 % til &minus;2,54 %). I Europa betales investorer +4,25 % i risikopræmie.
+                    </div>
+                </div>
+            </div>
+
+            <div class="source-footer">
+                <strong>Kilder:</strong> 
+                <a href="http://www.econ.yale.edu/~shiller/data.htm" target="_blank" rel="noopener noreferrer">Shiller Data</a> &bull; 
+                <a href="https://qontigo.com/index/sxxp/" target="_blank" rel="noopener noreferrer">STOXX Europe 600</a> &bull; 
+                <a href="https://fred.stlouisfed.org/series/DGS10" target="_blank" rel="noopener noreferrer">FRED 10Y US Treasury</a> &bull; 
+                BofA Fund Manager Survey (Nov 2026: 36 % præference for internationale aktier i 2027 mod 24 % USA; kontantandel 3,6 %).
+            </div>
+        </section>
+
+        <!-- SEKTION 3: KREDITMARKEDET (OAS-INVERSION) & AI CASH FLOW -->
+        <section class="quant-card accent-dark">
+            <h2>3. Kreditspænd (OAS-Inversion) &amp; Hyperscalernes Cash Flow-Brud</h2>
+            <p class="quant-sub">Amerikanske tech-obligationer handler nu med højere kreditspænd end det brede Investment Grade-marked.</p>
+
+            <div class="table-wrap">
+                <table class="data-table">
                     <thead>
                         <tr>
-                            <th>Hyperscaler / Segment</th>
+                            <th>Selskab / Segment</th>
                             <th>Frit Cash Flow (Seneste)</th>
-                            <th>Ny Gældsudstedelse / Risiko</th>
-                            <th>Kreditmarkedets Signal (Nov 2026)</th>
+                            <th>Ny Gældsudstedelse / Behov</th>
+                            <th>Kreditspænd (OAS) / Effektiv Rente</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td><strong>Alphabet</strong></td>
-                            <td class="neg-val">&minus;$9,1 mia.</td>
-                            <td>~$80,8 mia. (første 9 mdr.) + &euro;6 mia.</td>
-                            <td>Eksplosiv gældsvækst; markedet tester absorptionsgrænsen.</td>
+                            <td class="mono txt-red">&minus;$9,1 mia.</td>
+                            <td class="mono">~$80,8 mia. (9M) + &euro;6 mia.</td>
+                            <td>Markedet tester absorptionsgrænsen</td>
                         </tr>
                         <tr>
                             <td><strong>Meta</strong></td>
-                            <td class="neg-val">&minus;$1,2 mia.</td>
-                            <td>~$25,1 mia. i nye obligationer</td>
-                            <td><strong>+90 bps bredere spænd</strong> på 2056-gæld siden april (nu <strong>220 bps</strong> over Treasuries).</td>
+                            <td class="mono txt-red">&minus;$1,2 mia.</td>
+                            <td class="mono">~$25,1 mia. nye obligationer</td>
+                            <td class="mono txt-red">+220 bps (2056-gæld; +90 bps siden april)</td>
                         </tr>
                         <tr>
                             <td><strong>Oracle</strong></td>
-                            <td class="neg-val">&minus;$5,4 mia.</td>
-                            <td>$10 mia. i High Yield + aktier</td>
-                            <td>Højeste finansieringsomkostninger i sektoren; &gt;8 % effektiv rente.</td>
+                            <td class="mono txt-red">&minus;$5,4 mia.</td>
+                            <td class="mono">$10 mia. High Yield + aktier</td>
+                            <td class="mono txt-red">&gt;8,0 % effektiv rente</td>
                         </tr>
                         <tr>
-                            <td><strong>Samlet AI-kredit (2027-estimat)</strong></td>
-                            <td class="neg-val">Stramt / negativt</td>
-                            <td>$440 mia. (Goldman) til $685 mia. inkl. Private Credit (BofA)</td>
-                            <td>Udstedelsesbølgen kolliderer frontalt med US Treasury rollover og Term Premium.</td>
+                            <td><strong>US High Yield / IG OAS</strong></td>
+                            <td>&mdash;</td>
+                            <td class="mono">$940 mia. ikke-fin. IG (+33 % YoY)</td>
+                            <td class="mono">HY: 334–357 bps (bund 270 bps) • IG: ~90 bps</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Samlet AI-kredit (2027)</strong></td>
+                            <td class="mono txt-red">Negativt hos flere</td>
+                            <td class="mono">$440B (GS) – $685B (BofA)</td>
+                            <td>Kolliderer med US Treasury rollover &amp; Term Premium</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
 
-            <div class="oas-highlights-grid">
-                <div class="oas-card">
-                    <h4>Inversion i Tech-Spændene</h4>
-                    <p>Amerikanske tech-obligationer handler nu med <em>højere</em> kreditspænd end det brede Investment Grade-marked. Markedet prissætter hyperscalernes risiko markant hårdere end kreditvurderingsbureauerne.</p>
-                </div>
-                <div class="oas-card">
-                    <h4>Bredt IG &amp; High Yield Pres</h4>
-                    <p>Ikke-finansiel IG-udstedelse er steget +33 % år-til-år til $940 mia., mens US High Yield OAS er udvidet fra 270 bps (21. sept.) til 334–357 bps (top på 367 bps d. 5. nov.).</p>
-                </div>
-                <div class="oas-card">
-                    <h4>Den Dobbelte Klemme i 2027</h4>
-                    <p>Selv hvis Nvidia sælger chips i 2027, skal køberne finansiere dem. 440–685 mia. $ i ny AI-gæld oven i statens $10,7T rollover skaber stigende OAS-spænd oven på forhøjet Term Premium.</p>
-                </div>
+            <div class="source-footer">
+                <strong>Kilder:</strong> 
+                <a href="https://fred.stlouisfed.org/series/BAMLH0A0HYM2" target="_blank" rel="noopener noreferrer">ICE BofA US High Yield OAS (FRED)</a> &bull; 
+                <a href="https://fred.stlouisfed.org/series/BAMLC0A0CM" target="_blank" rel="noopener noreferrer">ICE BofA US Corporate IG OAS (FRED)</a> &bull; 
+                Fitch Ratings (18. nov. 2026) &bull; ECB Financial Stability Review (10. nov. 2026) &bull; Charles Schwab (13. nov. 2026).
             </div>
         </section>
 
-        <!-- 2. "ANYTHING BUT AI"-ROTATIONEN -->
-        <section class="rotation-section">
-            <h2>2. Kapitalstrømmene: "Anything but AI"-Rotationen &amp; Den Manglende Kontantbuffer</h2>
-            <p style="font-size: 0.94rem; color: #334151; margin: 0;">
-                BofA's <em>Fund Manager Survey</em> viser, at institutionelle forvaltere har barberet deres tech-overvægt ned i det hurtigste tempo siden 2006 – men de er <strong>ikke gået i kontanter (cash-andelen er på historisk lave 3,6 %)</strong>. Kapitalen er i stedet roteret ind i fire lommer:
-            </p>
+        <!-- SEKTION 4: SUVERÆN GÆLDSMATEMATIK (WAM, TERM PREMIUM & KNÆKPUNKTER) -->
+        <section class="quant-card accent-red">
+            <h2>4. Suveræn Gældsmatematik: WAM-Rollover (5,9 år), Term Premium &amp; Knækpunkter</h2>
+            <p class="quant-sub">Pengepolitikkens reelle lag-effekt på balancesiden er 5–6 år (Weighted Average Maturity), ikke 12–18 måneder.</p>
 
-            <div class="rotation-grid">
-                <div class="rot-card">
-                    <span class="rot-tag">Lomme 1 • Den Største Vinder</span>
-                    <h3>Energi (+14,05 % under AI-udsalget)</h3>
-                    <p>Under tech-nedturen i oktober og november har energisektoren overperformet massivt (+14,05 % i Morningstars US Energy Index og +15,3 % i 2. halvår samlet) som direkte værn mod forsyningsflaskehalse og inflation.</p>
-                </div>
-
-                <div class="rot-card">
-                    <span class="rot-tag">Lomme 2 • Ny Værdiansættelsesfælde</span>
-                    <h3>Sundhed (Healthcare) &amp; Stabilt Forbrug</h3>
-                    <p>Massive defensive indstrømninger (+8,8 % til +14 % i 2. halvår). Strateger (bl.a. Morningstar og Trustnet d. 16. nov.) advarer dog nu om "boblelignende tendenser" og overvurdering i netop healthcare og consumer staples.</p>
-                </div>
-
-                <div class="rot-card">
-                    <span class="rot-tag">Lomme 3 • Opgør med Tech-Koncentration</span>
-                    <h3>Equal-Weight S&amp;P 500 (+5 %-point)</h3>
-                    <p>Det ligevægtede S&amp;P 500-indeks har slået det markedsvægtede (tech-tunge) indeks med over 5 procentpoint, efterhånden som investorerne flygter ud af de syv store tech-mastodonter.</p>
-                </div>
-
-                <div class="rot-card">
-                    <span class="rot-tag">Lomme 4 • Geografisk Flugt ud af USA</span>
-                    <h3>Internationale Aktier (36 % mod 24 % USA)</h3>
-                    <p>Institutionelle investorer har skiftet præference for 2027 væk fra dyre amerikanske aktier og over mod internationale markeder (netto 36 % foretrækker internationale aktier i 2027 mod kun 24 % for USA).</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- 3. OPGØRET MED 12-18 MÅNEDERS MYTEN (WAM = 5,9 ÅR) -->
-        <section class="wam-section">
-            <h2>3. Pengepolitikkens Reelle Lag-Effekt: 5-Års WAM (Ikke 12–18 Måneder)</h2>
-            <p style="font-size: 0.94rem; color: #334151; margin: 0;">
-                Mens analytikere som JPMorgans David Kelly kalder nedturen en "mild forkølelse", viser gældens <strong>Weighted Average Maturity (WAM)</strong>, hvorfor presset først lige er begyndt på balancesiden:
-            </p>
-
-            <div class="wam-comparison-grid">
-                <div class="wam-box myth">
-                    <span class="wam-tag" style="color: #64748b;">Den Klassiske Lærebogsmyte (Efterspørgsels-lag)</span>
-                    <h3>12 – 18 Måneders Horisont</h3>
-                    <p>
-                        Måler alene den kortsigtede effekt på nykredit. Da staten, S&amp;P 500-selskaber og erhvervsejendomme (CRE) i 2020–2021 fastlåste 5- til 7-årige obligationer til 0,5–2,5 % i rente, blev rentehoppene i 2022–2025 absorberet midlertidigt.
-                    </p>
-                </div>
-
-                <div class="wam-box reality">
-                    <span class="wam-tag" style="color: var(--danger);">Den Strukturelle Balance-Virkelighed (Rollover-lag)</span>
-                    <h3>5,0 – 5,9 Års WAM-Horisont (Rammer Q4 2026 – 2028)</h3>
-                    <p>
-                        WAM på USA's omsættelige statsgæld ($32,43T) er <strong>71 måneder (5,9 år)</strong>, mens erhvervsobligationer og CRE-lån udstedes på <strong>5 års løbetid</strong>. 2021-udstedelserne udløber eksakt nu i slutningen af 2026 og gennem 2027 og tvangsomlægges fra ~1 % til 5 %+ (stater) og 7–9 % (virksomheder).
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- 4. REGIONALE KNÆKPUNKTSMÅLERE -->
-        <h2 style="font-size: 1.35rem; color: var(--dark); margin: 0 0 16px 0;">4. Regionale Nøgletal &amp; Suveræne Knækpunkts-målere</h2>
-        <section class="radar-grid">
-
-            <!-- USA -->
-            <div class="pole-card" style="border-top: 4px solid var(--danger);">
-                <div>
-                    <div class="pole-header">
-                        <span class="pole-title">USA</span>
-                        <span class="pole-tag">Treasury, WAM (5,9 år) &amp; AI-Udstedelsesmur</span>
-                    </div>
-                    <div class="stat-line"><span>Bruttogæld / Offentligt holdt:</span><span class="stat-val">$40,58T (123% BNP) / $32,43T</span></div>
-                    <div class="stat-line"><span>Netto-renteudgift (FY26):</span><span class="stat-val">$1.052 mia. (&gt; Forsvaret $965 mia.)</span></div>
-                    <div class="stat-line"><span>2027 AI-Kreditbehov (NY GÆLD):</span><span class="stat-val">$440 – $685 mia. (Oveni $10,7T rollover)</span></div>
-                    <div class="stat-line"><span>Forbrugergæld / Kreditkortrente:</span><span class="stat-val">$18,77T / 22,36 % (~7% misligh.)</span></div>
-                    <div class="stat-line"><span>Kritisk Knækpunkt (i_crit):</span><span class="stat-val" style="color: var(--danger);">5,25 – 5,50 % (Term Premium)</span></div>
-
-                    <div class="knæk-box">
-                        <div class="knæk-title-row">
-                            <span style="color: var(--danger);">Crowding Out &amp; OAS-Inversion</span>
-                            <span style="color: var(--danger);">98 % af knækpunkt</span>
-                        </div>
-                        <div class="knæk-track-wrapper">
-                            <div class="knæk-track">
-                                <div class="knæk-fill fill-usa" style="width: 98%;"></div>
-                            </div>
-                            <div class="knæk-threshold-marker"></div>
-                            <span class="knæk-threshold-label">Knækpunkt</span>
-                        </div>
-                        <div class="knæk-scale-labels">
-                            <span>0% (Stabil)</span>
-                            <span>50% (Forhøjet)</span>
-                            <span style="color: var(--danger); font-weight: 700;">100% (Brud)</span>
-                        </div>
-                        <div class="knæk-stats-table">
-                            <div class="sub-stat">
-                                <span class="sub-stat-lbl">Gennemsnitsrente</span>
-                                <span class="sub-stat-val">3,53 % &rarr; 5%+</span>
-                            </div>
-                            <div class="sub-stat">
-                                <span class="sub-stat-lbl">12-mdr Rollover</span>
-                                <span class="sub-stat-val" style="color: var(--danger);">$10,7T (33%)</span>
-                            </div>
-                            <div class="sub-stat">
-                                <span class="sub-stat-lbl">Meta 2056 OAS</span>
-                                <span class="sub-stat-val" style="color: var(--danger);">+220 bps</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="pole-desc">
-                        Med en inflation på 3,7 % og stærkt lønpres er Fed tvunget til at fastholde – og potentielt hæve – renten, mens $10,7T i statsgæld og $440–685 mia. i ny AI-gæld rammer markedet i 2027. Gearede hedgefonde (8,5 % af Treasury-markedet) står uden kontantbuffer.
-                    </div>
-                </div>
-                <div class="trigger-alert">
-                    <strong>Primær trigger:</strong> Private Credit-misligholdelser i 2027, hvor hovedparten af de $685 mia. AI-gæld skal placeres.
+            <div class="formula-bar">
+                (1) i<sub>t+1</sub><sup>w</sup> = [ (1 &minus; &alpha;)D<sub>t</sub>&middot;i<sub>t</sub><sup>w</sup> + (&alpha;D<sub>t</sub> + PD<sub>t</sub> + IE<sub>t</sub>)&middot;i<sub>t</sub><sup>m</sup> ] / D<sub>t+1</sub>
+                &nbsp;&nbsp;|&nbsp;&nbsp;
+                (2) &Delta;b<sub>t</sub> = (r<sub>t</sub><sup>w</sup> &minus; g<sub>t</sub>)b<sub>t</sub> + pd<sub>t</sub>
+                &nbsp;&nbsp;|&nbsp;&nbsp;
+                (3) D<sub>t</sub> / P<sub>t</sub> = &sum; E<sub>t</sub>[s<sub>t+j</sub>] / (1 + r)<sup>j</sup>
+                <div class="formula-note">
+                    <strong>Parametre (USA, Nov 2026):</strong> D<sub>0</sub> = $32,43T (Brutto: $40,58T) &bull; WAM = 71 mdr. (5,9 år) &bull; &alpha; = 0,33 ($10,7T rollover/12 mdr.) &bull; i<sub>0</sub><sup>w</sup> = 3,531 % &bull; i<sup>m</sup> = 4,80–5,20 % (inkl. <strong>Term Premium</strong>).<br>
+                    <strong>Fremskrivning (IE<sub>t</sub> = i<sub>t</sub><sup>w</sup> &middot; D<sub>t</sub>):</strong> 2026: <strong>$1,05T</strong> (3,6 % BNP) &rarr; 2027: <strong>$1,45T</strong> (4,8 %) &rarr; 2028: <strong>$1,73T</strong> (5,6 %) &rarr; 2030: <strong>$2,14T+</strong> (6,7 %+ BNP).
                 </div>
             </div>
 
-            <!-- FRANKRIG -->
-            <div class="pole-card" style="border-top: 4px solid #7c3aed;">
-                <div>
-                    <div class="pole-header">
-                        <span class="pole-title">Frankrig</span>
-                        <span class="pole-tag">Euro-Crisis II • 24-Års Rentetop</span>
-                    </div>
-                    <div class="stat-line"><span>Statsgæld / 3Q BNP-vækst:</span><span class="stat-val">118% af BNP / &minus;0,1 % (Skrumper)</span></div>
-                    <div class="stat-line"><span>Fransk 10Y OAT-rente:</span><span class="stat-val">4,80 % (&gt; Italien 4,6%, Grækenland 4,4%)</span></div>
-                    <div class="stat-line"><span>Rente ($i$) vs. Trendvækst ($g$):</span><span class="stat-val">4,80 % vs. 3,10 % (Stramning: 4,7% BNP)</span></div>
-                    <div class="stat-line"><span>OAT-Bund Rentespænd:</span><span class="stat-val">+85 bps (Hastig udvidelse)</span></div>
-                    <div class="stat-line"><span>Kritisk Knækpunkt (i_crit):</span><span class="stat-val" style="color: #7c3aed;">OAT &gt; 5,00 % / Spread &gt; 110 bps</span></div>
-
-                    <div class="knæk-box">
-                        <div class="knæk-title-row">
-                            <span style="color: #7c3aed;">Suveræn Fragmentering i Eurozonen</span>
-                            <span style="color: #7c3aed;">95 % af knækpunkt</span>
-                        </div>
-                        <div class="knæk-track-wrapper">
-                            <div class="knæk-track">
-                                <div class="knæk-fill fill-france" style="width: 95%;"></div>
-                            </div>
-                            <div class="knæk-threshold-marker"></div>
-                            <span class="knæk-threshold-label">Knækpunkt</span>
-                        </div>
-                        <div class="knæk-scale-labels">
-                            <span>3,0 %</span>
-                            <span>4,0 % (Advarsel)</span>
-                            <span style="color: #7c3aed; font-weight: 700;">5,00 % (Brud)</span>
-                        </div>
-                        <div class="knæk-stats-table">
-                            <div class="sub-stat">
-                                <span class="sub-stat-lbl">Aktuel 10Y OAT</span>
-                                <span class="sub-stat-val">4,80 %</span>
-                            </div>
-                            <div class="sub-stat">
-                                <span class="sub-stat-lbl">Buffer til brud</span>
-                                <span class="sub-stat-val" style="color: #7c3aed;">0,20 %-point</span>
-                            </div>
-                            <div class="sub-stat">
-                                <span class="sub-stat-lbl">Knækpunkt</span>
-                                <span class="sub-stat-val" style="color: #7c3aed;">&gt; 5,00 %</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="pole-desc">
-                        Frankrig skrumper (&minus;0,1 % i 3Q BNP) og betaler 4,80 % på 10-årig gæld – højere end Grækenland. Stabilisering kræver 4,7 % af BNP i permanent finanspolitisk stramning op til præsidentvalget i april 2027, mens ECB er bundet af inflation.
-                    </div>
-                </div>
-                <div class="trigger-alert">
-                    <strong>Primær trigger:</strong> OAT bryder 5,00 % og udløser suveræn obligationskrise i eurozonen.
-                </div>
+            <div class="table-wrap">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Region</th>
+                            <th>Gæld / BNP</th>
+                            <th>Aktuel 10Y / Rente</th>
+                            <th>Knækpunkt (i<sub>crit</sub>)</th>
+                            <th>Matematisk Ubalance</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>USA</strong></td>
+                            <td class="mono">123 % ($40,58T)</td>
+                            <td class="mono">5,05–5,36 %</td>
+                            <td class="mono txt-red">5,25–5,50 %</td>
+                            <td>33 % årlig rollover ($10,7T) + $440–685B AI-gæld i 2027</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Frankrig</strong></td>
+                            <td class="mono">118 %</td>
+                            <td class="mono txt-red">4,80 % (OAT)</td>
+                            <td class="mono txt-red">&gt;5,00 % / +110 bps</td>
+                            <td>Rente (4,80 %) &gt; nominel vækst (3,10 %); kræver 4,7 % BNP-stramning</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Japan</strong></td>
+                            <td class="mono">260 %</td>
+                            <td class="mono">BoJ: 1,25 % (157,2 JPY)</td>
+                            <td class="mono txt-red">BoJ &gt;1,5 % / 162 JPY</td>
+                            <td>Kreditor-dræn: Sælger US Treasuries for at forsvare yenen</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Guld (FTPL)</strong></td>
+                            <td class="mono">27 % af CB-reserver</td>
+                            <td class="mono txt-green">$4.183+ / oz</td>
+                            <td class="mono">Realrente +1,95 %</td>
+                            <td>Stiger trods positiv realrente = prissætning af finansiel repression</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
 
-            <!-- JAPAN -->
-            <div class="pole-card" style="border-top: 4px solid var(--warning);">
-                <div>
-                    <div class="pole-header">
-                        <span class="pole-title">Japan</span>
-                        <span class="pole-tag">260 % Gæld, Carry-Trade &amp; Kreditor-Dræn</span>
-                    </div>
-                    <div class="stat-line"><span>Statsgæld af BNP:</span><span class="stat-val">~260 % (Verdens højeste)</span></div>
-                    <div class="stat-line"><span>BoJ Styringsrente / Valuta:</span><span class="stat-val">1,25 % (80% sandsynl. for hop) / ~157,2 JPY</span></div>
-                    <div class="stat-line"><span>Rolle i US Treasury-markedet:</span><span class="stat-val">Største udenlandske kreditor (Sælger ud)</span></div>
-                    <div class="stat-line"><span>Softbank (AI-eksponering):</span><span class="stat-val">&minus;50 % siden juni (CDS i 4-års top)</span></div>
-                    <div class="stat-line"><span>Kritisk Knækpunkt (i_crit):</span><span class="stat-val" style="color: var(--warning);">BoJ &gt; 1,50–2,00% / USD/JPY &gt; 162</span></div>
-
-                    <div class="knæk-box">
-                        <div class="knæk-title-row">
-                            <span style="color: var(--warning);">Japansk Likviditets-Ketsjereffekt</span>
-                            <span style="color: var(--warning);">88 % af knækpunkt</span>
-                        </div>
-                        <div class="knæk-track-wrapper">
-                            <div class="knæk-track">
-                                <div class="knæk-fill fill-japan" style="width: 88%;"></div>
-                            </div>
-                            <div class="knæk-threshold-marker"></div>
-                            <span class="knæk-threshold-label">Knækpunkt</span>
-                        </div>
-                        <div class="knæk-scale-labels">
-                            <span>140 JPY</span>
-                            <span>150 JPY</span>
-                            <span style="color: var(--warning); font-weight: 700;">162 JPY (Brud)</span>
-                        </div>
-                        <div class="knæk-stats-table">
-                            <div class="sub-stat">
-                                <span class="sub-stat-lbl">Aktuel kurs</span>
-                                <span class="sub-stat-val">157,2 JPY</span>
-                            </div>
-                            <div class="sub-stat">
-                                <span class="sub-stat-lbl">BoJ Rente</span>
-                                <span class="sub-stat-val" style="color: var(--warning);">1,25 % (&uarr;)</span>
-                            </div>
-                            <div class="sub-stat">
-                                <span class="sub-stat-lbl">Knækpunkt</span>
-                                <span class="sub-stat-val" style="color: var(--warning);">&gt; 162 JPY</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="pole-desc">
-                        Inflation tvinger BoJ op i rente (1,25 % mod december-stramning), hvilket afvikler yen-carry-traden og tvinger Tokyo til at sælge US Treasuries for at forsvare yenen, netop som AI-udstedelserne stiger.
-                    </div>
-                </div>
-                <div class="trigger-alert">
-                    <strong>Primær trigger:</strong> BoJ-stramning i december accelererer global likviditetsafvikling.
-                </div>
-            </div>
-
-            <!-- EUROZONEN & DANMARK -->
-            <div class="pole-card" style="border-top: 4px solid var(--safe);">
-                <div>
-                    <div class="pole-header">
-                        <span class="pole-title">EU &amp; Danmark</span>
-                        <span class="pole-tag">ECB Financial Stability &amp; Nordisk Robusthed</span>
-                    </div>
-                    <div class="stat-line"><span>ECB Financial Stability Review:</span><span class="stat-val">Advarer mod AI-boble &amp; tech-kreditspænd</span></div>
-                    <div class="stat-line"><span>DK 30Y Realkredit / F-Kort:</span><span class="stat-val">5,00 % Fast / Variabel beskytter kurs</span></div>
-                    <div class="stat-line"><span>Dansk Eksponering (Jacob Pedersen):</span><span class="stat-val">USA udgør 2/3 af globalt aktieindeks</span></div>
-                    <div class="stat-line"><span>Kritisk Knækpunkt (i_crit):</span><span class="stat-val" style="color: var(--safe);">Realkredit &gt; 5,50% / Europæisk bank-smitte</span></div>
-
-                    <div class="knæk-box">
-                        <div class="knæk-title-row">
-                            <span style="color: var(--safe);">Synkront Globalt Rentepres</span>
-                            <span style="color: var(--safe);">86 % af knækpunkt</span>
-                        </div>
-                        <div class="knæk-track-wrapper">
-                            <div class="knæk-track">
-                                <div class="knæk-fill fill-eu" style="width: 86%;"></div>
-                            </div>
-                            <div class="knæk-threshold-marker"></div>
-                            <span class="knæk-threshold-label">Knækpunkt</span>
-                        </div>
-                        <div class="knæk-scale-labels">
-                            <span>2,0 %</span>
-                            <span>4,0 % (Moderat)</span>
-                            <span style="color: var(--safe); font-weight: 700;">5,50 % (Brud)</span>
-                        </div>
-                        <div class="knæk-stats-table">
-                            <div class="sub-stat">
-                                <span class="sub-stat-lbl">Aktuel 30Y</span>
-                                <span class="sub-stat-val">5,00 %</span>
-                            </div>
-                            <div class="sub-stat">
-                                <span class="sub-stat-lbl">Buffer til brud</span>
-                                <span class="sub-stat-val" style="color: var(--safe);">0,50 %-point</span>
-                            </div>
-                            <div class="sub-stat">
-                                <span class="sub-stat-lbl">Knækpunkt</span>
-                                <span class="sub-stat-val" style="color: var(--safe);">&gt; 5,50 %</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="pole-desc">
-                        Fordi USA udgør to tredjedele af det globale aktiemarked, rammer fredagens nedsmeltning direkte i danske pensionsformuer, mens danske og nordeuropæiske selskaber (f.eks. C25) dog står med et langt stærkere fundament end gearet amerikansk tech.
-                    </div>
-                </div>
-                <div class="trigger-alert">
-                    <strong>Primær trigger:</strong> Synkron Fed/ECB-stramning i december og spredning fra AI-kreditmarkedet.
-                </div>
-            </div>
-        </section>
-
-        <!-- 5. FREMSKRIVNING AF ROLLOVER-EFFEKTEN -->
-        <section class="projection-section">
-            <h2>5. Fremskrivningsmodel: Statens Rollover-Mur ($10,7T) + AI-Gæld ($440–685B)</h2>
-            <p style="font-size: 0.94rem; color: #334151; margin: 0 0 14px 0;">
-                Med $32,43 billioner i omsættelig amerikansk statsgæld (gennemsnitsrente $i_0^w = 3,53\,\%$, årlig rollover $\alpha = 0,33$) og $440–685 mia. dollar i ny AI-kredit i 2027 accelererer renteudgiften ($IE_t$) eksponentielt:
-            </p>
-
-            <div class="timeline-card-grid">
-                <div class="timeline-step active">
-                    <div>
-                        <div class="timeline-year-tag">2026 (Aktuel) • Gæld: $32,4T</div>
-                        <div class="timeline-amount">$1,05 billioner</div>
-                        <div class="timeline-bnp">3,6 % af BNP (Snitrente: 3,53 %)</div>
-                        <div class="timeline-desc">Netto-renteudgiften ($1.052 mia.) har overhalet forsvarsbudgettet ($965 mia.). Tech OAS-spændene inverterer og overhaler bred IG.</div>
-                    </div>
-                </div>
-
-                <div class="timeline-step active" style="border-top-color: var(--warning);">
-                    <div>
-                        <div class="timeline-year-tag">2027–2028 • Gæld: $35,1T &rarr; $38,0T</div>
-                        <div class="timeline-amount">$1,45T &rarr; $1,85T+</div>
-                        <div class="timeline-bnp">4,8 % &rarr; 6,0 % af BNP (AI + Corporate Wall)</div>
-                        <div class="timeline-desc">$440–685 mia. i ny AI-gæld (primært Private Credit) kolliderer med statens $10,7T rollover og erhvervslivets 2021/2022-forfald.</div>
-                    </div>
-                </div>
-
-                <div class="timeline-step danger">
-                    <div>
-                        <div class="timeline-year-tag" style="color: var(--danger);">2029–2030 • Gæld: $41,2T &rarr; $45,0T+</div>
-                        <div class="timeline-amount" style="color: var(--danger);">$2,14T &rarr; $2,40T+</div>
-                        <div class="timeline-bnp">&gt; 7,0 % af BNP (Fiskal Dominans)</div>
-                        <div class="timeline-desc">Hele gældsporteføljen er rullet over til nye renter. Renteudgifterne opsluger statsbudgettet og tvinger systemet ud i finansiel repression.</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="snowball-chart">
-                <h4 style="margin: 0 0 14px 0; color: var(--dark); font-size: 1.05rem;">5-Årig Matematisk Fremskrivning af USA's Netto-Renteudgifter ($IE_t = i_t^w \cdot D_t$)</h4>
-                <div class="snowball-row">
-                    <div class="snowball-label"><span>2026 (Aktuel): Gennemsnitsrente 3,53 % (Markedsgæld: $32,4T)</span><span style="font-family: monospace;">$1.052 mia. (3,6 % af BNP)</span></div>
-                    <div class="snowball-bar-bg"><div class="snowball-bar-fill" style="width: 44%; background: #3b82f6;"></div></div>
-                </div>
-                <div class="snowball-row">
-                    <div class="snowball-label"><span>2027: Gennemsnitsrente 4,12 %+ (Markedsgæld: $35,1T + $440–685B AI-gæld)</span><span style="font-family: monospace;">$1.450 mia.+ (4,8 % af BNP)</span></div>
-                    <div class="snowball-bar-bg"><div class="snowball-bar-fill" style="width: 63%; background: #f59e0b;"></div></div>
-                </div>
-                <div class="snowball-row">
-                    <div class="snowball-label"><span>2028: Gennemsnitsrente 4,55 %+ (Markedsgæld: $38,0T)</span><span style="font-family: monospace;">$1.730–1.850 mia. (5,8 % af BNP)</span></div>
-                    <div class="snowball-bar-bg"><div class="snowball-bar-fill" style="width: 80%; background: #ea580c;"></div></div>
-                </div>
-                <div class="snowball-row" style="margin-bottom: 0;">
-                    <div class="snowball-label" style="color: var(--danger);"><span><strong>2030: Fuld WAM-Rollover + Stigende Term Premium (Markedsgæld: $44,6T+)</strong></span><span style="font-family: monospace;"><strong>$2.140–2.400 mia. (&gt;7,0 % af BNP)</strong></span></div>
-                    <div class="snowball-bar-bg"><div class="snowball-bar-fill" style="width: 100%; background: #b91c1c;"></div></div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 6. TEORETISK FUNDAMENT -->
-        <section class="theory-card">
-            <h2>6. Teoretisk Fundament: WAM-Ligningen, Blanchard, Sargent-Wallace &amp; FTPL</h2>
-            <p style="font-size: 0.94rem; color: #334151; margin: 0 0 10px 0;">
-                Tre formelle makroøkonomiske ligninger forklarer, hvorfor kombinationen af en kort <em>Weighted Average Maturity</em> ($\alpha = \frac{1}{\text{WAM}} \approx 0,33$), et primært underskud ($PD_t &gt; 4,5\,\%$) og stigende OAS-spænd udløser et systemisk regimebrud:
-            </p>
-            <div class="math-display-card">
-                <div class="math-formula">
-                    (1) &nbsp; <span class="math-var">i</span><sub>t+1</sub><sup>w</sup> = 
-                    <span class="math-fraction">
-                        <span class="num">(1 &minus; &alpha;)<span class="math-var">D</span><sub>t</sub> &middot; <span class="math-var">i</span><sub>t</sub><sup>w</sup> + (&alpha;<span class="math-var">D</span><sub>t</sub> + <span class="math-var">PD</span><sub>t</sub> + <span class="math-var">IE</span><sub>t</sub>) &middot; <span class="math-var">i</span><sub>t</sub><sup>m</sup>(&uarr;)</span>
-                        <span class="den"><span class="math-var">D</span><sub>t+1</sub></span>
-                    </span>
-                    &nbsp;&nbsp;|&nbsp;&nbsp;
-                    (2) &nbsp; &Delta;<span class="math-var">b</span><sub>t</sub> = (<span class="math-var">r</span><sub>t</sub><sup>w</sup> &minus; <span class="math-var">g</span><sub>t</sub>)<span class="math-var">b</span><sub>t</sub> + <span class="math-var">pd</span><sub>t</sub>
-                    &nbsp;&nbsp;|&nbsp;&nbsp;
-                    (3) &nbsp; 
-                    <span class="math-fraction">
-                        <span class="num"><span class="math-var">D</span><sub>t</sub></span>
-                        <span class="den"><span class="math-var">P</span><sub>t</sub></span>
-                    </span>
-                    = &sum; 
-                    <span class="math-fraction">
-                        <span class="num"><span class="math-var">E</span><sub>t</sub>[<span class="math-var">s</span><sub>t+j</sub>]</span>
-                        <span class="den">(1 + <span class="math-var">r</span>)<sup>j</sup></span>
-                    </span>
-                </div>
-                <div class="math-legend">
-                    &bull; <strong>Ligning (1) – WAM Rollover-mekanikken:</strong> Den vægtede gennemsnitsrente $i_t^w$ (3,53 %) konvergerer mekanisk mod markedsrenten $i_t^m$ (~5 %+), hvilket skaber CBO's <em>turbocharger-effekt</em>.<br>
-                    &bull; <strong>Ligning (2) – Domar/Blanchard-snebolden:</strong> Når $r_t^w &gt; g_t$, og primære overskud udebliver ($pd_t &gt; 0$), vokser gældskvoten $b_t$ eksponentielt (<em>Sargent &amp; Wallace, 1981</em>).<br>
-                    &bull; <strong>Ligning (3) – Fiscal Theory of the Price Level (Leeper/Cochrane):</strong> Uden fremtidige primære overskud ($s_{t+j}$) kan ligningen kun balancere ved, at prisniveauet $P_t$ stiger (guld i $4.183+/oz) eller gennem kreditmisligholdelse.
-                </div>
-            </div>
-        </section>
-
-        <!-- 7. FREMSKRIVNINGER FOR 2027: DE FIRE NYE TRENDS (UDEN FOR AI) -->
-        <section class="global-context-box">
-            <h2>7. Fremskrivninger for 2027: De Fire Strukturelle Trends (Uden for AI)</h2>
-            <p class="context-intro">
-                Når den matematiske gældsvirkelighed (rollover, højere Term Premium, $440–685 mia. i AI-gæld) kombineres med de faktiske pengeflows, tegner der sig fire strukturelle 2027-trends uden for AI:
-            </p>
-
-            <div class="interconnect-grid">
-                <div class="interconnect-item ftpl">
-                    <h3 class="interconnect-title">1. Realaktiver, Energi &amp; Råvarer (FTPL-Hedgen)</h3>
-                    <p class="interconnect-text">I en verden med finanspolitisk dominans (permanente budgetunderskud på begge sider af Atlanten) og energi-flaskehalse fungerer fysiske aktiver, olie/gas og råvarer som direkte værn mod valutadevaluering og vedvarende inflation.</p>
-                </div>
-
-                <div class="interconnect-item intl">
-                    <h3 class="interconnect-title">2. International Value &amp; Fysisk Infrastruktur (Ikke-US)</h3>
-                    <p class="interconnect-text">Kapitalen søger væk fra den ekstreme koncentrationsrisiko i amerikansk tech over mod lavere prissatte markeder i Europa og udvalgte Emerging Markets – særligt inden for industri, forsyningsnet, forsvar og fysisk beredskabsinfrastruktur.</p>
-                </div>
-
-                <div class="interconnect-item credit">
-                    <h3 class="interconnect-title">3. Kvalitetsobligationer uden Tech (Kort Varighed &amp; "Fallen Angels")</h3>
-                    <p class="interconnect-text">Når AI-obligationsudbuddet i 2027 presser kreditspændene bredere ud, trækkes solide ikke-tech virksomhedsobligationer (energi, telekom, basisindustri) med ned i kurs. Det skaber en attraktiv indgang i kortfristet kredit med høj kupon uden lang varighedsrisiko.</p>
-                </div>
-
-                <div class="interconnect-item cash">
-                    <h3 class="interconnect-title">4. Kontrær Likviditet (Kontanter &amp; Guld som Call-Option)</h3>
-                    <p class="interconnect-text">Fordi forvalterne sidder med historisk lave 3,6 % i kontanter og har skubbet defensive aktier (staples/healthcare) op i dyre værdiansættelser, er der ingen støddæmper, hvis et kreditevent rammer i 1. halvår 2027. Kontanter og guld fungerer som en call-option på tvangssalg.</p>
-                </div>
-            </div>
-
-            <div class="synthesis-card">
-                <strong>Strategisk konklusion pr. 21. november 2026:</strong>  
-                Fredagens aktienedsmeltning bekræfter, at hverken Nvidias regnskab eller Anthropics børsnotering kunne bremse tyngdekraften. Mens forvalterne står uden kontantbuffer (3,6 %), og kreditmarkedet (OAS) allerede indregner kollapset i tech-gælden, står en positionering i kort variabel rente (F-kort), guld og likvide kontanter klar til at udnytte tvangssalgene i 1. halvår 2027.
+            <div class="source-footer">
+                <strong>Kilder &amp; direkte data-links:</strong> 
+                <a href="https://fiscaldata.treasury.gov/" target="_blank" rel="noopener noreferrer">US Treasury Fiscal Data (Debt to the Penny &amp; Average Interest Rates)</a> &bull; 
+                <a href="https://www.cbo.gov/topics/budget" target="_blank" rel="noopener noreferrer">Congressional Budget Office (CBO)</a> &bull; 
+                <a href="https://fred.stlouisfed.org/series/THREEFYTP10" target="_blank" rel="noopener noreferrer">FRED 10Y Term Premium (Kim-Wright)</a> &bull; 
+                Teori: Domar (1944), Sargent &amp; Wallace (1981), Blanchard (2019), Cochrane (2023).
             </div>
         </section>
     </main>
 
     <footer>
-        &copy; 2026 Lasse Holt. Makroøkonomisk Radar &amp; Systemisk Telemetri.
+        &copy; 2026 Lasse Holt. Kvantitativ Makroøkonomisk Radar.
     </footer>
 
     <!-- GOOGLE TRANSLATE WIDGET SCRIPT -->
