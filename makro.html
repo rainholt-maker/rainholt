@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Makroøkonomi: Live Krak-Radar & Kvantitativ Analyse – Lasse Holt</title>
-    <meta name="description" content="Live markedsfeed og kvantitativ radar pr. 25. november 2026: Nasdaq -4 %, Nvidia -8,5 %, Anthropic under IPO-kurs, Section 301-told, 10Y rente fastlåst ved 4,9 % og S&P 500 normalisering (-54 %).">
+    <meta name="description" content="Live markedsfeed, interaktive grafer for VIX og US 10Y samt kvantitativ radar pr. 25. november 2026: Nasdaq -4 %, Nvidia -8,5 %, Anthropic under IPO-kurs, Section 301-told og S&P 500 normalisering (-54 %).">
     <style>
         :root {
             --primary: #1e3a8a;
@@ -83,6 +83,42 @@
             0% { opacity: 1; }
             50% { opacity: 0.3; }
             100% { opacity: 1; }
+        }
+
+        /* INTERAKTIVE TRADINGVIEW GRAFER (VIX & US 10Y) */
+        .tv-charts-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+            margin-bottom: 24px;
+        }
+        @media (max-width: 820px) { .tv-charts-grid { grid-template-columns: 1fr; } }
+        .tv-chart-box {
+            background: #ffffff;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+        }
+        .tv-chart-title {
+            background: #f1f5f9;
+            padding: 8px 14px;
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--dark);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .tv-chart-title span.tag {
+            font-family: monospace;
+            font-size: 0.72rem;
+            color: var(--danger);
+        }
+        .tv-chart-body {
+            height: 360px;
+            width: 100%;
         }
 
         .status-bar {
@@ -358,7 +394,7 @@
 
     <header>
         <h1>Makroøkonomi: Kvantitativ Radar</h1>
-        <div class="subtitle">Live Markedsfeed • Værdiansættelse (P/E &amp; NGDP) • Apollo/Slok • OAS-Spænd • WAM &amp; Term Premium</div>
+        <div class="subtitle">Live Markedsfeed • Interaktive Grafer (VIX &amp; US 10Y) • Værdiansættelse (P/E) • WAM &amp; Term Premium</div>
         <nav>
             <a href="index.html">&larr; Forside</a>
             <a href="makro.html" style="color: var(--primary); border-bottom: 2px solid var(--primary);">Makroøkonomi</a>
@@ -371,10 +407,10 @@
     </header>
 
     <main>
-        <!-- LIVE MARKEDSFEED (TRADINGVIEW TICKER TAPE) -->
+        <!-- LIVE MARKEDSFEED (KUN ÅBNE SYMBOLER UDEN LICENSBLOKERING) -->
         <div class="live-ticker-container">
             <div class="live-ticker-header">
-                <span><span class="live-dot"></span>LIVE MARKEDSFEED: INDEKS, RENTER, VIX, NVIDIA &amp; GULD</span>
+                <span><span class="live-dot"></span>LIVE MARKEDSFEED: INDEKS, VIX, NVIDIA, DOLLAR &amp; GULD</span>
                 <span>REALTIDSDATA (TRADINGVIEW)</span>
             </div>
             <div class="tradingview-widget-container">
@@ -384,13 +420,12 @@
                 "symbols": [
                     { "proName": "FOREXCOM:SPXUSD", "title": "S&P 500" },
                     { "proName": "FOREXCOM:NSXUSD", "title": "Nasdaq 100" },
-                    { "proName": "TVC:VIX", "title": "VIX (Frygt)" },
+                    { "proName": "CAPITALCOM:VIX", "title": "VIX (Frygt)" },
                     { "proName": "NASDAQ:NVDA", "title": "Nvidia" },
-                    { "proName": "TVC:US10Y", "title": "US 10Y Rente" },
-                    { "proName": "TVC:US30Y", "title": "US 30Y Rente" },
-                    { "proName": "TVC:DXY", "title": "US Dollar (DXY)" },
+                    { "proName": "NASDAQ:TLT", "title": "US 20Y+ Bonds (TLT)" },
+                    { "proName": "CAPITALCOM:DXY", "title": "US Dollar (DXY)" },
                     { "proName": "FX:EURUSD", "title": "EUR/USD" },
-                    { "proName": "TVC:GOLD", "title": "Guld" }
+                    { "proName": "OANDA:XAUUSD", "title": "Guld (XAU/USD)" }
                 ],
                 "showSymbolLogo": false,
                 "isTransparent": false,
@@ -401,6 +436,69 @@
                 </script>
             </div>
         </div>
+
+        <!-- INTERAKTIVE TRADINGVIEW GRAFER: VIX & US 10Y SIDE OM SIDE -->
+        <section class="tv-charts-grid">
+            <!-- GRAF 1: VIX -->
+            <div class="tv-chart-box">
+                <div class="tv-chart-title">
+                    <span>VIX – Frygtens Indeks (Live)</span>
+                    <span class="tag">KNÆKPUNKT: &gt; 30 (STORM) / &gt; 45 (ORKAN)</span>
+                </div>
+                <div class="tv-chart-body">
+                    <div class="tradingview-widget-container" style="height:100%;width:100%">
+                        <div class="tradingview-widget-container__widget" style="height:100%;width:100%"></div>
+                        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
+                        {
+                        "autosize": true,
+                        "symbol": "CAPITALCOM:VIX",
+                        "interval": "60",
+                        "timezone": "Europe/Copenhagen",
+                        "theme": "light",
+                        "style": "2",
+                        "locale": "en",
+                        "hide_top_toolbar": false,
+                        "hide_legend": false,
+                        "allow_symbol_change": true,
+                        "save_image": false,
+                        "calendar": false,
+                        "support_host": "https://www.tradingview.com"
+                        }
+                        </script>
+                    </div>
+                </div>
+            </div>
+
+            <!-- GRAF 2: US 10Y STATSRENTE -->
+            <div class="tv-chart-box">
+                <div class="tv-chart-title">
+                    <span>US 10-Årig Statsrente (FRED: DGS10)</span>
+                    <span class="tag">KNÆKPUNKT: 5,25 – 5,50 %</span>
+                </div>
+                <div class="tv-chart-body">
+                    <div class="tradingview-widget-container" style="height:100%;width:100%">
+                        <div class="tradingview-widget-container__widget" style="height:100%;width:100%"></div>
+                        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
+                        {
+                        "autosize": true,
+                        "symbol": "FRED:DGS10",
+                        "interval": "D",
+                        "timezone": "Europe/Copenhagen",
+                        "theme": "light",
+                        "style": "2",
+                        "locale": "en",
+                        "hide_top_toolbar": false,
+                        "hide_legend": false,
+                        "allow_symbol_change": true,
+                        "save_image": false,
+                        "calendar": false,
+                        "support_host": "https://www.tradingview.com"
+                        }
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </section>
 
         <div class="status-bar">
             <span><strong>OPDATERET:</strong> ONSDAG 25. NOV. 2026 KL. 16:00</span>
@@ -800,4 +898,53 @@
                             <td><strong>Frankrig (10Y OAT)</strong></td>
                             <td class="num txt-red">BNP &minus;0,1&nbsp;%</td>
                             <td class="num">118&nbsp;% af BNP</td>
-                            <td>4,80&nbsp;% rente (&gt; Italien/Grækenland) • Kræver 4
+                            <td>4,80&nbsp;% rente (&gt; Italien/Grækenland) • Kræver 4,7&nbsp;% BNP-stramning</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Japan (BoJ / JPY)</strong></td>
+                            <td class="num">BoJ 1,25&nbsp;%</td>
+                            <td class="num">260&nbsp;% af BNP</td>
+                            <td>Sælger US Treasuries for at forsvare yenen (~157,2 JPY)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Guld (FTPL-Anker)</strong></td>
+                            <td class="num txt-green">27&nbsp;% CB-reserver</td>
+                            <td class="num txt-green">$4.183+ / oz</td>
+                            <td>Stiger trods +1,95&nbsp;% realrente = prissætning af devaluering</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="formula-bar" style="margin-top: 18px; margin-bottom: 0;">
+                (1) i<sub>t+1</sub><sup>w</sup> = [ (1 &minus; &alpha;)D<sub>t</sub>&middot;i<sub>t</sub><sup>w</sup> + (&alpha;D<sub>t</sub> + PD<sub>t</sub> + IE<sub>t</sub>)&middot;i<sub>t</sub><sup>m</sup> ] / D<sub>t+1</sub>
+                &nbsp;&nbsp;|&nbsp;&nbsp;
+                (2) &Delta;b<sub>t</sub> = (r<sub>t</sub><sup>w</sup> &minus; g<sub>t</sub>)b<sub>t</sub> + pd<sub>t</sub>
+                &nbsp;&nbsp;|&nbsp;&nbsp;
+                (3) D<sub>t</sub> / P<sub>t</sub> = &sum; E<sub>t</sub>[s<sub>t+j</sub>] / (1 + r)<sup>j</sup>
+            </div>
+
+            <div class="source-footer">
+                <strong>Kilder:</strong> 
+                <a href="https://fred.stlouisfed.org/series/BAMLH0A0HYM2" target="_blank" rel="noopener noreferrer">ICE BofA US High Yield OAS (FRED)</a> &bull; 
+                <a href="https://fred.stlouisfed.org/series/THREEFYTP10" target="_blank" rel="noopener noreferrer">FRED 10Y Term Premium (Kim-Wright)</a> &bull; 
+                <a href="https://fiscaldata.treasury.gov/" target="_blank" rel="noopener noreferrer">US Treasury Fiscal Data</a> &bull; 
+                Fitch Ratings &bull; ECB Financial Stability Review.
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        &copy; 2026 Lasse Holt. Kvantitativ Makroøkonomisk Radar.
+    </footer>
+
+    <!-- GOOGLE TRANSLATE WIDGET SCRIPT -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({pageLanguage: 'da', includedLanguages: 'en,de,fr,es', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>
