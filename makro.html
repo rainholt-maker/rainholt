@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Makroøkonomi: Kvantitativ Radar – Lasse Holt</title>
-    <meta name="description" content="Kvantitativ makroøkonomisk radar pr. 21. november 2026: S&P 500 normalisering (-54 %), Apollo/Slok yield-inversion & 65 % AI-vækst, USA vs. Europa P/E, OAS-spænd, WAM og Term Premium.">
+    <title>Makroøkonomi: Live Krak-Radar & Kvantitativ Analyse – Lasse Holt</title>
+    <meta name="description" content="Live markedsfeed og kvantitativ radar pr. 25. november 2026: Nasdaq -4 %, Nvidia -8,5 %, Anthropic under IPO-kurs, Section 301-told, 10Y rente fastlåst ved 4,9 % og S&P 500 normalisering (-54 %).">
     <style>
         :root {
             --primary: #1e3a8a;
@@ -20,7 +20,6 @@
             --danger-bg: #fef2f2;
             --warning: #d97706;
             --safe: #059669;
-            --purple: #6d28d9;
         }
         * { box-sizing: border-box; }
         body {
@@ -29,11 +28,11 @@
             color: var(--text-main);
             max-width: 1040px;
             margin: 0 auto;
-            padding: 36px 20px 80px;
+            padding: 32px 20px 80px;
             background-color: var(--bg-page);
         }
         header {
-            margin-bottom: 24px;
+            margin-bottom: 20px;
             border-bottom: 1px solid var(--border);
             padding-bottom: 18px;
         }
@@ -49,10 +48,47 @@
         .language-selector { margin-left: auto; font-size: 0.85rem; }
         .goog-te-combo { padding: 4px 8px; border-radius: 4px; border: 1px solid var(--border); background: #fff; color: var(--dark); }
 
+        /* LIVE TICKER WRAPPER */
+        .live-ticker-container {
+            background: #ffffff;
+            border: 1px solid var(--border);
+            border-top: 3px solid var(--danger);
+            border-radius: 6px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+        }
+        .live-ticker-header {
+            background: #0f172a;
+            color: #ffffff;
+            padding: 6px 14px;
+            font-size: 0.74rem;
+            font-family: monospace;
+            font-weight: 700;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            letter-spacing: 0.5px;
+        }
+        .live-dot {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: #ef4444;
+            border-radius: 50%;
+            margin-right: 6px;
+            animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.3; }
+            100% { opacity: 1; }
+        }
+
         .status-bar {
-            background: #eff6ff;
-            border: 1px solid #bfdbfe;
-            border-left: 4px solid var(--primary);
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+            border-left: 4px solid var(--danger);
             border-radius: 4px;
             padding: 10px 16px;
             margin-bottom: 22px;
@@ -62,11 +98,11 @@
             flex-wrap: wrap;
             gap: 10px;
             font-size: 0.84rem;
-            color: #1e3a8a;
+            color: #7f1d1d;
             font-family: monospace;
         }
 
-        /* TOP KPI STRIP - FASTE BREDDER UDEN KNÆKKEDE PROCENTER */
+        /* TOP KPI STRIP */
         .kpi-strip {
             display: grid;
             grid-template-columns: repeat(5, 1fr);
@@ -86,7 +122,7 @@
             justify-content: space-between;
         }
         .kpi-lbl { font-size: 0.69rem; font-weight: 700; text-transform: uppercase; color: #64748b; letter-spacing: 0.3px; }
-        .kpi-val { font-family: monospace; font-size: 1.25rem; font-weight: 800; color: var(--dark); margin: 4px 0; white-space: nowrap; }
+        .kpi-val { font-family: monospace; font-size: 1.2rem; font-weight: 800; color: var(--dark); margin: 4px 0; white-space: nowrap; }
         .kpi-sub { font-size: 0.74rem; font-weight: 600; color: var(--danger); line-height: 1.35; }
 
         /* KORT & SEKTIONER */
@@ -134,6 +170,35 @@
             margin: 0 0 18px 0;
         }
 
+        /* LIVE KRAK-LOG GRID */
+        .live-log-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+        @media (max-width: 780px) { .live-log-grid { grid-template-columns: 1fr; } }
+        .log-box {
+            background: #fcfcfd;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            padding: 16px 18px;
+        }
+        .log-box h3 {
+            margin: 0 0 10px 0;
+            font-size: 0.96rem;
+            color: var(--dark);
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 6px;
+        }
+        .log-list {
+            margin: 0;
+            padding-left: 18px;
+            font-size: 0.86rem;
+            color: #334151;
+        }
+        .log-list li { margin-bottom: 8px; line-height: 1.5; }
+        .log-list li:last-child { margin-bottom: 0; }
+
         /* FORMELBOKS */
         .formula-bar {
             background: #f8fafc;
@@ -157,7 +222,7 @@
             line-height: 1.55;
         }
 
-        /* PÆDAGOGISKE GRAF-PANELER */
+        /* GRAF-PANELER */
         .chart-grid-2 {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -179,7 +244,6 @@
             padding-bottom: 8px;
         }
 
-        /* REN SØJLEGRAFIK - INGEN TEKST KLEMT INDE I SØJLERNE */
         .bar-row { margin-bottom: 15px; }
         .bar-row:last-child { margin-bottom: 0; }
         .bar-meta {
@@ -210,10 +274,7 @@
             position: relative;
             overflow: hidden;
         }
-        .bar-fill {
-            height: 100%;
-            border-radius: 3px 0 0 3px;
-        }
+        .bar-fill { height: 100%; border-radius: 3px 0 0 3px; }
         .bar-dark { background: #1e293b; }
         .bar-steel { background: #64829c; }
         .bar-steel-light { background: #93aec5; }
@@ -252,25 +313,12 @@
             display: block;
             margin-bottom: 4px;
         }
-        .apollo-box h3 {
-            margin: 0 0 10px 0;
-            font-size: 0.98rem;
-            color: var(--dark);
-        }
-        .apollo-note {
-            font-size: 0.82rem;
-            color: #475569;
-            margin: 10px 0 0 0;
-            line-height: 1.45;
-        }
+        .apollo-box h3 { margin: 0 0 10px 0; font-size: 0.98rem; color: var(--dark); }
+        .apollo-note { font-size: 0.82rem; color: #475569; margin: 10px 0 0 0; line-height: 1.45; }
 
-        /* TABELLER MED FASTE TAL-KOLONNER */
+        /* TABELLER */
         .table-wrap { overflow-x: auto; margin: 10px 0; }
-        table.data-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 0.84rem;
-        }
+        table.data-table { width: 100%; border-collapse: collapse; font-size: 0.84rem; }
         table.data-table th, table.data-table td {
             padding: 9px 10px;
             border-bottom: 1px solid #e2e8f0;
@@ -286,18 +334,12 @@
             letter-spacing: 0.3px;
             white-space: nowrap;
         }
-        .num {
-            font-family: monospace;
-            font-weight: 700;
-            white-space: nowrap;
-            text-align: right;
-        }
+        .num { font-family: monospace; font-weight: 700; white-space: nowrap; text-align: right; }
         table.data-table th.num { text-align: right; }
         .txt-red { color: var(--danger); }
         .txt-green { color: var(--safe); }
         .txt-amber { color: var(--warning); }
 
-        /* KILDEFOD */
         .source-footer {
             margin-top: 18px;
             padding-top: 12px;
@@ -306,11 +348,7 @@
             color: #64748b;
             line-height: 1.55;
         }
-        .source-footer a {
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 600;
-        }
+        .source-footer a { color: var(--primary); text-decoration: none; font-weight: 600; }
         .source-footer a:hover { text-decoration: underline; }
 
         footer { text-align: center; margin-top: 50px; font-size: 0.82rem; color: #94a3b8; }
@@ -320,7 +358,7 @@
 
     <header>
         <h1>Makroøkonomi: Kvantitativ Radar</h1>
-        <div class="subtitle">Værdiansættelsesmatematik (P/E &amp; NGDP) • Apollo/Slok Makrodata • OAS-Spænd • WAM &amp; Term Premium</div>
+        <div class="subtitle">Live Markedsfeed • Værdiansættelse (P/E &amp; NGDP) • Apollo/Slok • OAS-Spænd • WAM &amp; Term Premium</div>
         <nav>
             <a href="index.html">&larr; Forside</a>
             <a href="makro.html" style="color: var(--primary); border-bottom: 2px solid var(--primary);">Makroøkonomi</a>
@@ -333,38 +371,100 @@
     </header>
 
     <main>
+        <!-- LIVE MARKEDSFEED (TRADINGVIEW TICKER TAPE) -->
+        <div class="live-ticker-container">
+            <div class="live-ticker-header">
+                <span><span class="live-dot"></span>LIVE MARKEDSFEED: INDEKS, RENTER, VIX, NVIDIA &amp; GULD</span>
+                <span>REALTIDSDATA (TRADINGVIEW)</span>
+            </div>
+            <div class="tradingview-widget-container">
+                <div class="tradingview-widget-container__widget"></div>
+                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+                {
+                "symbols": [
+                    { "proName": "FOREXCOM:SPXUSD", "title": "S&P 500" },
+                    { "proName": "FOREXCOM:NSXUSD", "title": "Nasdaq 100" },
+                    { "proName": "TVC:VIX", "title": "VIX (Frygt)" },
+                    { "proName": "NASDAQ:NVDA", "title": "Nvidia" },
+                    { "proName": "TVC:US10Y", "title": "US 10Y Rente" },
+                    { "proName": "TVC:US30Y", "title": "US 30Y Rente" },
+                    { "proName": "TVC:DXY", "title": "US Dollar (DXY)" },
+                    { "proName": "FX:EURUSD", "title": "EUR/USD" },
+                    { "proName": "TVC:GOLD", "title": "Guld" }
+                ],
+                "showSymbolLogo": false,
+                "isTransparent": false,
+                "displayMode": "adaptive",
+                "colorTheme": "light",
+                "locale": "en"
+                }
+                </script>
+            </div>
+        </div>
+
         <div class="status-bar">
-            <span>DATA PR.: 21. NOVEMBER 2026</span>
-            <span>S&amp;P 500: 6.910 (&minus;11,6 % FRA TOP) &bull; NASDAQ 100: &minus;17 % SIDEN OKT.</span>
-            <a href="arkiv.html" style="color: #1e3a8a; font-weight: 700; text-decoration: none;">Økonomisk Blog &rarr;</a>
+            <span><strong>OPDATERET:</strong> ONSDAG 25. NOV. 2026 KL. 16:00</span>
+            <span>S&amp;P 500 UNDER 200-DAGES GNS. &bull; VIX ~29–30 &bull; SECTION 301 TOLD AKTIVERET</span>
+            <a href="arkiv.html" style="color: #7f1d1d; font-weight: 700; text-decoration: none;">Økonomisk Blog &rarr;</a>
         </div>
 
         <!-- TOP KPI STRIP -->
         <section class="kpi-strip">
             <div class="kpi-box">
-                <span class="kpi-lbl">S&amp;P 500 Normaliseret P/E</span>
-                <span class="kpi-val">39,8x</span>
-                <span class="kpi-sub">Gns. 1947–2026: 17,2x (Trailing: 23,4x)</span>
+                <span class="kpi-lbl">Onsdag Åbning (US)</span>
+                <span class="kpi-val">NDX &minus;4,0&nbsp;%</span>
+                <span class="kpi-sub">S&amp;P &minus;2,6&nbsp;% (8 af 9 dage i minus)</span>
             </div>
             <div class="kpi-box">
-                <span class="kpi-lbl">S&amp;P 500 Normalisering</span>
+                <span class="kpi-lbl">Anthropic IPO-Brud</span>
+                <span class="kpi-val">$74–75</span>
+                <span class="kpi-sub">Under IPO ($83) &bull; &minus;35&nbsp;% fra top</span>
+            </div>
+            <div class="kpi-box">
+                <span class="kpi-lbl">US 10Y / 30Y Rente</span>
+                <span class="kpi-val">4,90&nbsp;% / 5,30&nbsp;%</span>
+                <span class="kpi-sub">Ingen sikker havn ved aktiekrak</span>
+            </div>
+            <div class="kpi-box">
+                <span class="kpi-lbl">Fed Dec. / Jan. Hop</span>
+                <span class="kpi-val">97&nbsp;% / 63&nbsp;%</span>
+                <span class="kpi-sub">Stagflation + Section 301-told</span>
+            </div>
+            <div class="kpi-box">
+                <span class="kpi-lbl">S&amp;P Normalisering</span>
                 <span class="kpi-val">3.202 (&minus;54&nbsp;%)</span>
-                <span class="kpi-sub">Fra lukkekurs 6.910 (20/11)</span>
+                <span class="kpi-sub">Normaliseret P/E: 39,8x</span>
             </div>
-            <div class="kpi-box">
-                <span class="kpi-lbl">US IG-Rente vs. S&amp;P E/P</span>
-                <span class="kpi-val">6,0&nbsp;% vs. 4,5&nbsp;%</span>
-                <span class="kpi-sub">Kredit slår aktier (Apollo)</span>
+        </section>
+
+        <!-- SEKTION 0: LIVE KRAK-STATUS (ONSDAG 25. NOVEMBER 2026) -->
+        <section class="quant-card accent-red">
+            <div class="section-head">
+                <h2>Live Status (25. nov.): Dobbelt Klemme – AI-Kollaps &amp; Section 301-Toldmur</h2>
+                <span class="section-badge">VÆRSTE NOVEMBER SIDEN 2008</span>
             </div>
-            <div class="kpi-box">
-                <span class="kpi-lbl">AI-Andel af US Vækst</span>
-                <span class="kpi-val">65&nbsp;% af BNP</span>
-                <span class="kpi-sub">1,3 %-point ud af ~2 % vækst</span>
-            </div>
-            <div class="kpi-box">
-                <span class="kpi-lbl">US Rollover (WAM 5,9 år)</span>
-                <span class="kpi-val">$10,7T / år</span>
-                <span class="kpi-sub">33 % rulles fra ~1 % til ~5&nbsp;%</span>
+            <p class="quant-sub">Mandagens politisk orkestrerede lettelsesrally på +30&nbsp;% i Nvidia er fordampet. Markedet rammes samtidigt af AI-likvidation og ny tolddrevet inflation.</p>
+
+            <div class="live-log-grid">
+                <div class="log-box">
+                    <h3>A. AI-Korthusets Tre Samtidige Brud</h3>
+                    <ul class="log-list">
+                        <li><strong>Nvidia (&minus;8,5&nbsp;% onsdag efter &minus;6&nbsp;% tirsdag):</strong> Genindsættelsen af Jensen Huang var et klassisk <em>bear market rally</em>.</li>
+                        <li><strong>Dell Technologies (&minus;12&nbsp;% tirsdag / &minus;7&nbsp;% onsdag):</strong> Trods rekordomsætning og opjustering sælges aktien hårdt ned – gode nyheder bruges til likvidation.</li>
+                        <li><strong>Anthropic dumper lakmusprøven:</strong> Udbudt til $83 (top $115,10 d. 19. nov.), lukkede tirsdag i $81,91 efter opbrugt <em>greenshoe</em>-buffer og dykker onsdag til $74–75 (&minus;35&nbsp;% fra toppen på 4 dage).</li>
+                        <li><strong>Teknisk brud:</strong> S&amp;P 500 under 200-dages glidende gennemsnit; VIX presset op i 29–30.</li>
+                    </ul>
+                </div>
+
+                <div class="log-box">
+                    <h3>B. Section 301-Told &amp; Obligationsmarkedets Dom</h3>
+                    <ul class="log-list">
+                        <li><strong>Ny toldoffensiv:</strong> Efter Højesterets underkendelse af <em>Liberation Day</em>-tolden lancerer USTR Jamieson Greer Section 301-told mod Kina, EU, Japan, Sydkorea, Taiwan og 11 andre lande (undtagelser: energi, medicin, visse chips).</li>
+                        <li><strong>Stagflationær boomerang:</strong> Kevin Warshs stramme pengepolitik har styrket dollaren og udhulet eksisterende told, hvilket udløser nye handelsbarrierer.</li>
+                        <li><strong>Obligationer nægter at redde aktier:</strong> Trods &minus;4&nbsp;% i Nasdaq ligger 10Y fastlåst i <strong>4,85–4,92&nbsp;%</strong> og 30Y i <strong>5,26–5,33&nbsp;%</strong>. Term Premium holdes oppe af toldinflation.</li>
+                        <li><strong>Fed-stramning indpriset:</strong> 97&nbsp;% sandsynlighed for rentehop i december og 63&nbsp;% for januar.</li>
+                    </ul>
+                </div>
             </div>
         </section>
 
@@ -383,7 +483,7 @@
                     Kun P/E &rarr; gns. (18,4): <strong>5.450 (&minus;21&nbsp;%)</strong> &nbsp;|&nbsp;
                     Kun Indtjening/NGDP &rarr; gns. (100): <strong>4.060 (&minus;41&nbsp;%)</strong> &nbsp;|&nbsp;
                     Begge led normaliseret: <strong>3.202 (&minus;54&nbsp;%)</strong>.
-                    <em>Historisk reference: Dot-com 2000–2002 faldt &minus;49&nbsp;%; Okt. 2007–forår 2008 faldt US tech &minus;24&nbsp;% før Lehman (Børsen).</em>
+                    <em>Historisk reference: Dot-com 2000–2002 faldt &minus;49&nbsp;%; Okt. 2007–forår 2008 faldt US tech &minus;24&nbsp;% før Lehman.</em>
                 </div>
             </div>
 
@@ -430,12 +530,10 @@
 
                     <div class="bar-row">
                         <div class="bar-meta">
-                            <span>Lukkekurs 20/11/2026</span>
+                            <span>Referencekurs 20/11/2026</span>
                             <span class="val">6.910</span>
                         </div>
-                        <div class="bar-track">
-                            <div class="bar-fill bar-dark" style="width: 100%;"></div>
-                        </div>
+                        <div class="bar-track"><div class="bar-fill bar-dark" style="width: 100%;"></div></div>
                     </div>
 
                     <div class="bar-row">
@@ -443,9 +541,7 @@
                             <span>P/E tilbage på gns. (18,4)</span>
                             <span class="val">5.450 <span class="hint">(&minus;21&nbsp;%)</span></span>
                         </div>
-                        <div class="bar-track">
-                            <div class="bar-fill bar-steel-light" style="width: 78.9%;"></div>
-                        </div>
+                        <div class="bar-track"><div class="bar-fill bar-steel-light" style="width: 78.9%;"></div></div>
                     </div>
 
                     <div class="bar-row">
@@ -453,9 +549,7 @@
                             <span>Indtjening/NGDP tilbage på gns. (100)</span>
                             <span class="val">4.060 <span class="hint">(&minus;41&nbsp;%)</span></span>
                         </div>
-                        <div class="bar-track">
-                            <div class="bar-fill bar-steel" style="width: 58.8%;"></div>
-                        </div>
+                        <div class="bar-track"><div class="bar-fill bar-steel" style="width: 58.8%;"></div></div>
                     </div>
 
                     <div class="bar-row">
@@ -463,9 +557,7 @@
                             <span>Begge dele normaliseret</span>
                             <span class="val txt-red">3.202 <span class="hint">(&minus;54&nbsp;%)</span></span>
                         </div>
-                        <div class="bar-track">
-                            <div class="bar-fill bar-red" style="width: 46.3%;"></div>
-                        </div>
+                        <div class="bar-track"><div class="bar-fill bar-red" style="width: 46.3%;"></div></div>
                     </div>
                 </div>
             </div>
@@ -485,10 +577,9 @@
                 <h2>2. Apollo / Torsten Slok: De Fire Strukturelle Klemmer i Amerikansk Økonomi</h2>
                 <span class="section-badge">THE DAILY SPARK (NOV 2026)</span>
             </div>
-            <p class="quant-sub">Fire uafhængige datasæt fra Apollo Global Management viser, hvorfor aktierisiko ikke længere betaler sig, og hvorfor Fed risikerer at være bagud på kurven.</p>
+            <p class="quant-sub">Fire uafhængige datasæt fra Apollo Global Management viser, hvorfor aktierisiko ikke længere betaler sig, og hvorfor Fed er bagud på kurven.</p>
 
             <div class="apollo-grid">
-                <!-- APOLLO 1: YIELD INVERSION -->
                 <div class="apollo-box">
                     <span class="apollo-date">20. NOV 2026 &bull; AKTIVKLASSE-INVERSION</span>
                     <h3>Kredit betaler mere end aktier (Første gang siden 2000'erne)</h3>
@@ -511,7 +602,6 @@
                     <p class="apollo-note">Investorer får 1,5 %-point <em>mere</em> for sikker IG-kredit end for aktier – med langt lavere volatilitet.</p>
                 </div>
 
-                <!-- APOLLO 2: 65% AI VÆKST -->
                 <div class="apollo-box">
                     <span class="apollo-date">19. NOV 2026 &bull; ENSTRENGET VÆKSTMOTOR</span>
                     <h3>AI-investeringer driver 65&nbsp;% af USA's realvækst</h3>
@@ -526,7 +616,6 @@
                     <p class="apollo-note">Over de seneste 3 kvartaler udgjorde AI 1,3 %-point af ~2 % akkumuleret real BNP-vækst. Bremser datacenter-byggeriet op, går USA i stå.</p>
                 </div>
 
-                <!-- APOLLO 3: FED BEHIND THE CURVE -->
                 <div class="apollo-box">
                     <span class="apollo-date">14. &amp; 16. NOV 2026 &bull; INFLATION &amp; STATSRENTER</span>
                     <h3>PCE mod 6&nbsp;% &amp; Washingtons rentebyrde fordoblet</h3>
@@ -538,10 +627,9 @@
                         <div class="bar-meta"><span>US Statens rentebyrde (Nov 2026)</span><span class="val txt-red">$1,25T (+150&nbsp;%)</span></div>
                         <div class="bar-track"><div class="bar-fill bar-red" style="width: 100%;"></div></div>
                     </div>
-                    <p class="apollo-note">Atlanta Fed estimerer Q4-vækst til 3,5 % (mod 2 % potentiale), og regionale <em>prices paid</em>-målinger peger mod 6 % PCE-inflation. Renterne rammer nu primært staten frem for husholdninger med faste pandemilån.</p>
+                    <p class="apollo-note">Atlanta Fed estimerer Q4-vækst til 3,5 % (mod 2 % potentiale), og regionale <em>prices paid</em>-målinger peger mod 6 % PCE-inflation.</p>
                 </div>
 
-                <!-- APOLLO 4: SOFTWARE REFINANCING -->
                 <div class="apollo-box">
                     <span class="apollo-date">12. NOV 2026 &bull; REFINANSIERINGSKLEMME</span>
                     <h3>Software-sektoren sidder fast i 2028-forfaldsmuren</h3>
@@ -553,7 +641,7 @@
                         <div class="bar-meta"><span>Software-selskaber (2028-mur nedbragt)</span><span class="val txt-red">&minus;10&nbsp;%</span></div>
                         <div class="bar-track"><div class="bar-fill bar-red" style="width: 40%;"></div></div>
                     </div>
-                    <p class="apollo-note">Mens andre sektorer har fået refinansieret, kæmper højt gearede softwareselskaber med at rulle deres gæld over i et <em>higher-for-longer</em> rentemiljø.</p>
+                    <p class="apollo-note">Højt gearede softwareselskaber kæmper med at rulle deres gæld over i et <em>higher-for-longer</em> rentemiljø.</p>
                 </div>
             </div>
 
@@ -625,15 +713,15 @@
                                     <td><strong>USA (Normaliseret)</strong></td>
                                     <td class="num txt-red">39,8x</td>
                                     <td class="num">2,51&nbsp;%</td>
-                                    <td class="num">5,05&nbsp;%</td>
-                                    <td class="num txt-red">&minus;2,54&nbsp;%</td>
+                                    <td class="num">4,90&nbsp;%</td>
+                                    <td class="num txt-red">&minus;2,39&nbsp;%</td>
                                 </tr>
                                 <tr>
                                     <td><strong>USA (Trailing 12m)</strong></td>
                                     <td class="num txt-red">23,4x</td>
                                     <td class="num">4,27&nbsp;%</td>
-                                    <td class="num">5,05&nbsp;%</td>
-                                    <td class="num txt-red">&minus;0,78&nbsp;%</td>
+                                    <td class="num">4,90&nbsp;%</td>
+                                    <td class="num txt-red">&minus;0,63&nbsp;%</td>
                                 </tr>
                                 <tr>
                                     <td><strong>Europa (STOXX 600)</strong></td>
@@ -646,7 +734,7 @@
                         </table>
                     </div>
                     <p style="font-size: 0.78rem; color: #475569; margin: 12px 0 0 0;">
-                        <em>*Tysk 10Y Bund som eurozonens risikofrie anker.</em> I USA er aktierisikopræmien negativ (&minus;0,78&nbsp;% til &minus;2,54&nbsp;%). I Europa betales investorer +4,25&nbsp;% for at bære aktierisiko.
+                        <em>*Tysk 10Y Bund som eurozonens risikofrie anker.</em> Mens EU har en centralbank på pause og en stærk dollar som modvægt til Section 301-tolden, er USA fanget i et selvforstærkende krydspres.
                     </p>
                 </div>
             </div>
@@ -655,8 +743,7 @@
                 <strong>Kilder:</strong> 
                 <a href="http://www.econ.yale.edu/~shiller/data.htm" target="_blank" rel="noopener noreferrer">Shiller Data</a> &bull; 
                 <a href="https://qontigo.com/index/sxxp/" target="_blank" rel="noopener noreferrer">STOXX Europe 600</a> &bull; 
-                <a href="https://fred.stlouisfed.org/series/DGS10" target="_blank" rel="noopener noreferrer">FRED 10Y US Treasury</a> &bull; 
-                BofA Fund Manager Survey (Nov 2026: 36 % præference for internationale aktier i 2027 mod 24 % USA; forvalter-cash nede på 3,6 %).
+                <a href="https://fred.stlouisfed.org/series/DGS10" target="_blank" rel="noopener noreferrer">FRED 10Y US Treasury</a>.
             </div>
         </section>
 
@@ -713,53 +800,4 @@
                             <td><strong>Frankrig (10Y OAT)</strong></td>
                             <td class="num txt-red">BNP &minus;0,1&nbsp;%</td>
                             <td class="num">118&nbsp;% af BNP</td>
-                            <td>4,80&nbsp;% rente (&gt; Italien/Grækenland) • Kræver 4,7&nbsp;% BNP-stramning</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Japan (BoJ / JPY)</strong></td>
-                            <td class="num">BoJ 1,25&nbsp;%</td>
-                            <td class="num">260&nbsp;% af BNP</td>
-                            <td>Sælger US Treasuries for at forsvare yenen (~157,2 JPY)</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Guld (FTPL-Anker)</strong></td>
-                            <td class="num txt-green">27&nbsp;% CB-reserver</td>
-                            <td class="num txt-green">$4.183+ / oz</td>
-                            <td>Stiger trods +1,95&nbsp;% realrente = prissætning af devaluering</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <div class="formula-bar" style="margin-top: 18px; margin-bottom: 0;">
-                (1) i<sub>t+1</sub><sup>w</sup> = [ (1 &minus; &alpha;)D<sub>t</sub>&middot;i<sub>t</sub><sup>w</sup> + (&alpha;D<sub>t</sub> + PD<sub>t</sub> + IE<sub>t</sub>)&middot;i<sub>t</sub><sup>m</sup> ] / D<sub>t+1</sub>
-                &nbsp;&nbsp;|&nbsp;&nbsp;
-                (2) &Delta;b<sub>t</sub> = (r<sub>t</sub><sup>w</sup> &minus; g<sub>t</sub>)b<sub>t</sub> + pd<sub>t</sub>
-                &nbsp;&nbsp;|&nbsp;&nbsp;
-                (3) D<sub>t</sub> / P<sub>t</sub> = &sum; E<sub>t</sub>[s<sub>t+j</sub>] / (1 + r)<sup>j</sup>
-            </div>
-
-            <div class="source-footer">
-                <strong>Kilder:</strong> 
-                <a href="https://fred.stlouisfed.org/series/BAMLH0A0HYM2" target="_blank" rel="noopener noreferrer">ICE BofA US High Yield OAS (FRED)</a> &bull; 
-                <a href="https://fred.stlouisfed.org/series/THREEFYTP10" target="_blank" rel="noopener noreferrer">FRED 10Y Term Premium (Kim-Wright)</a> &bull; 
-                <a href="https://fiscaldata.treasury.gov/" target="_blank" rel="noopener noreferrer">US Treasury Fiscal Data</a> &bull; 
-                Fitch Ratings (18. nov.) &bull; ECB Financial Stability Review (10. nov.) &bull; Børsen / Steen Bocian (20. nov. 2026).
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        &copy; 2026 Lasse Holt. Kvantitativ Makroøkonomisk Radar.
-    </footer>
-
-    <!-- GOOGLE TRANSLATE WIDGET SCRIPT -->
-    <script type="text/javascript">
-        function googleTranslateElementInit() {
-            new google.translate.TranslateElement({pageLanguage: 'da', includedLanguages: 'en,de,fr,es', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
-        }
-    </script>
-    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
-</body>
-</html>
+                            <td>4,80&nbsp;% rente (&gt; Italien/Grækenland) • Kræver 4
